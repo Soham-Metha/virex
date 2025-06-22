@@ -1,6 +1,6 @@
 # Virtual Execution Console
 
-- [Virtual Execution Console](#virtual-execution-console)
+- [**Virtual Execution Console**](#virtual-execution-console)
 - [**Project Initialization and Requirement Gathering**](#project-initialization-and-requirement-gathering)
 - [**System Design and Architecture**](#system-design-and-architecture)
 - [**Examples**](#examples)
@@ -42,10 +42,10 @@
 # **System Design and Architecture**
 
 ![Image](extras/ActionPlan.jpeg)
-![Image](extras/virex_arch.png)
-![Image](extras/sasm_arch.png)
-![Image](extras/sasm_components_1.png)
-![Image](extras/sasm_components_2.png)
+![Image](extras/Architecture/virex_arch.png)
+![Image](extras/Architecture/sasm_arch.png)
+![Image](extras/Architecture/sasm_components_1.png)
+![Image](extras/Architecture/sasm_components_2.png)
 
 ---
 
@@ -57,7 +57,7 @@
 
 ## AST:
 
-![Image](extras/samplePrograms/helloWorld.png)
+![Image](extras/AST_Examples/helloWorld.png)
 
 ### Note: Each Code Block represents a Scope, Block 0 being global scope.
 

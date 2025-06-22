@@ -1,6 +1,6 @@
 site_name: VIREX
 docs_dir: docs
-site_dir: ../html
+site_dir: ./html
 nav:
   - Libs:
     - cmd: LIBS/univ_cmdutils.md
