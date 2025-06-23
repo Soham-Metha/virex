@@ -1,2 +1,2 @@
-# /build TODO: Upddate github Actions to remove dependence on build dir
+/build/*
 .vscode/
