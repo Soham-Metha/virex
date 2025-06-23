@@ -1,70 +1,48 @@
+#* G = GLOBAL LIBS, C = COMPILER, A = ASSEMBLER, M = MACHINE
+BUILDS := ./build
 
-#* NAMING FORMAT
-#* G = GLOBAL, A = ASSEMBLER, C = COMPILER, M = MACHINE
-#* I = INCLUDE, C = CODE
-#* DIR = DIRECTORY
+C_EXEC := $(BUILDS)/occ
+A_EXEC := $(BUILDS)/sasm
+M_EXEC := $(BUILDS)/virex
 
-GIDIR := ./include/libs
-CIDIR := ./include/OCC
-AIDIR := ./include/SASM
-MIDIR := ./include/VM
+_G_DIR := ./src/libs
+_C_DIR := ./src/OCC
+_A_DIR := ./src/SASM
+_M_DIR := ./src/VM
 
-GCDIR := ./src/libs
-CCDIR := ./src/OCC
-ACDIR := ./src/SASM
-MCDIR := ./src/VM
+C_MAIN := $(_C_DIR)/O_main.c
+A_MAIN := $(_A_DIR)/sasm_main.c
+M_MAIN := $(_M_DIR)/virex_main.c
 
-OMAIN := $(CCDIR)/O_main.c
-SMAIN := $(ACDIR)/sasm_main.c
-VMAIN := $(MCDIR)/virex_main.c
-BUILD := ./build
-
-OBUILD := $(BUILD)/occ
-SBUILD := $(BUILD)/sasm
-VBUILD := $(BUILD)/virex
+G_CODE := $(wildcard   $(_G_DIR)/*.c)
+C_CODE := $(filter-out $(C_MAIN), 	$(wildcard $(_C_DIR)/*.c) )
+A_CODE := $(filter-out $(A_MAIN), 	$(wildcard $(_A_DIR)/*.c) )
+M_CODE := $(filter-out $(M_MAIN), 	$(wildcard $(_M_DIR)/*.c) )
 
 CC	   := gcc
 CFLAGS := -Wall -Wextra -Werror -Wfatal-errors -Wswitch-enum -pedantic -O3 -std=c2x
-LIBS   := -lncursesw -I$(GIDIR) -I$(CIDIR) -I$(AIDIR) -I$(MIDIR)
-
-G_HEAD := $(wildcard $(GIDIR)/*.h)
-C_HEAD := $(wildcard $(CIDIR)/*.h)
-A_HEAD := $(wildcard $(AIDIR)/*.h)
-M_HEAD := $(wildcard $(MIDIR)/*.h)
-
-
-G_CODE := $(wildcard $(GCDIR)/*.c)
-C_CODE := $(wildcard $(CCDIR)/*.c)
-A_CODE := $(wildcard $(ACDIR)/*.c)
-M_CODE := $(wildcard $(MCDIR)/*.c)
-
-
-C_CODE := $(filter-out $(OMAIN), $(C_CODE))
-A_CODE := $(filter-out $(SMAIN), $(A_CODE))
+LIBS   := -lncursesw $(addprefix -I, $(wildcard ./include/*/))
 
 .PHONY: clean occ sasm virex all
 
-all		: 	virex
-virex	: 	occ		sasm 	   $(VBUILD)
+all 	: 	$(C_EXEC)	$(A_EXEC) 	$(M_EXEC)
+occ 	: 	$(C_EXEC)
+sasm	: 	$(A_EXEC)
+virex	: 	$(C_EXEC)	$(A_EXEC) 	$(M_EXEC)
 
-occ		: 	$(OBUILD)
-sasm	: 	$(SBUILD)
+define BUILD_RULE
+$1: $2 $(G_CODE) | $(BUILDS)
+	@$(CC) $$^ $(CFLAGS) $(LIBS) -o $$@
+	@printf "\e[32m		[ BUILD COMPLETED ] : [ $$@ ] \e[0m\n\n"
+endef
 
-$(OBUILD):	$(OMAIN) $(G_CODE) $(C_CODE) | $(BUILD)
-		@$(CC) $^    $(CFLAGS) $(LIBS) -o $@
-		@echo  "\n					COMPILER MADE SUCCESSFULLY	\n"
+$(eval $(call BUILD_RULE, $(C_EXEC),  $(C_MAIN) $(C_CODE)))
+$(eval $(call BUILD_RULE, $(A_EXEC),  $(A_MAIN) $(A_CODE)))
+$(eval $(call BUILD_RULE, $(M_EXEC),  $(M_MAIN) $(M_CODE) $(A_CODE)))
 
-$(SBUILD): 	$(SMAIN) $(G_CODE) $(A_CODE) | $(BUILD)
-		@$(CC) $^    $(CFLAGS) $(LIBS) -o $@
-		@echo  "\n	  				SASM MADE SUCCESSFULLY		\n"
+$(BUILDS):
+	@mkdir -p $@
 
-$(VBUILD): 	$(VMAIN) $(G_CODE) $(M_CODE) $(A_CODE) | $(BUILD)
-	  	@$(CC) $^    $(CFLAGS) $(LIBS) -o $@
-		@echo  "\n	  				VM MADE SUCCESSFULLY		\n"
-
-$(BUILD):
-		mkdir -p $@
-
-clean: | $(BUILD)
-		@rm -f $(BUILD)/*
-		@echo  "\n  CLEANED ALL OBJECT FILES AND EXECUTABLES	\n"
+clean: | $(BUILDS)
+	@rm -f $(BUILDS)/*
+	@printf  "\n\e[36m  CLEANED ALL OBJECT FILES AND EXECUTABLES	\e[0m\n\n"
