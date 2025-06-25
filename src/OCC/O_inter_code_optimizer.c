@@ -1,7 +1,7 @@
-#include "univ_defs.h"
-#include "O_inter_codegen.h"
 #include "O_inter_code_optimizer.h"
 #include "O_debug_help.h"
+#include "O_inter_codegen.h"
+#include "univ_defs.h"
 
 #pragma GCC diagnostic ignored "-Wswitch-enum"
 // Global TAC instruction list pointers.

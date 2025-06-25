@@ -119,13 +119,13 @@ display enterTUIMode()
         "\n    ╚══════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝  ╚═╝"
         "\n                                                                       ");
 
-    /*
     wprintw(disp.windows[CREDITS],
-        "\n\n     ORIN  : OMKAR JAGTAP "
-        "\n     SASM  : SOHAM METHA  "
-        "\n     GBVM  : SOHAM METHA  "
-        "\n     LIBS  : BOTH  ");
-    */
+        "\n\n    VIREX, SASM\t\t: SOHAM METHA  "
+        "\n    AST visualizer\t: SOHAM METHA  "
+        "\n    Syntax Highlighter\t: SOHAM METHA  "
+        "\n    ORIN Compiler\t: OMKAR JAGTAP "
+        "\n    Core lib(Hashtable)\t: OMKAR JAGTAP  "
+        "\n    Core libs(other)\t: SOHAM METHA  ");
 
     refreshWindow(disp.windows[NAME], WindowNames[NAME], 7, 7, 3);
     refreshWindow(disp.windows[CREDITS], WindowNames[CREDITS], 7, 7, 3);

@@ -250,10 +250,10 @@ Error executeInst(Vm* vm, WINDOW* win)
     }
     Instruction inst = *getInstructionAt(vm, getReg(REG_NX, vm)->u64);
     if (inst.opr1IsReg && inst.operand.u64 > REG_COUNT) {
-        inst.operand.u64 = getReg(inst.operand.u64%REG_COUNT, vm)->u64;
+        inst.operand.u64 = getReg(inst.operand.u64 % REG_COUNT, vm)->u64;
     }
     if (inst.opr2IsReg && inst.operand2.u64 > REG_COUNT) {
-        inst.operand2.u64 = getReg(inst.operand2.u64%REG_COUNT, vm)->u64;
+        inst.operand2.u64 = getReg(inst.operand2.u64 % REG_COUNT, vm)->u64;
     }
 
     // printf("\nenter : %d %s", inst.type, OpcodeDetailsLUT[inst.type].name);

@@ -1,6 +1,6 @@
-#include "univ_defs.h"
 #include "O_parse_tree.h"
 #include "O_symbol_table.h"
+#include "univ_defs.h"
 
 // Function to create a new parse tree node
 ParseTreeNode* createParseTreeNode(Token* token, SymbolTable* scope)

@@ -1,12 +1,12 @@
 #pragma GCC diagnostic ignored "-Wswitch-enum"
+#include "O_codegenerator.h"
+#include "O_inter_code_optimizer.h"
+#include "O_inter_codegen.h"
 #include "O_lexer.h"
 #include "O_parser.h"
-#include "O_codegenerator.h"
 #include "univ_defs.h"
 #include "univ_errors.h"
 #include "univ_fileops.h"
-#include "O_inter_codegen.h"
-#include "O_inter_code_optimizer.h"
 
 char* inputFile = NULL;
 char* outputFile = NULL;

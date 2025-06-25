@@ -94,7 +94,7 @@ bool fetchCachedSasmTokenFromSasmTokenizer(Tokenizer* tokenizer, Token* output, 
             } else if (isdigit(*tokenizer->source.data) || *tokenizer->source.data == '-') {
                 token.type = TOKEN_TYPE_NUMBER;
                 token.text = splitStrByCondition(&tokenizer->source, isNumber);
-            } else if (tokenizer->source.length >=3 && *tokenizer->source.data == '[' && tokenizer->source.data[3] == ']') {
+            } else if (tokenizer->source.length >= 3 && *tokenizer->source.data == '[' && tokenizer->source.data[3] == ']') {
                 if (tokenizer->source.length - 2 < 2) {
                     fprintf(stderr, FLFmt ": ERROR: Check register name %c\n",
                         FLArg(location), *tokenizer->source.data);

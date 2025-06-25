@@ -1,5 +1,5 @@
-#include "virex.h"
 #include "univ_fileops.h"
+#include "virex.h"
 
 void loadInternalCallIntoVm(Vm* vm, InternalVmCall call)
 {

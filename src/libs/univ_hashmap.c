@@ -1,5 +1,5 @@
-#include "univ_defs.h"
 #include "univ_hashmap.h"
+#include "univ_defs.h"
 
 // Create a new entry (key-value pair)
 Entry* createEntry(void* key, void* value)

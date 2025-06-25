@@ -1,8 +1,8 @@
-#include "univ_defs.h"
 #include "O_inter_codegen.h"
+#include "O_debug_help.h"
 #include "O_parse_tree.h"
 #include "O_token_types.h"
-#include "O_debug_help.h"
+#include "univ_defs.h"
 
 // Global TAC instruction list pointers.
 static TACInstruction* tacHead = NULL;

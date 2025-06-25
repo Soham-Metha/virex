@@ -31,6 +31,8 @@
 #include <ctype.h>
 #include <errno.h>
 #include <inttypes.h>
+#include <locale.h>
+#include <ncurses.h>
 #include <stdarg.h>
 #include <stdbool.h>
 #include <stddef.h>
@@ -38,11 +40,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/types.h>
 #include <sys/stat.h>
+#include <sys/types.h>
 #include <unistd.h>
-#include <ncurses.h>
-#include <locale.h>
 
 typedef uint8_t Byte;
 typedef uint16_t Word;

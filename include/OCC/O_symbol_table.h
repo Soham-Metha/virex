@@ -1,6 +1,6 @@
 #pragma once
-#include "univ_hashmap.h"
 #include "O_token_types.h"
+#include "univ_hashmap.h"
 
 /*
     Symbol entry structure. There is no need to maintain the scope variable

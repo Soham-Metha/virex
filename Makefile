@@ -1,7 +1,7 @@
 #* G = GLOBAL LIBS, C = COMPILER, A = ASSEMBLER, M = MACHINE
 BUILDS := ./build
 
-C_EXEC := $(BUILDS)/occ
+C_EXEC := $(BUILDS)/orin
 A_EXEC := $(BUILDS)/sasm
 M_EXEC := $(BUILDS)/virex
 
@@ -26,14 +26,14 @@ LIBS   := -lncursesw $(addprefix -I, $(wildcard ./include/*/))
 .PHONY: clean occ sasm virex all
 
 all 	: 	$(C_EXEC)	$(A_EXEC) 	$(M_EXEC)
-occ 	: 	$(C_EXEC)
+orin 	: 	$(C_EXEC)
 sasm	: 	$(A_EXEC)
 virex	: 	$(C_EXEC)	$(A_EXEC) 	$(M_EXEC)
 
 define BUILD_RULE
 $1: $2 $(G_CODE) | $(BUILDS)
 	@$(CC) $$^ $(CFLAGS) $(LIBS) -o $$@
-	@printf "\e[32m		[ BUILD COMPLETED ] : [ $$@ ] \e[0m\n\n"
+	@printf "\e[32m		[ BUILD COMPLETED ]\t: [ $$@ ] \e[0m\n\n"
 endef
 
 $(eval $(call BUILD_RULE, $(C_EXEC),  $(C_MAIN) $(C_CODE)))

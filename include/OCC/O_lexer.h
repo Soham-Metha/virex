@@ -7,8 +7,8 @@
  */
 
 #pragma once
-#include "univ_defs.h"
 #include "O_token_types.h"
+#include "univ_defs.h"
 
 Token* initToken(TokenType);
 

@@ -1,6 +1,6 @@
 #include "univ_defs.h"
-#include "univ_strings.h"
 #include "univ_malloc.h"
+#include "univ_strings.h"
 
 char* getNextCmdLineArg(int* argc, char*** argv)
 {

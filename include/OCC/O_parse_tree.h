@@ -1,6 +1,6 @@
 #pragma once
-#include "O_token_types.h"
 #include "O_symbol_table.h"
+#include "O_token_types.h"
 
 typedef struct ParseTreeNode {
     char* value;                         // Value of that node

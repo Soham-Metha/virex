@@ -66,7 +66,7 @@ void inputHandler(Vm* vm, WINDOW* win, int* highlight)
         __exec_sm(vm, win);
         break;
     case CUSTOM_CMD:
-        readFilePath(win, "Enter command : ", &outputFile);
+        readFilePath(win, "Enter command(no need to specify sasm/orin) : ", &outputFile);
         wprintw(win, "\n     (S) SASM build"
                      "\n     (O) ORIN build"
                      "\n     (A) SASM build and exec"
@@ -76,9 +76,9 @@ void inputHandler(Vm* vm, WINDOW* win, int* highlight)
         refreshWindow(win, getNameForWindow(INPUT), 5, 5, 3);
         char ch = wgetch(win);
         if (ch == 'o' || ch == 'O' || ch == 'c' || ch == 'C') {
-            // snprintf(buffer, sizeof(buffer), "./occ %s", outputFile);
+            // snprintf(buffer, sizeof(buffer), "orin %s", outputFile);
         } else {
-            snprintf(buffer, sizeof(buffer), "./sasm %s", outputFile);
+            snprintf(buffer, sizeof(buffer), "sasm %s", outputFile);
         }
         if (system(buffer) != 0) {
             displayMsgWithExit("Assembly Failed");
@@ -128,6 +128,8 @@ void __exec_sm(Vm* vm, WINDOW* win)
     refreshWindow(win, getNameForWindow(INPUT), 5, 5, 3);
 
     debug = wgetch(win) - '0';
+    if (debug == 0)
+        debug == 2;
     executeProgram(vm, debug, -1);
 }
 

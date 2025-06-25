@@ -1,11 +1,6 @@
 #include "sasm_assembler.h"
 #include "univ_fileops.h"
 
-static bool isPath(char x)
-{
-    return isalnum(x);
-}
-
 const char* getRegName(RegID type)
 {
     switch (type) {
@@ -220,7 +215,6 @@ int dumpStatementAsAST(FILE* stream, Stmt statement, int* counter, int* blockNo)
 void generateASTPng(String inputFilePath, StmtNode* start)
 {
     String tmp = inputFilePath;
-    tmp = splitStrByCondition(&tmp, isPath);
 
     char buffer[100];
     snprintf(buffer, sizeof(buffer), strFmt ".dot", strArg(tmp));
@@ -240,7 +234,7 @@ void generateASTPng(String inputFilePath, StmtNode* start)
 
     snprintf(buffer, sizeof(buffer), "dot  -Tpng -o " strFmt ".png " strFmt ".dot", strArg(tmp), strArg(tmp));
     if (system(buffer) != 0) {
-        //displayMsgWithExit("Disassembly Failed");
+        // displayMsgWithExit("Disassembly Failed");
         printf("Failed to generate AST image, try using 'dot' command or check online\n");
     }
 }

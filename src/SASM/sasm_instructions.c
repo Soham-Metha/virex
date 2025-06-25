@@ -1,6 +1,6 @@
 #include "sasm_instructions.h"
-#include "univ_strings.h"
 #include "univ_errors.h"
+#include "univ_strings.h"
 
 static OpcodeDetails OpcodeDetailsLUT[NUMBER_OF_INSTS] = {
     [INST_DONOP] = { .type = INST_DONOP, .name = "DONOP", .has_operand = 0, .has_operand2 = 0 },

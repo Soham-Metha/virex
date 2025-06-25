@@ -1,5 +1,5 @@
-#include "univ_defs.h"
 #include "O_symbol_table.h"
+#include "univ_defs.h"
 
 // Create a new symbol table, linking it to a parent scope (or NULL if global)
 SymbolTable* createSymbolTable(SymbolTable* parent)
