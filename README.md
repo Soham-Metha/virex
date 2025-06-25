@@ -43,7 +43,7 @@ You can even create your own programming language that compiles into SASM and ru
 
 1. **Clone this repo:**
    ```bash
-   git clone https://github.com/Team-Binary-Brains/virex.git
+   git clone https://github.com/Soham-Metha/virex.git
    cd virex/
    ```
 2. **Build the project (requires `sudo`):**
