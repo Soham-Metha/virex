@@ -14,6 +14,11 @@ printf "\e[33m		[ VIREX BUILD STARTED ] \e[0m\n\n"
 make virex
 
 printf "\e[33m		[ SUDO NEEDED ] \e[0m\n\n"
+printf "\e[36m		[ SYSTEM INSTALL ]\t: [ VIREX DEPENDENCIES ] \e[0m\n\n"
+
+sudo apt install graphviz
+
+printf "\e[33m		[ SUDO NEEDED ] \e[0m\n\n"
 printf "\e[36m		[ SYSTEM INSTALL ]\t: [ VIREX BINARIES ] \e[0m\n\n"
 
 # move the executables to bin so that they can be used as regular commands

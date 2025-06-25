@@ -129,7 +129,7 @@ void __exec_sm(Vm* vm, WINDOW* win)
 
     debug = wgetch(win) - '0';
     if (debug == 0)
-        debug == 2;
+        debug = 2;
     executeProgram(vm, debug, -1);
 }
 

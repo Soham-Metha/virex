@@ -43,7 +43,7 @@ You can even create your own programming language that compiles into SASM and ru
 
 1. **Clone this repo:**
    ```bash
-   git clone https://github.com/your-username/virex.git
+   git clone https://github.com/Team-Binary-Brains/virex.git
    cd virex/
    ```
 2. **Build the project (requires `sudo`):**
@@ -91,7 +91,7 @@ You can even create your own programming language that compiles into SASM and ru
 
 1. The **ORIN programming language**
 2. Improved **SASM tooling** (UI, debuggers, optimizers, etc.)
-3. Expanded **documentation** and **tutorials**
+3. Expanded **[Documentation](https://virex.readthedocs.io/en/latest/)** and **tutorials**
 
 #### 📌 For contribution guidelines and a roadmap, see [CONTRIBUTING.md]() (coming soon).
 
