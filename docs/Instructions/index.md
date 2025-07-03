@@ -4,19 +4,17 @@ As of ver. `0.5.0`, SASM has support for 73 instructions!
 
 Each instruction can have upto 2 operands, each 64-bits in size.
 
-The operands can be either immediate values.
-
-!!! Example
+!!! Example "The operands can be either immediate values."
 
     0,1,2,3
 
-Or they can be constants
-
-!!! Example
+!!! Example "Or they can be constants"
 
     M,N,O,P
 
-Or Registers.
+!!! Example Or Registers.
+
+    L0,L1,L2,L3
 
 ## Registers
 
