@@ -103,7 +103,7 @@ You can even create your own programming language that compiles into SASM and ru
 
 ### **Syntax Highlighting:**
 
-![Image](../extras/vs_theme.png){ align=left }
+![Image](../extras/vs_theme.png){ width="400" }
 
 ---
 
