@@ -101,12 +101,6 @@ The following opcodes are used for **addition**:
         ```
 ---
 
-### 🔹 ADDU — Add Unsigned Integer
-
-...
-
-### 🔹 ADDF — Add Floating Point
-
 | **Opcode** | **Code** |**Operand Count** | **Opernads** | **Description** |
 | SUBI | |
 | MULI | |
