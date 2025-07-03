@@ -1,24 +1,27 @@
 site_name: VIREX
 docs_dir: docs
 site_dir: ./html
+
 nav:
-  - Libs:
-      - cmd: LIBS/univ_cmdutils.md
-      - defs: LIBS/univ_defs.md
-      - errors: LIBS/univ_errors.md
-      - fileops: LIBS/univ_fileops.md
-      - strings: LIBS/univ_strings.md
-  - OCC:
-      - CodeGen: OCC/O_codegenerator .md
-      - Lexer: OCC/O_lexer .md
-      - Parser: OCC/O_parser .md
-  - SASM:
-      - Assembler: SASM/sasm_assembler .md
-      - Flags: SASM/sasm_flags .md
-      - Instructions: SASM/sasm_instructions .md
-      - Memory: SASM/sasm_memory .md
-  - VM:
-      - gbvm: VM/gbvm .md
+  - Instruction Set:
+      - Arithmetic: Instructions/Arithmetic.md
+  #- Libs:
+  #    - cmd: LIBS/univ_cmdutils.md
+  #    - defs: LIBS/univ_defs.md
+  #    - errors: LIBS/univ_errors.md
+  #     - fileops: LIBS/univ_fileops.md
+  #     - strings: LIBS/univ_strings.md
+  # - OCC:
+  #     - CodeGen: OCC/O_codegenerator .md
+  #     - Lexer: OCC/O_lexer .md
+  #     - Parser: OCC/O_parser .md
+  # - SASM:
+  #     - Assembler: SASM/sasm_assembler .md
+  #     - Flags: SASM/sasm_flags .md
+  #     - Instructions: SASM/sasm_instructions .md
+  #     - Memory: SASM/sasm_memory .md
+  # - VM:
+  #     - gbvm: VM/gbvm .md
 
 theme:
   name: material
