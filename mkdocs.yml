@@ -64,6 +64,8 @@ theme:
     text: Roboto
     code: Roboto Mono
   favicon: Assets/placeholder-favicon.png
+  icon:
+    logo: Assets/placeholder-favicon.png
 
 plugins:
   - search
