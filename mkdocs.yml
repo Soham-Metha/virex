@@ -82,6 +82,9 @@ plugins:
       minify_html: true
 
 markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.details
   - markdown_include.include:
       base_path: .
