@@ -103,13 +103,13 @@ You can even create your own programming language that compiles into SASM and ru
 
 ### **Syntax Highlighting:**
 
-![Image](extras/vs_theme.png)
+![Image](../extras/vs_theme.png)
 
 ---
 
 ### **AST:**
 
-![Image](extras/AST_Examples/helloWorld.png)
+![Image](../extras/AST_Examples/helloWorld.png)
 
 !!! info "Local/Global Scopes"
 
@@ -119,25 +119,25 @@ You can even create your own programming language that compiles into SASM and ru
 
 ### **Binary Executable:**
 
-![Image](extras/helloWorld_SM.png)
+![Image](../extras/helloWorld_SM.png)
 
 ---
 
 ### **GUI:**
 
-![Image](extras/gui.png)
+![Image](../extras/gui.png)
 
 ---
 
 ## **System Design and Architecture**
 
-![Image](extras/Architecture/virex_arch.png)
+![Image](../extras/Architecture/virex_arch.png)
 
 ---
 
-![Image](extras/Architecture/sasm_arch.png)
-![Image](extras/Architecture/sasm_components_1.png)
-![Image](extras/Architecture/sasm_components_2.png)
+![Image](../extras/Architecture/sasm_arch.png)
+![Image](../extras/Architecture/sasm_components_1.png)
+![Image](../extras/Architecture/sasm_components_2.png)
 
 ---
 
