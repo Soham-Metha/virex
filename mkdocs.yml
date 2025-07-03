@@ -2,6 +2,9 @@ site_name: VIREX
 docs_dir: docs
 site_dir: ./html
 
+repo_name: Soham-Metha/virex
+repo_url: https://github.com/Soham-Metha/virex
+
 nav:
   - Instruction Set:
       - Arithmetic: Instructions/Arithmetic.md
