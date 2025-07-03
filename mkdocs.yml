@@ -48,18 +48,28 @@ theme:
     - content.tabs.link
     - announce.dismiss
   palette:
-    - scheme: slate
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/link
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: indigo
-      accent: green
+      accent: indigo
       toggle:
         icon: material/toggle-switch
-        name: Toggle dark mode
-    - scheme: default
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: black
-      accent: orange
+      accent: indigo
       toggle:
-        icon: material/toggle-switch
-        name: Toggle light mode
+        icon: material/toggle-switch-off
+        name: Switch to system preference
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/favicon.png
 
 plugins:
   - search
