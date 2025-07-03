@@ -40,10 +40,15 @@ The following opcodes are used for **addition**:
     === "Example"
 
         ```
+            ;
             ADDI 1
+            ;
             ADDI -123
+            ;
             ADDI val(QT)
+            ;
             ADDI SOME_CONST_VAL
+            ;
         ```
 
 ??? abstract "ADDU — _Add Unsigned Integer_"
