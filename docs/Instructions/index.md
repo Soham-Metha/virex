@@ -12,7 +12,7 @@ Each instruction can have upto 2 operands, each 64-bits in size.
 
     M,N,O,P
 
-!!! Example Or Registers.
+!!! Example "Or Registers."
 
     L0,L1,L2,L3
 
