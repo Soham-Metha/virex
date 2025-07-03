@@ -32,6 +32,7 @@ The following opcodes are used for **addition**:
     ```
     L2 = L2 + &lt;signed_imm&gt;
     ```
+    
     ??? example "Example: ADDI"
 
         ADDI 1
