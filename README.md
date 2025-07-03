@@ -1,210 +1,169 @@
-# 16-bit Virtual Console
+# VIREX : Virtual Execution Console
 
--   [**Project Initialization and Requirement Gathering**](#project-initialization-and-requirement-gathering)
--   [**System Design and Architecture**](#system-design-and-architecture)
--   [**Technology Stack**](#technology-stack)
--   [Weekly Progress Report](#weekly-progress-report)
-    -   [January](#january)
-        -   [30.12.24 - 05.01.25](#301224---050125)
-        -   [06.01.25 - 12.01.25](#060125---120125)
-        -   [13.01.25 - 19.01.25](#130125---190125)
-        -   [20.01.25 - 26.01.25](#200125---260125)
-    -   [February](#february)
-        -   [27.01.25 - 02.02.25](#270125---020225)
--   [Team Members](#team-members)
--   [References](#references)
--   [Placeholders](#placeholders)
+**VIREX** (**VIR**tual **EX**ecuter) is a platform-independent virtual machine designed around a flexible intermediate language called **SASM** (Simulated Assembly). It’s inspired by the **Java Virtual Machine (JVM)**, but unlike JVM bytecode, SASM is **open, readable, and writable** — you can program directly in it.
 
-# **Project Initialization and Requirement Gathering**
+## 🚀 What is SASM?
 
--   Our project revolves around building a 16-bit Virtual Environment to facilitate the creation and execution of programs.
+Just like Java compiles to bytecode for the JVM, any language can be compiled into SASM for VIREX. The difference is:
 
--   **Objectives:**
+- SASM is **assembly-like**, human-readable, and editable.
+- SASM is **open**, letting anyone build tools and languages around it.
 
-    -   Develop a virtual environment with components like CPU and Memory.
-    -   Implement an instruction set with its own assembler.
-    -   Create a programming language basedour instruction set to build applications.
+You can even create your own programming language that compiles into SASM and runs anywhere VIREX runs — making your language instantly portable.
 
--   **Learning Outcomes:**
+## 🧠 Why SASM?
 
-    -   Gain a deeper understanding of computer architecture and logical operations.
-    -   Explore the inner workings of programming languages.
-    -   Apply and enhance low-level programming skills using C.
+- Learn how **assembly-level code** works through a clean and simplified syntax.
+- Build a **compiler** without worrying about machine-level code generation.
+- Make your own language **platform-independent** by targeting SASM.
+
+## 🛠 Current Features
+
+- ✅ **VS Code syntax highlighter** for SASM
+- 🌲 **AST visualizer** for seeing how your SASM code is parsed and compiled
+- 🔧 A new programming language called **ORIN** is currently under development. It is being designed to compile directly to SASM.
+
+> If you're interested in compilers, language design, or virtual machines — **contributions are very welcome**!
 
 ---
 
-# **System Design and Architecture**
+## 📦 Project Structure
 
-![Image](extras/ActionPlan.jpeg)
-
----
-
-# **Technology Stack**
-
--   **Programming Language:** C
--   **Version Control:** Git
--   **Make System:** GNU Make
+    /docs/      # Reference documentation
+    /examples/  # Sample programs
+    /include/   # Public headers for VM, SASM, OCC
+    /src/       # Core implementation (VM, assembler, compiler)
+    /tests/     # Simple Test programs written in SASM
+    /tools/themes/vs_code/ # VS Code syntax highlighter
+    /install.sh # Install script for linux
 
 ---
 
-# Weekly Progress Report
+## 🧪 Getting Started (LINUX)
 
-## January
+1. **Clone this repo:**
+   ```bash
+   git clone https://github.com/Soham-Metha/virex.git
+   cd virex/
+   ```
+2. **Build the project (requires `sudo`):**
+   ```bash
+   ./install.sh
+   ```
+3. **Run an example program:**
 
-### 30.12.24 - 05.01.25
+   ```bash
+   cd ./examples/SASM/
+   virex
+   ```
 
--   **Group Formation** : Successfully formed a group for PBL.
+   > If the **TUI doesn't render properly**, try adjusting your **terminal font size**.
 
----
+   > If that doesn't help, you can tweak layout values in **src/VM/vm_tui.c::CreateWindows()**.
+   > The constants used are defined as **percentages** of the screen dimensions.
 
-### 06.01.25 - 12.01.25
+   > P.S. **kitty terminal** config, and font used, are available in `/tools`
 
--   Done with [**Project Initialization and Requirement Gathering**](#project-initialization-and-requirement-gathering)
+4. **Inside VIREX, do the following:**
 
--   **Achieved :**
+- Select **"Run SASM/ORIN command with custom flags"**
+- Enter the following command:
+  ```bash
+  -i helloWorld.sasm -I ./ -o tmp.sm
+  ```
+  > ⌨️ use **Arrow keys** for navigation in menu.
+- Select **"SASM build and exec"** by pressing **'a'**
+- Enter the output filename (`tmp.sm`)
 
-    -   [Code at end of week 2](https://github.com/Team-Binary-Brains/16-bit-virtual-gameboy/commit/1bbd7426f1c436f0dff2404d8a22c2ca330e0a05)
-    -   @Soham-Metha : Basic working of the assembler with a stack memory.
-    -   @Soham-Metha : Specified the code formatting standard.
+5. **Activate the syntax highlighter in VS Code**
 
--   **Next week Target :**
-    -   @Soham-Metha : All code is in 1 file, better organization needed.
-    -   @omkarjagtap1011 : Start work on the Programming Language.
-
----
-
-### 13.01.25 - 19.01.25
-
--   Done with [**Technology Stack Selection**](#technology-stack)
-
--   **Achieved :**
-    -   [Code at end of week 3](https://github.com/Team-Binary-Brains/16-bit-virtual-gameboy/commit/6bce541e890a0599359e99b6135803865898f0b5)
-    -   @Soham-Metha : File organization Done
-    -   @Soham-Metha : Added Sample Programs and Command Line arguments support for execution
-    -   @Soham-Metha : Proper makefile created
-    -   @omkarjagtap1011 : Started work on the Programming language.
-    -   @omkarjagtap1011 : Lexer created and 20% of the parser is done.
-    -   [Code for Programming language at end of week 3](https://github.com/Team-Binary-Brains/16-bit-virtual-gameboy/commit/aafd9f7d0dae4dcbff32331f98aac4cba23612ae)
--   **Next week Target :**
-
-    -   @Soham-Metha : Add documentation for assembler and vm.
-
-    -   @omkarjagtap1011 : Programming language code is all in 1 file, better organization needed.
-
----
-
-### 20.01.25 - 26.01.25
-
--   Done with the overall [**System Design and Architecture**](#system-design-and-architecture)
-
--   **Achieved :**
-    -   [Code at end of week 4](https://github.com/Team-Binary-Brains/16-bit-virtual-gameboy/commit/eaef5cfdfd16a75e57768ad89909ba2058cdc758)
-    -   @Soham-Metha : Added documentation for the assembler and vm ( roughly 2500 LOC )
-    -   @Soham-Metha : Tried switching to Cmake instead of GNU make.
-    -   [Code for CMake on "experiment" branch](https://github.com/Team-Binary-Brains/16-bit-virtual-gameboy/tree/experiment)
-    -   @omkarjagtap1011 : Refactored the entire lexer code
-    -   @omkarjagtap1011 : Added a binary tree to the parser
-    -   @omkarjagtap1011 : Implemented dynamic hashmap data structure in C for creation of symbol table and other map related operations.
-    -   [Code on the Programming Language branch at end of week 4](https://github.com/Team-Binary-Brains/16-bit-virtual-gameboy/commit/0ee9d1c712f0bf46b9851d3ffb7f00996c4a7af7)
-    -   Switched to the C99 standard
-    -   Iteration 1 completed, working executables uploaded in "releases".
--   **Next week Target :**
-    -   @Soham-Metha : Update the instruction set of the assembly language.
-    -   @omkarjagtap1011 : Switch from a binary tree to a general tree for the programming language.
+- Open VS Code
+- Press `Ctrl + Shift + P`
+- Type: `Preferences: Color Theme`
+- Select: `Palenight+sasm`
+  > 🎨 Open any `.sasm` file in vs code to see the syntax highlighter at work!
 
 ---
 
-## February
+## 💡 **Want to Contribute?**
 
-### 27.01.25 - 02.02.25
+**We’re actively building:**
 
--   **Achieved :**
-    -   [Code on Instruction Set branch at end of week 5](https://github.com/Team-Binary-Brains/16-bit-virtual-gameboy/tree/53c31a39205a17e31c2ea404c38545a88720b23f)
-    -   @Soham-Metha : Refactored Assembly Code Debugging Display.
-    -   @Soham-Metha : Refactored Flag Logic, Implemented 'volatile' flags instead.
-    -   @Soham-Metha : Implemented Register, Immediate and Direct Memory Address Resolution.
-    -   @Soham-Metha : Started working on implementation of the instruction set.
-    -   @omkarjagtap1011 : Refactored lexer and parser.
-    -   @omkarjagtap1011 : Implemented creation of expression tree for arithmetic expressions.
-    -   @omkarjagtap1011 : Switched from a binary tree to a general tree for the programming language.
-    -   @omkarjagtap1011 : Started work on a symbol table.
-    -   [Code on the Programming Language branch at end of week 5](https://github.com/Team-Binary-Brains/16-bit-virtual-gameboy/tree/b6fc01d4ab11c514d66a2300936d6a5b0d8fa112)
--   **Next week Target :**
-    -   @Soham-Metha : Continue implementing instruction set.
-    -   @omkarjagtap1011 : Complete Symbol Table.
+1. The **ORIN programming language**
+2. Improved **SASM tooling** (UI, debuggers, optimizers, etc.)
+3. Expanded **[Documentation](https://virex.readthedocs.io/en/latest/)** and **tutorials**
+
+#### 📌 For contribution guidelines and a roadmap, see [CONTRIBUTING.md]() (coming soon).
 
 ---
 
-# Team Members
+## **Examples**
 
-| Roll No. | Name                 | Working on                     |
-| -------- | -------------------- | ------------------------------ |
-| 21445    | Diksha Madhe         | the research paper             |
-| 21447    | Swarupanand Deshmukh | frontend for pathway generator |
-| 21448    | Soham Metha          | assembler and vm               |
-| 21454    | Omkar Jagtap         | Programming language           |
+### **Syntax Highlighting:**
 
-# References
+![Image](extras/vs_theme.png)
 
--   [Tsoding](https://www.youtube.com/playlist?list=PLpM-Dvs8t0VY73ytTCQqgvgCWttV3m8LM)
--   [Dr Birch](https://www.youtube.com/@dr-Jonas-Birch)
--   [Low Byte Productions](https://www.youtube.com/playlist?list=PLP29wDx6QmW5DdwpdwHCRJsEubS5NrQ9b)
--   [Cobb Coding](https://www.youtube.com/playlist?list=PLRnI_2_ZWhtCxHQ_3zDfW0-RgiWo8ftyj)
+---
 
-# Placeholders
+### **AST:**
 
-## February
+![Image](extras/AST_Examples/helloWorld.png)
 
-### 03.02.25 - 09.02.25
+#### Note: Each Code Block in the visualized AST represents a Scope, Block 0 being global scope.
 
--   **Target:** *(To be updated)*
--   **Achieved:** *(To be updated)*
+---
 
-### 10.02.25 - 16.02.25
+### **Binary Executable:**
 
--   **Target:** *(To be updated)*
--   **Achieved:** *(To be updated)*
+![Image](extras/helloWorld_SM.png)
 
-### 17.02.25 - 23.02.25
+---
 
--   **Target:** *(To be updated)*
--   **Achieved:** *(To be updated)*
+### **GUI:**
 
-## March
+![Image](extras/gui.png)
 
-### 24.02.25 - 01.03.25
+---
 
--   **Target:** *(To be updated)*
--   **Achieved:** *(To be updated)*
+## **System Design and Architecture**
 
-### 02.03.25 - 08.03.25
+![Image](extras/Architecture/virex_arch.png)
 
--   **Target:** *(To be updated)*
--   **Achieved:** *(To be updated)*
+---
 
-### 09.03.25 - 15.03.25
+![Image](extras/Architecture/sasm_arch.png)
+![Image](extras/Architecture/sasm_components_1.png)
+![Image](extras/Architecture/sasm_components_2.png)
 
--   **Target:** *(To be updated)*
--   **Achieved:** *(To be updated)*
+---
 
-### 16.03.25 - 22.03.25
+## Tech Stack
 
--   **Target:** *(To be updated)*
--   **Achieved:** *(To be updated)*
+- **Programming Language:** C
+- **Version Control:** Git
+- **Build System:** GNU Make
+- **AST VISUALIZER:** Graphviz
 
-### 23.03.25 - 29.03.25
+---
 
--   **Target:** *(To be updated)*
--   **Achieved:** *(To be updated)*
+## Maintainers
 
-## April
+| Tool                    | Maintainer   |
+| ----------------------- | ------------ |
+| **VIREX, SASM**         | Soham Metha  |
+| **AST visualizer**      | Soham Metha  |
+| **Syntax Highlighter**  | Soham Metha  |
+| **ORIN Compiler**       | Omkar Jagtap |
+| **Core lib(Hashtable)** | Omkar Jagtap |
+| **Core libs(other)**    | Soham Metha  |
 
-### 30.03.25 - 05.04.25
+---
 
--   **Target:** *(To be updated)*
--   **Achieved:** *(To be updated)*
+## References
 
-### 06.04.25 - 12.04.25
+- [Tsoding](https://www.youtube.com/playlist?list=PLpM-Dvs8t0VY73ytTCQqgvgCWttV3m8LM)
+- [Dr Birch](https://www.youtube.com/@dr-Jonas-Birch)
+- [Low Byte Productions](https://www.youtube.com/playlist?list=PLP29wDx6QmW5DdwpdwHCRJsEubS5NrQ9b)
+- [Cobb Coding](https://www.youtube.com/playlist?list=PLRnI_2_ZWhtCxHQ_3zDfW0-RgiWo8ftyj)
 
--   **Target:** *(To be updated)*
--   **Achieved:** *(To be updated)*
+---

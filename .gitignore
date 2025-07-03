@@ -1,10 +1,2 @@
-/gbvm/build/
-*.o
-*.exe
-*.out
+/build/*
 .vscode/
-/gbvm/.vscode/
-/gbvm/gbvms
-/gbvm/occ
-/gbvm/occ.exe
-/gbvm/logs.txt

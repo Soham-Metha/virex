@@ -2,16 +2,15 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: build
-      run: cd gbvm && make virex && cd ..
+      - uses: actions/checkout@v4
+      - name: build
+        run: make virex && make clean
