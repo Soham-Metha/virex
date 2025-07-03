@@ -41,6 +41,28 @@ The following opcodes are used for **addition**:
             ADDI 1
         ```
 
+??? abstract "ADDU — _Add Unsigned Integer_"
+
+    === "Properties"
+
+        | Property        | Value                     |
+        |-----------------|---------------------------|
+        | **Opcode**      | 18                        |
+        | **Type**        | Arithmetic                |
+        | **Operand Type**| uNSigned 64-bit value     |
+        | **Destination** | `L3` (implicit)           |
+
+    === "Algorithm"
+
+        ```
+        L3 = L3 + <signed_imm>
+        ```
+
+    === "Example"
+
+        ```
+            ADDU 1
+        ```
 ---
 
 ### 🔹 ADDU — Add Unsigned Integer
