@@ -28,6 +28,7 @@ The following opcodes are used for **addition**:
     | **Destination** | `L2` (implicit)           |
 
     === "Algorithm"
+
     ```
     L2 = L2 + &lt;signed_imm&gt;
     ```
