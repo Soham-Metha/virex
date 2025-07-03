@@ -111,7 +111,7 @@ You can even create your own programming language that compiles into SASM and ru
 
 ![Image](extras/AST_Examples/helloWorld.png)
 
-!!! Note "Local/Global Scopes"
+!!! info "Local/Global Scopes"
 
     Each Code Block in the visualized AST represents a Scope, Block 0 being global scope.
 
