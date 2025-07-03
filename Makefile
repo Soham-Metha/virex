@@ -51,4 +51,4 @@ html: clean-docs
 	@mkdocs build -f mkdocs.yml
 
 clean-docs:
-	@rm -rv html
+	@rm -rfv html
