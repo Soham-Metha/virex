@@ -18,50 +18,48 @@ The following opcodes are used for **addition**:
 
 ---
 
-??? abstract "ADDI — *Add Signed Integer*"
+??? abstract "ADDI — _Add Signed Integer_"
 
     === "Algorithm"
 
-    ```
-    L2 = L2 + <signed_imm>
-    ```
+        ```
+        L2 = L2 + <signed_imm>
+        ```
 
     === "Properties"
 
-    | Property        | Value                     |
-    |----------------|---------------------------|
-    | **Opcode**      | `13`                      |
-    | **Type**        | Arithmetic                |
-    | **Operand Type**| Signed 64-bit integer     |
-    | **Destination** | `L2` (implicit)           |
+        | Property        | Value                     |
+        |----------------|---------------------------|
+        | **Opcode**      | `13`                      |
+        | **Type**        | Arithmetic                |
+        | **Operand Type**| Signed 64-bit integer     |
+        | **Destination** | `L2` (implicit)           |
 
     === "Example"
 
-    ```
-        ADDI 1
-    ```
-
+        ```
+            ADDI 1
+        ```
 
 ---
 
 ### 🔹 ADDU — Add Unsigned Integer
+
 ...
 
 ### 🔹 ADDF — Add Floating Point
 
-
-
-| **Opcode** | **Code**    |**Operand Count** | **Opernads**           | **Description**                     |
-| SUBI |  |
-| MULI |  |
-| DIVI |  |
-| MODI |  |
-| ADDU |  |
-| SUBU |  |
-| MULU |  |
-| DIVU |  |
-| MODU |  |
-| ADDF |  |
-| SUBF |  |
-| MULF |  |
-| DIVF |  |
+| **Opcode** | **Code** |**Operand Count** | **Opernads** | **Description** |
+| SUBI | |
+| MULI | |
+| DIVI | |
+| MODI | |
+| ADDU | |
+| SUBU | |
+| MULU | |
+| DIVU | |
+| MODU | |
+| ADDF | |
+| SUBF | |
+| MULF | |
+| DIVF | |
