@@ -65,7 +65,7 @@ theme:
     code: Roboto Mono
   favicon: Assets/placeholder-favicon.png
   icon:
-    logo: Assets/placeholder-favicon.png
+    #logo: Assets/placeholder-favicon.png ## NEEDS SVG
 
 plugins:
   - search
