@@ -18,7 +18,7 @@ The following opcodes are used for **addition**:
 
 ---
 
-??? abstract ADDI — *Add Signed Integer*
+??? abstract "ADDI — *Add Signed Integer*"
 
     | Property        | Value                     |
     |----------------|---------------------------|
