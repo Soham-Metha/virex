@@ -33,12 +33,17 @@ The following opcodes are used for **addition**:
 
         ```
         L2 = L2 + <signed_imm>
+        L2 = L2 + <reg_val>
+        L2 = L2 + <const>
         ```
 
     === "Example"
 
         ```
             ADDI 1
+            ADDI -123
+            ADDI val(QT)
+            ADDI SOME_CONST_VAL
         ```
 
 ??? abstract "ADDU — _Add Unsigned Integer_"
@@ -49,19 +54,50 @@ The following opcodes are used for **addition**:
         |-----------------|---------------------------|
         | **Opcode**      | 18                        |
         | **Type**        | Arithmetic                |
-        | **Operand Type**| uNSigned 64-bit value     |
+        | **Operand Type**| Unsigned 64-bit value     |
         | **Destination** | `L3` (implicit)           |
 
     === "Algorithm"
 
         ```
-        L3 = L3 + <signed_imm>
+        L3 = L3 + <unsigned_imm>
+        L3 = L3 + <reg_val>
+        L3 = L3 + <const>
         ```
 
     === "Example"
 
         ```
             ADDU 1
+            ADDU val(QT)
+            ADDU SOME_CONST_VAL
+        ```
+
+??? abstract "ADDF — _Add Float value_"
+
+    === "Properties"
+
+        | Property        | Value                     |
+        |-----------------|---------------------------|
+        | **Opcode**      | 23                        |
+        | **Type**        | Arithmetic                |
+        | **Operand Type**| 64-bit float value        |
+        | **Destination** | `L1` (implicit)           |
+
+    === "Algorithm"
+
+        ```
+        L1 = L1 + <float>
+        L1 = L1 + <reg_val>
+        L1 = L1 + <const>
+        ```
+
+    === "Example"
+
+        ```
+            ADDF 3.14
+            ADDF val(QT)
+            ADDF SOME_CONST_VAL
         ```
 ---
 
