@@ -1,5 +1,3 @@
-## ➕ Arithmetic
-
 This section describes the available arithmetic **opcodes/mnemonics** and their corresponding operations.
 
 > All arithmetic instructions accept **only a single operand**.  
