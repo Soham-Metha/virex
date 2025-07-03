@@ -8,6 +8,7 @@ repo_url: https://github.com/Soham-Metha/virex
 
 nav:
   - Instruction Set:
+      - Instructions/index.md
       - Arithmetic: Instructions/Arithmetic.md
   #- Libs:
   #    - cmd: LIBS/univ_cmdutils.md
