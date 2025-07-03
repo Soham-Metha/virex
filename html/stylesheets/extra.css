@@ -1,8 +1,0 @@
-@font-face {
-    font-family: "EnvyCodeRNerdFontPropo-Regular";
-    src: "./EnvyCodeRNerdFontPropo-Regular.ttf";
-  }
-
-:root {
-    --md-text-font: "EnvyCodeRNerdFontPropo-Regular"; 
-  }
