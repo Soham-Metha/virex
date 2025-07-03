@@ -24,7 +24,7 @@ Instructions in SASM accept a variety of operand types:
 
 ---
 
-## 🗂️ Registers
+## 🗂️ Register Dereferencing
 
 SASM registers are identified by **unique IDs**. Each register can be accessed either as a **reference** or as a **value** using *compile-time functions*.
 
