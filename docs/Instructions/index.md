@@ -12,21 +12,15 @@ Instructions in SASM accept a variety of operand types:
 
 ??? example "Immediate Values"
 
-    ```
     0, 1, 2, 3
-    ```
 
 ??? example "Constants"
 
-    ```
     M, N, O, P
-    ```
 
 ??? example "Registers"
 
-    ```
     L0, L1, L2, L3
-    ```
 
 ---
 
