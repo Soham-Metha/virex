@@ -27,9 +27,10 @@ The following opcodes are used for **addition**:
     | **Operand Type**| Signed 64-bit integer     |
     | **Destination** | `L2` (implicit)           |
 
-    ??? info "Algorithm"
-
-        L2 = L2 + \<signed_imm\>
+    === Algorithm ===
+    ```
+    L2 = L2 + <signed_imm>
+    ```
 
     ??? example "Example: ADDI"
 
