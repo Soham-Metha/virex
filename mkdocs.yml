@@ -62,8 +62,8 @@ theme:
         icon: material/toggle-switch
         name: Toggle light mode
   font:
-    text: Roboto
-    code: Roboto Mono
+    text: EnvyCodeR Nerd Font Mono
+    code: EnvyCodeR Nerd Font Mono
   favicon: Assets/placeholder-favicon.png
   icon:
     #logo: Assets/placeholder-favicon.png ## NEEDS SVG
