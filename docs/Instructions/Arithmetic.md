@@ -325,10 +325,6 @@ The following opcodes are used for **multiplicaction**:
 ---
 
 
-
-| MULI | |
-| MULU | |
-| MULF | |
 | DIVI | |
 | DIVU | |
 | DIVF | |
