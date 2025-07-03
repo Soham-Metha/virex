@@ -1,3 +1,62 @@
+# 🧠 Instruction Set
+
+> **Version**: `0.5.0`  
+> **Total Instructions Supported**: `73`  
+> **Operand Size**: Up to **2 operands**, each of **64-bits**
+
+---
+
+## 🧩 Operand Types
+
+Instructions in SASM accept a variety of operand types:
+
+??? example "Immediate Values"
+
+    ```
+    0, 1, 2, 3
+    ```
+
+??? example "Constants"
+
+    ```
+    M, N, O, P
+    ```
+
+??? example "Registers"
+
+    ```
+    L0, L1, L2, L3
+    ```
+
+---
+
+## 🗂️ Registers
+
+SASM registers are identified by **unique IDs**. Each register can be accessed either as a **reference** or as a **value** using *compile-time functions*.
+
+```sasm
+ref(L1)  ; reference to register L1
+val(L1)  ; value stored in register L1
+```
+
+> These are **compile-time functions** that tell the assembler how to interpret operands.
+
+---
+
+## 🔗 Related References
+
+* 📄 [Compile-time Functions](../reference/compile_time_functions.md) <!-- Update this link -->
+* 📄 [Register Reference](../reference/registers.md) <!-- Update this link -->
+
+
+### ✅ Notes:
+
+- The `??? example` block is an enhanced feature of [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/), using collapsible examples.
+- Replace the `../reference/...` links with the actual paths to your documentation pages.
+- Use emojis or icons lightly to improve scannability, especially for longer technical docs.
+- Ensure all the referenced `.md` files are included in `mkdocs.yml`.
+
+Let me know if you'd like this rendered live or exported!
 # Instruction Set
 
 As of ver. `0.5.0`, SASM has support for 73 instructions!
