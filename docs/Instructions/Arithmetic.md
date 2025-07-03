@@ -117,9 +117,9 @@ The following opcodes are used for **addition**:
 
 The following opcodes are used for **subtraction**:
 
-- `SUBI` — SUB Signed Integer
-- `SUBU` — SUB Unsigned Integer
-- `SUBF` — SUB Floating Point
+- `SUBI` — Sub Signed Integer
+- `SUBU` — Sub Unsigned Integer
+- `SUBF` — Sub Floating Point
 
 ---
 
@@ -219,18 +219,118 @@ The following opcodes are used for **subtraction**:
 ---
 
 
+## 🔢 Multiplicaction
 
-| **Opcode** | **Code** |**Operand Count** | **Opernads** | **Description** |
-| SUBI | |
+The following opcodes are used for **multiplicaction**:
+
+- `MULI` — MUL Signed Integer
+- `MULU` — MUL Unsigned Integer
+- `MULF` — MUL Floating Point
+
+---
+
+??? abstract "MULI — _MUL Signed Integer_"
+
+    === "Properties"
+
+        | Property        | Value                     |
+        |-----------------|---------------------------|
+        | **Opcode**      | 15                       |
+        | **Type**        | Arithmetic                |
+        | **Operand Type**| Signed 64-bit integer     |
+        | **Destination** | `L2` (implicit)           |
+
+    === "Algorithm"
+
+        ```
+        L2 = L2 * <signed_imm>
+        L2 = L2 * <reg_val>
+        L2 = L2 * <const>
+        ```
+
+    === "Example"
+
+        ```
+        ; imm +ve
+            MULI    1
+        ; imm -ve
+            MULI    -123
+        ; reg val
+            MULI    val(QT)
+        ; const
+            MULI    SOME_CONST_VAL
+        ```
+
+??? abstract "MULU — _Mul Unsigned Integer_"
+
+    === "Properties"
+
+        | Property        | Value                     |
+        |-----------------|---------------------------|
+        | **Opcode**      | 20                        |
+        | **Type**        | Arithmetic                |
+        | **Operand Type**| Unsigned 64-bit value     |
+        | **Destination** | `L3` (implicit)           |
+
+    === "Algorithm"
+
+        ```
+        L3 = L3 * <unsigned_imm>
+        L3 = L3 * <reg_val>
+        L3 = L3 * <const>
+        ```
+
+    === "Example"
+
+        ```
+        ; imm +ve
+            MULU    1
+        ; reg val
+            MULU    val(QT)
+        ; const
+            MULU    SOME_CONST_VAL
+
+        ```
+
+??? abstract "MULF — _Mul Float value_"
+
+    === "Properties"
+
+        | Property        | Value                     |
+        |-----------------|---------------------------|
+        | **Opcode**      | 25                        |
+        | **Type**        | Arithmetic                |
+        | **Operand Type**| 64-bit float value        |
+        | **Destination** | `L1` (implicit)           |
+
+    === "Algorithm"
+
+        ```
+        L1 = L1 * <float>
+        L1 = L1 * <reg_val>
+        L1 = L1 * <const>
+        ```
+
+    === "Example"
+
+        ```
+        ; imm float
+            MULF    3.14
+        ; reg val
+            MULF    val(QT)
+        ; const
+            MULF    SOME_CONST_VAL
+
+        ```
+---
+
+
+
 | MULI | |
-| DIVI | |
-| MODI | |
-| ADDU | |
-| SUBU | |
 | MULU | |
-| DIVU | |
-| MODU | |
-| ADDF | |
-| SUBF | |
 | MULF | |
+| DIVI | |
+| DIVU | |
 | DIVF | |
+| MODI | |
+| MODU | |
