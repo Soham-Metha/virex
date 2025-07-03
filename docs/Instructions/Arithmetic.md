@@ -20,6 +20,14 @@ The following opcodes are used for **addition**:
 
 ??? abstract "ADDI — *Add Signed Integer*"
 
+    === "Algorithm"
+
+    ```
+    L2 = L2 + <signed_imm>
+    ```
+
+    === "Properties"
+
     | Property        | Value                     |
     |----------------|---------------------------|
     | **Opcode**      | `13`                      |
@@ -27,15 +35,11 @@ The following opcodes are used for **addition**:
     | **Operand Type**| Signed 64-bit integer     |
     | **Destination** | `L2` (implicit)           |
 
-    === "Algorithm"
+    === "Example"
 
     ```
-    L2 = L2 + &lt;signed_imm&gt;
-    ```
-    
-    ??? example "Example: ADDI"
-
         ADDI 1
+    ```
 
 
 ---
