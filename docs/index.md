@@ -93,7 +93,7 @@ You can even create your own programming language that compiles into SASM and ru
 2. Improved **SASM tooling** (UI, debuggers, optimizers, etc.)
 3. Expanded **[Documentation](https://virex.readthedocs.io/en/latest/)** and **tutorials**
 
-!!! note ""
+!!! info inline end  ""
 
     📌 For contribution guidelines and a roadmap, see [CONTRIBUTING.md]() (coming soon).
 
@@ -111,7 +111,7 @@ You can even create your own programming language that compiles into SASM and ru
 
 ![Image](extras/AST_Examples/helloWorld.png)
 
-!!! info inline end "Local/Global Scopes"
+???+ note "Local/Global Scopes"
 
     Each Code Block in the visualized AST represents a Scope, Block 0 being global scope.
 
