@@ -42,6 +42,30 @@ val(L1)  ; value stored in register L1
 * 📄 [Compile-time Functions](../reference/compile_time_functions.md) <!-- Update this link -->
 * 📄 [Register Reference](../reference/registers.md) <!-- Update this link -->
 
+### INSTRUCTION DOCUMENTATION TEMPLATE:
+??? abstract "[MEMONIC] — _[Operation]_"
+
+    === "Properties"
+
+        | Property        | Value                     |
+        |-----------------|---------------------------|
+        | **Opcode**      |      |
+        | **Type**        |      |
+        | **Operand Type**|      |
+        | **Destination** |      |
+
+    === "Algorithm"
+
+        ```
+        [ALGO]
+        ```
+
+    === "Example"
+
+        ```
+            [EXAMPLE]
+        ```
+
 
 ### INSTRUCTIONS NOT DOCUMENTED:
 
