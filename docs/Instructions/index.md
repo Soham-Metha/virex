@@ -27,3 +27,4 @@ Registers are addressed as either `references` or `values` via `compile-time fun
 SEE {REFERENCE}
 
 ### REFERENCE NEEDED `compile-time functions`
+### REFERENCE NEEDED `registers`
