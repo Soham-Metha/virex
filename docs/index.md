@@ -93,7 +93,9 @@ You can even create your own programming language that compiles into SASM and ru
 2. Improved **SASM tooling** (UI, debuggers, optimizers, etc.)
 3. Expanded **[Documentation](https://virex.readthedocs.io/en/latest/)** and **tutorials**
 
-#### 📌 For contribution guidelines and a roadmap, see [CONTRIBUTING.md]() (coming soon).
+!!! note ""
+
+    📌 For contribution guidelines and a roadmap, see [CONTRIBUTING.md]() (coming soon).
 
 ---
 
