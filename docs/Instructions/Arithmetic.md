@@ -40,14 +40,14 @@ The following opcodes are used for **addition**:
     === "Example"
 
         ```
-            ; imm +ve
-            ADDI 1
-            ; imm -ve
-            ADDI -123
-            ; reg val
-            ADDI val(QT)
-            ; const
-            ADDI SOME_CONST_VAL
+        ; imm +ve
+            ADDI    1
+        ; imm -ve
+            ADDI    -123
+        ; reg val
+            ADDI    val(QT)
+        ; const
+            ADDI    SOME_CONST_VAL
         ```
 
 ??? abstract "ADDU — _Add Unsigned Integer_"
@@ -72,12 +72,12 @@ The following opcodes are used for **addition**:
     === "Example"
 
         ```
-            ; imm +ve
-            ADDU 1
-            ; reg val
-            ADDU val(QT)
-            ; const
-            ADDU SOME_CONST_VAL
+        ; imm +ve
+            ADDU    1
+        ; reg val
+            ADDU    val(QT)
+        ; const
+            ADDU    SOME_CONST_VAL
 
         ```
 
@@ -103,12 +103,12 @@ The following opcodes are used for **addition**:
     === "Example"
 
         ```
-            ; imm float
-            ADDF 3.14
-            ; reg val
-            ADDF val(QT)
-            ; const
-            ADDF SOME_CONST_VAL
+        ; imm float
+            ADDF    3.14
+        ; reg val
+            ADDF    val(QT)
+        ; const
+            ADDF    SOME_CONST_VAL
 
         ```
 ---
