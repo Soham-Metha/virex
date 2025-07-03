@@ -29,7 +29,7 @@ The following opcodes are used for **addition**:
 
     ??? info "Algorithm"
 
-        L2 = L2 + <signed_imm>
+        L2 = L2 + \<signed_imm\>
 
     ??? example "Example: ADDI"
 
