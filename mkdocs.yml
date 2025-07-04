@@ -1,9 +1,14 @@
 site_name: VIREX
 docs_dir: docs
 site_dir: ./html
+site_url: https://virex.readthedocs.io/en/latest/
+
+repo_name: Soham-Metha/virex
+repo_url: https://github.com/Soham-Metha/virex
 
 nav:
   - Instruction Set:
+      - Instructions/index.md
       - Arithmetic: Instructions/Arithmetic.md
   #- Libs:
   #    - cmd: LIBS/univ_cmdutils.md
@@ -57,7 +62,14 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Toggle light mode
-
+  font:
+    text: EnvyCodeR Nerd Font
+    code: EnvyCodeR Nerd Font Mono
+  favicon: Assets/placeholder-favicon.png
+  icon:
+    #logo: Assets/placeholder-favicon.png ## NEEDS SVG
+extra_css:
+  - stylesheets/extra.css
 plugins:
   - search
   - mkdocstrings:
@@ -65,8 +77,16 @@ plugins:
         python:
           options:
             docstring_style: sphinx
+  - blog
+  - minify:
+      minify_html: true
 
 markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
   - markdown_include.include:
       base_path: .
   - admonition
+  - attr_list
