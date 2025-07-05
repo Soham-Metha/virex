@@ -8,45 +8,45 @@ The following opcodes are used for **addition**:
 
 ???+ custom "ADDI — _Add Signed Integer_ {#ADDI}"
 
-Use ADDI to add an integer value to whatever value 
-is stored within the L2 register. If the register L2 
-is not set, then initial value of L2 is assumed to be 
-0, and not a garbage value.
+    Use ADDI to add an integer value to whatever value 
+    is stored within the L2 register. If the register L2 
+    is not set, then initial value of L2 is assumed to be 
+    0, and not a garbage value.
 
-```md title="Properties"
-    |-----------------|---------------------------|
-    | Property        | Value                     |
-    |-----------------|---------------------------|
-    |  `Opcode`       | #13                       |
-    |  `Type`         | *Arithmetic*              |
-    |  `Operand Type` | Signed 64-bit integer     |
-    |  `Destination`  | L2 (implicit)             |
-    |-----------------|---------------------------|
-```
-
-<div class="result" markdown>
-=== "ADDI Algorithm"
-
-    ```
-        L2 = L2 + <signed_imm>
-        L2 = L2 + <reg_val>
-        L2 = L2 + <const>
+    ```md title="Properties"
+        |-----------------|---------------------------|
+        | Property        | Value                     |
+        |-----------------|---------------------------|
+        |  `Opcode`       | #13                       |
+        |  `Type`         | *Arithmetic*              |
+        |  `Operand Type` | Signed 64-bit integer     |
+        |  `Destination`  | L2 (implicit)             |
+        |-----------------|---------------------------|
     ```
 
-=== "ADDI Example"
+    <div class="result" markdown>
+    === "ADDI Algorithm"
 
-    ```linenums="1" hl_lines="1 3 5 7"
-    ; imm +ve
-        ADDI    1
-    ; imm -ve
-        ADDI    -123
-    ; reg val
-        ADDI    val(QT)
-    ; const
-        ADDI    SOME_CONST_VAL
-    ```
+        ```
+            L2 = L2 + <signed_imm>
+            L2 = L2 + <reg_val>
+            L2 = L2 + <const>
+        ```
 
-</div>
+    === "ADDI Example"
+
+        ```linenums="1" hl_lines="1 3 5 7"
+        ; imm +ve
+            ADDI    1
+        ; imm -ve
+            ADDI    -123
+        ; reg val
+            ADDI    val(QT)
+        ; const
+            ADDI    SOME_CONST_VAL
+        ```
+
+    </div>
 
 ### ADDU — _Add Unsigned Integer_ {#ADDU}
 
