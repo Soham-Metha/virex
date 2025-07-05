@@ -63,12 +63,10 @@ The following opcodes are used for **addition**:
 
 === "ADDU Properties"
 
-    | Property        | Value                     |
-    |-----------------|---------------------------|
-    |   Opcode        | 18                        |
-    |   Type          | Arithmetic                |
-    |   Operand Type  | Unsigned 64-bit value     |
-    |   Destination   | L3 (implicit)             |
+
+    | Opcode | Operand Type            | Destination   |
+    |--------|-------------------------|---------------|
+    | 18     | Unsigned 64-bit integer | L3 (implicit) |
 
     Identified as memonic [#18](#ADDU), ADDU is used to
     add a 64-bit unsigned value to the L3 register
@@ -99,12 +97,9 @@ The following opcodes are used for **addition**:
 
 === "ADDF Properties"
 
-    | Property        | Value                     |
-    |-----------------|---------------------------|
-    |   Opcode        | 23                        |
-    |   Type          | Arithmetic                |
-    |   Operand Type  | 64-bit float value        |
-    |   Destination   | L1 (implicit)             |
+    | Opcode | Operand Type       | Destination   |
+    |--------|--------------------|---------------|
+    | 23     | 64-bit Float Value | L1 (implicit) |
 
     Identified as memonic [#23](#ADDF), ADDF is used to
     add a 64-bit floating point value to the L1 register
