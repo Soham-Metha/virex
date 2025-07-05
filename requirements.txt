@@ -1,5 +1,5 @@
 mkdocs
-mkdocs-material[recommended]
+mkdocs-material==9.6.15
 mkdocstrings
 mkdocstrings-python
 markdown-include
