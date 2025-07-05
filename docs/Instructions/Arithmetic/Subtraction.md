@@ -1,4 +1,3 @@
-
 The following opcodes are used for **subtraction**:
 
 - SUBI — Subtract Signed Integer
@@ -7,28 +6,20 @@ The following opcodes are used for **subtraction**:
 
 ---
 
-??? abstract "SUBI — _Sub Signed Integer_"
+### [SUBI] — _Sub Signed Integer_ {#SUBI}
 
-    === "Properties"
+```title="Algorithm"
+    L2 = L2 - <signed_imm>
+    L2 = L2 - <reg_val>
+    L2 = L2 - <const>
 
-        | Property        | Value                     |
-        |-----------------|---------------------------|
-        | **Opcode**      | 14                        |
-        | **Type**        | Arithmetic                |
-        | **Operand Type**| Signed 64-bit integer     |
-        | **Destination** | `L2` (implicit)           |
+```
 
-    === "Algorithm"
+<div class="result" markdown>
 
-        ```
-        L2 = L2 - <signed_imm>
-        L2 = L2 - <reg_val>
-        L2 = L2 - <const>
-        ```
+=== "SUBI Example"
 
-    === "Example"
-
-        ```
+    ```linenums="1" hl_lines="1 3 5"
         ; imm +ve
             SUBI    1
         ; imm -ve
@@ -37,7 +28,18 @@ The following opcodes are used for **subtraction**:
             SUBI    val(QT)
         ; const
             SUBI    SOME_CONST_VAL
-        ```
+
+    ```
+
+=== "SUBI Properties"
+
+    | Opcode | Operand Type          | Destination   |
+    |--------|-----------------------|---------------|
+    | 14     | Signed 64-bit integer | L2 (implicit) |
+
+    Identified as memonic [#SUBI](#SUBI), SUBI is used to
+
+</div>
 
 ??? abstract "SUBU — _Sub Unsigned Integer_"
 
@@ -100,4 +102,5 @@ The following opcodes are used for **subtraction**:
             SUBF    SOME_CONST_VAL
 
         ```
+
 ---
