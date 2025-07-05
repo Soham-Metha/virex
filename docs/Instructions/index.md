@@ -180,7 +180,7 @@ val(L1)  ; value stored in register L1
 
 ## INSTRUCTION DOCUMENTATION TEMPLATE:
 
-### [OPCODE] — _[OPERATION]_ {#OPCODE}
+### [OPCODE] — _[OPERATION]_ {#[OPCODE]}
 
 ```title="Algorithm"
 
@@ -188,18 +188,18 @@ val(L1)  ; value stored in register L1
 
 <div class="result" markdown>
 
-=== "OPCODE Example"
+=== "[OPCODE] Example"
 
     ```linenums="1" hl_lines="1 3 5"
 
     ```
 
-=== "OPCODE Properties"
+=== "[OPCODE] Properties"
 
     | Opcode | Operand Type       | Destination   |
     |--------|--------------------|---------------|
-    |        | 64-bit       Value | L_ (implicit) |
+    | 00     | 64-bit       Value | L_ (implicit) |
 
-    Identified as memonic [#OPCODE](#OPCODE), OPCODE is used to
+    Identified as memonic [#[OPCODE]](#[OPCODE]), [OPCODE] is used to
 
 </div>
