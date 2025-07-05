@@ -6,7 +6,7 @@ The following opcodes are used for **addition**:
 
 ---
 
-### ADDI — _Add Signed Integer_ {#ADDI}
+???+ custom ADDI — _Add Signed Integer_ {#ADDI}
 
 Use ADDI to add an integer value to whatever value 
 is stored within the L2 register. If the register L2 
