@@ -18,7 +18,7 @@ The following opcodes are used for **Modulus**:
 
 === "MODI Example"
 
-    ```linenums="1" hl_lines="1 3 5"
+    ```linenums="1" hl_lines="1 3 5 7"
         ; imm +ve
             MODI    1
         ; imm -ve
