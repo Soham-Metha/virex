@@ -6,16 +6,6 @@ The following opcodes are used for **addition**:
 
 ---
 ### ADDI — _Add Signed Integer_ {#ADDI}
-???+ note "Properties"
-
-    | Property        | Value                     |
-    |-----------------|---------------------------|
-    |   Opcode        | 13                        |
-    |   Type          | Arithmetic                |
-    |   Operand Type  | Signed 64-bit integer     |
-    |   Destination   | L2 (implicit)             |
-
-
 
 ```title="Algorithm"
 
@@ -36,6 +26,14 @@ The following opcodes are used for **addition**:
     ; const
         ADDI    SOME_CONST_VAL
     ```
+=== "Properties"
+
+    | Property        | Value                     |
+    |-----------------|---------------------------|
+    |   Opcode        | 13                        |
+    |   Type          | Arithmetic                |
+    |   Operand Type  | Signed 64-bit integer     |
+    |   Destination   | L2 (implicit)             |
 
 </div>
 
