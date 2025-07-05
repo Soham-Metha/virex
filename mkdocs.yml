@@ -95,7 +95,7 @@ plugins:
         python:
           options:
             docstring_style: sphinx
-  - blog
+  # - blog
   - minify:
       minify_html: true
 
