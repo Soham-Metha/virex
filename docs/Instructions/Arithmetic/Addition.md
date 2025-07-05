@@ -1,4 +1,3 @@
-
 The following opcodes are used for **addition**:
 
 - ADDI — Add Signed Integer
@@ -9,21 +8,17 @@ The following opcodes are used for **addition**:
 
 ### ADDI — _Add Signed Integer_ {#ADDI}
 
-```markdown title="Properties"
-
+```md title="Properties"
     |-----------------|---------------------------|
     | Property        | Value                     |
     |-----------------|---------------------------|
-    |   Opcode        | 13                        |
-    |   Type          | Arithmetic                |
-    |   Operand Type  | Signed 64-bit integer     |
-    |   Destination   | `L2` (implicit)           |
+    |  `Opcode`       | #13                       |
+    |  `Type`         | *Arithmetic*              |
+    |  `Operand Type` | Signed 64-bit integer     |
+    |  `Destination`  | L2 (implicit)             |
     |-----------------|---------------------------|
-
 ```
-
 <div class="result" markdown>
-
 === "Algorithm"
 
     ```
@@ -34,15 +29,15 @@ The following opcodes are used for **addition**:
 
 === "Example"
 
-    ```
+    ```linenums="1" hl_lines="1 3 5 7"
     ; imm +ve
-            ADDI    1
+        ADDI    1
     ; imm -ve
-            ADDI    -123
+        ADDI    -123
     ; reg val
-            ADDI    val(QT)
+        ADDI    val(QT)
     ; const
-            ADDI    SOME_CONST_VAL
+        ADDI    SOME_CONST_VAL
     ```
 
 </div>
@@ -108,4 +103,5 @@ The following opcodes are used for **addition**:
             ADDF    SOME_CONST_VAL
 
         ```
+
 ---
