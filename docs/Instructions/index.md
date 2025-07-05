@@ -188,13 +188,13 @@ val(L1)  ; value stored in register L1
 
 <div class="result" markdown>
 
-=== "ADDF Example"
+=== "OPCODE Example"
 
     ```linenums="1" hl_lines="1 3 5"
 
     ```
 
-=== "ADDF Properties"
+=== "OPCODE Properties"
 
     | Opcode | Operand Type       | Destination   |
     |--------|--------------------|---------------|
