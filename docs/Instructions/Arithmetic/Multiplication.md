@@ -1,4 +1,3 @@
-
 The following opcodes are used for **multiplicaction**:
 
 - MULI — Multiply Signed Integer
@@ -7,28 +6,19 @@ The following opcodes are used for **multiplicaction**:
 
 ---
 
-??? abstract "MULI — _Multiply Signed Integer_"
+### MULI — _Multiply Signed Integer_ {#MULI}
 
-    === "Properties"
+```title="Algorithm"
+    L2 = L2 * <signed_imm>
+    L2 = L2 * <reg_val>
+    L2 = L2 * <const>
+```
 
-        | Property        | Value                     |
-        |-----------------|---------------------------|
-        | **Opcode**      | 15                        |
-        | **Type**        | Arithmetic                |
-        | **Operand Type**| Signed 64-bit integer     |
-        | **Destination** | `L2` (implicit)           |
+<div class="result" markdown>
 
-    === "Algorithm"
+=== "MULI Example"
 
-        ```
-        L2 = L2 * <signed_imm>
-        L2 = L2 * <reg_val>
-        L2 = L2 * <const>
-        ```
-
-    === "Example"
-
-        ```
+    ```linenums="1" hl_lines="1 3 5 7"
         ; imm +ve
             MULI    1
         ; imm -ve
@@ -37,30 +27,34 @@ The following opcodes are used for **multiplicaction**:
             MULI    val(QT)
         ; const
             MULI    SOME_CONST_VAL
-        ```
 
-??? abstract "MULU — _Multiply Unsigned Integer_"
+    ```
 
-    === "Properties"
+=== "MULI Properties"
 
-        | Property        | Value                     |
-        |-----------------|---------------------------|
-        | **Opcode**      | 20                        |
-        | **Type**        | Arithmetic                |
-        | **Operand Type**| Unsigned 64-bit value     |
-        | **Destination** | `L3` (implicit)           |
+    | Opcode | Operand Type          | Destination   |
+    |--------|-----------------------|---------------|
+    | 15     | Signed 64-bit integer | L2 (implicit) |
 
-    === "Algorithm"
+    Identified as memonic [#MULI](#MULI), MULI is used to
+    multiply the L2 register with a 64-bit integer.
 
-        ```
-        L3 = L3 * <unsigned_imm>
-        L3 = L3 * <reg_val>
-        L3 = L3 * <const>
-        ```
+</div>
 
-    === "Example"
+### MULU — _Multiply Unsigned Integer_ {#MULU}
 
-        ```
+```title="Algorithm"
+    L3 = L3 * <unsigned_imm>
+    L3 = L3 * <reg_val>
+    L3 = L3 * <const>
+
+```
+
+<div class="result" markdown>
+
+=== "MULU Example"
+
+    ```linenums="1" hl_lines="1 3 5"
         ; imm +ve
             MULU    1
         ; reg val
@@ -68,30 +62,33 @@ The following opcodes are used for **multiplicaction**:
         ; const
             MULU    SOME_CONST_VAL
 
-        ```
+    ```
 
-??? abstract "MULF — _Multiply Float value_"
+=== "MULU Properties"
 
-    === "Properties"
+    | Opcode | Operand Type          | Destination   |
+    |--------|-----------------------|---------------|
+    | 20     | Unsigned 64-bit value | L3 (implicit) |
 
-        | Property        | Value                     |
-        |-----------------|---------------------------|
-        | **Opcode**      | 25                        |
-        | **Type**        | Arithmetic                |
-        | **Operand Type**| 64-bit float value        |
-        | **Destination** | `L1` (implicit)           |
+    Identified as memonic [#MULU](#MULU), MULU is used to
+    multiply the L3 register with a 64-bit unsigned value
 
-    === "Algorithm"
+</div>
 
-        ```
-        L1 = L1 * <float>
-        L1 = L1 * <reg_val>
-        L1 = L1 * <const>
-        ```
+### MULF — _Multiply Float value_ {#MULF}
 
-    === "Example"
+```title="Algorithm"
+    L1 = L1 * <float>
+    L1 = L1 * <reg_val>
+    L1 = L1 * <const>
 
-        ```
+```
+
+<div class="result" markdown>
+
+=== "MULF Example"
+
+    ```linenums="1" hl_lines="1 3 5"
         ; imm float
             MULF    3.14
         ; reg val
@@ -99,5 +96,17 @@ The following opcodes are used for **multiplicaction**:
         ; const
             MULF    SOME_CONST_VAL
 
-        ```
+    ```
+
+=== "MULF Properties"
+
+    | Opcode | Operand Type       | Destination   |
+    |--------|--------------------|---------------|
+    | 25     | 64-bit Float Value | L1 (implicit) |
+
+    Identified as memonic [#MULF](#MULF), MULF is used to
+    multiply the L1 register with a 64-bit float value
+
+</div>
+
 ---
