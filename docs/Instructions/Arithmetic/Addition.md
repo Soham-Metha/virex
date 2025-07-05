@@ -8,15 +8,13 @@ The following opcodes are used for **addition**:
 ### ADDI — _Add Signed Integer_ {#ADDI}
 ???+ note "Properties"
 
-    |-----------------|---------------------------|
     | Property        | Value                     |
     |-----------------|---------------------------|
     |  `Opcode`       | #13                       |
     |  `Type`         | *Arithmetic*              |
     |  `Operand Type` | Signed 64-bit integer     |
     |  `Destination`  | L2 (implicit)             |
-    |-----------------|---------------------------|
-
+    
 <div class="result" markdown>
 === "ADDI Algorithm"
 
