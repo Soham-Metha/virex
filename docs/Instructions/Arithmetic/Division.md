@@ -48,6 +48,7 @@ The following opcodes are used for **Division**:
     L3 = L3 / <reg_val>
     L3 = L3 / <const>
 ```
+
     === "Properties"
 
         | Property        | Value                     |
@@ -58,47 +59,57 @@ The following opcodes are used for **Division**:
         | **Destination** | `L3` (implicit)           |
 
 <div class="result" markdown>
-    === "Example"
+=== "DIVU Example"
 
-        ```
-        ; imm +ve
-            DIVU    1
-        ; reg val
-            DIVU    val(QT)
-        ; const
-            DIVU    SOME_CONST_VAL
+    ```linenums="1" hl_lines="1 3 5"
+    ; imm +ve
+        DIVU    1
+    ; reg val
+        DIVU    val(QT)
+    ; const
+        DIVU    SOME_CONST_VAL
+    ```
 
-        ```
+=== "DIVU Properties"
+
+    | Opcode | Operand Type            | Destination   |
+    |--------|-------------------------|---------------|
+    | 21     | Unsigned 64-bit integer | L3 (implicit) |
+
+    Identified as memonic [#18](#DIVU), DIVU is used to
+    divide the L3 register by a 64-bit unsigned value
+
+</div>
 
 ### DIVF — _Divide by Float value_
 
-    === "Properties"
+```title="Algorithm"
+    L1 = L1 / <float>
+    L1 = L1 / <reg_val>
+    L1 = L1 / <const>
+```
 
-        | Property        | Value                     |
-        |-----------------|---------------------------|
-        | **Opcode**      | 26                        |
-        | **Type**        | Arithmetic                |
-        | **Operand Type**| 64-bit float value        |
-        | **Destination** | `L1` (implicit)           |
+<div class="result" markdown>
 
-    === "Algorithm"
+=== "DIVF Example"
 
-        ```
-        L1 = L1 / <float>
-        L1 = L1 / <reg_val>
-        L1 = L1 / <const>
-        ```
+    ```linenums="1" hl_lines="1 3 5"
+    ; imm float
+        DIVF    3.14
+    ; reg val
+        DIVF    val(QT)
+    ; const
+        DIVF    SOME_CONST_VAL
 
-    === "Example"
+    ```
 
-        ```
-        ; imm float
-            DIVF    3.14
-        ; reg val
-            DIVF    val(QT)
-        ; const
-            DIVF    SOME_CONST_VAL
+=== "DIVF Properties"
 
-        ```
+    | Opcode | Operand Type       | Destination   |
+    |--------|--------------------|---------------|
+    | 26     | 64-bit Float Value | L1 (implicit) |
+
+    Identified as memonic [#23](#DIVF), DIVF is used to
+    divide the L1 register by a 64-bit float value
 
 ---
