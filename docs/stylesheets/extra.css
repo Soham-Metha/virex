@@ -5,15 +5,15 @@
   border-top: 0px;
   border-bottom: 0px;
   border-left: 4px solid;
-  border-color: #00b0ff;
+  border-color: #5d6cc0;
 }
 .md-typeset .custom > .admonition-title,
 .md-typeset .custom > summary {
-  background-color: rgba(43, 155, 70, 0.1);
+  background-color: #303fa1;
 }
 .md-typeset .custom > .admonition-title::before,
 .md-typeset .custom > summary::before {
-  background-color: #00b0ff;
+  background-color: #5d6cc0;
   -webkit-mask-image: var(--md-admonition-icon--custom);
   mask-image: var(--md-admonition-icon--custom);
 }
