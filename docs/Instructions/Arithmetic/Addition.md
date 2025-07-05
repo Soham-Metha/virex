@@ -42,7 +42,7 @@ The following opcodes are used for **addition**:
 
 </div>
 
-??? abstract "ADDU — _Add Unsigned Integer_"
+### ADDU — _Add Unsigned Integer_
 
     === "Properties"
 
@@ -73,7 +73,7 @@ The following opcodes are used for **addition**:
 
         ```
 
-??? abstract "ADDF — _Add Float value_"
+### ADDF — _Add Float value_
 
     === "Properties"
 
