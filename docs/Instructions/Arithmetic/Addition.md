@@ -35,6 +35,9 @@ The following opcodes are used for **addition**:
     |   Operand Type  | Signed 64-bit integer     |
     |   Destination   | L2 (implicit)             |
 
+    Identified as memonic [#13](#ADDI), ADDI is used to 
+    add a 64-bit signed value to the L2 register
+
 </div>
 
 ### ADDU — _Add Unsigned Integer_ {#ADDU}
