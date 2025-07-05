@@ -42,30 +42,14 @@ The following opcodes are used for **addition**:
 
 ### ADDU — _Add Unsigned Integer_ {#ADDU}
 
-Use ADDU to add an unsigned value to whatever value 
-is stored within the L3 register. If the register L3 
-is not set, then initial value of L3 is assumed to be 
-0, and not a garbage value.
 
-```md title="Properties"
-    |-----------------|---------------------------|
-    | Property        | Value                     |
-    |-----------------|---------------------------|
-    |  `Opcode`       | #18                       |
-    |  `Type`         | *Arithmetic*              |
-    |  `Operand Type` | Unsigned 64-bit value     |
-    |  `Destination`  | L3 (implicit)             |
-    |-----------------|---------------------------|
-```
-
-<div class="result" markdown>
-=== "ADDU Algorithm"
-
-    ```
+```md title="Algorithm"
         L3 = L3 + <unsigned_imm>
         L3 = L3 + <reg_val>
         L3 = L3 + <const>
-    ```
+```
+
+<div class="result" markdown>
 
 === "ADDU Example"
 
@@ -77,6 +61,17 @@ is not set, then initial value of L3 is assumed to be
     ; const
         ADDU    SOME_CONST_VAL
     ```
+
+=== "ADDU Properties"
+
+    |-----------------|---------------------------|
+    | Property        | Value                     |
+    |-----------------|---------------------------|
+    |  `Opcode`       | #18                       |
+    |  `Type`         | *Arithmetic*              |
+    |  `Operand Type` | Unsigned 64-bit value     |
+    |  `Destination`  | L3 (implicit)             |
+    |-----------------|---------------------------|
 </div>
 
 ### ADDF — _Add Float value_ {#ADDF}
