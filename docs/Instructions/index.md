@@ -50,30 +50,30 @@ val(L1)  ; value stored in register L1
 
         | OPCODE | INST |
         |--------|------|
-        | **13** | [ADDI](Arithmetic/Addition.md#__tabbed_1_1) |
-        | **14** | [SUBI](Arithmetic/Subtraction.md#__tabbed_1_1) |
-        | **15** | [MULI](Arithmetic/Multiplication.md#__tabbed_1_1) |
-        | **16** | [DIVI](Arithmetic/Division.md#__tabbed_1_1) |
-        | **17** | [MODI](Arithmetic/Modulus.md#__tabbed_1_1) |
+        | **13** | [ADDI](Arithmetic/Addition.md#ADDI) |
+        | **14** | [SUBI](Arithmetic/Subtraction.md#SUBI) |
+        | **15** | [MULI](Arithmetic/Multiplication.md#MULI) |
+        | **16** | [DIVI](Arithmetic/Division.md#DIVI) |
+        | **17** | [MODI](Arithmetic/Modulus.md#MODI) |
 
     === "UNSIGNED"
 
         | OPCODE | INST |
         |--------|------|
-        | **18** | [ADDU](Arithmetic/Addition.md#__tabbed_2_1) |
-        | **19** | [SUBU](Arithmetic/Subtraction.md#__tabbed_2_1) |
-        | **20** | [MULU](Arithmetic/Multiplication.md#__tabbed_2_1) |
-        | **21** | [DIVU](Arithmetic/Division.md#__tabbed_2_1) |
-        | **22** | [MODU](Arithmetic/Modulus.md#__tabbed_2_1) |
+        | **18** | [ADDU](Arithmetic/Addition.md#ADDU) |
+        | **19** | [SUBU](Arithmetic/Subtraction.md#SUBU) |
+        | **20** | [MULU](Arithmetic/Multiplication.md#MULU) |
+        | **21** | [DIVU](Arithmetic/Division.md#DIVU) |
+        | **22** | [MODU](Arithmetic/Modulus.md#MODU) |
 
     === "FLOAT"
 
         | OPCODE | INST |
         |--------|------|
-        | **23** | [ADDF](Arithmetic/Addition.md#__tabbed_3_1) |
-        | **24** | [SUBF](Arithmetic/Subtraction.md#__tabbed_3_1) |
-        | **25** | [MULF](Arithmetic/Multiplication.md#__tabbed_3_1) |
-        | **26** | [DIVF](Arithmetic/Division.md#__tabbed_3_1) |
+        | **23** | [ADDF](Arithmetic/Addition.md#ADDF) |
+        | **24** | [SUBF](Arithmetic/Subtraction.md#SUBF) |
+        | **25** | [MULF](Arithmetic/Multiplication.md#MULF) |
+        | **26** | [DIVF](Arithmetic/Division.md#DIVF) |
 
 === "UNDOCUMENTED"
 
