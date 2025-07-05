@@ -43,9 +43,9 @@ theme:
     - content.action.view
     - content.code.annotate
     - content.code.copy
-    # - content.code.select
+    - content.code.select
     - content.code.highlight
-    # - content.footnote.tooltips
+    - content.footnote.tooltips
     - content.tabs.link
     - content.tooltips
     - header.autohide
