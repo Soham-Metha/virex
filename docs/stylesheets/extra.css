@@ -1,9 +1,19 @@
 
-.md-typeset .admonition.abstract,
-.md-typeset details.abstract {
+.md-typeset .admonition.custom,
+.md-typeset details.custom {
   border-right: 0px;
   border-top: 0px;
   border-bottom: 0px;
   border-left: 4px solid;
-  border-color:#00b0ff
+  border-color: rgb(43, 155, 70);
+}
+.md-typeset .custom > .admonition-title,
+.md-typeset .custom > summary {
+  background-color: rgba(43, 155, 70, 0.1);
+}
+.md-typeset .custom > .admonition-title::before,
+.md-typeset .custom > summary::before {
+  background-color: rgb(43, 155, 70);
+  -webkit-mask-image: var(--md-admonition-icon--custom);
+  mask-image: var(--md-admonition-icon--custom);
 }
