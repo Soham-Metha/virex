@@ -41,28 +41,20 @@ The following opcodes are used for **subtraction**:
 
 </div>
 
-??? abstract "SUBU — _Sub Unsigned Integer_"
+### SUBU — _Sub Unsigned Integer_ {#SUBU}
 
-    === "Properties"
+```title="Algorithm"
+    L3 = L3 - <unsigned_imm>
+    L3 = L3 - <reg_val>
+    L3 = L3 - <const>
 
-        | Property        | Value                     |
-        |-----------------|---------------------------|
-        | **Opcode**      | 19                        |
-        | **Type**        | Arithmetic                |
-        | **Operand Type**| Unsigned 64-bit value     |
-        | **Destination** | `L3` (implicit)           |
+```
 
-    === "Algorithm"
+<div class="result" markdown>
 
-        ```
-        L3 = L3 - <unsigned_imm>
-        L3 = L3 - <reg_val>
-        L3 = L3 - <const>
-        ```
+=== "SUBU Example"
 
-    === "Example"
-
-        ```
+    ```linenums="1" hl_lines="1 3 5"
         ; imm +ve
             SUBU    1
         ; reg val
@@ -70,37 +62,47 @@ The following opcodes are used for **subtraction**:
         ; const
             SUBU    SOME_CONST_VAL
 
-        ```
+    ```
 
-??? abstract "SUBF — _Sub Float value_"
+=== "SUBU Properties"
 
-    === "Properties"
+    | Opcode | Operand Type          | Destination   |
+    |--------|-----------------------|---------------|
+    | 19     | Unsigned 64-bit value | L3 (implicit) |
 
-        | Property        | Value                     |
-        |-----------------|---------------------------|
-        | **Opcode**      | 24                        |
-        | **Type**        | Arithmetic                |
-        | **Operand Type**| 64-bit float value        |
-        | **Destination** | `L1` (implicit)           |
+    Identified as memonic [#SUBU](#SUBU), SUBU is used to
 
-    === "Algorithm"
+</div>
+### SUBF — _Sub Float value_ {#SUBF}
 
-        ```
-        L1 = L1 - <float>
-        L1 = L1 - <reg_val>
-        L1 = L1 - <const>
-        ```
+```title="Algorithm"
+    L1 = L1 - <float>
+    L1 = L1 - <reg_val>
+    L1 = L1 - <const>
 
-    === "Example"
+```
 
-        ```
+<div class="result" markdown>
+
+=== "SUBF Example"
+
+    ```linenums="1" hl_lines="1 3 5"
         ; imm float
             SUBF    3.14
         ; reg val
             SUBF    val(QT)
         ; const
             SUBF    SOME_CONST_VAL
+    ```
 
-        ```
+=== "SUBF Properties"
+
+    | Opcode | Operand Type       | Destination   |
+    |--------|--------------------|---------------|
+    | 24     | 64-bit Float Value | L1 (implicit) |
+
+    Identified as memonic [#SUBF](#SUBF), SUBF is used to
+
+</div>
 
 ---
