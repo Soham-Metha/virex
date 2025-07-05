@@ -5,6 +5,7 @@ The following opcodes are used for **addition**:
 - ADDF — Add Floating Point
 
 ---
+
 ### ADDI — _Add Signed Integer_ {#ADDI}
 
 ```title="Algorithm"
@@ -13,8 +14,9 @@ The following opcodes are used for **addition**:
     L2 = L2 + <reg_val>
     L2 = L2 + <const>
 ```
+
 <div class="result" markdown>
-=== "Example"
+=== "ADDI Example"
 
     ```linenums="1" hl_lines="1 3 5 7"
     ; imm +ve
@@ -26,7 +28,8 @@ The following opcodes are used for **addition**:
     ; const
         ADDI    SOME_CONST_VAL
     ```
-=== "Properties"
+
+=== "ADDI Properties"
 
     | Property        | Value                     |
     |-----------------|---------------------------|
@@ -35,22 +38,21 @@ The following opcodes are used for **addition**:
     |   Operand Type  | Signed 64-bit integer     |
     |   Destination   | L2 (implicit)             |
 
-    Identified as memonic [#13](#ADDI), ADDI is used to 
+    Identified as memonic [#13](#ADDI), ADDI is used to
     add a 64-bit signed value to the L2 register
 
 </div>
 
 ### ADDU — _Add Unsigned Integer_ {#ADDU}
 
+```title="Algorithm"
 
-```md title="Algorithm"
-        L3 = L3 + <unsigned_imm>
-        L3 = L3 + <reg_val>
-        L3 = L3 + <const>
+    L3 = L3 + <unsigned_imm>
+    L3 = L3 + <reg_val>
+    L3 = L3 + <const>
 ```
 
 <div class="result" markdown>
-
 === "ADDU Example"
 
     ```linenums="1" hl_lines="1 3 5"
@@ -64,21 +66,23 @@ The following opcodes are used for **addition**:
 
 === "ADDU Properties"
 
-    |-----------------|---------------------------|
     | Property        | Value                     |
     |-----------------|---------------------------|
-    |  `Opcode`       | #18                       |
-    |  `Type`         | *Arithmetic*              |
-    |  `Operand Type` | Unsigned 64-bit value     |
-    |  `Destination`  | L3 (implicit)             |
-    |-----------------|---------------------------|
+    |   Opcode        | 18                        |
+    |   Type          | Arithmetic                |
+    |   Operand Type  | Unsigned 64-bit value     |
+    |   Destination   | L3 (implicit)             |
+
+    Identified as memonic [#18](#ADDU), ADDU is used to
+    add a 64-bit unsigned value to the L3 register
+
 </div>
 
 ### ADDF — _Add Float value_ {#ADDF}
 
-Use ADDF to add a floating point value to whatever value 
-is stored within the L1 register. If the register L1 
-is not set, then initial value of L1 is assumed to be 
+Use ADDF to add a floating point value to whatever value
+is stored within the L1 register. If the register L1
+is not set, then initial value of L1 is assumed to be
 0, and not a garbage value.
 
 ```md title="Properties"
