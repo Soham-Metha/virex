@@ -47,7 +47,7 @@ val(L1)  ; value stored in register L1
 === "ARITHMETIC"
 
     === "INTEGER"
-    
+
         | OPCODE | INST |
         |--------|------|
         | **13** | [ADDI](Arithmetic/Addition.md#__tabbed_1_1) |
@@ -57,7 +57,7 @@ val(L1)  ; value stored in register L1
         | **17** | [MODI](Arithmetic/Modulus.md#__tabbed_1_1) |
 
     === "UNSIGNED"
-    
+
         | OPCODE | INST |
         |--------|------|
         | **18** | [ADDU](Arithmetic/Addition.md#__tabbed_2_1) |
@@ -67,7 +67,7 @@ val(L1)  ; value stored in register L1
         | **22** | [MODU](Arithmetic/Modulus.md#__tabbed_2_1) |
 
     === "FLOAT"
-    
+
         | OPCODE | INST |
         |--------|------|
         | **23** | [ADDF](Arithmetic/Addition.md#__tabbed_3_1) |
@@ -80,7 +80,7 @@ val(L1)  ; value stored in register L1
     === "RELATIONAL"
 
         === "INTEGER"
-        
+
             | OPCODE | INST |
             |--------|------|
             | **35** | [EQI](reference/missing) |
@@ -91,7 +91,7 @@ val(L1)  ; value stored in register L1
             | **40** | [NEI](reference/missing) |
 
         === "UNSIGNED"
-        
+
             | OPCODE | INST |
             |--------|------|
             | **41** | [EQU](reference/missing) |
@@ -102,7 +102,7 @@ val(L1)  ; value stored in register L1
             | **46** | [NEU](reference/missing) |
 
         === "FLOAT"
-        
+
             | OPCODE | INST |
             |--------|------|
             | **47** | [EQF](reference/missing) |
@@ -161,7 +161,7 @@ val(L1)  ; value stored in register L1
         | **56** | [SHL](reference/missing) |
         | **29** | [ANDB](reference/missing) |
         | **30** | [NOTB](reference/missing) |
-    
+
     === "MISC"
 
         | OPCODE | INST |
@@ -180,25 +180,26 @@ val(L1)  ; value stored in register L1
 
 ## INSTRUCTION DOCUMENTATION TEMPLATE:
 
-??? abstract "[MEMONIC] — _[Operation]_"
+### [OPCODE] — _[OPERATION]_ {#OPCODE}
 
-    === "Properties"
+```title="Algorithm"
 
-        | Property        | Value                     |
-        |-----------------|---------------------------|
-        | **Opcode**      |      |
-        | **Type**        |      |
-        | **Operand Type**|      |
-        | **Destination** |      |
+```
 
-    === "Algorithm"
+<div class="result" markdown>
 
-        ```
-        [ALGO]
-        ```
+=== "ADDF Example"
 
-    === "Example"
+    ```linenums="1" hl_lines="1 3 5"
 
-        ```
-            [EXAMPLE]
-        ```
+    ```
+
+=== "ADDF Properties"
+
+    | Opcode | Operand Type       | Destination   |
+    |--------|--------------------|---------------|
+    |        | 64-bit       Value | L_ (implicit) |
+
+    Identified as memonic [#OPCODE](#OPCODE), OPCODE is used to
+
+</div>
