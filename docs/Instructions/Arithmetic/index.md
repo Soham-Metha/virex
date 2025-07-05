@@ -7,6 +7,3 @@ This section describes the available arithmetic **opcodes/mnemonics** and their 
 📎 See: [Register Reference – Link Registers](../reference/registers.md#link-registers) <!-- Update the path accordingly -->
 
 ---
-
-| MODI | |
-| MODU | |
