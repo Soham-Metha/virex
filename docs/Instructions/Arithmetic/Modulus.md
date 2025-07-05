@@ -5,7 +5,7 @@ The following opcodes are used for **Modulus**:
 
 ---
 
-??? custom "MODI — _Mod by Signed Integer_"
+??? abstract "MODI — _Mod by Signed Integer_"
 
     === "Properties"
 
