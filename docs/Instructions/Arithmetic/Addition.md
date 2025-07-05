@@ -18,6 +18,7 @@ The following opcodes are used for **addition**:
     |  `Destination`  | L2 (implicit)             |
     |-----------------|---------------------------|
 ```
+
 <div class="result" markdown>
 === "Algorithm"
 
@@ -54,6 +55,7 @@ The following opcodes are used for **addition**:
     |  `Destination`  | L3 (implicit)             |
     |-----------------|---------------------------|
 ```
+
 <div class="result" markdown>
 === "Algorithm"
 
