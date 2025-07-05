@@ -76,6 +76,7 @@ The following opcodes are used for **addition**:
         ADDU    SOME_CONST_VAL
     ```
 </div>
+
 ### ADDF — _Add Float value_ {#ADDF}
 
 ```md title="Properties"
