@@ -6,7 +6,7 @@ The following opcodes are used for **Division**:
 
 ---
 
-### DIVI — _Divide by Signed Integer_
+### DIVI — _Divide by Signed Integer_ {#DIVI}
 
 ```title="Algorithm"
 
@@ -41,7 +41,7 @@ The following opcodes are used for **Division**:
 
 </div>
 
-### DIVU — _Divide by Unsigned Integer_
+### DIVU — _Divide by Unsigned Integer_ {#DIVU}
 
 ```title="Algorithm"
     L3 = L3 / <unsigned_imm>
@@ -81,7 +81,7 @@ The following opcodes are used for **Division**:
 
 </div>
 
-### DIVF — _Divide by Float value_
+### DIVF — _Divide by Float value_ {#DIVF}
 
 ```title="Algorithm"
     L1 = L1 / <float>
