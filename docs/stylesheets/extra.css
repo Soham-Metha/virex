@@ -5,11 +5,11 @@
   border-top: 0px;
   border-bottom: 0px;
   border-left: 4px solid;
-  border-color: #5d6cc0;
+  border-color: #303fa1;
 }
 .md-typeset .custom > .admonition-title,
 .md-typeset .custom > summary {
-  background-color: #303fa1;
+  background-color: rgba(43, 155, 70, 0.1);
 }
 .md-typeset .custom > .admonition-title::before,
 .md-typeset .custom > summary::before {
