@@ -31,9 +31,9 @@ The following opcodes are used for **addition**:
 
 === "ADDI Properties"
 
-    | Type       | Opcode | Operand Type          | Destination   |
-    |------------|--------|-----------------------|---------------|
-    | Arithmetic | 13     | Signed 64-bit integer | L2 (implicit) |
+    | Opcode | Operand Type          | Destination   |
+    |--------|-----------------------|---------------|
+    | 13     | Signed 64-bit integer | L2 (implicit) |
 
     Identified as memonic [#13](#ADDI), ADDI is used to
     add a 64-bit signed value to the L2 register
