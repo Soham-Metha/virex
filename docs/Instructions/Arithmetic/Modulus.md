@@ -1,4 +1,3 @@
-
 The following opcodes are used for **Modulus**:
 
 - MODI — Mod by Signed Integer
