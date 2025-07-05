@@ -6,7 +6,7 @@ The following opcodes are used for **subtraction**:
 
 ---
 
-### [SUBI] — _Sub Signed Integer_ {#SUBI}
+### SUBI — _Sub Signed Integer_ {#SUBI}
 
 ```title="Algorithm"
     L2 = L2 - <signed_imm>
