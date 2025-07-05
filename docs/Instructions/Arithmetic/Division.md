@@ -49,15 +49,6 @@ The following opcodes are used for **Division**:
     L3 = L3 / <const>
 ```
 
-    === "Properties"
-
-        | Property        | Value                     |
-        |-----------------|---------------------------|
-        | **Opcode**      | 21                        |
-        | **Type**        | Arithmetic                |
-        | **Operand Type**| Unsigned 64-bit value     |
-        | **Destination** | `L3` (implicit)           |
-
 <div class="result" markdown>
 === "DIVU Example"
 
