@@ -83,41 +83,32 @@ The following opcodes are used for **addition**:
     |-----------------|---------------------------|
     | Property        | Value                     |
     |-----------------|---------------------------|
-    |  `Opcode`       | #13                       |
+    |  `Opcode`       | #23                       |
     |  `Type`         | *Arithmetic*              |
-    |  `Operand Type` | Signed 64-bit integer     |
-    |  `Destination`  | L2 (implicit)             |
+    |  `Operand Type` | 64-bit float value        |
+    |  `Destination`  | L1 (implicit)             |
     |-----------------|---------------------------|
 ```
 
 <div class="result" markdown>
-    === "Properties"
+=== "Algorithm"
 
-        | Property        | Value                     |
-        |-----------------|---------------------------|
-        | **Opcode**      | 23                        |
-        | **Type**        | Arithmetic                |
-        | **Operand Type**| 64-bit float value        |
-        | **Destination** | `L1` (implicit)           |
-
-    === "Algorithm"
-
-        ```
+    ```
         L1 = L1 + <float>
         L1 = L1 + <reg_val>
         L1 = L1 + <const>
-        ```
+    ```
 
-    === "Example"
+=== "Example"
 
-        ```
-        ; imm float
-            ADDF    3.14
-        ; reg val
-            ADDF    val(QT)
-        ; const
-            ADDF    SOME_CONST_VAL
+    ```linenums="1" hl_lines="1 3 5"
+    ; imm float
+        ADDF    3.14
+    ; reg val
+        ADDF    val(QT)
+    ; const
+        ADDF    SOME_CONST_VAL
 
-        ```
+    ```
 
 ---
