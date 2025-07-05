@@ -44,34 +44,35 @@ The following opcodes are used for **addition**:
 
 ### ADDU — _Add Unsigned Integer_
 
-    === "Properties"
+```md title="Properties"
+    |-----------------|---------------------------|
+    | Property        | Value                     |
+    |-----------------|---------------------------|
+    |  `Opcode`       | #18                       |
+    |  `Type`         | *Arithmetic*              |
+    |  `Operand Type` | Unsigned 64-bit value     |
+    |  `Destination`  | L3 (implicit)             |
+    |-----------------|---------------------------|
+```
+<div class="result" markdown>
+=== "Algorithm"
 
-        | Property        | Value                     |
-        |-----------------|---------------------------|
-        | **Opcode**      | 18                        |
-        | **Type**        | Arithmetic                |
-        | **Operand Type**| Unsigned 64-bit value     |
-        | **Destination** | `L3` (implicit)           |
-
-    === "Algorithm"
-
-        ```
+    ```
         L3 = L3 + <unsigned_imm>
         L3 = L3 + <reg_val>
         L3 = L3 + <const>
-        ```
+    ```
 
-    === "Example"
+=== "Example"
 
-        ```
-        ; imm +ve
-            ADDU    1
-        ; reg val
-            ADDU    val(QT)
-        ; const
-            ADDU    SOME_CONST_VAL
-
-        ```
+    ```linenums="1" hl_lines="1 3 5"
+    ; imm +ve
+        ADDU    1
+    ; reg val
+        ADDU    val(QT)
+    ; const
+        ADDU    SOME_CONST_VAL
+    ```
 
 ### ADDF — _Add Float value_
 
