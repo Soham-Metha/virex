@@ -80,30 +80,13 @@ The following opcodes are used for **addition**:
 
 ### ADDF — _Add Float value_ {#ADDF}
 
-Use ADDF to add a floating point value to whatever value
-is stored within the L1 register. If the register L1
-is not set, then initial value of L1 is assumed to be
-0, and not a garbage value.
-
-```md title="Properties"
-    |-----------------|---------------------------|
-    | Property        | Value                     |
-    |-----------------|---------------------------|
-    |  `Opcode`       | #23                       |
-    |  `Type`         | *Arithmetic*              |
-    |  `Operand Type` | 64-bit float value        |
-    |  `Destination`  | L1 (implicit)             |
-    |-----------------|---------------------------|
+```title="Algorithm"
+    L1 = L1 + <float>
+    L1 = L1 + <reg_val>
+    L1 = L1 + <const>
 ```
 
 <div class="result" markdown>
-=== "ADDF Algorithm"
-
-    ```
-        L1 = L1 + <float>
-        L1 = L1 + <reg_val>
-        L1 = L1 + <const>
-    ```
 
 === "ADDF Example"
 
@@ -117,4 +100,15 @@ is not set, then initial value of L1 is assumed to be
 
     ```
 
+=== "ADDF Properties"
+
+    | Property        | Value                     |
+    |-----------------|---------------------------|
+    |   Opcode        | 23                        |
+    |   Type          | Arithmetic                |
+    |   Operand Type  | 64-bit float value        |
+    |   Destination   | L1 (implicit)             |
+
+    Identified as memonic [#23](#ADDF), ADDF is used to
+    add a 64-bit floating point value to the L1 register
 ---
