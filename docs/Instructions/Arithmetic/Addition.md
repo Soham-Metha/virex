@@ -51,7 +51,7 @@ is not set, then initial value of L2 is assumed to be
 
 ### ADDU — _Add Unsigned Integer_ {#ADDU}
 
-Use ADDU to add an integer value to whatever value 
+Use ADDU to add an unsigned value to whatever value 
 is stored within the L3 register. If the register L3 
 is not set, then initial value of L3 is assumed to be 
 0, and not a garbage value.
@@ -90,7 +90,10 @@ is not set, then initial value of L3 is assumed to be
 
 ### ADDF — _Add Float value_ {#ADDF}
 
-Use 
+Use ADDF to add a floating point value to whatever value 
+is stored within the L1 register. If the register L1 
+is not set, then initial value of L1 is assumed to be 
+0, and not a garbage value.
 
 ```md title="Properties"
     |-----------------|---------------------------|
