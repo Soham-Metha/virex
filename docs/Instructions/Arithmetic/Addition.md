@@ -6,25 +6,23 @@ The following opcodes are used for **addition**:
 
 ---
 ### ADDI — _Add Signed Integer_ {#ADDI}
-```title="Properties"
+???+ note "Properties"
+
+    | Property        | Value                     |
+    |-----------------|---------------------------|
+    |   Opcode        | 13                        |
+    |   Type          | Arithmetic                |
+    |   Operand Type  | Signed 64-bit integer     |
+    |   Destination   | L2 (implicit)             |
+
+
+
+```titile="Algorithm"
+    L2 = L2 + <signed_imm>
+    L2 = L2 + <reg_val>
+    L2 = L2 + <const>
 ```
-
-| Property        | Value                     |
-|-----------------|---------------------------|
-|   Opcode        | 13                        |
-|   Type          | Arithmetic                |
-|   Operand Type  | Signed 64-bit integer     |
-|   Destination   | L2 (implicit)             |
-
 <div class="result" markdown>
-=== "ADDI Algorithm"
-
-    ```
-        L2 = L2 + <signed_imm>
-        L2 = L2 + <reg_val>
-        L2 = L2 + <const>
-    ```
-
 === "ADDI Example"
 
     ```linenums="1" hl_lines="1 3 5 7"
