@@ -63,7 +63,6 @@ The following opcodes are used for **addition**:
 
 === "ADDU Properties"
 
-
     | Opcode | Operand Type            | Destination   |
     |--------|-------------------------|---------------|
     | 18     | Unsigned 64-bit integer | L3 (implicit) |
@@ -103,5 +102,7 @@ The following opcodes are used for **addition**:
 
     Identified as memonic [#23](#ADDF), ADDF is used to
     add a 64-bit floating point value to the L1 register
+
+</div>
 
 ---
