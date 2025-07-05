@@ -1,8 +1,5 @@
-mkdocs==1.6.1
-mkdocs-material==9.1.21
+mkdocs
+mkdocs-material[recommended]
 mkdocstrings
 mkdocstrings-python
-markdown_include==0.8.1
-pygments==2.19.2
-markdown==3.8.2
-pymdown-extensions==10.16
+markdown-include
