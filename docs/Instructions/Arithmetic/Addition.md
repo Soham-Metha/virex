@@ -24,29 +24,29 @@ The following opcodes are used for **addition**:
         |-----------------|---------------------------|
     ```
 
-    <div class="result" markdown>
-    === "ADDI Algorithm"
+<div class="result" markdown>
+=== "ADDI Algorithm"
 
-        ```
-            L2 = L2 + <signed_imm>
-            L2 = L2 + <reg_val>
-            L2 = L2 + <const>
-        ```
+    ```
+        L2 = L2 + <signed_imm>
+        L2 = L2 + <reg_val>
+        L2 = L2 + <const>
+    ```
 
-    === "ADDI Example"
+=== "ADDI Example"
 
-        ```linenums="1" hl_lines="1 3 5 7"
-        ; imm +ve
-            ADDI    1
-        ; imm -ve
-            ADDI    -123
-        ; reg val
-            ADDI    val(QT)
-        ; const
-            ADDI    SOME_CONST_VAL
-        ```
+    ```linenums="1" hl_lines="1 3 5 7"
+    ; imm +ve
+        ADDI    1
+    ; imm -ve
+        ADDI    -123
+    ; reg val
+        ADDI    val(QT)
+    ; const
+        ADDI    SOME_CONST_VAL
+    ```
 
-    </div>
+</div>
 
 ### ADDU — _Add Unsigned Integer_ {#ADDU}
 
