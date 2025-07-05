@@ -19,7 +19,7 @@ The following opcodes are used for **subtraction**:
 
 === "SUBI Example"
 
-    ```linenums="1" hl_lines="1 3 5"
+    ```linenums="1" hl_lines="1 3 5 7"
         ; imm +ve
             SUBI    1
         ; imm -ve
@@ -38,6 +38,7 @@ The following opcodes are used for **subtraction**:
     | 14     | Signed 64-bit integer | L2 (implicit) |
 
     Identified as memonic [#SUBI](#SUBI), SUBI is used to
+    subtract a 64-bit signed value from the L2 register
 
 </div>
 
@@ -71,6 +72,7 @@ The following opcodes are used for **subtraction**:
     | 19     | Unsigned 64-bit value | L3 (implicit) |
 
     Identified as memonic [#SUBU](#SUBU), SUBU is used to
+    subtract a 64-bit unsigned value  from the L3 register
 
 </div>
 ### SUBF — _Sub Float value_ {#SUBF}
@@ -102,6 +104,7 @@ The following opcodes are used for **subtraction**:
     | 24     | 64-bit Float Value | L1 (implicit) |
 
     Identified as memonic [#SUBF](#SUBF), SUBF is used to
+    subtract a 64-bit floating point value from the L1 register
 
 </div>
 
