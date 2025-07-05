@@ -5,8 +5,8 @@ The following opcodes are used for **addition**:
 - ADDF — Add Floating Point
 
 ---
-
-???+ custom "ADDI — _Add Signed Integer_ {#ADDI}"
+### ADDI — _Add Signed Integer_ {#ADDI}
+???+ custom ""
 
     Use ADDI to add an integer value to whatever value 
     is stored within the L2 register. If the register L2 
