@@ -42,7 +42,7 @@ The following opcodes are used for **addition**:
 
 </div>
 
-### ADDU — _Add Unsigned Integer_
+### ADDU — _Add Unsigned Integer_ (#ADDU)
 
 ```md title="Properties"
     |-----------------|---------------------------|
