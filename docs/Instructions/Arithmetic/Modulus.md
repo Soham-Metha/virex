@@ -5,28 +5,20 @@ The following opcodes are used for **Modulus**:
 
 ---
 
-??? custom "MODI — _Mod by Signed Integer_"
+### MODI — _Mod by Signed Integer_ {#MODI}
 
-    === "Properties"
+```title="Algorithm"
+    L2 = L2 % <signed_imm>
+    L2 = L2 % <reg_val>
+    L2 = L2 % <const>
 
-        | Property        | Value                     |
-        |-----------------|---------------------------|
-        | **Opcode**      | 17                        |
-        | **Type**        | Arithmetic                |
-        | **Operand Type**| Signed 64-bit integer     |
-        | **Destination** | `L2` (implicit)           |
+```
 
-    === "Algorithm"
+<div class="result" markdown>
 
-        ```
-        L2 = L2 % <signed_imm>
-        L2 = L2 % <reg_val>
-        L2 = L2 % <const>
-        ```
+=== "MODI Example"
 
-    === "Example"
-
-        ```
+    ```linenums="1" hl_lines="1 3 5"
         ; imm +ve
             MODI    1
         ; imm -ve
@@ -35,30 +27,31 @@ The following opcodes are used for **Modulus**:
             MODI    val(QT)
         ; const
             MODI    SOME_CONST_VAL
-        ```
 
-??? abstract "MODU — _Mod by Unsigned Integer_"
+    ```
 
-    === "Properties"
+=== "MODI Properties"
 
-        | Property        | Value                     |
-        |-----------------|---------------------------|
-        | **Opcode**      | 22                        |
-        | **Type**        | Arithmetic                |
-        | **Operand Type**| Unsigned 64-bit value     |
-        | **Destination** | `L3` (implicit)           |
+    | Opcode | Operand Type          | Destination   |
+    |--------|-----------------------|---------------|
+    | 17     | Signed 64-bit integer | L2 (implicit) |
 
-    === "Algorithm"
+</div>
 
-        ```
-        L3 = L3 % <unsigned_imm>
-        L3 = L3 % <reg_val>
-        L3 = L3 % <const>
-        ```
+### MODU — _Mod by Unsigned Integer_ {#MODU}
 
-    === "Example"
+```title="Algorithm"
+    L3 = L3 % <unsigned_imm>
+    L3 = L3 % <reg_val>
+    L3 = L3 % <const>
 
-        ```
+```
+
+<div class="result" markdown>
+
+=== "MODU Example"
+
+    ```linenums="1" hl_lines="1 3 5"
         ; imm +ve
             MODU    1
         ; reg val
@@ -66,4 +59,14 @@ The following opcodes are used for **Modulus**:
         ; const
             MODU    SOME_CONST_VAL
 
-        ```
+    ```
+
+=== "MODU Properties"
+
+    | Opcode | Operand Type          | Destination   |
+    |--------|-----------------------|---------------|
+    | 22     | Unsigned 64-bit value | L3 (implicit) |
+
+</div>
+
+---
