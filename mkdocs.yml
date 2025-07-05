@@ -9,24 +9,30 @@ repo_url: https://github.com/Soham-Metha/virex
 nav:
   - Instruction Set:
       - Instructions/index.md
-      - Arithmetic: Instructions/Arithmetic.md
-  #- Libs:
-  #    - cmd: LIBS/univ_cmdutils.md
-  #    - defs: LIBS/univ_defs.md
-  #    - errors: LIBS/univ_errors.md
-  #     - fileops: LIBS/univ_fileops.md
-  #     - strings: LIBS/univ_strings.md
-  # - OCC:
-  #     - CodeGen: OCC/O_codegenerator .md
-  #     - Lexer: OCC/O_lexer .md
-  #     - Parser: OCC/O_parser .md
-  # - SASM:
-  #     - Assembler: SASM/sasm_assembler .md
-  #     - Flags: SASM/sasm_flags .md
-  #     - Instructions: SASM/sasm_instructions .md
-  #     - Memory: SASM/sasm_memory .md
-  # - VM:
-  #     - gbvm: VM/gbvm .md
+      - Arithmetic: 
+        - Arithmetic Instructions : Instructions/Arithmetic/index.md
+        - Addition: Instructions/Arithmetic/Addition.md
+        - Subtraction: Instructions/Arithmetic/Subtraction.md
+        - Multiplication: Instructions/Arithmetic/Multiplication.md
+        - Division: Instructions/Arithmetic/Division.md
+        - Modulus: Instructions/Arithmetic/Modulus.md
+  - Libs:
+     - cmd: LIBS/univ_cmdutils.md
+     - defs: LIBS/univ_defs.md
+     - errors: LIBS/univ_errors.md
+     - fileops: LIBS/univ_fileops.md
+     - strings: LIBS/univ_strings.md
+  - OCC:
+      - CodeGen: OCC/O_codegenerator .md
+      - Lexer: OCC/O_lexer .md
+      - Parser: OCC/O_parser .md
+  - SASM:
+      - Assembler: SASM/sasm_assembler .md
+      - Flags: SASM/sasm_flags .md
+      - Instructions: SASM/sasm_instructions .md
+      - Memory: SASM/sasm_memory .md
+  - VM:
+      - gbvm: VM/gbvm .md
 
 theme:
   name: material
@@ -65,9 +71,9 @@ theme:
   font:
     text: EnvyCodeR Nerd Font
     code: EnvyCodeR Nerd Font Mono
-  favicon: Assets/placeholder-favicon.png
+  favicon: assets/placeholder-favicon.png
   icon:
-    #logo: Assets/placeholder-favicon.png ## NEEDS SVG
+    #logo: assets/placeholder-favicon.png ## NEEDS SVG
 extra_css:
   - stylesheets/extra.css
 plugins:
