@@ -13,7 +13,7 @@
 }
 .md-typeset .custom > .admonition-title::before,
 .md-typeset .custom > summary::before {
-  background-color: #5d6cc0;
+  background-color: #303fa1;
   -webkit-mask-image: var(--md-admonition-icon--custom);
   mask-image: var(--md-admonition-icon--custom);
 }
