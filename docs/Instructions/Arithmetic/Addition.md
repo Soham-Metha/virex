@@ -6,7 +6,8 @@ The following opcodes are used for **addition**:
 
 ---
 ### ADDI — _Add Signed Integer_ {#ADDI}
-```title="Properties"```
+```title="Properties"
+```
 | Property        | Value                     |
 |-----------------|---------------------------|
 |   Opcode        | 13                        |
