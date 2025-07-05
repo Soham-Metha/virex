@@ -20,7 +20,7 @@ The following opcodes are used for **addition**:
 ```
 
 <div class="result" markdown>
-=== "Algorithm"
+=== "ADDI Algorithm"
 
     ```
         L2 = L2 + <signed_imm>
@@ -28,7 +28,7 @@ The following opcodes are used for **addition**:
         L2 = L2 + <const>
     ```
 
-=== "Example"
+=== "ADDI Example"
 
     ```linenums="1" hl_lines="1 3 5 7"
     ; imm +ve
@@ -57,7 +57,7 @@ The following opcodes are used for **addition**:
 ```
 
 <div class="result" markdown>
-=== "Algorithm"
+=== "ADDU Algorithm"
 
     ```
         L3 = L3 + <unsigned_imm>
@@ -65,7 +65,7 @@ The following opcodes are used for **addition**:
         L3 = L3 + <const>
     ```
 
-=== "Example"
+=== "ADDU Example"
 
     ```linenums="1" hl_lines="1 3 5"
     ; imm +ve
@@ -91,7 +91,7 @@ The following opcodes are used for **addition**:
 ```
 
 <div class="result" markdown>
-=== "Algorithm"
+=== "ADDF Algorithm"
 
     ```
         L1 = L1 + <float>
@@ -99,7 +99,7 @@ The following opcodes are used for **addition**:
         L1 = L1 + <const>
     ```
 
-=== "Example"
+=== "ADDF Example"
 
     ```linenums="1" hl_lines="1 3 5"
     ; imm float
