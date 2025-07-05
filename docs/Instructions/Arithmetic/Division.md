@@ -39,8 +39,15 @@ The following opcodes are used for **Division**:
     Identified as memonic [#16](#DIVI), DIVI is used to
     divide the L2 register by a 64-bit signed value
 
+</div>
+
 ### DIVU — _Divide by Unsigned Integer_
 
+```title="Algorithm"
+    L3 = L3 / <unsigned_imm>
+    L3 = L3 / <reg_val>
+    L3 = L3 / <const>
+```
     === "Properties"
 
         | Property        | Value                     |
@@ -50,14 +57,7 @@ The following opcodes are used for **Division**:
         | **Operand Type**| Unsigned 64-bit value     |
         | **Destination** | `L3` (implicit)           |
 
-    === "Algorithm"
-
-        ```
-        L3 = L3 / <unsigned_imm>
-        L3 = L3 / <reg_val>
-        L3 = L3 / <const>
-        ```
-
+<div class="result" markdown>
     === "Example"
 
         ```
