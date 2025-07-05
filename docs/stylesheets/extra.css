@@ -9,7 +9,7 @@
 }
 .md-typeset .custom > .admonition-title,
 .md-typeset .custom > summary {
-  background-color: rgba(43, 155, 70, 0.1);
+  background-color: rgba(93, 108, 192, 0.1);
 }
 .md-typeset .custom > .admonition-title::before,
 .md-typeset .custom > summary::before {
