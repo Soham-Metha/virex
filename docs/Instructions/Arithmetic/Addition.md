@@ -24,7 +24,7 @@ The following opcodes are used for **addition**:
     L2 = L2 + <const>
 ```
 <div class="result" markdown>
-=== "ADDI Example"
+=== "Example"
 
     ```linenums="1" hl_lines="1 3 5 7"
     ; imm +ve
