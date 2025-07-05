@@ -1,4 +1,3 @@
-
 The following opcodes are used for **Division**:
 
 - DIVI — Divide by Signed Integer
@@ -7,39 +6,40 @@ The following opcodes are used for **Division**:
 
 ---
 
-??? abstract "DIVI — _Divide by Signed Integer_"
+### DIVI — _Divide by Signed Integer_
 
-    === "Properties"
+```title="Algorithm"
 
-        | Property        | Value                     |
-        |-----------------|---------------------------|
-        | **Opcode**      | 16                        |
-        | **Type**        | Arithmetic                |
-        | **Operand Type**| Signed 64-bit integer     |
-        | **Destination** | `L2` (implicit)           |
+    L2 = L2 / <signed_imm>
+    L2 = L2 / <reg_val>
+    L2 = L2 / <const>
+```
 
-    === "Algorithm"
+<div class="result" markdown>
 
-        ```
-        L2 = L2 / <signed_imm>
-        L2 = L2 / <reg_val>
-        L2 = L2 / <const>
-        ```
+=== "DIVI Example"
 
-    === "Example"
+    ```linenums="1" hl_lines="1 3 5 7"
+    ; imm +ve
+        DIVI    1
+    ; imm -ve
+        DIVI    -123
+    ; reg val
+        DIVI    val(QT)
+    ; const
+        DIVI    SOME_CONST_VAL
+    ```
 
-        ```
-        ; imm +ve
-            DIVI    1
-        ; imm -ve
-            DIVI    -123
-        ; reg val
-            DIVI    val(QT)
-        ; const
-            DIVI    SOME_CONST_VAL
-        ```
+=== "DIVI Properties"
 
-??? abstract "DIVU — _Divide by Unsigned Integer_"
+    | Opcode | Operand Type          | Destination   |
+    |--------|-----------------------|---------------|
+    | 16     | Signed 64-bit integer | L2 (implicit) |
+
+    Identified as memonic [#16](#DIVI), DIVI is used to
+    divide the L2 register by a 64-bit signed value
+
+### DIVU — _Divide by Unsigned Integer_
 
     === "Properties"
 
@@ -70,7 +70,7 @@ The following opcodes are used for **Division**:
 
         ```
 
-??? abstract "DIVF — _Divide by Float value_"
+### DIVF — _Divide by Float value_
 
     === "Properties"
 
@@ -100,4 +100,5 @@ The following opcodes are used for **Division**:
             DIVF    SOME_CONST_VAL
 
         ```
+
 ---
