@@ -6,12 +6,7 @@ The following opcodes are used for **addition**:
 
 ---
 ### ADDI — _Add Signed Integer_ {#ADDI}
-???+ note "ADDI — _Add Signed Integer_"
-
-    Use ADDI to add an integer value to whatever value 
-    is stored within the L2 register. If the register L2 
-    is not set, then initial value of L2 is assumed to be 
-    0, and not a garbage value.
+???+ note "Properties"
 
     ```md title="Properties"
         |-----------------|---------------------------|
