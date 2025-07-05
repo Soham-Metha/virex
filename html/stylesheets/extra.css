@@ -1,0 +1,21 @@
+:root {
+  --md-admonition-icon--custom: url('data:image/svg+xml;charset=utf-8,');
+}
+.md-typeset .admonition.custom,
+.md-typeset details.custom {
+  border-right: 0px;
+  border-top:0px;
+  border-bottom: 0px;
+  border: 4px solid;
+  border-color: #303fa1;
+}
+.md-typeset .custom > .admonition-title,
+.md-typeset .custom > summary {
+  background-color: rgba(93, 108, 192, 0.0);
+}
+.md-typeset .custom > .admonition-title::before,
+.md-typeset .custom > summary::before {
+  background-color: #303fa1;
+  -webkit-mask-image: var(--md-admonition-icon--custom);
+          mask-image: var(--md-admonition-icon--custom);
+}
