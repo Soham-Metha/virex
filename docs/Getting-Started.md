@@ -5,26 +5,26 @@ hide:
 
 ## VIREX SETUP {#SETUP-ON-LINUX}
 
-??? info "bash commands"
-
-    ```bash linenums="1" hl_lines="1 5 8"
-    # 1. CLONING
-    git clone https://github.com/Soham-Metha/virex.git
-    cd virex/
-
-    # 2. BUILD (sudo)
-    ./install.sh
-
-    # 3. RUN VIREX (in the sample programs DIR)
-    cd ./examples/SASM/
-    virex
-    ```
-
 1.  **Clone this repo**
 
 2.  **Build the project (requires `sudo`)**
 
 3.  **Run VIREX**
+
+    ??? info "bash commands"
+
+        ```bash linenums="1" hl_lines="1 5 8"
+        # 1. CLONING
+        git clone https://github.com/Soham-Metha/virex.git
+        cd virex/
+
+        # 2. BUILD (sudo)
+        ./install.sh
+
+        # 3. RUN VIREX (in the sample programs DIR)
+        cd ./examples/SASM/
+        virex
+        ```
 
     ??? question "UI doesn't render properly"
 
