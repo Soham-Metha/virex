@@ -11,7 +11,7 @@ hide:
 
 ??? info "commands"
 
-    ```bash
+    ```bash inenums="1"
     git clone https://github.com/Soham-Metha/virex.git
     cd virex/
     ```
