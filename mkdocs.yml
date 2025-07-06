@@ -37,6 +37,7 @@ nav:
 
 theme:
   name: material
+  custom_dir: overrides
   highlightjs: true
   features:
     - announce.dismiss
