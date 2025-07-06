@@ -1,5 +1,9 @@
 mkdocs
+<<<<<<< HEAD
 mkdocs-material==9.6.15
+=======
+mkdocs-material[recommended]
+>>>>>>> 27e174fdf8069df9b03e30c5d69c587551eff4bf
 mkdocstrings
 mkdocstrings-python
 markdown-include
