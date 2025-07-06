@@ -49,12 +49,13 @@ hide:
 
 ## Activate the syntax highlighter in VS Code {#HIGHLIGHT-ON-LINUX}
 
-0. Open VS Code
-1. Press `Ctrl + Shift + P`
-2. Type: `Preferences: Color Theme`
-3. Select: `Palenight+sasm`
+0.  Open VS Code
+1.  Press `Ctrl + Shift + P`
+2.  Type: `Preferences: Color Theme`
+3.  Select: `Palenight+sasm`
 
     !!! Example
+
         🎨 Open any `.sasm` file in vs code to see the syntax highlighter at work!
 
 ---
