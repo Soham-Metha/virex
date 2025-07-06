@@ -37,22 +37,24 @@ hide:
 
 ## Execute Sample Programs {#EXECUTION-ON-LINUX}
 
-1. [**Setup and Execute Virex (In the Sample Programs DIR)**](#setup-on-linux)
-2. Select **"Assemble and Execute the Simulated Assembly Code"**
+1.  [**Setup and Execute Virex (In the Sample Programs DIR)**](#setup-on-linux)
+2.  Select **"Assemble and Execute the Simulated Assembly Code"**
 
     !!! note
 
         ⌨️ use **Arrow keys** for navigation in menu.
 
-- Select **"SASM build and exec"** by pressing **'a'**
-- Enter the output filename (`tmp.sm`)
+3.  Enter the file names (Ex. `helloWorld.sasm` and `helloWorld.sm`)
+4.  Choose 2. ( 1 for executing in step mode )
 
-1. **Activate the syntax highlighter in VS Code**
+## Activate the syntax highlighter in VS Code {#HIGHLIGHT-ON-LINUX}
 
-- Open VS Code
-- Press `Ctrl + Shift + P`
-- Type: `Preferences: Color Theme`
-- Select: `Palenight+sasm`
-  > 🎨 Open any `.sasm` file in vs code to see the syntax highlighter at work!
+0. Open VS Code
+1. Press `Ctrl + Shift + P`
+2. Type: `Preferences: Color Theme`
+3. Select: `Palenight+sasm`
+
+    !!! Example
+        🎨 Open any `.sasm` file in vs code to see the syntax highlighter at work!
 
 ---
