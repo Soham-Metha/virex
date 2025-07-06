@@ -10,14 +10,14 @@ nav:
   - Home: 
     - Overview: 
       - "index.md"
-      - Features:
-        - TOOLS: "Features.md"
-      - Getting Started: 
-        - LINUX: "Getting-Started.md"
-      - Contributing: 
-        - Architecture: "Architecture.md"
-        - Contributing: "Contributing.md"
-        - Credits: "Credits.md"
+    - Features:
+      - TOOLS: "Features.md"
+    - Getting Started: 
+      - LINUX: "Getting-Started.md"
+    - Contributing: 
+      - Architecture: "Architecture.md"
+      - Contributing: "Contributing.md"
+      - Credits: "Credits.md"
       # - Platform Independence: Features/Platform_Independence.md
       # - Open and Readable: Features/Open_and_Readable.md
       # - Flexible Architecture: Features/Flexible_Architecture.md
