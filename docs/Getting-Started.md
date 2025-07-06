@@ -5,9 +5,6 @@ hide:
 
 ---
 
-## 🧪 Getting Started (LINUX)
-
-
 ??? info inline end "commands"
 
     ```bash linenums="1"
