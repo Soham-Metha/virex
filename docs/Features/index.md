@@ -9,13 +9,13 @@
 
 ### **Syntax Highlighting:**
 
-![Image](assets/vs_theme.png)
+![Image](../assets/vs_theme.png)
 
 ---
 
 ### **AST:**
 
-![Image](assets/AST_Examples/helloWorld.png)
+![Image](../assets/AST_Examples/helloWorld.png)
 
 !!! info "Local/Global Scopes"
 
