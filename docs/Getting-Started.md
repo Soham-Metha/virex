@@ -8,28 +8,31 @@ hide:
 ??? info inline end "commands"
 
     ```bash linenums="1"
+    # 1. CLONING
     git clone https://github.com/Soham-Metha/virex.git
     cd virex/
+
+    # 2. BUILD
+    ./install.sh
+
+    # 3. RUN VIREX (in the sample programs DIR)
+    cd ./examples/SASM/
+    virex
     ```
 
 1. **Clone this repo**
 
-2. **Build the project (requires `sudo`):**
-   ```bash
-   ./install.sh
-   ```
+2. **Build the project (requires `sudo`)**
 
 3. **Run an example program:**
-   ```bash
-   cd ./examples/SASM/
-   virex
-   ```
-   > If the **TUI doesn't render properly**, try adjusting your **terminal font size**.
-   >
-   > If that doesn't help, you can tweak layout values in **src/VM/vm_tui.c::CreateWindows()**.
-   > The constants used are defined as **percentages** of the screen dimensions.
-   >
-   > P.S. **kitty terminal** config, and font used, are available in `/tools`
+
+??? question "UI doesn't render properly"
+    If the **TUI doesn't render properly**, try adjusting your **terminal font size**.
+
+    If that doesn't help, you can tweak layout values in **src/VM/vm_tui.c::CreateWindows()**.
+    The constants used are defined as **percentages** of the screen dimensions.
+
+    P.S. **kitty terminal** config, and font used, are available in `/tools`
 
 4. **Inside VIREX, do the following:**
 
