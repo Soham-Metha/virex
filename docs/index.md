@@ -37,13 +37,13 @@ You can even create your own programming language that compiles into SASM and ru
 
 ## 📦 Project Structure
 
-    /docs/      # Reference documentation
-    /examples/  # Sample programs
-    /include/   # Public headers for VM, SASM, OCC
-    /src/       # Core implementation (VM, assembler, compiler)
-    /tests/     # Simple Test programs written in SASM
-    /tools/themes/vs_code/ # VS Code syntax highlighter
-    /install.sh # Install script for linux
+    /docs/                    # Reference documentation
+    /examples/                # Sample programs
+    /include/                 # Public headers for VM, SASM, OCC
+    /src/                     # Core implementation (VM, assembler, compiler)
+    /tests/                   # Simple Test programs written in SASM
+    /tools/themes/vs_code/    # VS Code syntax highlighter
+    /install.sh               # Install script for linux
 
 ---
 
