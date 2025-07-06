@@ -8,7 +8,26 @@ repo_url: https://github.com/Soham-Metha/virex
 
 nav:
   - Home: 
-    - Overview: index.md
+    - Overview: "index.md"
+    - Features:
+      - "Features/index.md"
+      # - Platform Independence: Features/Platform_Independence.md
+      # - Open and Readable: Features/Open_and_Readable.md
+      # - Flexible Architecture: Features/Flexible_Architecture.md
+      # - Easy to Use: Features/Easy_to_Use.md
+      # - Extensible: Features/Extensible.md
+      # - Cross-Platform: Features/Cross_Platform.md
+      # - Lightweight: Features/Lightweight.md
+      # - Fast Execution: Features/Fast_Execution.md
+      # - Community Driven: Features/Community_Driven.md
+      # - Open Source: Features/Open_Source.md
+      # - Documentation: Features/Documentation.md
+      # - Use Cases: Features/Use_Cases.md
+      # - Getting Started: Features/Getting_Started.md
+      # - Contributing: Features/Contributing.md
+      # - License: Features/License.md
+      # - FAQ: Features/FAQ.md
+      # - Contact: Features/Contact.md
   - Instruction Set:
       - "Instructions/index.md"
       - Arithmetic: 
@@ -18,23 +37,23 @@ nav:
         - Multiplication: Instructions/Arithmetic/Multiplication.md
         - Division: Instructions/Arithmetic/Division.md
         - Modulus: Instructions/Arithmetic/Modulus.md
-  - Libs:
-     - cmd: LIBS/univ_cmdutils.md
-     - defs: LIBS/univ_defs.md
-     - errors: LIBS/univ_errors.md
-     - fileops: LIBS/univ_fileops.md
-     - strings: LIBS/univ_strings.md
-  - OCC:
-      - CodeGen: OCC/O_codegenerator .md
-      - Lexer: OCC/O_lexer .md
-      - Parser: OCC/O_parser .md
-  - SASM:
-      - Assembler: SASM/sasm_assembler .md
-      - Flags: SASM/sasm_flags .md
-      - Instructions: SASM/sasm_instructions .md
-      - Memory: SASM/sasm_memory .md
-  - VM:
-      - gbvm: VM/gbvm .md
+  # - Libs:
+  #    - cmd: LIBS/univ_cmdutils.md
+  #    - defs: LIBS/univ_defs.md
+  #    - errors: LIBS/univ_errors.md
+  #    - fileops: LIBS/univ_fileops.md
+  #    - strings: LIBS/univ_strings.md
+  # - OCC:
+  #     - CodeGen: OCC/O_codegenerator .md
+  #     - Lexer: OCC/O_lexer .md
+  #     - Parser: OCC/O_parser .md
+  # - SASM:
+  #     - Assembler: SASM/sasm_assembler .md
+  #     - Flags: SASM/sasm_flags .md
+  #     - Instructions: SASM/sasm_instructions .md
+  #     - Memory: SASM/sasm_memory .md
+  # - VM:
+  #     - gbvm: VM/gbvm .md
 
 theme:
   name: material
