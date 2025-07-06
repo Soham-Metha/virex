@@ -2,98 +2,98 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://virex.readthedocs.io/en/latest/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/Assembler/InstructionSet/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/Instructions/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/Instructions/Arithmetic/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/Instructions/Arithmetic/Addition/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/Instructions/Arithmetic/Division/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/Instructions/Arithmetic/Modulus/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/Instructions/Arithmetic/Multiplication/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/Instructions/Arithmetic/Subtraction/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/LIBS/univ_cmdutils/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/LIBS/univ_defs/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/LIBS/univ_errors/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/LIBS/univ_fileops/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/LIBS/univ_strings/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/MachineArch/registers/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/OCC/O_codegenerator%20/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/OCC/O_lexer%20/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/OCC/O_parser%20/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/SASM/sasm_assembler%20/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/SASM/sasm_flags%20/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/SASM/sasm_instructions%20/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/SASM/sasm_memory%20/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/VM/gbvm%20/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
     <url>
          <loc>https://virex.readthedocs.io/en/latest/blog/</loc>
-         <lastmod>2025-07-05</lastmod>
+         <lastmod>2025-07-06</lastmod>
     </url>
 </urlset>
