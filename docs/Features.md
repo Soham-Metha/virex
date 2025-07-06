@@ -35,13 +35,9 @@ Understanding how your code is structured internally is crucial,
 That's why we built a visual AST (Abstract Syntax Tree) viewer, 
 which displays the parsed structure of your program.
 
-This tool helps visualize how the assembler understands your code, showing:
-
-1. the hierarchical structure of scopes,
-
-2. statement ordering within blocks, and
-
-3. how constants and expressions are resolved.
+This tool helps visualize how the assembler understands your code, showing
+the hierarchical structure of scopes, statement ordering within blocks, and
+how constants and expressions are resolved.
 
 !!! info "Local and Global Scopes"
 
