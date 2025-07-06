@@ -7,10 +7,9 @@ hide:
 
 ![Image](../assets/vs_theme.png)
 
-!!! info
-
+```title="INFO"
     To make coding in **SASM** more comfortable and developer-friendly, we’ve created a **custom VS Code theme** tailored specifically for the syntax of our language. This theme highlights key constructs, registers, operands, and labels, making it much easier to read and debug code at a glance.
-
+```
 !!! info "Installation"
 
     ✨ Install the theme by using our [install script](../Getting-Started#HIGHLIGHT-ON-LINUX).
