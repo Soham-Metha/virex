@@ -1,4 +1,9 @@
 
+hide:
+  - toc
+
+---
+
 ## 🛠 Current Features
 
 - ✅ **VS Code syntax highlighter** for SASM
