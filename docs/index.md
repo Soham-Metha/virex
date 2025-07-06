@@ -101,20 +101,6 @@ You can even create your own programming language that compiles into SASM and ru
 
 ## **Examples**
 
-### **Syntax Highlighting:**
-
-![Image](assets/vs_theme.png){ width="400" }
-
----
-
-### **AST:**
-
-![Image](assets/AST_Examples/helloWorld.png)
-
-!!! info "Local/Global Scopes"
-
-    Each Code Block in the visualized AST represents a Scope, Block 0 being global scope.
-
 ---
 
 ### **Binary Executable:**
