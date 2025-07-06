@@ -56,11 +56,11 @@ theme:
     - navigation.instant
     # - navigation.instant.prefetch
     # - navigation.instant.progress
-    # - navigation.prune
-    - navigation.path
+    - navigation.prune
+    - navigation.tracking
     - navigation.sections
     - navigation.tabs
-    # - navigation.tabs.sticky
+    - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
     - search.highlight
