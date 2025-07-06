@@ -69,17 +69,14 @@ theme:
     - toc.follow
   
   palette:
-    - scheme: slate
-      primary: indigo
+    - scheme: nbl-light
       toggle:
-        icon: material/brightness-7
-        name: Toggle dark mode
-    - scheme: default
-      primary: black
-      accent: orange
+        icon: material/lightbulb 
+        name: Switch to dark mode
+    - scheme: nbl-dark
       toggle:
-        icon: material/brightness-4
-        name: Toggle light mode
+        icon: material/lightbulb-outline
+        name: Switch to light mode
   font:
     text: EnvyCodeR Nerd Font
     code: EnvyCodeR Nerd Font Mono
