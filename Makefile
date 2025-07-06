@@ -47,15 +47,8 @@ clean: | $(BUILDS)
 	@rm -f $(BUILDS)/*
 	@printf  "\n\e[36m  CLEANED ALL OBJECT FILES AND EXECUTABLES	\e[0m\n\n"
 
-<<<<<<< HEAD
 html: clean-html
 	@mkdocs build -f mkdocs.yml
 
 clean-html:
-=======
-html: clean-docs
-	@mkdocs build -f mkdocs.yml
-
-clean-docs:
->>>>>>> 27e174fdf8069df9b03e30c5d69c587551eff4bf
 	@rm -rfv html
