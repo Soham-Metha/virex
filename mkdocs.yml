@@ -8,7 +8,8 @@ repo_url: https://github.com/Soham-Metha/virex
 
 nav:
   - Home: 
-    - Overview: "index.md"
+    - Overview: 
+      - "index.md"
     - Features:
       - "Features/index.md"
       # - Platform Independence: Features/Platform_Independence.md
