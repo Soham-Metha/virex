@@ -6,7 +6,7 @@ social:
     title: VIRtual EXecutor
 
 hide:
-  - nav
+  - toc
 
 ---
 
