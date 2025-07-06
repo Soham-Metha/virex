@@ -2,7 +2,7 @@ site_name: VIREX
 docs_dir: docs
 site_dir: ./html
 site_url: https://virex.readthedocs.io/en/latest/
-
+site_description: VIREX (VIRtual EXecuter) is a platform-independent virtual machine designed around a flexible intermediate language called SASM (Simulated Assembly). It’s inspired by the Java Virtual Machine (JVM), but unlike JVM bytecode, SASM is open, readable, and writable — you can program directly in it.
 repo_name: Soham-Metha/virex
 repo_url: https://github.com/Soham-Metha/virex
 
