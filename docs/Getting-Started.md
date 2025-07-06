@@ -23,7 +23,6 @@ hide:
    cd ./examples/SASM/
    virex
    ```
-
    > If the **TUI doesn't render properly**, try adjusting your **terminal font size**.
 
    > If that doesn't help, you can tweak layout values in **src/VM/vm_tui.c::CreateWindows()**.
