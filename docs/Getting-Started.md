@@ -5,9 +5,9 @@ hide:
 
 ---
 
-??? info inline end "commands"
+??? info "bash commands"
 
-    ```bash linenums="1"
+    ```bash linenums="1" hl_lines="1 5 8"
     # 1. CLONING
     git clone https://github.com/Soham-Metha/virex.git
     cd virex/
