@@ -1,14 +1,11 @@
 ---
-
 hide:
   - toc
-
 ---
 
 ### **Syntax Highlighting:**
 
 ![Image](../assets/vs_theme.png)
-
 
 A QOL Feature is our VS Code theme for syntax highlighting to
 make coding in SASM more developer friendly!
@@ -25,7 +22,6 @@ of any program!
 !!! info "Local/Global Scopes"
 
     Each Code Block in the visualized AST represents a Scope, Block 0 being global scope.
-
 
 ## 🛠 Under Development
 
