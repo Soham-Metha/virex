@@ -46,6 +46,7 @@ This tool helps visualize how the assembler understands your code, showing:
 !!! info "Local and Global Scopes"
 
     Every code block in the visualized AST represents a **scope**.
+    
     - **Block 0** is the *global scope*.
     - Nested blocks represent *functions, conditionals, or loops*.
 
