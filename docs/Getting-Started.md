@@ -12,7 +12,7 @@ hide:
     git clone https://github.com/Soham-Metha/virex.git
     cd virex/
 
-    # 2. BUILD(sudo)
+    # 2. BUILD (sudo)
     ./install.sh
 
     # 3. RUN VIREX (in the sample programs DIR)
