@@ -79,5 +79,3 @@ VIREX welcomes contributions and collaboration. Visit our GitHub repo, try out S
 > Ready to run your first virtual assembly program? [Get started →](Getting-Started.md#SETUP-ON-LINUX)
 
 ---
-
-Let me know if you want this broken up into modular sections (e.g., About, Features, Tooling, Get Started) or if you're using `partials` and need it styled for a specific homepage layout.
