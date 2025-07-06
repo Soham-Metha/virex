@@ -1,11 +1,3 @@
----
-template: home.html
-title: VIREX
-social:
-  cards_layout_options:
-    title: VIRtual EXecutor
-
----
 
 # VIREX : Virtual Execution Console
 
