@@ -1,11 +1,10 @@
 ---
-
 hide:
   - toc
-
 ---
 
 ## VIREX SETUP {#SETUP-ON-LINUX}
+
 ??? info "bash commands"
 
     ```bash linenums="1" hl_lines="1 5 8"
@@ -21,23 +20,25 @@ hide:
     virex
     ```
 
-1. **Clone this repo**
+1.  **Clone this repo**
 
-2. **Build the project (requires `sudo`)**
+2.  **Build the project (requires `sudo`)**
 
-3. **Run VIREX**
+3.  **Run VIREX**
 
     ??? question "UI doesn't render properly"
-        If the **TUI doesn't render properly**, try adjusting your **terminal font size**.
+    If the **TUI doesn't render properly**, try adjusting your **terminal font size**.
 
         If that doesn't help, you can tweak layout values in **src/VM/vm_tui.c::CreateWindows()**.
         The constants used are defined as **percentages** of the screen dimensions.
 
         P.S. **kitty terminal** config, and font used, are available in `/tools`
 
-4. **Inside VIREX, do the following:**
+## Execute Sample Programs {#EXECUTION-ON-LINUX}
 
-- Select **"Run SASM/ORIN command with custom flags"**
+1. [**Setup and Execute Virex (In the Sample Programs DIR)**](#setup-on-linux)
+2. Select **"Run SASM/ORIN command with custom flags"**
+
 - Enter the following command:
   ```bash
   -i helloWorld.sasm -I ./ -o tmp.sm
@@ -46,7 +47,7 @@ hide:
 - Select **"SASM build and exec"** by pressing **'a'**
 - Enter the output filename (`tmp.sm`)
 
-5. **Activate the syntax highlighter in VS Code**
+1. **Activate the syntax highlighter in VS Code**
 
 - Open VS Code
 - Press `Ctrl + Shift + P`
