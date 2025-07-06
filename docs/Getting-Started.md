@@ -8,6 +8,9 @@ hide:
 ## 🧪 Getting Started (LINUX)
 
 1. **Clone this repo:**
+
+??? info ""
+
    ```bash
    git clone https://github.com/Soham-Metha/virex.git
    cd virex/
