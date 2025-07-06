@@ -9,10 +9,10 @@ hide:
 
 ![Image](../assets/vs_theme.png)
 
-<div class="result" markdown>
+
 A QOL Feature is our VS Code theme for syntax highlighting to
 make coding in SASM more developer friendly!
-</div>
+
 ---
 
 ### **AST:**
