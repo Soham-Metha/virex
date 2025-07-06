@@ -11,10 +11,10 @@ hide:
 
 ??? info ""
 
-   ```bash
-   git clone https://github.com/Soham-Metha/virex.git
-   cd virex/
-   ```
+    ```bash
+    git clone https://github.com/Soham-Metha/virex.git
+    cd virex/
+    ```
 
 2. **Build the project (requires `sudo`):**
    ```bash
