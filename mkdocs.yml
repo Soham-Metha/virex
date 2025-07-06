@@ -10,10 +10,10 @@ nav:
   - Home: 
     - Overview: 
       - "index.md"
-      - Getting Started: 
-        - LINUX: "Getting-Started.md"
       - Features:
         - TOOLS: "Features.md"
+      - Getting Started: 
+        - LINUX: "Getting-Started.md"
       - Contributing: 
         - Architecture: "Architecture.md"
         - Contributing: "Contributing.md"
