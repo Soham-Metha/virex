@@ -76,7 +76,6 @@ theme:
         name: Toggle dark mode
     - scheme: default
       primary: black
-      accent: orange
       toggle:
         icon: material/brightness-4
         name: Toggle light mode
