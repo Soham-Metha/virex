@@ -48,6 +48,19 @@ This makes it significantly easier to debug parsing errors, optimize macros, and
 
 </div>
 
+### **GUI:**
+
+![Image](assets/gui.png)
+
+```title="INFO"
+
+```
+
+<div class="result" markdown>
+VIREX comes with a Command Line Interface(CLI) written in NCurses.
+</div>
+---
+
 ## 🛠 Under Development
 
 - 🔧 A new programming language called **ORIN** is currently under development. It is being designed to compile directly to SASM.
