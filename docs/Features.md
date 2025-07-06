@@ -23,13 +23,29 @@ read and debug code at a glance.
 ### **AST:**
 
 ![Image](../assets/AST_Examples/helloWorld.png)
+```title="INFO"
+```
+<div class="result" markdown>
+Understanding how your code is structured internally is crucial, 
+That's why we built a visual AST (Abstract Syntax Tree) viewer, 
+which displays the parsed structure of your program.
 
-An AST visualizer that helps better understand the sequence flow
-of any program!
+This tool helps visualize how the assembler understands your code, showing:
 
-!!! info "Local/Global Scopes"
+    the hierarchical structure of scopes,
 
-    Each Code Block in the visualized AST represents a Scope, Block 0 being global scope.
+    statement ordering within blocks, and
+
+    how constants and expressions are resolved.
+
+!!! info "Local and Global Scopes"
+
+    Every code block in the visualized AST represents a **scope**.
+    - **Block 0** is the *global scope*.
+    - Nested blocks represent *functions, conditionals, or loops*.
+
+This makes it significantly easier to debug parsing errors, optimize macros, and understand the flow of control — even for larger programs.
+</div>
 
 ## 🛠 Under Development
 
