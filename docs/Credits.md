@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 ## Maintainers
 
 | Tool                    | Maintainer   |
