@@ -8,27 +8,27 @@ hide:
 ## 🧪 Getting Started (LINUX)
 
 1. **Clone this repo:**
-    ```bash
-    git clone https://github.com/Soham-Metha/virex.git
-    cd virex/
-    ```
+   ```bash
+   git clone https://github.com/Soham-Metha/virex.git
+   cd virex/
+   ```
 
 2. **Build the project (requires `sudo`):**
-    ```bash
-    ./install.sh
-    ```
+   ```bash
+   ./install.sh
+   ```
 
 3. **Run an example program:**
-    ```bash
-    cd ./examples/SASM/
-    virex
-    ```
-    > If the **TUI doesn't render properly**, try adjusting your **terminal font size**.
-    >
-    > If that doesn't help, you can tweak layout values in **src/VM/vm_tui.c::CreateWindows()**.
-    > The constants used are defined as **percentages** of the screen dimensions.
-    >
-    > P.S. **kitty terminal** config, and font used, are available in `/tools`
+   ```bash
+   cd ./examples/SASM/
+   virex
+   ```
+   > If the **TUI doesn't render properly**, try adjusting your **terminal font size**.
+   >
+   > If that doesn't help, you can tweak layout values in **src/VM/vm_tui.c::CreateWindows()**.
+   > The constants used are defined as **percentages** of the screen dimensions.
+   >
+   > P.S. **kitty terminal** config, and font used, are available in `/tools`
 
 4. **Inside VIREX, do the following:**
 
