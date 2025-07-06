@@ -9,7 +9,7 @@ hide:
 
 1. **Clone this repo:**
 
-??? info "commands"
+??? info inline end "commands"
 
     ```bash linenums="1"
     git clone https://github.com/Soham-Metha/virex.git
