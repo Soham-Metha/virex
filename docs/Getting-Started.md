@@ -39,8 +39,11 @@ hide:
 
 1. [**Setup and Execute Virex (In the Sample Programs DIR)**](#setup-on-linux)
 2. Select **"Assemble and Execute the Simulated Assembly Code"**
+
     !!! note
+
         ⌨️ use **Arrow keys** for navigation in menu.
+
 - Select **"SASM build and exec"** by pressing **'a'**
 - Enter the output filename (`tmp.sm`)
 
