@@ -9,7 +9,7 @@ repo_url: https://github.com/Soham-Metha/virex
 nav:
   - Home: index.md
   - Instruction Set:
-      - Instructions/index.md
+      - "Instructions/index.md"
       - Arithmetic: 
         - Arithmetic Instructions : Instructions/Arithmetic/index.md
         - Addition: Instructions/Arithmetic/Addition.md
