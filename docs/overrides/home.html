@@ -1,22 +1,28 @@
-{% extends "main.html" %}
-{% block tabs %}
-  {{ super() }}
-  <style>@media screen and (min-width:60em){}@media screen and (min-width:76.25em){}</style>
-  <section class="mdx-container">
-    <div class="md-grid md-typeset">
-      <div class="mdx-hero">
-        <div class="mdx-hero__image">
-          <img src="assets/gui.png" alt="" width="100%" height="100%" draggable="false">
-        </div>
-        <div class="mdx-hero__content">
-          <h1>Code that just works</h1>
-          <p>{{ config.site_description }}</p>
-          <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | e }}" class="md-button md-button--primary">
-            Quick start
-          </a>
-        </div>
+{% extends "main.html" %} {% block tabs %} {{ super() }}
+<style>
+  @media screen and (min-width: 60em) {
+  }
+  @media screen and (min-width: 76.25em) {
+  }
+</style>
+<section class="mdx-container">
+  <div class="md-grid md-typeset">
+    <div class="mdx-hero">
+      <div class="mdx-hero__image">
+        <img
+          src="assets/gui.png"
+          alt=""
+          width="100%"
+          height="100%"
+          draggable="false"
+        />
+      </div>
+      <div class="mdx-hero__content">
+        <h1>Code that just works</h1>
+        <p>{{ config.site_description }}</p>
       </div>
     </div>
-  </section>
-  
+  </div>
+</section>
+
 {% endblock %}
