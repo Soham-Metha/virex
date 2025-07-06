@@ -15,8 +15,7 @@ hide:
     read and debug code at a glance.
 ```
 <div class="result" markdown>
-
-    ✨ Install the theme by using our [install script](../Getting-Started#HIGHLIGHT-ON-LINUX).
+✨ Install the theme by using our [install script](../Getting-Started#HIGHLIGHT-ON-LINUX).
 </div>
 ---
 
