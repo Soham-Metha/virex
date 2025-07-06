@@ -14,6 +14,10 @@ nav:
         - LINUX: "Getting-Started.md"
       - Features:
         - TOOLS: "Features.md"
+      - Contributing: 
+        - Architecture: "Architecture.md"
+        - Contributing: "Contributing.md"
+        - Credits: "Credits.md"
       # - Platform Independence: Features/Platform_Independence.md
       # - Open and Readable: Features/Open_and_Readable.md
       # - Flexible Architecture: Features/Flexible_Architecture.md
