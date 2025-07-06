@@ -50,5 +50,5 @@ clean: | $(BUILDS)
 html: clean-docs
 	@mkdocs build -f mkdocs.yml
 
-clean-docs:
+clean-html:
 	@rm -rfv html
