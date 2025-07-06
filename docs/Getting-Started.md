@@ -29,10 +29,10 @@ hide:
     ??? question "UI doesn't render properly"
         If the **TUI doesn't render properly**, try adjusting your **terminal font size**.
 
-            If that doesn't help, you can tweak layout values in **src/VM/vm_tui.c::CreateWindows()**.
-            The constants used are defined as **percentages** of the screen dimensions.
+        If that doesn't help, you can tweak layout values in **src/VM/vm_tui.c::CreateWindows()**.
+        The constants used are defined as **percentages** of the screen dimensions.
 
-            P.S. **kitty terminal** config, and font used, are available in `/tools`
+        P.S. **kitty terminal** config, and font used, are available in `/tools`
 
 ## Execute Sample Programs {#EXECUTION-ON-LINUX}
 
