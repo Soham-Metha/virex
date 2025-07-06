@@ -5,6 +5,9 @@ social:
   cards_layout_options:
     title: VIRtual EXecutor
 
+hide:
+  - nav
+
 ---
 
 
