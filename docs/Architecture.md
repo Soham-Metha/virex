@@ -23,10 +23,15 @@ hide:
     /install.sh               # Install script for linux
 
 ---
+## Architecture
+
+### VIREX
 
 ![Image](assets/Architecture/virex_arch.png)
 
 ---
+
+### SASM
 
 ![Image](assets/Architecture/sasm_arch.png)
 ![Image](assets/Architecture/sasm_components_1.png)
