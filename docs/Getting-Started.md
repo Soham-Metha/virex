@@ -12,12 +12,13 @@ hide:
    git clone https://github.com/Soham-Metha/virex.git
    cd virex/
    ```
+
 2. **Build the project (requires `sudo`):**
    ```bash
    ./install.sh
    ```
-3. **Run an example program:**
 
+3. **Run an example program:**
    ```bash
    cd ./examples/SASM/
    virex
