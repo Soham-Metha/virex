@@ -1,4 +1,6 @@
-
+---
+template: home.html
+---
 # VIREX : Virtual Execution Console
 
 **VIREX** (VIRtual EXecuter) is a platform-independent virtual machine designed around a flexible intermediate language called **SASM** (Simulated Assembly). It’s inspired by the **Java Virtual Machine (JVM)**, but unlike JVM bytecode, SASM is **open, readable, and writable** — you can program directly in it.
