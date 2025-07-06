@@ -10,8 +10,10 @@ nav:
   - Home: 
     - Overview: 
       - "index.md"
-    - Features:
-      - "Features/index.md"
+      - Getting Started: 
+        - "Getting_Started.md"
+      - Features:
+        - "Features.md"
       # - Platform Independence: Features/Platform_Independence.md
       # - Open and Readable: Features/Open_and_Readable.md
       # - Flexible Architecture: Features/Flexible_Architecture.md
