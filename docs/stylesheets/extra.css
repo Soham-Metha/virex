@@ -44,8 +44,8 @@
   color-scheme: dark;
 
   --md-default-bg-color:        #1e2129;
-  --md-default-fg-color--light: #ffffff;
   --md-default-fg-color:        #ffffff;
+  --md-default-fg-color--light: #ffffff;
   --md-default-fg-color--lighter:hsla(var(--md-hue),15%,90%,0.32);
 
   --md-primary-fg-color:        #00857d;
