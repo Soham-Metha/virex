@@ -1,4 +1,3 @@
-
 ![Image](assets/Architecture/virex_arch.png)
 
 ---
@@ -9,9 +8,23 @@
 
 ---
 
+## 📦 Project Structure
+
+    /docs/                    # Reference documentation
+    /examples/                # Sample programs
+    /include/                 # Public headers for VM, SASM, OCC
+    /src/                     # Core implementation (VM, assembler, compiler)
+    /tests/                   # Simple Test programs written in SASM
+    /tools/themes/vs_code/    # VS Code syntax highlighter
+    /install.sh               # Install script for linux
+
+---
+
 ## Tech Stack
 
 - **Programming Language:** C
 - **Version Control:** Git
 - **Build System:** GNU Make
 - **AST VISUALIZER:** Graphviz
+
+---
