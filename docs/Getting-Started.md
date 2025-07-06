@@ -27,7 +27,7 @@ hide:
 3.  **Run VIREX**
 
     ??? question "UI doesn't render properly"
-    
+
         If the **TUI doesn't render properly**, try adjusting your **terminal font size**.
 
         If that doesn't help, you can tweak layout values in **src/VM/vm_tui.c::CreateWindows()**.
@@ -38,13 +38,9 @@ hide:
 ## Execute Sample Programs {#EXECUTION-ON-LINUX}
 
 1. [**Setup and Execute Virex (In the Sample Programs DIR)**](#setup-on-linux)
-2. Select **"Run SASM/ORIN command with custom flags"**
-
-- Enter the following command:
-  ```bash
-  -i helloWorld.sasm -I ./ -o tmp.sm
-  ```
-  > ⌨️ use **Arrow keys** for navigation in menu.
+2. Select **"Assemble and Execute the Simulated Assembly Code"**
+    !!! note
+        ⌨️ use **Arrow keys** for navigation in menu.
 - Select **"SASM build and exec"** by pressing **'a'**
 - Enter the output filename (`tmp.sm`)
 
