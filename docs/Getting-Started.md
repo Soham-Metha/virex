@@ -25,7 +25,7 @@ hide:
 
 2. **Build the project (requires `sudo`)**
 
-3. **Run an example program**
+3. **Run VIREX**
 
     ??? question "UI doesn't render properly"
         If the **TUI doesn't render properly**, try adjusting your **terminal font size**.
