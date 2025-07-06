@@ -70,15 +70,14 @@ theme:
   palette:
     - scheme: slate
       primary: indigo
-      accent: green
       toggle:
-        icon: material/toggle-switch
+        icon: material/brightness-7
         name: Toggle dark mode
     - scheme: default
       primary: black
       accent: orange
       toggle:
-        icon: material/toggle-switch
+        icon: material/brightness-4
         name: Toggle light mode
   font:
     text: EnvyCodeR Nerd Font
