@@ -24,20 +24,5 @@ You can even create your own programming language that compiles into SASM and ru
 - Build a **compiler** without worrying about machine-level code generation.
 - Make your own language **platform-independent** by targeting SASM.
 
----
-
-## **Examples**
-
----
-
-### **Binary Executable:**
-
-![Image](assets/helloWorld_SM.png)
-
----
-
-### **GUI:**
-
-![Image](assets/gui.png)
 
 ---
