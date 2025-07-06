@@ -139,7 +139,7 @@ void __assemble_sasm(WINDOW* win)
     wmove(win, 3, 4);
     readFilePath(win, "Enter the name of the output SM file : ", &outputFile);
 
-    snprintf(buffer, sizeof(buffer), "./sasm -i %s -o %s", inputFile, outputFile);
+    snprintf(buffer, sizeof(buffer), "sasm -i %s -o %s", inputFile, outputFile);
 
     if (system(buffer) != 0) {
         displayMsgWithExit("Assembly Failed");
@@ -152,7 +152,7 @@ void __disassemble_sm(WINDOW* win)
     wmove(win, 3, 4);
     readFilePath(win, "Enter the name of the output SASM file : ", &outputFile);
 
-    snprintf(buffer, sizeof(buffer), "./sasm -i %s -o %s -d", inputFile, outputFile);
+    snprintf(buffer, sizeof(buffer), "sasm -i %s -o %s -d", inputFile, outputFile);
 
     if (system(buffer) != 0) {
         displayMsgWithExit("Disassembly Failed");
