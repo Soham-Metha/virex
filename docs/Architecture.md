@@ -34,6 +34,8 @@ hide:
 ### SASM
 
 ![Image](assets/Architecture/sasm_arch.png)
+
+### Individual Components of SASM
 ![Image](assets/Architecture/sasm_components_1.png)
 ![Image](assets/Architecture/sasm_components_2.png)
 
