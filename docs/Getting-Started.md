@@ -5,6 +5,7 @@ hide:
 
 ---
 
+## VIREX SETUP {#SETUP-ON-LINUX}
 ??? info "bash commands"
 
     ```bash linenums="1" hl_lines="1 5 8"
