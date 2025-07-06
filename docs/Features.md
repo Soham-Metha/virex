@@ -14,10 +14,10 @@ hide:
     registers, operands, and labels, making it much easier to 
     read and debug code at a glance.
 ```
-!!! info "Installation"
+<div class="result" markdown>
 
     ✨ Install the theme by using our [install script](../Getting-Started#HIGHLIGHT-ON-LINUX).
-
+</div>
 ---
 
 ### **AST:**
