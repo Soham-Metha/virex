@@ -8,7 +8,9 @@ hide:
 ![Image](../assets/vs_theme.png)
 
 ```title="INFO"
+
 ```
+
 <div class="result" markdown>
 To make coding in **SASM** more comfortable and developer-friendly, 
 we’ve created a **custom VS Code theme** tailored specifically for 
@@ -17,15 +19,17 @@ registers, operands, and labels, making it much easier to
 read and debug code at a glance.
 
 ✨ Install the theme by using our [install script](../Getting-Started#HIGHLIGHT-ON-LINUX).
-</div>
----
+
+## </div>
 
 ### **AST:**
 
 ![Image](../assets/AST_Examples/helloWorld.png)
 
 ```title="INFO"
+
 ```
+
 <div class="result" markdown>
 Understanding how your code is structured internally is crucial, 
 That's why we built a visual AST (Abstract Syntax Tree) viewer, 
@@ -33,11 +37,11 @@ which displays the parsed structure of your program.
 
 This tool helps visualize how the assembler understands your code, showing:
 
-    the hierarchical structure of scopes,
+1. the hierarchical structure of scopes,
 
-    statement ordering within blocks, and
+2. statement ordering within blocks, and
 
-    how constants and expressions are resolved.
+3. how constants and expressions are resolved.
 
 !!! info "Local and Global Scopes"
 
@@ -46,6 +50,7 @@ This tool helps visualize how the assembler understands your code, showing:
     - Nested blocks represent *functions, conditionals, or loops*.
 
 This makes it significantly easier to debug parsing errors, optimize macros, and understand the flow of control — even for larger programs.
+
 </div>
 
 ## 🛠 Under Development
