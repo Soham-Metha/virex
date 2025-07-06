@@ -21,4 +21,41 @@
       </div>
     </div>
   </section>
+  <section class="first-gradiant-body w-100">
+    <div class="md-grid conteiner-row pt-1 pt-lg-5 my-4">
+      <div class="px-3 ctx-header-text conteiner">
+        <div class="conteiner-row">
+          <p class="h1 text-xs-center">
+            binbash
+            <img src="assets/images/logos/leverage-title-logo.svg" class="mx-3 leverage-title-logo" height="22%"/>
+            documentation
+          </p>
+        </div>
+        <img src="assets/images/logos/binbash-landing-header.svg" class="laverage-header-img d-lg-none d-xl-none mx-auto mb-5" />
+        <p class="h3 text-xs-center">The leading, easy to deploy, reusable and most automated solution for defining, provisioning and managing your secure and scalable multi-account AWS infrastructure environment.</p>
+        <div class="conteiner-row conteiner-xs">
+          <button
+            type="button"
+            title="{{ page.next_page.title | e }}"
+            onclick="location.href='./concepts/'"
+            class="btn-dark btn-xl-large btn-lg-large mx-3  mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow"
+          >
+              Get Started
+          </button>
+          <button
+            type="button"
+            title="{{ page.next_page.title | e }}"
+            onclick="window.open('https://join.slack.com/t/binbashar/shared_invite/zt-fw1692b6-9k4ADsWJ47lKacszphXM1w', '_blank')"
+            class="btn-warning btn-xl-large btn-lg-large mx-3 mt-3 my-md-5 my-lg-5 my-xl-5 box-shadow"
+          >
+            Join Us on Slack
+          </button>
+        </div>
+      </div>
+      <div class="ctx-header-img d-lg">
+        <img src="assets/images/logos/binbash-landing-header.svg" class="laverage-header-img mx-lg-5" />
+      </div>
+    </div>
+  
+  </section>
 {% endblock %}
