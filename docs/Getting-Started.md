@@ -7,7 +7,6 @@ hide:
 
 ## 🧪 Getting Started (LINUX)
 
-1. **Clone this repo:**
 
 ??? info inline end "commands"
 
@@ -15,6 +14,8 @@ hide:
     git clone https://github.com/Soham-Metha/virex.git
     cd virex/
     ```
+
+1. **Clone this repo**
 
 2. **Build the project (requires `sudo`):**
    ```bash
