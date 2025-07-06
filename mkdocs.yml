@@ -2,11 +2,7 @@ site_name: VIREX
 docs_dir: docs
 site_dir: ./html
 site_url: https://virex.readthedocs.io/en/latest/
-<<<<<<< HEAD
 site_description: VIREX (VIRtual EXecuter) is a platform-independent virtual machine designed around a flexible intermediate language called SASM (Simulated Assembly). It’s inspired by the Java Virtual Machine (JVM), but unlike JVM bytecode, SASM is open, readable, and writable — you can program directly in it.
-=======
-
->>>>>>> 27e174fdf8069df9b03e30c5d69c587551eff4bf
 repo_name: Soham-Metha/virex
 repo_url: https://github.com/Soham-Metha/virex
 
@@ -40,7 +36,6 @@ nav:
       # - FAQ: Features/FAQ.md
       # - Contact: Features/Contact.md
   - Instruction Set:
-<<<<<<< HEAD
       - "Instructions/index.md"
       - Arithmetic: 
         - Arithmetic Instructions : Instructions/Arithmetic/index.md
@@ -50,11 +45,6 @@ nav:
         - Division: Instructions/Arithmetic/Division.md
         - Modulus: Instructions/Arithmetic/Modulus.md
   # - Libs:
-=======
-      - Instructions/index.md
-      - Arithmetic: Instructions/Arithmetic.md
-  #- Libs:
->>>>>>> 27e174fdf8069df9b03e30c5d69c587551eff4bf
   #    - cmd: LIBS/univ_cmdutils.md
   #    - defs: LIBS/univ_defs.md
   #    - errors: LIBS/univ_errors.md
@@ -114,7 +104,6 @@ theme:
         name: Switch to light mode
     - scheme: nbl-light
       toggle:
-<<<<<<< HEAD
         icon: material/lightbulb 
         name: Switch to dark mode
   font:
@@ -123,16 +112,6 @@ theme:
   favicon: assets/placeholder-favicon.png
   icon:
     #logo: assets/placeholder-favicon.png ## NEEDS SVG
-=======
-        icon: material/toggle-switch
-        name: Toggle light mode
-  font:
-    text: EnvyCodeR Nerd Font
-    code: EnvyCodeR Nerd Font Mono
-  favicon: Assets/placeholder-favicon.png
-  icon:
-    #logo: Assets/placeholder-favicon.png ## NEEDS SVG
->>>>>>> 27e174fdf8069df9b03e30c5d69c587551eff4bf
 extra_css:
   - stylesheets/extra.css
 plugins:
@@ -147,7 +126,6 @@ plugins:
       minify_html: true
 
 markdown_extensions:
-<<<<<<< HEAD
   - abbr
   - admonition
   - attr_list
@@ -198,13 +176,3 @@ markdown_extensions:
 
   - markdown_include.include:
       base_path: .
-=======
-  - pymdownx.superfences
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.details
-  - markdown_include.include:
-      base_path: .
-  - admonition
-  - attr_list
->>>>>>> 27e174fdf8069df9b03e30c5d69c587551eff4bf
