@@ -69,7 +69,7 @@ hide:
         <br>[GitHub Discussions](https://github.com/Soham-Metha/virex/discussions)
         <br>[CONTRIBUTING.md](../CONTRIBUTING.md)
         <br>[roadmap](roadmap.md)
-        🤝 Contact & Community
+    🤝 Contact & Community
     !!! warning ""
 
 
