@@ -64,7 +64,7 @@ We gratefully acknowledge the creators and communities that inspired and support
   [Tsoding](https://www.youtube.com/playlist?list=PLpM-Dvs8t0VY73ytTCQqgvgCWttV3m8LM), [Dr. Jonas Birch](https://www.youtube.com/@dr-Jonas-Birch), [Low Byte Productions](https://www.youtube.com/playlist?list=PLP29wDx6QmW5DdwpdwHCRJsEubS5NrQ9b), [Cobb Coding](https://www.youtube.com/playlist?list=PLRnI_2_ZWhtCxHQ_3zDfW0-RgiWo8ftyj) for their deep dives into compilers, virtual machines, and systems programming.
 
 - **Ecosystem & Tools**:  
-  The open-source communities around the **JVM**, and broader **language tooling** landscape, for providing extensible blueprints and motivation.
+  The open-source communities around the **JVM**, and **language tooling** landscape, for providing extensible blueprints and motivation.
 
 - **Early Support**:  
   Friends, testers, and curious peers who gave feedback during the early stages of development.
