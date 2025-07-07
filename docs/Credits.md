@@ -19,25 +19,23 @@ hide:
 
 === "Soham Metha"
 
-    !!! tip ""
+    <figure markdown="span">
+      ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;" }
+    </figure>
+        
 
-        <figure markdown="span">
-          ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;" }
-        </figure>
-            
+    > **Role**: Lead Developer <br>
+    > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs
 
-        > **Role**: Lead Developer <br>
-        > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs
+    - Designed the **VIREX** Virtual Machine architecture.
+    - Developed the **SASM Assembler** and complete instruction set.
+    - Built tooling: AST visualizer, debug tools, and VS Code syntax extension.
+    - Authored all core documentation.
+    - Maintains the monorepo, versioning, and long-term roadmap.
 
-        - Designed the **VIREX** Virtual Machine architecture.
-        - Developed the **SASM Assembler** and complete instruction set.
-        - Built tooling: AST visualizer, debug tools, and VS Code syntax extension.
-        - Authored all core documentation.
-        - Maintains the monorepo, versioning, and long-term roadmap.
+    > *"VIREX is a hands-on way to explore systems programming, not just study it."* <br>
 
-        > *"VIREX is a hands-on way to explore systems programming, not just study it."* <br>
-
-        [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-VIREX-success)]() [![](https://img.shields.io/badge/Project-SASM-success)]()
+    [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-VIREX-success)]() [![](https://img.shields.io/badge/Project-SASM-success)]()
     
 
 === "Omkar Jagtap"
