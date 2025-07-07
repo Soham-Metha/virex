@@ -1,8 +1,3 @@
----
-hide:
-  - toc
----
-
 
 <aside class="md-sidebar md-sidebar--secondary" markdown>
 !!! info ""
