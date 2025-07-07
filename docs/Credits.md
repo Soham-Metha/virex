@@ -56,7 +56,6 @@ hide:
     [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-ORIN-orange)]() [![](https://img.shields.io/badge/Target-SASM-lightgrey)]()  
 
     !!! quote ""
-
 ## 🙏 Acknowledgments
 
 We’d like to thank:
