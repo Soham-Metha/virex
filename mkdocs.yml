@@ -8,9 +8,8 @@ repo_url: https://github.com/Soham-Metha/virex
 
 nav:
   - Home: 
-    - About: 
-      - Overview: "index.md"
-      - Credits: "Credits.md"
+    - Overview: "index.md"
+    - Credits: "Credits.md"
     - Features:
       - TOOLS: "Features.md"
     - Getting Started: 
