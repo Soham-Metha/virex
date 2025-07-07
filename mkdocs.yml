@@ -65,7 +65,7 @@ nav:
 
 theme:
   name: material
-  custom_dir: docs/overrides
+  custom_dir: extras/overrides
   highlightjs: true
   features:
     - announce.dismiss
@@ -114,7 +114,7 @@ theme:
   icon:
     #logo: assets/placeholder-favicon.png ## NEEDS SVG
 extra_css:
-  - stylesheets/extra.css
+  - extras/stylesheets/extra.css
 plugins:
   - search
   - mkdocstrings:
