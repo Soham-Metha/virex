@@ -4,7 +4,7 @@ hide:
 ---
 
 
-<aside class="md-sidebar md-sidebar--secondary">
+<aside class="md-sidebar md-sidebar--secondary" markdown>
 !!! info ""
 
     ![Image](assets/credits.png)<br>
