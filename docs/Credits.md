@@ -14,7 +14,7 @@ hide:
 | **Core lib(Hashtable)** | Omkar Jagtap |
 | **Core libs(other)**    | Soham Metha  |
 
-inline end
+!!! info inline end ""
 
     ![Image](assets/credits.png)
 
