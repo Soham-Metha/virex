@@ -11,6 +11,13 @@ VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, ext
 
 ## 🧠 Core Developers
 
+
+<figure markdown="span">
+  ![Image](assets/credits.png)
+  <figcaption>Active Maintainers/Creators</figcaption>
+</figure>
+
+
 === "Soham Metha"
     ![Soham's Avatar](https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y){ width="120px" style="border-radius: 50%;" }
 
@@ -58,11 +65,6 @@ VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, ext
 
 _VIREX is open. Hackable. Minimal. Built for builders._
 
-
-<figure markdown="span">
-  ![Image](assets/credits.png)
-  <figcaption>Active Maintainers/Creators</figcaption>
-</figure>
 
 
 ### References
