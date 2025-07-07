@@ -58,8 +58,9 @@ hide:
     !!! quote ""
 
 
-!!! info inline end "🤝 Contact & Community"
+!!! info inline end ""
 
+🤝 Contact & Community
     !!! warning ""
     !!! danger ""
 
