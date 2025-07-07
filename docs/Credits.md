@@ -11,11 +11,8 @@ hide:
     </figure>
     The project is maintained by two core developers who each own a unique layer of the system.
 
-
-
-
 === "Soham Metha"
-    ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;padding: 4px;" } 
+![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;padding: 4px;" }
 
     > **Role**: Lead Developer <br>
     > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs
@@ -35,45 +32,40 @@ hide:
     [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-VIREX-success)]() [![](https://img.shields.io/badge/Project-SASM-success)]()
 
     !!! quote ""
-    
 
 === "Omkar Jagtap"
-    ![Omkar's Avatar](https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y){ width="120px" style="border-radius: 50%;" }
-    
+![Omkar's Avatar](https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y){ width="120px" style="border-radius: 50%;" }
+
     > **Role**: Compiler Engineer – ORIN <br>
     > **Modules Owned**: ORIN Compiler (WIP), Custom Hashtable Implementation
 
     !!! tip "info"
 
-        - Designing and implementing **ORIN**, the high-level language compiler targeting SASM  
-        - Handles the full compilation pipeline: parsing, IR generation, and SASM output  
+        - Designing and implementing **ORIN**, the high-level language compiler targeting SASM
+        - Handles the full compilation pipeline: parsing, IR generation, and SASM output
         - Exploring advanced features like expression optimization and static analysis
 
     !!! quote
 
         > *"ORIN aims to make high-level programming compatible with low-level control."*
 
-    [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-ORIN-orange)]() [![](https://img.shields.io/badge/Target-SASM-lightgrey)]()  
+    [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-ORIN-orange)]() [![](https://img.shields.io/badge/Target-SASM-lightgrey)]()
 
     !!! quote ""
-
 
 !!! info inline end "🤝 Contact & Community"
 
     !!! danger ""
 
-        - [Soham-Metha/virex](https://github.com/Soham-Metha/virex)
-        - [GitHub Issues](https://github.com/Soham-Metha/virex/issues)
-        - [GitHub Discussions](https://github.com/Soham-Metha/virex/discussions)
-        - [CONTRIBUTING.md](../CONTRIBUTING.md)
-        - [roadmap](roadmap.md)
-
+        <br>[Soham-Metha/virex](https://github.com/Soham-Metha/virex)
+        <br>[GitHub Issues](https://github.com/Soham-Metha/virex/issues)
+        <br>[GitHub Discussions](https://github.com/Soham-Metha/virex/discussions)
+        <br>[CONTRIBUTING.md](../CONTRIBUTING.md)
+        <br>[roadmap](roadmap.md)
 
 ---
 
 _VIREX is open. Hackable. Minimal. Built for builders._
-
-
 
 ## 🙏 Acknowledgments
 
@@ -87,8 +79,6 @@ We gratefully acknowledge the creators and communities that inspired and support
 
 - **Early Support**:  
   Friends, testers, and curious peers who gave feedback during the early stages of development.
-
-
 
 ---
 
