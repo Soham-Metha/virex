@@ -114,7 +114,7 @@ theme:
   icon:
     #logo: assets/placeholder-favicon.png ## NEEDS SVG
 extra_css:
-  - ../extras/stylesheets/extra.css
+  - stylesheets/extra.css
 plugins:
   - search
   - mkdocstrings:
