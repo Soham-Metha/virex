@@ -7,8 +7,9 @@ hide:
 
     <figure markdown="span">
       ![Image](assets/credits.png)
-      <figcaption>Active Maintainers/Creators</figcaption>
+      <figcaption></figcaption>
     </figure>
+    _Active Maintainers/Creators_
     !!! warning ""
 
     The project is maintained by two core developers who each own a unique layer of the system.
