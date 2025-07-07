@@ -23,27 +23,27 @@ hide:
 
     VIREX
     ├── build/
-    ├── docs/                                       # Reference documentation
-    ├── examples/                                   # Sample programs
+    ├── docs/                                   # Reference documentation
+    ├── examples/                               # Sample programs
     ├── extras/
-    │   └── orin_grammar.txt                        # Grammer for ORIN (PROTOTYPE)
-    ├── html/                                       # Latest Build of the documentation website
-    ├── include/                                    # Public headers for VM, SASM, OCC
-    ├── install.sh                                  # Install script for linux
-    ├── LICENSE                                     # GPL-3
-    ├── Makefile                                    # RULES: virex, sasm, occ, html, clean
+    │   └── orin_grammar.txt                    # Grammer for ORIN (PROTOTYPE)
+    ├── html/                                   # Latest Build of the documentation website
+    ├── include/                                # Public headers for VM, SASM, OCC
+    ├── install.sh                              # Install script for linux
+    ├── LICENSE                                 # GPL-3
+    ├── Makefile                                # RULES: virex, sasm, occ, html, clean
     ├── mkdocs.yml
     ├── README.md
-    ├── requirements.txt                            # requirements for mkdocs
-    ├── src/                                        # Core implementation (VM, assembler, compiler)
-    ├── tests/                                      # Simple Test programs written in SASM
+    ├── requirements.txt                        # requirements for mkdocs
+    ├── src/                                    # Core implementation (VM, assembler, compiler)
+    ├── tests/                                  # Simple Test programs written in SASM
     └── tools/
         ├── fonts/
-        │   └── EnvyCodeR/                          # font used when building TUI
+        │   └── EnvyCodeR/                      # font used when building TUI
         └── themes/
-            ├── kitty/                              # kitty terminal conf used when building TUI
+            ├── kitty/                          # kitty terminal conf used when building TUI
             └── vs_code/
-                └── sasm_syntax_highlight/          # VS Code syntax highlighter
+                └── sasm_syntax_highlight/      # VS Code syntax highlighter
 ```
 
 ## Architecture
