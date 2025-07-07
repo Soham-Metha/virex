@@ -79,7 +79,6 @@
 
 @media screen and (max-width: 768px) {
   .sidebar {
-    margin-top: 2rem;
-    border-left: none;
+    display: none !important;
   }
 }
