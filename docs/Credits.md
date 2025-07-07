@@ -9,6 +9,9 @@ hide:
       ![Image](assets/credits.png)
       <figcaption>Active Maintainers/Creators</figcaption>
     </figure>
+
+    !!! question ""
+
     The project is maintained by two core developers who each own a unique layer of the system.
 
 
