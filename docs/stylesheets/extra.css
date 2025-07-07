@@ -76,3 +76,9 @@
   --md-admonition-fg-color:     #ffffff;
   --md-admonition-bg-color:     #1a1b26;
 }
+
+@media screen and (max-width: 768px) {
+  .sidebar {
+    display: none !important;
+  }
+}
