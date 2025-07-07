@@ -69,11 +69,6 @@ hide:
         <br>[roadmap](roadmap.md)
 
 
----
-
-_VIREX is open. Hackable. Minimal. Built for builders._
-
-
 
 ## 🙏 Acknowledgments
 
