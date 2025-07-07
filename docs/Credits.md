@@ -3,14 +3,16 @@ hide:
   - toc
 ---
 
-!!! info inline end ""
+
+<aside class="md-sidebar--secondary">
+!!! info ""
 
     ![Image](assets/credits.png)<br>
     _Active Maintainers/Creators_
     !!! warning ""
 
     The project is maintained by two core developers who each own a unique layer of the system.
-
+</aside>
 
 === "Soham Metha"
     ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;padding: 4px;" } 
