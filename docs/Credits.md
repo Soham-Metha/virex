@@ -15,8 +15,6 @@ hide:
 [![](https://img.shields.io/badge/Virtual%20Machine-VIREX-blue)]()  [![](https://img.shields.io/badge/Assembly%20Language-SASM-critical)]()  [![](https://img.shields.io/badge/Compiler-ORIN-orange)]()  [![](https://img.shields.io/badge/Editor%20Support-VS%20Code-007ACC?logo=visual-studio-code&logoColor=white)]()  [![](https://img.shields.io/badge/License-GPL3-green)]() 
 
 
-!!! tip ""
-
 === "Soham Metha"
 
     ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;padding: 4px;" } 
@@ -33,6 +31,8 @@ hide:
     > *"VIREX is a hands-on way to explore systems programming, not just study it."* <br>
 
     [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-VIREX-success)]() [![](https://img.shields.io/badge/Project-SASM-success)]()
+
+    !!! tip ""
     
 
 === "Omkar Jagtap"
