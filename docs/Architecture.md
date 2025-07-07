@@ -3,6 +3,7 @@ hide:
   - toc
 ---
 
+<div class="sidebar" markdown>
 !!! info inline end ""
 
     !!! danger ""
@@ -17,7 +18,7 @@ hide:
 
     Other than the above mentioned tools, we have also used libraries like
     NCurses to build the UI.
-
+</div>
 ```title="Project Structure"
 VIREX
 ├── build/
