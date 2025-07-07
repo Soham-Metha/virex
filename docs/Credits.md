@@ -40,8 +40,6 @@ hide:
 === "Omkar Jagtap"
     ![Omkar's Avatar](https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y){ width="120px" style="border-radius: 50%;" }
     
-    [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-ORIN-orange)]() [![](https://img.shields.io/badge/Target-SASM-lightgrey)]()  
-
     > **Role**: Compiler Engineer – ORIN <br>
     > **Modules Owned**: ORIN Compiler (WIP), Custom Hashtable Implementation
 
@@ -54,6 +52,8 @@ hide:
     !!! quote
 
         > *"ORIN aims to make high-level programming compatible with low-level control."*
+
+    [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-ORIN-orange)]() [![](https://img.shields.io/badge/Target-SASM-lightgrey)]()  
 
     !!! quote ""
 
