@@ -3,9 +3,7 @@ hide:
   - toc
 ---
 
-!!! info inline ""
-
-    ![Image](assets/credits.png)
+![Image](assets/credits.png)
 
 !!! info inline "References"
 
