@@ -60,7 +60,7 @@ hide:
 
 !!! info inline end ""
 
-🤝 Contact & Community
+    🤝 Contact & Community
     !!! warning ""
     !!! danger ""
 
