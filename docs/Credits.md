@@ -21,8 +21,7 @@ hide:
     [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-VIREX-success)]() [![](https://img.shields.io/badge/Project-SASM-success)]()  
 
 
-    > **Role**: Lead Developer
-    
+    > **Role**: Lead Developer <br>
     > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs
 
     - Designed the **VIREX** Virtual Machine architecture.
