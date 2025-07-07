@@ -3,19 +3,14 @@ hide:
   - toc
 ---
 
-# 👥 About the Creators
-
-VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, extensibility, and education in mind. The project is maintained by two core developers who each own a unique layer of the system.
-
----
-
-## 🧠 Core Developers
-
-
 <figure markdown="span">
   ![Image](assets/credits.png)
   <figcaption>Active Maintainers/Creators</figcaption>
 </figure>
+
+# 👥 About the Creators
+
+VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, extensibility, and education in mind. The project is maintained by two core developers who each own a unique layer of the system.
 
 
 === "Soham Metha"
