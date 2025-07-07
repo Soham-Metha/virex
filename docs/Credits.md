@@ -62,7 +62,7 @@ hide:
 
     !!! danger ""
 
-        <br>[Soham-Metha/virex](https://github.com/Soham-Metha/virex)
+        [Soham-Metha/virex](https://github.com/Soham-Metha/virex)
         <br>[GitHub Issues](https://github.com/Soham-Metha/virex/issues)
         <br>[GitHub Discussions](https://github.com/Soham-Metha/virex/discussions)
         <br>[CONTRIBUTING.md](../CONTRIBUTING.md)
