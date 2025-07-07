@@ -22,6 +22,7 @@ hide:
 
 
     > **Role**: Lead Developer
+    
     > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs
 
     - Designed the **VIREX** Virtual Machine architecture.
