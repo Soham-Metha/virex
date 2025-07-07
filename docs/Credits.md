@@ -60,20 +60,22 @@ hide:
 
 !!! info inline end "🤝 Contact & Community"
 
-    📂 **GitHub Repository**  
-    → [Soham-Metha/virex](https://github.com/Soham-Metha/virex)
+    !!! danger ""
+    
+        📂 **GitHub Repository**  
+        → [Soham-Metha/virex](https://github.com/Soham-Metha/virex)
 
-    🧑‍💻 **Want to contribute?**  
-    → See the [CONTRIBUTING.md](../CONTRIBUTING.md) guide
+        🧑‍💻 **Want to contribute?**  
+        → See the [CONTRIBUTING.md](../CONTRIBUTING.md) guide
 
-    🐞 **Found a bug?**  
-    → Report it via [GitHub Issues](https://github.com/Soham-Metha/virex/issues)
+        🐞 **Found a bug?**  
+        → Report it via [GitHub Issues](https://github.com/Soham-Metha/virex/issues)
 
-    💬 **Have questions or ideas?**  
-    → Join the discussion on [GitHub Discussions](https://github.com/Soham-Metha/virex/discussions)
+        💬 **Have questions or ideas?**  
+        → Join the discussion on [GitHub Discussions](https://github.com/Soham-Metha/virex/discussions)
 
-    🗺️ **Project direction**  
-    → View the [roadmap](roadmap.md)
+        🗺️ **Project direction**  
+        → View the [roadmap](roadmap.md)
 
 
 ---
