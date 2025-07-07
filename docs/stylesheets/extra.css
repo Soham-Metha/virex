@@ -81,6 +81,5 @@
   .sidebar {
     margin-top: 2rem;
     border-left: none;
-    border-top: 4px solid var(--md-accent-fg-color);
   }
 }
