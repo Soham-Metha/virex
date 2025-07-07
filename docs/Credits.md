@@ -58,8 +58,9 @@ hide:
     !!! quote ""
 
 
-!!! info inline end ""
+!!! info inline end "🤝 Contact & Community"
 
+    !!! warning ""
     !!! danger ""
 
         [Soham-Metha/virex](https://github.com/Soham-Metha/virex)
@@ -67,8 +68,7 @@ hide:
         <br>[GitHub Discussions](https://github.com/Soham-Metha/virex/discussions)
         <br>[CONTRIBUTING.md](../CONTRIBUTING.md)
         <br>[roadmap](roadmap.md)
-    🤝 Contact & Community
-    !!! warning ""
+    
 
     Use the links above to explore the repository, report issues, 
     join discussions, contribute, or follow the project's development roadmap.
