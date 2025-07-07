@@ -49,22 +49,21 @@ hide:
 
 ---
 
+## 🙏 Acknowledgments
+
+We’d like to thank:
+- [Tsoding](https://www.youtube.com/playlist?list=PLpM-Dvs8t0VY73ytTCQqgvgCWttV3m8LM), [Dr Birch](https://www.youtube.com/@dr-Jonas-Birch), [Low Byte Productions](https://www.youtube.com/playlist?list=PLP29wDx6QmW5DdwpdwHCRJsEubS5NrQ9b), [Cobb Coding](https://www.youtube.com/playlist?list=PLRnI_2_ZWhtCxHQ_3zDfW0-RgiWo8ftyj) for foundational resources.
+- The open-source ecosystems around JVM, and language tooling.  
+- Friends and testers who offered feedback during early development stages.
+
+
 ## 🤝 Contact & Community
 
-- GitHub: [github.com/sohammetha/virex](https://github.com/sohammetha/virex)
+- GitHub: [github.com/sohammetha/virex](https://github.com/Soham-Metha/virex)
 - Interested in contributing? Check out [CONTRIBUTING.md](../CONTRIBUTING.md)
 
 ---
 
 _VIREX is open. Hackable. Minimal. Built for builders._
-
-
-
-### References
-
-- [Tsoding](https://www.youtube.com/playlist?list=PLpM-Dvs8t0VY73ytTCQqgvgCWttV3m8LM)
-- [Dr Birch](https://www.youtube.com/@dr-Jonas-Birch)
-- [Low Byte Productions](https://www.youtube.com/playlist?list=PLP29wDx6QmW5DdwpdwHCRJsEubS5NrQ9b)
-- [Cobb Coding](https://www.youtube.com/playlist?list=PLRnI_2_ZWhtCxHQ_3zDfW0-RgiWo8ftyj)
 
 ---
