@@ -3,8 +3,11 @@ hide:
   - toc
 ---
 
-![Image](assets/credits.png)
 
+<figure markdown="span">
+  ![Image](assets/credits.png)
+  <figcaption>Active Maintainers/Creators</figcaption>
+</figure>
 !!! info inline "References"
 
     - [Tsoding](https://www.youtube.com/playlist?list=PLpM-Dvs8t0VY73ytTCQqgvgCWttV3m8LM)
