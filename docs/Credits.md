@@ -70,6 +70,9 @@ hide:
     🤝 Contact & Community
     !!! warning ""
 
+    Use the links above to explore the repository, report issues, 
+    join discussions, contribute, or follow the project's development roadmap.
+
 
 
 ## 🙏 Acknowledgments
