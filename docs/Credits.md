@@ -63,8 +63,7 @@ hide:
     🤝 Contact & Community
 
       - 📂 GitHub Repository: [Soham-Metha/virex](https://github.com/Soham-Metha/virex)  
-      - 🧑‍💻 Want to contribute? 
-        See the [CONTRIBUTING.md](../CONTRIBUTING.md) guide
+      - 🧑‍💻 Want to contribute? <br> See the [CONTRIBUTING.md](../CONTRIBUTING.md) guide
 
 
 ## 🙏 Acknowledgments
