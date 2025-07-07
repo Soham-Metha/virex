@@ -7,7 +7,6 @@ hide:
 
     <figure markdown="span">
       ![Image](assets/credits.png)
-      <figcaption></figcaption>
     </figure>
     _Active Maintainers/Creators_
     !!! warning ""
