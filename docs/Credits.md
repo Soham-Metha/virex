@@ -18,7 +18,12 @@ VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, ext
 
     **Role**: `Lead Developer`  
     **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs  
-    **GitHub**: [@sohammetha](https://github.com/sohammetha)  
+    
+    - Designed the VIREX Virtual Machine architecture  
+    - Developed the **SASM Assembler** and complete instruction set  
+    - Built tooling: AST visualizer, debug tools, and VS Code syntax extension  
+    - Authored all core documentation  
+    - Maintains the monorepo, versioning, and long-term roadmap
 
     [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language))  
     [![](https://img.shields.io/badge/Assembler-SASM-informational)]()  
