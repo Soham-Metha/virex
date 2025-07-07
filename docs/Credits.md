@@ -4,7 +4,6 @@ hide:
 ---
 
 
-<aside class="md-sidebar md-sidebar--secondary" markdown>
 !!! info ""
 
     ![Image](assets/credits.png)<br>
@@ -12,7 +11,7 @@ hide:
     !!! warning ""
 
     The project is maintained by two core developers who each own a unique layer of the system.
-</aside>
+
 
 === "Soham Metha"
     ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;padding: 4px;" } 
