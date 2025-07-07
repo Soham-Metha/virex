@@ -14,6 +14,10 @@ hide:
 | **Core lib(Hashtable)** | Omkar Jagtap |
 | **Core libs(other)**    | Soham Metha  |
 
+inline end
+
+    ![Image](assets/credits.png)
+
 ## References
 
 - [Tsoding](https://www.youtube.com/playlist?list=PLpM-Dvs8t0VY73ytTCQqgvgCWttV3m8LM)
