@@ -7,7 +7,7 @@ hide:
 !!! info inline end ""
 
     ![Image](assets/credits.png)<br>
-    _Active Maintainers/Creators_
+    Active Maintainers/Creators
     !!! warning ""
 
     The project is maintained by two core developers who each own a unique layer of the system.
