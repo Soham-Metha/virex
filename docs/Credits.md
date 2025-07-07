@@ -5,9 +5,7 @@ hide:
 
 !!! info inline end ""
 
-    <figure markdown="span">
-      ![Image](assets/credits.png)
-    </figure>
+    ![Image](assets/credits.png)
     _Active Maintainers/Creators_
     !!! warning ""
 
