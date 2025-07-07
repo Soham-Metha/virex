@@ -20,8 +20,12 @@ hide:
     === "Soham Metha"
 
         !!! quote inline end ""
-        
-            ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;" }
+
+            <figure markdown="span">
+              ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;" }
+              <figcaption>Active Maintainers/Creators</figcaption>
+            </figure>
+            
 
         > **Role**: Lead Developer <br>
         > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs
