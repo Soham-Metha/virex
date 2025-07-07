@@ -31,9 +31,7 @@ VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, ext
 
     > *"VIREX is a hands-on way to explore systems programming, not just study it."*
 
----
-
-=== "[Omkar Jagtap]"
+=== "Omkar Jagtap"
     ![Omkar's Avatar](https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y){ width="120px" style="border-radius: 50%;" }
 
     **Role**: `Compiler Engineer – ORIN`  
