@@ -45,11 +45,17 @@ hide:
     > **Role**: Compiler Engineer – ORIN <br>
     > **Modules Owned**: ORIN Compiler (WIP), Custom Hashtable Implementation
 
-    - Designing and implementing **ORIN**, the high-level language compiler targeting SASM  
-    - Handles the full compilation pipeline: parsing, IR generation, and SASM output  
-    - Exploring advanced features like expression optimization and static analysis
+    !!! tip "info"
 
-    > *"ORIN aims to make high-level programming compatible with low-level control."*
+        - Designing and implementing **ORIN**, the high-level language compiler targeting SASM  
+        - Handles the full compilation pipeline: parsing, IR generation, and SASM output  
+        - Exploring advanced features like expression optimization and static analysis
+
+    !!! quote
+
+        > *"ORIN aims to make high-level programming compatible with low-level control."*
+
+    !!! quote ""
 
 ---
 
