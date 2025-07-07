@@ -8,7 +8,9 @@ hide:
   ![Image](assets/credits.png)
   <figcaption>Active Maintainers/Creators</figcaption>
 </figure>
-!!! info inline "References"
+
+
+### References
 
     - [Tsoding](https://www.youtube.com/playlist?list=PLpM-Dvs8t0VY73ytTCQqgvgCWttV3m8LM)
     - [Dr Birch](https://www.youtube.com/@dr-Jonas-Birch)
