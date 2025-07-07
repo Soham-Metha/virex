@@ -4,7 +4,7 @@ hide:
 ---
 
 
-!!! info ""
+!!! info inline end ""
 
     ![Image](assets/credits.png)<br>
     _Active Maintainers/Creators_
