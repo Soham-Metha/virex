@@ -14,7 +14,7 @@ VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, ext
 
 
 === "Soham Metha"
-    ![Soham's Avatar](https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y){ width="120px" style="border-radius: 50%;" }
+    ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;" }
 
     **Role**: `Lead Developer`  
     **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs  
