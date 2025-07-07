@@ -17,8 +17,12 @@ nav:
     - Contributing: 
       - Architecture: "Architecture.md"
       - Contributing: "Contributing.md"
+<<<<<<< HEAD
     - About the Contributors: 
       - "Credits.md"
+=======
+    - Credits: "Credits.md"
+>>>>>>> 90468610e318cedefbb2ac94b34f574a53fa65b0
       # - Platform Independence: Features/Platform_Independence.md
       # - Open and Readable: Features/Open_and_Readable.md
       # - Flexible Architecture: Features/Flexible_Architecture.md
