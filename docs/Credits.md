@@ -4,9 +4,7 @@ hide:
 ---
 
 
-<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" style="top: 106px;" markdown> 
-<div class="md-sidebar__scrollwrap" style="height: 303px;" markdown> 
-<div class="md-sidebar__inner" markdown> 
+<aside class="md-sidebar md-sidebar--secondary" markdown>
 !!! info ""
 
     ![Image](assets/credits.png)<br>
@@ -14,9 +12,7 @@ hide:
     !!! warning ""
 
     The project is maintained by two core developers who each own a unique layer of the system.
-</div>
-</div>
-</div>
+</aside>
 
 === "Soham Metha"
     ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;padding: 4px;" } 
