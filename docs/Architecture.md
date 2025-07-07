@@ -20,7 +20,6 @@ hide:
 ---
 
 ```title="Project Structure"
-
 VIREX
 ├── build/
 ├── docs/                                 # Reference documentation
