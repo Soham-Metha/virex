@@ -16,7 +16,7 @@ hide:
 
 
 === "Soham Metha"
-
+    !!! tip ""
     ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;padding: 4px;" } 
 
     > **Role**: Lead Developer <br>
