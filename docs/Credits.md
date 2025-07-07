@@ -19,8 +19,7 @@ hide:
     ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;" }
 
 
-    > [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-VIREX-success)]() [![](https://img.shields.io/badge/Project-SASM-success)]()  
-
+    > [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-VIREX-success)]() [![](https://img.shields.io/badge/Project-SASM-success)]()  <br>
     > **Role**: Lead Developer <br>
     > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs
 
