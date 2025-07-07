@@ -56,6 +56,16 @@ hide:
     [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-ORIN-orange)]() [![](https://img.shields.io/badge/Target-SASM-lightgrey)]()  
 
     !!! quote ""
+
+
+!!! info inline end ""
+
+    ## 🤝 Contact & Community
+
+      - 📂 GitHub Repository: [Soham-Metha/virex](https://github.com/Soham-Metha/virex)  
+      - 🧑‍💻 Want to contribute? See the [CONTRIBUTING.md](../CONTRIBUTING.md) guide
+
+
 ## 🙏 Acknowledgments
 
 We gratefully acknowledge the creators and communities that inspired and supported this project:
@@ -69,10 +79,7 @@ We gratefully acknowledge the creators and communities that inspired and support
 - **Early Support**:  
   Friends, testers, and curious peers who gave feedback during the early stages of development.
 
-## 🤝 Contact & Community
 
-- 📂 GitHub Repository: [Soham-Metha/virex](https://github.com/Soham-Metha/virex)  
-- 🧑‍💻 Want to contribute? See the [CONTRIBUTING.md](../CONTRIBUTING.md) guide
 
 ---
 
