@@ -16,7 +16,6 @@ hide:
 
 
 === "Soham Metha"
-    !!! tip ""
     ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;padding: 4px;" } 
 
     > **Role**: Lead Developer <br>
@@ -31,12 +30,11 @@ hide:
         - Maintains the monorepo, versioning, and long-term roadmap.
 
     !!! quote
-    
+
         *"VIREX is a hands-on way to explore systems programming, not just study it."* <br>
 
     [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-VIREX-success)]() [![](https://img.shields.io/badge/Project-SASM-success)]()
 
-    !!! tip ""
     
 
 === "Omkar Jagtap"
