@@ -18,8 +18,7 @@ VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, ext
 
     [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-VIREX-success)]() [![](https://img.shields.io/badge/Project-SASM-success)]()  
 
-    > *"VIREX is a hands-on way to explore systems programming, not just study it."*
-    
+
     > **Role**: Lead Developer  
     > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs  
     
@@ -29,6 +28,8 @@ VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, ext
     - Authored all core documentation.
     - Maintains the monorepo, versioning, and long-term roadmap.
 
+    > *"VIREX is a hands-on way to explore systems programming, not just study it."*
+    
 
 === "Omkar Jagtap"
     ![Omkar's Avatar](https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y){ width="120px" style="border-radius: 50%;" }
