@@ -5,12 +5,11 @@ hide:
 
 test
 
-``` profile
+```profile
 name: Soham Metha
-title: Creator of VIREX
-avatar: https://github.com/sohammetha.png
-github: sohammetha
-email: you@example.com
+title: Creator of VIREX and SASM
+avatar: https://github.com/soham-metha.png
+github: soham-metha
 location: India
 bio: >
   Designed and implemented the VIREX VM, SASM Assembler, VS Code extension, and documentation. Passionate about system software, virtual machines, and custom tooling.
