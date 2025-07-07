@@ -18,7 +18,10 @@ hide:
 !!! tip ""
 
     === "Soham Metha"
-        ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;" }
+
+        !!! quote ""
+        
+            ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;" }
 
         > **Role**: Lead Developer <br>
         > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs
