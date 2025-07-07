@@ -62,11 +62,11 @@ hide:
 
     !!! danger ""
 
-        [Soham-Metha/virex](https://github.com/Soham-Metha/virex)
-        [GitHub Issues](https://github.com/Soham-Metha/virex/issues)
-        [GitHub Discussions](https://github.com/Soham-Metha/virex/discussions)
-        [CONTRIBUTING.md](../CONTRIBUTING.md) guide
-        [roadmap](roadmap.md)
+        - [Soham-Metha/virex](https://github.com/Soham-Metha/virex)
+        - [GitHub Issues](https://github.com/Soham-Metha/virex/issues)
+        - [GitHub Discussions](https://github.com/Soham-Metha/virex/discussions)
+        - [CONTRIBUTING.md](../CONTRIBUTING.md) guide
+        - [roadmap](roadmap.md)
 
 
 ---
