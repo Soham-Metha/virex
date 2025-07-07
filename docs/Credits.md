@@ -9,11 +9,12 @@ hide:
       ![Image](assets/credits.png)
       <figcaption>Active Maintainers/Creators</figcaption>
     </figure>
+    The project is maintained by two core developers who each own a unique layer of the system.
 
 
 [![](https://img.shields.io/badge/Virtual%20Machine-VIREX-blue)]()  [![](https://img.shields.io/badge/Assembly%20Language-SASM-critical)]()  [![](https://img.shields.io/badge/Compiler-ORIN-orange)]()  [![](https://img.shields.io/badge/Editor%20Support-VS%20Code-007ACC?logo=visual-studio-code&logoColor=white)]()  [![](https://img.shields.io/badge/License-GPL3-green)]()
 
-VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, extensibility, and education in mind. The project is maintained by two core developers who each own a unique layer of the system.
+VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, extensibility, and education in mind. 
 
 
 === "Soham Metha"
