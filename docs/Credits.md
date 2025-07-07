@@ -13,7 +13,7 @@ github: soham-metha
 location: India
 bio: >
   Designed and implemented the VIREX VM, SASM Assembler, VS Code extension, and documentation. Passionate about system software, virtual machines, and custom tooling.
-
+```
 <figure markdown="span">
   ![Image](assets/credits.png)
   <figcaption>Active Maintainers/Creators</figcaption>
