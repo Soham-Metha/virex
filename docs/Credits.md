@@ -3,10 +3,10 @@ hide:
   - toc
 ---
 
-<figure markdown="span">
-  ![Image](assets/credits.png)
-  <figcaption>Active Maintainers/Creators</figcaption>
-</figure>
+!!! info inline end "Active Maintainers/Creators"
+
+    ![Image](assets/credits.png)
+
 
 [![](https://img.shields.io/badge/Virtual%20Machine-VIREX-blue)]()  [![](https://img.shields.io/badge/Assembly%20Language-SASM-critical)]()  [![](https://img.shields.io/badge/Compiler-ORIN-orange)]()  [![](https://img.shields.io/badge/Editor%20Support-VS%20Code-007ACC?logo=visual-studio-code&logoColor=white)]()  [![](https://img.shields.io/badge/License-GPL3-green)]()
 
@@ -19,9 +19,9 @@ VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, ext
     [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-VIREX-success)]() [![](https://img.shields.io/badge/Project-SASM-success)]()  
 
 
-    > **Role**: Lead Developer  
-    > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs  
-    
+    > **Role**: Lead Developer
+    > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs
+
     - Designed the **VIREX** Virtual Machine architecture.
     - Developed the **SASM Assembler** and complete instruction set.
     - Built tooling: AST visualizer, debug tools, and VS Code syntax extension.
