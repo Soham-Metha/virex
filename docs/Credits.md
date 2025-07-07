@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-<div class="sidebar">
+<div class="sidebar" markdown>
 !!! info inline end ""
 
     ![Image](assets/credits.png)<br>
