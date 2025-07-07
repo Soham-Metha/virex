@@ -34,12 +34,11 @@ VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, ext
 === "Omkar Jagtap"
     ![Omkar's Avatar](https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y){ width="120px" style="border-radius: 50%;" }
 
-    **Role**: `Compiler Engineer – ORIN`  
-    **Modules Owned**: ORIN Compiler (WIP)  
-    **GitHub**: [@friendusername](https://github.com/friendusername)  
+    > **Role**: `Compiler Engineer – ORIN`
+    > **Modules Owned**: ORIN Compiler (WIP)
 
-    [![](https://img.shields.io/badge/Language-C++-brightgreen)](https://en.wikipedia.org/wiki/C%2B%2B)  
-    [![](https://img.shields.io/badge/Compiler-ORIN-orange)]()  
+    [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) 
+    [![](https://img.shields.io/badge/Project-ORIN-orange)]()  
     [![](https://img.shields.io/badge/Target-SASM-lightgrey)]()  
 
     > *"ORIN aims to make high-level programming compatible with low-level control."*
