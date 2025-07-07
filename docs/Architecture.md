@@ -3,13 +3,20 @@ hide:
   - toc
 ---
 
-## Tech Stack
+!!! info inline end ""
 
-- **Programming Language:** C
-- **Version Control:** Git
-- **Build System:** GNU Make
-- **AST VISUALIZER:** Graphviz
+    !!! danger ""
 
+        - **Programming Language:** C
+        - **Version Control:** Git
+        - **Build System:** GNU Make
+        - **AST VISUALIZER:** Graphviz
+
+    Tech Stack
+    !!! warning ""
+
+    Other than the above mentioned tools, we have also used libraries like
+    NCurses to build the UI.
 ---
 
 ## 📦 Project Structure
