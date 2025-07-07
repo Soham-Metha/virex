@@ -62,20 +62,11 @@ hide:
 
     !!! danger ""
 
-        🐞 **Found a bug?**  
-        → Report it via [GitHub Issues](https://github.com/Soham-Metha/virex/issues)
-
-        💬 **Have questions or ideas?**  
-        → Join the discussion on [GitHub Discussions](https://github.com/Soham-Metha/virex/discussions)
-
-    🧑‍💻 **Want to contribute?**  
-    → See the [CONTRIBUTING.md](../CONTRIBUTING.md) guide
-
-    📂 **GitHub Repository**  
-    → [Soham-Metha/virex](https://github.com/Soham-Metha/virex)
-
-    🗺️ **Project direction**  
-    → View the [roadmap](roadmap.md)
+        [Soham-Metha/virex](https://github.com/Soham-Metha/virex)
+        [GitHub Issues](https://github.com/Soham-Metha/virex/issues)
+        [GitHub Discussions](https://github.com/Soham-Metha/virex/discussions)
+        [CONTRIBUTING.md](../CONTRIBUTING.md) guide
+        [roadmap](roadmap.md)
 
 
 ---
