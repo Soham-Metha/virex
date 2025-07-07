@@ -7,10 +7,10 @@ hide:
 
     !!! danger ""
 
-        - **Programming Language:** C
-        - **Version Control:** Git
-        - **Build System:** GNU Make
-        - **AST VISUALIZER:** Graphviz
+        **Programming Language:** C
+        **Version Control:** Git
+        **Build System:** GNU Make
+        **AST VISUALIZER:** Graphviz
 
     Tech Stack
     !!! warning ""
