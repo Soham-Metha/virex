@@ -69,8 +69,6 @@ We gratefully acknowledge the creators and communities that inspired and support
 - **Early Support**:  
   Friends, testers, and curious peers who gave feedback during the early stages of development.
 
----
-
 ## 🤝 Contact & Community
 
 - 📂 GitHub Repository: [Soham-Metha/virex](https://github.com/Soham-Metha/virex)  
