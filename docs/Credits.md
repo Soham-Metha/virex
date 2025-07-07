@@ -76,39 +76,19 @@ hide:
 
 ## 🙏 Acknowledgments
 
-We gratefully acknowledge the creators and communities that inspired and supported this project.
+We gratefully acknowledge the creators and communities that inspired and supported this project:
 
----
+??? info "**Educational Inspiration**"
+  
+    [Tsoding](https://www.youtube.com/playlist?list=PLpM-Dvs8t0VY73ytTCQqgvgCWttV3m8LM), [Dr. Jonas Birch](https://www.youtube.com/@dr-Jonas-Birch), [Low Byte Productions](https://www.youtube.com/playlist?list=PLP29wDx6QmW5DdwpdwHCRJsEubS5NrQ9b), [Cobb Coding](https://www.youtube.com/playlist?list=PLRnI_2_ZWhtCxHQ_3zDfW0-RgiWo8ftyj) for their deep dives into compilers, virtual machines, and systems programming.
 
-### 🎓 Educational Inspiration
+- **Ecosystem & Tools**:  
+  The open-source communities around the **JVM**, and **language tooling** landscape, for providing extensible blueprints and motivation.
 
-Thanks to these amazing educators for making compilers and systems programming approachable:
+- **Early Support**:  
+  Friends, testers, and curious peers who gave feedback during the early stages of development.
 
-- [**Tsoding**](https://www.youtube.com/playlist?list=PLpM-Dvs8t0VY73ytTCQqgvgCWttV3m8LM)
-- [**Dr. Jonas Birch**](https://www.youtube.com/@dr-Jonas-Birch)
-- [**Low Byte Productions**](https://www.youtube.com/playlist?list=PLP29wDx6QmW5DdwpdwHCRJsEubS5NrQ9b)
-- [**Cobb Coding**](https://www.youtube.com/playlist?list=PLRnI_2_ZWhtCxHQ_3zDfW0-RgiWo8ftyj)
 
----
-
-### 🛠 Ecosystem & Tools
-
-We’re grateful to the broader open-source ecosystem, especially the communities around:
-
-- **Language tooling**
-- **Assembler and VM design**
-
-Their designs served as flexible blueprints and points of motivation.
-
----
-
-### 👥 Early Supporters
-
-Shout-out to early testers, friends, and curious peers who:
-
-- Tried our earliest builds  
-- Gave thoughtful feedback  
-- Helped us debug the impossible
 
 ---
 
