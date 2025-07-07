@@ -8,8 +8,8 @@ repo_url: https://github.com/Soham-Metha/virex
 
 nav:
   - Home: 
-    - Overview: "index.md"
-    - Credits: "Credits.md"
+    - Overview: 
+      - "index.md"
     - Features:
       - TOOLS: "Features.md"
     - Getting Started: 
@@ -17,6 +17,8 @@ nav:
     - Contributing: 
       - Architecture: "Architecture.md"
       - Contributing: "Contributing.md"
+    - Credits: 
+      - About the Developers: "Credits.md"
       # - Platform Independence: Features/Platform_Independence.md
       # - Open and Readable: Features/Open_and_Readable.md
       # - Flexible Architecture: Features/Flexible_Architecture.md
