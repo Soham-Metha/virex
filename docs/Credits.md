@@ -20,9 +20,7 @@ hide:
 
 
     > **Role**: Lead Developer <br>
-    > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs <br>
-    
-    > [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-VIREX-success)]() [![](https://img.shields.io/badge/Project-SASM-success)]()
+    > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs
 
     - Designed the **VIREX** Virtual Machine architecture.
     - Developed the **SASM Assembler** and complete instruction set.
@@ -30,7 +28,8 @@ hide:
     - Authored all core documentation.
     - Maintains the monorepo, versioning, and long-term roadmap.
 
-    > *"VIREX is a hands-on way to explore systems programming, not just study it."*
+    > *"VIREX is a hands-on way to explore systems programming, not just study it."* <br>
+    > [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-VIREX-success)]() [![](https://img.shields.io/badge/Project-SASM-success)]()
     
 
 === "Omkar Jagtap"
