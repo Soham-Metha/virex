@@ -37,7 +37,7 @@ VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, ext
     [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-ORIN-orange)]() [![](https://img.shields.io/badge/Target-SASM-lightgrey)]()  
 
     > **Role**: Compiler Engineer – ORIN
-    
+
     > **Modules Owned**: ORIN Compiler (WIP), Custom Hashtable Implementation
 
     - Designing and implementing **ORIN**, the high-level language compiler targeting SASM  
@@ -50,9 +50,7 @@ VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, ext
 
 ## 🏗️ Tech Stack Highlights
 
-[![](https://img.shields.io/badge/Virtual%20Machine-VIREX-blue)]()  [![](https://img.shields.io/badge/Assembly%20Language-SASM-critical)]()  [![](https://img.shields.io/badge/Compiler-ORIN-orange)]()  
-[![](https://img.shields.io/badge/Editor%20Support-VS%20Code-007ACC?logo=visual-studio-code&logoColor=white)]()  
-[![](https://img.shields.io/badge/License-GPL3-green)]()
+[![](https://img.shields.io/badge/Virtual%20Machine-VIREX-blue)]()  [![](https://img.shields.io/badge/Assembly%20Language-SASM-critical)]()  [![](https://img.shields.io/badge/Compiler-ORIN-orange)]()  [![](https://img.shields.io/badge/Editor%20Support-VS%20Code-007ACC?logo=visual-studio-code&logoColor=white)]()  [![](https://img.shields.io/badge/License-GPL3-green)]()
 
 ---
 
