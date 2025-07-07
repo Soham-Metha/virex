@@ -61,9 +61,6 @@ hide:
 !!! info inline end "🤝 Contact & Community"
 
     !!! danger ""
-    
-        📂 **GitHub Repository**  
-        → [Soham-Metha/virex](https://github.com/Soham-Metha/virex)
 
         🧑‍💻 **Want to contribute?**  
         → See the [CONTRIBUTING.md](../CONTRIBUTING.md) guide
@@ -74,8 +71,11 @@ hide:
         💬 **Have questions or ideas?**  
         → Join the discussion on [GitHub Discussions](https://github.com/Soham-Metha/virex/discussions)
 
-        🗺️ **Project direction**  
-        → View the [roadmap](roadmap.md)
+    📂 **GitHub Repository**  
+    → [Soham-Metha/virex](https://github.com/Soham-Metha/virex)
+
+    🗺️ **Project direction**  
+    → View the [roadmap](roadmap.md)
 
 
 ---
