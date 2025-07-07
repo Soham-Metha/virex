@@ -60,7 +60,9 @@ hide:
 
 !!! info inline end ""
 
-    ## 🤝 Contact & Community
+    ## Contact 
+    ## and
+    ## Community
 
       - 📂 GitHub Repository: [Soham-Metha/virex](https://github.com/Soham-Metha/virex)  
       - 🧑‍💻 Want to contribute? See the [CONTRIBUTING.md](../CONTRIBUTING.md) guide
