@@ -33,13 +33,16 @@ VIREX (VIRtual EXecuter) is a clean-room virtual machine built with clarity, ext
 
 === "Omkar Jagtap"
     ![Omkar's Avatar](https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y){ width="120px" style="border-radius: 50%;" }
+    
+    [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-ORIN-orange)]()  
+    [![](https://img.shields.io/badge/Target-SASM-lightgrey)]()  
 
     > **Role**: `Compiler Engineer – ORIN`
     > **Modules Owned**: ORIN Compiler (WIP)
 
-    [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) 
-    [![](https://img.shields.io/badge/Project-ORIN-orange)]()  
-    [![](https://img.shields.io/badge/Target-SASM-lightgrey)]()  
+    - Designing and implementing **ORIN**, the high-level language compiler targeting SASM  
+    - Handles the full compilation pipeline: parsing, IR generation, and SASM output  
+    - Exploring advanced features like expression optimization and static analysis
 
     > *"ORIN aims to make high-level programming compatible with low-level control."*
 
