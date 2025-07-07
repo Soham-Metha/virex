@@ -19,10 +19,7 @@ hide:
 
 === "Soham Metha"
 
-    <figure markdown="span">
-      ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="" }
-    </figure>
-        
+    ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;" } 
 
     > **Role**: Lead Developer <br>
     > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs
