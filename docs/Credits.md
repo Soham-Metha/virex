@@ -3,11 +3,11 @@ hide:
   - toc
 ---
 
-!!! info inline end ""
+!!! info inline ""
 
     ![Image](assets/credits.png)
 
-## References
+!!! info inline "References"
 
 - [Tsoding](https://www.youtube.com/playlist?list=PLpM-Dvs8t0VY73ytTCQqgvgCWttV3m8LM)
 - [Dr Birch](https://www.youtube.com/@dr-Jonas-Birch)
