@@ -3,11 +3,11 @@ hide:
   - toc
 ---
 
-!!! info inline end ""
+!!! info inline end "Active Maintainers/Creators"
 
     <figure markdown="span">
       ![Image](assets/credits.png)
-      <figcaption>Active Maintainers/Creators</figcaption>
+      <figcaption></figcaption>
     </figure>
     !!! warning ""
 
