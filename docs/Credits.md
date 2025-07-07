@@ -35,6 +35,7 @@ hide:
 
     [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-VIREX-success)]() [![](https://img.shields.io/badge/Project-SASM-success)]()
 
+    !!! quote ""
     
 
 === "Omkar Jagtap"
