@@ -19,7 +19,7 @@ hide:
     NCurses to build the UI.
 ---
 
-## 📦 Project Structure
+```title="Project Structure"
 
     VIREX
     ├── build/
@@ -44,7 +44,8 @@ hide:
             ├── kitty/                              # kitty terminal conf used when building TUI
             └── vs_code/
                 └── sasm_syntax_highlight/          # VS Code syntax highlighter
----
+```
+
 ## Architecture
 
 ### VIREX
