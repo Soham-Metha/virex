@@ -29,8 +29,8 @@ hide:
     - Maintains the monorepo, versioning, and long-term roadmap.
 
     > *"VIREX is a hands-on way to explore systems programming, not just study it."* <br>
-    
-    > [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-VIREX-success)]() [![](https://img.shields.io/badge/Project-SASM-success)]()
+
+    [![](https://img.shields.io/badge/Language-C-blue)](https://en.wikipedia.org/wiki/C_(programming_language)) [![](https://img.shields.io/badge/Project-VIREX-success)]() [![](https://img.shields.io/badge/Project-SASM-success)]()
     
 
 === "Omkar Jagtap"
