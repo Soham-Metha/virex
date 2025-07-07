@@ -18,9 +18,10 @@ hide:
 === "Soham Metha"
     ![Soham's Avatar](https://www.github.com/Soham-Metha.png){ width="120px" style="border-radius: 50%;" }
 
-
-    > **Role**: Lead Developer <br>
-    > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs
+    !!! info ""
+    
+        > **Role**: Lead Developer <br>
+        > **Modules Owned**: VIREX VM, SASM Assembler, VS Code Extension, Docs
 
     - Designed the **VIREX** Virtual Machine architecture.
     - Developed the **SASM Assembler** and complete instruction set.
