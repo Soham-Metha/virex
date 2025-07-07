@@ -90,8 +90,6 @@ We gratefully acknowledge the creators and communities that inspired and support
     
     Friends, testers, and curious peers who gave feedback during the early stages of development.
 
-
-
 ---
 
 _VIREX is open. Hackable. Minimal. Built for builders._
