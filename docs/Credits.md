@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-!!! info inline end ""
+??? info inline end ""
 
     <figure markdown="span">
       ![Image](assets/credits.png)
