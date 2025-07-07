@@ -75,6 +75,7 @@ hide:
     - Report it via [GitHub Issues](https://github.com/Soham-Metha/virex/issues)
     
     💬 Ask questions or share ideas on [GitHub Discussions](https://github.com/Soham-Metha/virex/discussions)
+    
     🗺️ See the [project roadmap](roadmap.md)
 
 ---
