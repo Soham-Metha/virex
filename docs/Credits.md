@@ -3,6 +3,10 @@ hide:
   - toc
 ---
 
+!!! info inline end ""
+
+    ![Image](assets/credits.png)
+
 ## Maintainers
 
 | Tool                    | Maintainer   |
@@ -13,10 +17,6 @@ hide:
 | **ORIN Compiler**       | Omkar Jagtap |
 | **Core lib(Hashtable)** | Omkar Jagtap |
 | **Core libs(other)**    | Soham Metha  |
-
-!!! info inline end ""
-
-    ![Image](assets/credits.png)
 
 ## References
 
