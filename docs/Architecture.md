@@ -17,7 +17,6 @@ hide:
 
     Other than the above mentioned tools, we have also used libraries like
     NCurses to build the UI.
----
 
 ```title="Project Structure"
 VIREX
