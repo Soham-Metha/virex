@@ -57,8 +57,6 @@ hide:
 
     !!! quote ""
 
----
-
 ## 🙏 Acknowledgments
 
 We’d like to thank:
