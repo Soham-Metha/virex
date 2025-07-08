@@ -112,7 +112,7 @@ void dumpDetails(WINDOW *win, OpcodeDetails *details, Instruction *inst)
                 inst->operand2.u64, inst->operand2.i64, inst->operand2.f64);
     }
 }
-void updateProgramWindow(Vm* vm, size_t instructionIndex)
+void updateProgramWindow(Vm *vm, size_t instructionIndex)
 {
     WINDOW *prg = disp.windows[PROGRAM];
     wmove(prg, 1, 1);
@@ -155,7 +155,7 @@ void clearNonIOWindows()
     wclear(disp.windows[MEMORY]);
 }
 
-void updateMemoryAndDetailsWindow( size_t instructionIndex)
+void updateMemoryAndDetailsWindow(Vm *vm, size_t instructionIndex)
 {
     OpcodeDetails details = getOpcodeDetails(vm->prog.instructions[instructionIndex].type);
     dumpStack(disp.windows[MEMORY], vm);
@@ -164,7 +164,7 @@ void updateMemoryAndDetailsWindow( size_t instructionIndex)
     dumpDetails(disp.windows[DETAILS], &details, &vm->prog.instructions[instructionIndex]);
 }
 
-void OnInstructionExecution( size_t instructionIndex, bool debug)
+void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
 {
     updateProgramWindow(vm, instructionIndex);
     refreshAllWindows(vm);
@@ -200,22 +200,22 @@ int getUserInput(Vm *vm)
     return highlight;
 }
 
-void printOut( int id, const char *str)
+void printOut(int id, const char *str)
 {
     wprintw(disp.windows[id], "%s", str);
 }
 
-void clearWindow( int id)
+void clearWindow(int id)
 {
     wclear(disp.windows[id]);
 }
 
-void moveCursorWithinWindow( int id, int y, int x)
+void moveCursorWithinWindow(int id, int y, int x)
 {
     wmove(disp.windows[id], y, x);
 }
 
-char getChar( int id)
+char getChar(int id)
 {
     return wgetch(disp.windows[id]);
 }
