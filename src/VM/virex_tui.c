@@ -1,5 +1,6 @@
 #include "virex_tui.h"
 #include "sasm_instructions.h"
+#include "virex.h"
 
 static String WindowNames[MAX_WINDOW_COUNT] = {
     [OUTPUT] = {.data = "OUTPUT", .length = 6},  [DETAILS] = {.data = "DETAILS", .length = 7},
