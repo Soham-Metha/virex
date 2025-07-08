@@ -13,6 +13,7 @@
 #include "univ_defs.h"
 #include "univ_errors.h"
 #include "univ_malloc.h"
+#include "virex_tui.h"
 #include "virex_vmcalls.h"
 
 /**
@@ -20,11 +21,6 @@
  * Represents the virtual machine instance.
  */
 
-
-typedef struct {
-    WINDOW* windows[7];
-    int windowCount;
-} display;
 typedef struct {
     Memory mem;   /**< The memory component of the virtual machine. */
     Program prog; /**< The program component of the virtual machine. */
