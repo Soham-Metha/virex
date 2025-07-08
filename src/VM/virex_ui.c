@@ -221,7 +221,7 @@ void printOutWithColor(int id, int colorPair, const char *str, ...)
     va_list args;
     va_start(args, str);
     wattron(disp.windows[id], COLOR_PAIR(colorPair));
-    vwprintw(disp.windows[id], str, args);
+    vw_printw(disp.windows[id], str, args);
     wattroff(disp.windows[id], COLOR_PAIR(colorPair));
     va_end(args);
 }
