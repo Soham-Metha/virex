@@ -245,7 +245,7 @@ void dumpFlags(CPU *cpu)
 void dumpRegs(CPU *cpu)
 {
     moveCursorWithinWindow(DETAILS, 2, 1);
-    printOutWithColor(DETAILS, "  REGISTERS ", 7);
+    printOutWithColor(DETAILS,8,  "  REGISTERS ");
     wprintdash(DETAILS, 1);
     printOut(DETAILS,
              "  H0 : %ld\t"
