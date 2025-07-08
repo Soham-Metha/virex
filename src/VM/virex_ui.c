@@ -30,7 +30,7 @@ void initColors()
     init_pair(7, COLOR_RED, COLOR_BLACK);
 }
 
-bool createWindow(display *disp, int x1, int y1, int x2, int y2, int colorPair)
+bool createWindow(int x1, int y1, int x2, int y2, int colorPair)
 {
     int width = x2 - x1;
     int height = y2 - y1;
@@ -49,8 +49,8 @@ bool createWindow(display *disp, int x1, int y1, int x2, int y2, int colorPair)
     }
 
     wbkgd(win, COLOR_PAIR(colorPair));
-    disp->windows[disp->windowCount++] = win;
-    refreshWindow(disp->windowCount - 1, colorPair, 5, 3);
+    disp.windows[disp.windowCount++] = win;
+    refreshWindow(disp.windowCount - 1, colorPair, 5, 3);
 
     return true;
 }
@@ -75,13 +75,13 @@ display CreateWindows()
     int ybot = LERP(ymin, ymax, 0.28);
     int ymid = LERP(ymin, ybot, 0.68);
 
-    createWindow(&disp, xsta, ymin, xmid, ybot, 1);
-    createWindow(&disp, xmi2, ybot, xen2, ymax, 5);
-    createWindow(&disp, xmin, ymin, xsta, ybot, 4);
-    createWindow(&disp, xmid, ymin, xmax, ymid, 2);
-    createWindow(&disp, xmid, ymid, xmax, ybot, 3);
-    createWindow(&disp, xmin, ybot, xmi2, ymax, 7);
-    createWindow(&disp, xen2, ybot, xmax, ymax, 7);
+    createWindow(xsta, ymin, xmid, ybot, 1);
+    createWindow(xmi2, ybot, xen2, ymax, 5);
+    createWindow(xmin, ymin, xsta, ybot, 4);
+    createWindow(xmid, ymin, xmax, ymid, 2);
+    createWindow(xmid, ymid, xmax, ybot, 3);
+    createWindow(xmin, ybot, xmi2, ymax, 7);
+    createWindow(xen2, ybot, xmax, ymax, 7);
 
     return disp;
 }
@@ -309,7 +309,7 @@ void OnPause()
 void OnStart()
 {
     disp = enterTUIMode();
-    //refreshAllWindows();
+    // refreshAllWindows();
 }
 
 int getUserInput()
@@ -413,7 +413,7 @@ void readFilePath(int id, const char *msg, const char **filePath)
 
 void InputMenu(int *highlight, int *ch)
 {
-    //clearWindow(INPUT);
+    // clearWindow(INPUT);
     refreshWindow(INPUT, 5, 5, 3);
 
     for (int i = 0; i < MAX_INPUTS; i++)
