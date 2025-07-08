@@ -49,3 +49,5 @@ void refreshAllWindows();
 void readFilePath(int id, const char *msg, const char **filePath);
 
 void InputMenu(int *highlight, int *ch);
+
+void SetInputEnable(bool enable);
