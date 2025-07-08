@@ -25,3 +25,5 @@ Usage : sasm -i <input file> -o <output file> [-a | -d]
 
 Error: calls.smh.dot: syntax error in line 1 near '.'
 Error: helloWorld.sasm.dot: syntax error in line 1 near '.'
+Error: calls.smh.dot: syntax error in line 1 near '.'
+Error: helloWorld.sasm.dot: syntax error in line 1 near '.'
