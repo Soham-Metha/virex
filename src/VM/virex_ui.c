@@ -346,6 +346,7 @@ void updateMemoryAndDetailsWindow(Vm *vm, size_t instructionIndex)
     dumpRegs(&(vm->cpu));
     dumpFlags(&(vm->cpu));
     dumpDetails(&vm->prog.instructions[vm->cpu.registers.NX.u64]);
+    instructionIndex++; // to ignore compile warning about unused variable
 }
 
 void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
