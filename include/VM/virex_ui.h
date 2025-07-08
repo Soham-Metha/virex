@@ -23,8 +23,8 @@ void refreshWindow(int id, int contentCol, int borderCol, int titleCol);
 
 void readFilePath(int id, const char *msg, const char **filePath);
 
-display enterTUIMode();
+void enterTUIMode();
 
-void exitTUIMode(display *disp);
+void exitTUIMode();
 
 void InputMenu(int *highlight, int *ch);

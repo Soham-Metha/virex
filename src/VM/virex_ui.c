@@ -94,7 +94,7 @@ void refreshAllWindows()
     refreshWindow(OUTPUT, 4, 5, 3);
 }
 
-display enterTUIMode()
+void enterTUIMode()
 {
     setlocale(LC_ALL, "");
     initscr();
@@ -129,8 +129,6 @@ display enterTUIMode()
 
     refreshAllWindows();
     keypad(disp.windows[INPUT], true);
-
-    return disp;
 }
 
 void wprintdash(WINDOW *win, int col)
@@ -307,7 +305,7 @@ void OnPause()
 
 void OnStart()
 {
-    disp = enterTUIMode();
+    enterTUIMode();
     // refreshAllWindows();
 }
 
