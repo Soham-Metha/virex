@@ -66,10 +66,4 @@ typedef struct
     int windowCount;
 } display;
 
-display enterTUIMode();
-
-void exitTUIMode(display *disp);
-
-void InputMenu(WINDOW *win, int *highlight, int *ch);
-
 String getNameForWindow(int id);
