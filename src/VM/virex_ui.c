@@ -45,7 +45,7 @@ void initColors()
 void refreshWindow(int id, int contentCol, int borderCol, int titleCol)
 {
     WINDOW *win = disp.windows[id];
-    String str = getNameForWindow(id);
+    String str = WindowNames[id];
     int x, y;
     getyx(win, y, x);
     if (x < 2)
@@ -414,11 +414,6 @@ void OnExit()
     }
     endwin();
     exit(0);
-}
-
-String getNameForWindow(int id)
-{
-    return WindowNames[id];
 }
 
 void readFilePath(int id, const char *msg, const char **filePath)
