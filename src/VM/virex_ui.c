@@ -40,6 +40,7 @@ void initColors()
     init_pair(4, COLOR_GREEN, COLOR_BLACK);
     init_pair(5, COLOR_YELLOW, COLOR_BLACK);
     init_pair(7, COLOR_RED, COLOR_BLACK);
+    init_pair(8, COLOR_BLACK, COLOR_WHITE);
 }
 
 void refreshWindow(int id, int contentCol, int borderCol, int titleCol)
@@ -229,7 +230,7 @@ void printOutWithColor(int id, int colorPair, const char *str, ...)
 void dumpFlags(CPU *cpu)
 {
     printOut(DETAILS, "\n");
-    printOutWithColor(DETAILS, "  FLAGS ", 7);
+    printOutWithColor(DETAILS, 8, "  FLAGS ");
     wprintdash(DETAILS, 1);
     printOut(DETAILS,
              "  HT : %c F1 : %c\t"
