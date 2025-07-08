@@ -2,7 +2,6 @@
 
 #include "univ_defs.h"
 #include "univ_strings.h"
-#include "virex.h"
 
 #define LERP(START, END, T) (START * T + END * (1 - T))
 
@@ -77,6 +76,8 @@ void readFilePath(WINDOW* win, const char* msg, const char** filePath);
 String getNameForWindow(int id);
 
 void wprintdash(WINDOW* win, int col);
+
+typedef struct Vm Vm;
 
 void OnInstructionExecution(Vm *vm, int instructionIndex, bool debug);
 
