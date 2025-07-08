@@ -282,7 +282,7 @@ void OnInstructionExecution(Vm *vm, int instructionIndex, bool debug)
     refreshWindow(vm->disp.windows[MEMORY], getNameForWindow(MEMORY), 2, 2, 3);
     refreshWindow(vm->disp.windows[INPUT], getNameForWindow(INPUT), 5, 5, 3);
 
-    if (debug == 1)
+    if (debug)
     {
         wgetch(vm->disp.windows[INPUT]);
     }
