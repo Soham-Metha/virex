@@ -58,7 +58,7 @@ void processFlag(const char *program, const char *flag, int *argc, char ***argv)
 
 void inputHandler(Vm *vm, WINDOW *win, int *highlight)
 {
-    wclear(win);
+    clearWindow(vm, INPUT);
     refreshWindow(win, getNameForWindow(INPUT), 5, 5, 3);
     wmove(win, 2, 4);
     switch (*highlight)
