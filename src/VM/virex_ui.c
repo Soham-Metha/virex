@@ -151,12 +151,12 @@ void enterTUIMode()
     setInputEnable(true);
 }
 
-void dumpStack(const Vm *vm)
+void dumpStack(const Memory *mem)
 {
     printOut(MEMORY, "\n\n   ");
     for (uint64_t i = 0; i < 256; i++)
     {
-        printOut(MEMORY, "%02X ", vm->mem.memory[i]);
+        printOut(MEMORY, "%02X ", mem->memory[i]);
         if (i % 32 == 31)
         {
             printOut(MEMORY, "\n   ");
@@ -260,9 +260,8 @@ void updateProgramWindow(size_t instructionIndex, size_t instructionCount, Instr
 
     size_t i = (instructionIndex > 0) ? instructionIndex : 0;
 
-    size_t count = (instructionIndex + getmaxy(prg) - 1 > instructionCount)
-                       ? instructionCount
-                       : instructionIndex + getmaxy(prg) - 1;
+    size_t count = (instructionIndex + getmaxy(prg) - 1 > instructionCount) ? instructionCount
+                                                                            : instructionIndex + getmaxy(prg) - 1;
 
     for (; i < count; i++)
     {
