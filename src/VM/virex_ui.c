@@ -76,13 +76,13 @@ display CreateWindows()
     int ybot = LERP(ymin, ymax, 0.28);
     int ymid = LERP(ymin, ybot, 0.68);
 
-    createWindow(&disp, xsta, ymin, xmid, ybot, getNameForWindow(OUTPUT), 1);
-    createWindow(&disp, xmi2, ybot, xen2, ymax, getNameForWindow(INPUT), 5);
-    createWindow(&disp, xmin, ymin, xsta, ybot, getNameForWindow(DETAILS), 4);
-    createWindow(&disp, xmid, ymin, xmax, ymid, getNameForWindow(MEMORY), 2);
-    createWindow(&disp, xmid, ymid, xmax, ybot, getNameForWindow(PROGRAM), 3);
-    createWindow(&disp, xmin, ybot, xmi2, ymax, getNameForWindow(NAME), 7);
-    createWindow(&disp, xen2, ybot, xmax, ymax, getNameForWindow(CREDITS), 7);
+    createWindow(&disp, xsta, ymin, xmid, ybot, 1);
+    createWindow(&disp, xmi2, ybot, xen2, ymax, 5);
+    createWindow(&disp, xmin, ymin, xsta, ybot, 4);
+    createWindow(&disp, xmid, ymin, xmax, ymid, 2);
+    createWindow(&disp, xmid, ymid, xmax, ybot, 3);
+    createWindow(&disp, xmin, ybot, xmi2, ymax, 7);
+    createWindow(&disp, xen2, ybot, xmax, ymax, 7);
 
     return disp;
 }
