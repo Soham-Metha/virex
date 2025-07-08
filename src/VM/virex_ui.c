@@ -310,7 +310,7 @@ void OnPause()
 void OnStart()
 {
     disp = enterTUIMode();
-    refreshAllWindows();
+    //refreshAllWindows();
 }
 
 int getUserInput()
