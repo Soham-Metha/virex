@@ -60,7 +60,7 @@ void inputHandler(Vm *vm, WINDOW *win, int *highlight)
 {
     clearWindow(vm, INPUT);
     refreshWindow(win, getNameForWindow(INPUT), 5, 5, 3);
-    wmove(win, 2, 4);
+    moveCursorWithinWindow(vm, INPUT, 2, 4);
     switch (*highlight)
     {
     case EXEC_SM:
@@ -77,7 +77,7 @@ void inputHandler(Vm *vm, WINDOW *win, int *highlight)
                  "\n         Default: (A)"
                  "\n         Your choice? : ");
         refreshWindow(win, getNameForWindow(INPUT), 5, 5, 3);
-        char ch = wgetch(win);
+        char ch = getChar(vm, INPUT);
         if (ch == 'o' || ch == 'O' || ch == 'c' || ch == 'C')
         {
             // snprintf(buffer, sizeof(buffer), "orin %s", outputFile);
