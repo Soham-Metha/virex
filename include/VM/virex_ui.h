@@ -44,7 +44,6 @@ void moveCursorWithinWindow(int id, int y, int x);
 
 char getChar(int id);
 
-
 void refreshWindow(int id, int contentCol, int borderCol, int titleCol);
 
 void readFilePath(int id, const char *msg, const char **filePath);
