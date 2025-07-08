@@ -11,4 +11,4 @@ int getUserInput(Vm *vm);
 
 void printOut(Vm *vm, int id, const char *str);
 
-void clearScreen(Vm *vm);
+void clearWindow(Vm *vm, int id);
