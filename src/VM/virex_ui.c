@@ -55,10 +55,9 @@ bool createWindow(int x1, int y1, int x2, int y2, int colorPair)
     return true;
 }
 
-display CreateWindows()
+void CreateWindows()
 {
     refresh();
-    display disp;
     disp.windowCount = 0;
     int xmin = 0, ymin = 0;
     int xmax = getmaxx(stdscr), ymax = getmaxy(stdscr);
@@ -83,8 +82,6 @@ display CreateWindows()
     createWindow(xmid, ymid, xmax, ybot, 3);
     createWindow(xmin, ybot, xmi2, ymax, 7);
     createWindow(xen2, ybot, xmax, ymax, 7);
-
-    return disp;
 }
 
 void refreshAllWindows()
