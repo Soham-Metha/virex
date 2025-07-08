@@ -245,7 +245,7 @@ void dumpFlags(CPU *cpu)
 void dumpRegs(CPU *cpu)
 {
     moveCursorWithinWindow(DETAILS, 2, 1);
-    printOutWithColor(DETAILS,8,  "  REGISTERS ");
+    printOutWithColor(DETAILS, 8, "  REGISTERS ");
     wprintdash(DETAILS, 1);
     printOut(DETAILS,
              "  H0 : %ld\t"
@@ -279,7 +279,7 @@ void dumpDetails(Instruction *inst)
 
     OpcodeDetails details = getOpcodeDetails(inst->type);
     printOut(DETAILS, "\n");
-    printOutWithColor(DETAILS, "  INSTRUCTION ", 7);
+    printOutWithColor(DETAILS, 8, "  INSTRUCTION ");
     wprintdash(DETAILS, 1);
     printOut(DETAILS, "  %d\t  %s", details.type, details.name);
 
