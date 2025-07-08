@@ -141,11 +141,11 @@ void updateProgramWindow(Vm *vm, size_t instructionIndex)
 
 void refreshAllWindows()
 {
-    refreshWindow(disp.windows[PROGRAM], getNameForWindow(PROGRAM), 3, 3, 3);
-    refreshWindow(disp.windows[OUTPUT], getNameForWindow(OUTPUT), 4, 5, 3);
-    refreshWindow(disp.windows[DETAILS], getNameForWindow(DETAILS), 1, 1, 1);
-    refreshWindow(disp.windows[MEMORY], getNameForWindow(MEMORY), 2, 2, 3);
-    refreshWindow(disp.windows[INPUT], getNameForWindow(INPUT), 5, 5, 3);
+    refreshWindow(PROGRAM, 3, 3, 3);
+    refreshWindow(OUTPUT, 4, 5, 3);
+    refreshWindow(DETAILS, 1, 1, 1);
+    refreshWindow(MEMORY, 2, 2, 3);
+    refreshWindow(INPUT, 5, 5, 3);
 }
 
 void clearNonIOWindows()
@@ -218,4 +218,63 @@ void moveCursorWithinWindow(int id, int y, int x)
 char getChar(int id)
 {
     return wgetch(disp.windows[id]);
+}
+
+void OnExit()
+{
+    exitTUIMode(&disp);
+}
+
+void refreshWindow(int id, int contentCol, int borderCol, int titleCol)
+{
+    WINDOW *win = disp.windows[id];
+    String str = getNameForWindow(id);
+    int x, y;
+    getyx(win, y, x);
+    if (x < 2)
+        x = 2;
+    if (y < 2)
+        y = 2;
+
+    int tmp = getmaxy(win) - 2;
+    while (y > tmp)
+    {
+        wmove(win, 1, 0);
+        wdeleteln(win);
+        wmove(win, tmp, 0);
+        wdeleteln(win);
+        y -= 1;
+    }
+
+    wbkgd(win, COLOR_PAIR(contentCol));
+
+    cchar_t vline, hline, ul, ur, ll, lr;
+
+    setcchar(&vline, L"│", 0, 0, NULL);
+    setcchar(&hline, L"─", 0, 0, NULL);
+    setcchar(&ul, L"╭", 0, 0, NULL);
+    setcchar(&ur, L"╮", 0, 0, NULL);
+    setcchar(&ll, L"╰", 0, 0, NULL);
+    setcchar(&lr, L"╯", 0, 0, NULL);
+
+    wattron(win, COLOR_PAIR(borderCol));
+    wborder_set(win, &vline, &vline, &hline, &hline, &ul, &ur, &ll, &lr);
+    wattroff(win, COLOR_PAIR(borderCol));
+
+    wattron(win, COLOR_PAIR(titleCol));
+    wmove(win, 0, (int)((getmaxx(win) - str.length - 4) / 2));
+    // wmove(win, 0, 2);
+    wprintw(win, "❮ %s ❯", str.data);
+    wattroff(win, COLOR_PAIR(titleCol));
+
+    wmove(win, y, x);
+    wrefresh(win);
+}
+
+void readFilePath(int id, const char *msg, const char **filePath)
+{
+    char buffer[100];
+    printOut(id, msg);
+    wgetnstr(disp.windows[id], buffer, sizeof(buffer) - 1);
+    *filePath = strdup(buffer);
 }

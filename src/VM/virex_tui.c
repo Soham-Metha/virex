@@ -145,51 +145,6 @@ void exitTUIMode(display *disp)
     exit(0);
 }
 
-void refreshWindow(WINDOW *win, String str, int contentCol, int borderCol, int titleCol)
-{
-    int x, y;
-    getyx(win, y, x);
-    if (x < 2)
-        x = 2;
-    if (y < 2)
-        y = 2;
-
-    int tmp = getmaxy(win) - 2;
-    while (y > tmp)
-    {
-        wmove(win, 1, 0);
-        wdeleteln(win);
-        wmove(win, tmp, 0);
-        wdeleteln(win);
-        y -= 1;
-    }
-
-    wbkgd(win, COLOR_PAIR(contentCol));
-
-    cchar_t vline, hline, ul, ur, ll, lr;
-
-    setcchar(&vline, L"│", 0, 0, NULL);
-    setcchar(&hline, L"─", 0, 0, NULL);
-    setcchar(&ul, L"╭", 0, 0, NULL);
-    setcchar(&ur, L"╮", 0, 0, NULL);
-    setcchar(&ll, L"╰", 0, 0, NULL);
-    setcchar(&lr, L"╯", 0, 0, NULL);
-
-
-    wattron(win, COLOR_PAIR(borderCol));
-    wborder_set(win, &vline, &vline, &hline, &hline, &ul, &ur, &ll, &lr);
-    wattroff(win, COLOR_PAIR(borderCol));
-
-    wattron(win, COLOR_PAIR(titleCol));
-    wmove(win, 0, (int)((getmaxx(win) - str.length - 4) / 2));
-    // wmove(win, 0, 2);
-    wprintw(win, "❮ %s ❯", str.data);
-    wattroff(win, COLOR_PAIR(titleCol));
-
-    wmove(win, y, x);
-    wrefresh(win);
-}
-
 void InputMenu(WINDOW *win, int *highlight, int *ch)
 {
     wclear(win);
@@ -222,15 +177,6 @@ void InputMenu(WINDOW *win, int *highlight, int *ch)
         break;
     }
 }
-
-void readFilePath(WINDOW *win, const char *msg, const char **filePath)
-{
-    char buffer[100];
-    wprintw(win, "%s", msg);
-    wgetnstr(win, buffer, sizeof(buffer) - 1);
-    *filePath = strdup(buffer);
-}
-
 String getNameForWindow(int id)
 {
     return WindowNames[id];

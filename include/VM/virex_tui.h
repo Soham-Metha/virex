@@ -36,7 +36,8 @@ color6  #89ddff
 color7  #d0d0d0
 */
 
-enum WindowID {
+enum WindowID
+{
     OUTPUT,
     INPUT,
     DETAILS,
@@ -47,7 +48,8 @@ enum WindowID {
     MAX_WINDOW_COUNT
 };
 
-enum Inputs {
+enum Inputs
+{
     EXEC_SM,
     ASSEMBLE_EXEC_SASM,
     CUSTOM_CMD,
@@ -58,20 +60,16 @@ enum Inputs {
     MAX_INPUTS
 };
 
-typedef struct {
-    WINDOW* windows[MAX_WINDOW_COUNT];
+typedef struct
+{
+    WINDOW *windows[MAX_WINDOW_COUNT];
     int windowCount;
 } display;
 
-void refreshWindow(WINDOW* win, String str, int contentCol, int borderCol, int titleCol);
-
 display enterTUIMode();
 
-void exitTUIMode(display* disp);
+void exitTUIMode(display *disp);
 
-void InputMenu(WINDOW* win, int* highlight, int* ch);
-
-void readFilePath(WINDOW* win, const char* msg, const char** filePath);
+void InputMenu(WINDOW *win, int *highlight, int *ch);
 
 String getNameForWindow(int id);
-
