@@ -67,12 +67,6 @@ void CreateWindows()
     disp.windowCount = 0;
     int xmin = 0, ymin = 0;
     int xmax = getmaxx(stdscr), ymax = getmaxy(stdscr);
-    /*if (xmax < 238 ){
-        fprintf(stderr,"PLEASE DECREASE YOUR TERMINAL FONT SIZE");
-        getch();
-        exitTUIMode(&disp);
-        exit(1);
-    }*/
 
     int xsta = LERP(xmin, xmax, 0.85);
     int xmid = LERP(xsta, xmax, 0.50);
