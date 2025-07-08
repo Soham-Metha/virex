@@ -180,3 +180,8 @@ void OnPause(Vm *vm)
 {
     wgetch(vm->disp.windows[INPUT]);
 }
+
+void OnStart(Vm *vm)
+{
+    vm->disp = enterTUIMode();
+}
