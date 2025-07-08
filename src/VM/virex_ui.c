@@ -207,3 +207,8 @@ void clearWindow(Vm *vm, int id)
 {
     wclear(vm->disp.windows[id]);
 }
+
+void moveCursorWithinWindow(Vm *vm, int id, int y, int x)
+{
+    wmove(vm->disp.windows[id], y, x);
+}
