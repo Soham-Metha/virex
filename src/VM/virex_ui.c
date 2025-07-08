@@ -119,12 +119,7 @@ display enterTUIMode()
                                    "\n    Core lib(Hashtable)\t: OMKAR JAGTAP  "
                                    "\n    Core libs(other)\t: SOHAM METHA  ");
 
-    refreshWindow(NAME, 7, 7, 3);
-    refreshWindow(CREDITS, 7, 7, 3);
-    refreshWindow(MEMORY, 2, 2, 3);
-    refreshWindow(DETAILS, 1, 1, 3);
-    refreshWindow(PROGRAM, 3, 2, 3);
-    refreshWindow(OUTPUT, 4, 5, 3);
+    refreshAllWindows();
     keypad(disp.windows[INPUT], true);
 
     return disp;
