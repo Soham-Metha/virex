@@ -321,12 +321,12 @@ void OnPause()
     wgetch(disp.windows[INPUT]);
 }
 
-void OnStart(Vm *vm)
+void OnStart()
 {
     disp = enterTUIMode();
 }
 
-int getUserInput(Vm *vm)
+int getUserInput()
 {
     int ch;
     int highlight = 0;
