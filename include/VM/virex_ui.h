@@ -9,7 +9,7 @@ void OnPause();
 
 int getUserInput();
 
-void printOut(int id, const char *str);
+void printOut(int id, const char *str, ...);
 
 void clearWindow(int id);
 

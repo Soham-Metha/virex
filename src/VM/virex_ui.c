@@ -200,9 +200,12 @@ int getUserInput(Vm *vm)
     return highlight;
 }
 
-void printOut(int id, const char *str)
+void printOut(int id, const char *str, ...)
 {
-    wprintw(disp.windows[id], "%s", str);
+    va_list args;
+    va_start(args, id);
+    vwprintw(disp.windows[id], str, args);
+    va_end(args);
 }
 
 void clearWindow(int id)
