@@ -3,8 +3,6 @@
 #include "univ_defs.h"
 #include "univ_strings.h"
 
-#define LERP(START, END, T) (START * T + END * (1 - T))
-
 /*
 FONT : MONO
 FONT SIZE : 10
@@ -35,33 +33,3 @@ color6  #89ddff
 # white
 color7  #d0d0d0
 */
-
-enum WindowID
-{
-    OUTPUT,
-    INPUT,
-    DETAILS,
-    MEMORY,
-    PROGRAM,
-    NAME,
-    CREDITS,
-    MAX_WINDOW_COUNT
-};
-
-enum Inputs
-{
-    EXEC_SM,
-    ASSEMBLE_EXEC_SASM,
-    CUSTOM_CMD,
-    ASSEMBLE_SASM,
-    DISASSEMBLE_SM,
-    COMPILE_ORIN,
-    EXIT_VM,
-    MAX_INPUTS
-};
-
-typedef struct
-{
-    WINDOW *windows[MAX_WINDOW_COUNT];
-    int windowCount;
-} display;
