@@ -27,14 +27,10 @@ int main(int argc, char **argv)
         processFlag(program, flag, &argc, &argv);
     }
 
-    int ch;
     int highlight = 0;
     do
     {
-        do
-        {
-            InputMenu(vm.disp.windows[INPUT], &highlight, &ch);
-        } while (ch != '\n');
+        highlight = getUserInput(&vm);
 
         inputHandler(&vm, vm.disp.windows[INPUT], &highlight);
         OnPause(&vm);
@@ -42,7 +38,7 @@ int main(int argc, char **argv)
         setReg(REG_NX, &vm, 0);
         setFlag(META_HALT, &vm.cpu, 0);
 
-    } while (ch);
+    } while (true);
     return 0;
 }
 
