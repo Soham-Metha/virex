@@ -30,7 +30,7 @@ void initColors()
     init_pair(7, COLOR_RED, COLOR_BLACK);
 }
 
-bool createWindow(display *disp, int x1, int y1, int x2, int y2, String str, int colorPair)
+bool createWindow(display *disp, int x1, int y1, int x2, int y2, int colorPair)
 {
     int width = x2 - x1;
     int height = y2 - y1;
