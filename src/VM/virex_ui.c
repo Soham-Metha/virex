@@ -2,6 +2,15 @@
 
 volatile display disp;
 
+static String Inputs[] = {
+    [EXEC_SM] = {.data = "Execute the Simulated Machine Code", .length = 34},
+    [CUSTOM_CMD] = {.data = "Execute a sasm/orin command with custom flags", .length = 45},
+    [ASSEMBLE_EXEC_SASM] = {.data = "Assemble and Execute the Simulated Assembly Code", .length = 48},
+    [ASSEMBLE_SASM] = {.data = "Assemble the Simulated Assembly Code into SM", .length = 44},
+    [DISASSEMBLE_SM] = {.data = "Disassemble the Simulated Machine Code", .length = 38},
+    [COMPILE_ORIN] = {.data = "Compile the ORIN Code into SASM", .length = 33},
+    [EXIT_VM] = {.data = "Exit the Virtual Machine", .length = 24}};
+
 void initColors()
 {
     start_color();
@@ -323,7 +332,7 @@ int getUserInput(Vm *vm)
     int highlight = 0;
     do
     {
-        InputMenu(disp.windows[INPUT], &highlight, &ch);
+        InputMenu(&highlight, &ch);
     } while (ch != '\n');
 
     return highlight;
@@ -409,4 +418,37 @@ void readFilePath(int id, const char *msg, const char **filePath)
     printOut(id, msg);
     wgetnstr(disp.windows[id], buffer, sizeof(buffer) - 1);
     *filePath = strdup(buffer);
+}
+
+void InputMenu(int *highlight, int *ch)
+{
+    clearWindow(INPUT);
+    refreshWindow(INPUT, 5, 5, 3);
+
+    for (int i = 0; i < MAX_INPUTS; i++)
+    {
+        moveCursorWithinWindow(INPUT, i + 2, 4);
+
+        if (i == *highlight)
+        {
+            wattron(disp.windows[INPUT], A_REVERSE);
+            printOut(INPUT, " ❖  ");
+        }
+        printOut(INPUT, Inputs[i].data);
+        wattroff(disp.windows[INPUT], A_REVERSE);
+    }
+
+    *ch = wgetch(disp.windows[INPUT]);
+
+    switch (*ch)
+    {
+    case KEY_UP:
+        *highlight = (*highlight == 0) ? MAX_INPUTS - 1 : *highlight - 1;
+        break;
+    case KEY_DOWN:
+        *highlight = (*highlight + 1) % MAX_INPUTS;
+        break;
+    default:
+        break;
+    }
 }
