@@ -411,7 +411,7 @@ void refreshWindow(int id, int contentCol, int borderCol, int titleCol)
     printOut(id, "❮ %s ❯", str.data);
     wattroff(win, COLOR_PAIR(titleCol));
 
-    wmove(win, y, x);
+    moveCursorWithinWindow(id, y, x);
     wrefresh(win);
 }
 
