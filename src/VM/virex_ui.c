@@ -189,69 +189,65 @@ void dumpFlags(CPU *cpu)
              getFlag(META_F6, cpu) ? 'T' : 'F', getFlag(META_F7, cpu) ? 'T' : 'F');
 }
 
-void dumpRegs(WINDOW *win, CPU *cpu)
+void dumpRegs(CPU *cpu)
 {
-    wmove(win, 2, 1);
-    wattron(win, A_REVERSE);
-    wprintw(win, "  REGISTERS ");
-    wattroff(win, A_REVERSE);
-    wprintdash(win, 1);
-    wprintw(win,
-            "  H0 : %ld\t"
-            "  H1 : %ld\n"
-            "  P0 : %ld\t"
-            "  P1 : %ld\n"
-            "  P2 : %ld\t"
-            "  P3 : %ld\n"
-            "  JS : %ld\t"
-            "  KC : %ld\n"
-            "  NX : %ld\t"
-            "  SP : %ld\n"
-            "  I0 : %ld\n"
-            "  I1 : %ld\n"
-            "  L0 : %ld\n"
-            "  L1 : %lf\n"
-            "  L2 : %ld\n"
-            "  L3 : %ld\n"
-            "  OP : %ld\n"
-            "  QT : %ld\n"
-            "  RF : %ld\n",
-            cpu->registers.H0.u64, cpu->registers.H1.u64, cpu->registers.P0.u64, cpu->registers.P1.u64,
-            cpu->registers.P2.u64, cpu->registers.P3.u64, cpu->registers.JS.u64, cpu->registers.KC.u64,
-            cpu->registers.NX.u64, cpu->registers.SP.u64, cpu->registers.I0.u64, cpu->registers.I1.u64,
-            cpu->registers.L0.u64, cpu->registers.L1.f64, cpu->registers.L2.i64, cpu->registers.L3.u64,
-            cpu->registers.OP.u64, cpu->registers.QT.u64, cpu->registers.RF.u64);
+    moveCursorWithinWindow(DETAILS, 2, 1);
+    printOutWithColor(DETAILS, "  REGISTERS ", 7);
+    wprintdash(DETAILS, 1);
+    printOut(DETAILS,
+             "  H0 : %ld\t"
+             "  H1 : %ld\n"
+             "  P0 : %ld\t"
+             "  P1 : %ld\n"
+             "  P2 : %ld\t"
+             "  P3 : %ld\n"
+             "  JS : %ld\t"
+             "  KC : %ld\n"
+             "  NX : %ld\t"
+             "  SP : %ld\n"
+             "  I0 : %ld\n"
+             "  I1 : %ld\n"
+             "  L0 : %ld\n"
+             "  L1 : %lf\n"
+             "  L2 : %ld\n"
+             "  L3 : %ld\n"
+             "  OP : %ld\n"
+             "  QT : %ld\n"
+             "  RF : %ld\n",
+             cpu->registers.H0.u64, cpu->registers.H1.u64, cpu->registers.P0.u64, cpu->registers.P1.u64,
+             cpu->registers.P2.u64, cpu->registers.P3.u64, cpu->registers.JS.u64, cpu->registers.KC.u64,
+             cpu->registers.NX.u64, cpu->registers.SP.u64, cpu->registers.I0.u64, cpu->registers.I1.u64,
+             cpu->registers.L0.u64, cpu->registers.L1.f64, cpu->registers.L2.i64, cpu->registers.L3.u64,
+             cpu->registers.OP.u64, cpu->registers.QT.u64, cpu->registers.RF.u64);
 }
 
-void dumpDetails(WINDOW *win, OpcodeDetails *details, Instruction *inst)
+void dumpDetails(OpcodeDetails *details, Instruction *inst)
 {
-    wprintw(win, "\n");
-    wattron(win, A_REVERSE);
-    wprintw(win, "  INSTRUCTION ");
-    wattroff(win, A_REVERSE);
-    wprintdash(win, 1);
-    wprintw(win, "  %d\t  %s", details->type, details->name);
+    printOut(DETAILS, "\n");
+    printOutWithColor(DETAILS, "  INSTRUCTION ", 7);
+    wprintdash(DETAILS, 1);
+    printOut(DETAILS, "  %d\t  %s", details->type, details->name);
 
     if (details->has_operand)
     {
-        wprintw(win,
-                "\n────────╮"
-                "\n    1.U │ %ld"
-                "\n    1.I │ %ld"
-                "\n    1.F │ %lf"
-                "\n────────╯\n",
-                inst->operand.u64, inst->operand.i64, inst->operand.f64);
+        printOut(DETAILS,
+                 "\n────────╮"
+                 "\n    1.U │ %ld"
+                 "\n    1.I │ %ld"
+                 "\n    1.F │ %lf"
+                 "\n────────╯\n",
+                 inst->operand.u64, inst->operand.i64, inst->operand.f64);
     }
 
     if (details->has_operand2)
     {
-        wprintw(win,
-                "────────╮"
-                "\n    2.U │ %ld"
-                "\n    2.I │ %ld"
-                "\n    2.F │ %lf"
-                "\n────────╯\n",
-                inst->operand2.u64, inst->operand2.i64, inst->operand2.f64);
+        printOut(DETAILS,
+                 "────────╮"
+                 "\n    2.U │ %ld"
+                 "\n    2.I │ %ld"
+                 "\n    2.F │ %lf"
+                 "\n────────╯\n",
+                 inst->operand2.u64, inst->operand2.i64, inst->operand2.f64);
     }
 }
 
@@ -293,9 +289,9 @@ void updateMemoryAndDetailsWindow(Vm *vm, size_t instructionIndex)
 {
     OpcodeDetails details = getOpcodeDetails(vm->prog.instructions[instructionIndex].type);
     dumpStack(vm);
-    dumpRegs(disp.windows[DETAILS], &(vm->cpu));
+    dumpRegs(&(vm->cpu));
     dumpFlags(&(vm->cpu));
-    dumpDetails(disp.windows[DETAILS], &details, &vm->prog.instructions[instructionIndex]);
+    dumpDetails(&details, &vm->prog.instructions[instructionIndex]);
 }
 
 void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
