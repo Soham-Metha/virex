@@ -35,6 +35,7 @@ int main(int argc, char** argv)
 
         inputHandler(&vm, vm.disp.windows[INPUT], &highlight);
         pause(&vm);
+
         setReg(REG_NX, &vm, 0);
         setFlag(META_HALT, &vm.cpu, 0);
 
