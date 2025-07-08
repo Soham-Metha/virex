@@ -32,9 +32,6 @@ typedef struct
     int windowCount;
 } display;
 
-
-void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug);
-
 void OnStart();
 
 void OnPause();
