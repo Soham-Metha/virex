@@ -1,15 +1,17 @@
 #pragma once
 #include "sasm_assembler.h"
 
-typedef Error (*InternalVmCall)(CPU* cpu, Memory* mem, WINDOW* win, Region* region);
+typedef Error (*InternalVmCall)(CPU *cpu, Memory *mem, Region *region);
 
 #define CALL_NAME_CAPACITY 256
 
-typedef struct {
+typedef struct
+{
     char name[CALL_NAME_CAPACITY];
 } ExternalVmCall;
 
-typedef struct {
+typedef struct
+{
     InternalVmCall VmCallI[INTERNAL_VMCALLS_CAPACITY];
     size_t internalVmCallsDefined;
 
@@ -17,11 +19,11 @@ typedef struct {
     size_t externalVmCallsDefined;
 } VmCalls;
 
-Error vmcall_write(CPU* cpu, Memory* mem, WINDOW* win, Region* region);
-Error vmcall_alloc(CPU* cpu, Memory* mem, WINDOW* win, Region* region);
-Error vmcall_free(CPU* cpu, Memory* mem, WINDOW* win, Region* region);
-Error vmcall_print_f64(CPU* cpu, Memory* mem, WINDOW* win, Region* region);
-Error vmcall_print_i64(CPU* cpu, Memory* mem, WINDOW* win, Region* region);
-Error vmcall_print_u64(CPU* cpu, Memory* mem, WINDOW* win, Region* region);
-Error vmcall_print_ptr(CPU* cpu, Memory* mem, WINDOW* win, Region* region);
-Error vmcall_dump_memory(CPU* cpu, Memory* mem, WINDOW* win, Region* region);
+Error vmcall_write(CPU *cpu, Memory *mem, Region *region);
+Error vmcall_alloc(CPU *cpu, Memory *mem, Region *region);
+Error vmcall_free(CPU *cpu, Memory *mem, Region *region);
+Error vmcall_print_f64(CPU *cpu, Memory *mem, Region *region);
+Error vmcall_print_i64(CPU *cpu, Memory *mem, Region *region);
+Error vmcall_print_u64(CPU *cpu, Memory *mem, Region *region);
+Error vmcall_print_ptr(CPU *cpu, Memory *mem, Region *region);
+Error vmcall_dump_memory(CPU *cpu, Memory *mem, Region *region);

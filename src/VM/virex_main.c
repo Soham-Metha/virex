@@ -1,51 +1,52 @@
 #include "virex_assembler.h"
+#include "virex_ui.h"
 
-void processFlag(const char* program, const char* flag, int* argc, char*** argv);
-void inputHandler(Vm* vm, WINDOW* win, int* highlight);
-void __exec_sm(Vm* vm, WINDOW* win);
-void __assemble_sasm(WINDOW* win);
-void __disassemble_sm(WINDOW* win);
+void processFlag(const char *program, const char *flag, int *argc, char ***argv);
+void inputHandler(Vm *vm, int *highlight);
+void __exec_sm(Vm *vm);
+void __assemble_sasm();
+void __disassemble_sm();
 
-const char* inputFile = NULL;
-const char* outputFile = NULL;
+const char *inputFile = NULL;
+const char *outputFile = NULL;
 char buffer[256];
 int limit = -1;
 int debug = 0;
 
-int main(int argc, char** argv)
+int main(int argc, char **argv)
 {
-    static Vm vm = { 0 };
+    static Vm vm = {0};
     loadStandardCallsIntoVm(&vm);
-    vm.disp = enterTUIMode();
+    OnStart();
 
-    const char* program = getNextCmdLineArg(&argc, &argv);
+    const char *program = getNextCmdLineArg(&argc, &argv);
 
-    while (argc > 0) {
-        const char* flag = getNextCmdLineArg(&argc, &argv);
+    while (argc > 0)
+    {
+        const char *flag = getNextCmdLineArg(&argc, &argv);
         processFlag(program, flag, &argc, &argv);
     }
 
-    int ch;
     int highlight = 0;
-    do {
-        do {
-            InputMenu(vm.disp.windows[INPUT], &highlight, &ch);
-        } while (ch != '\n');
+    do
+    {
+        highlight = getUserInput();
 
-        inputHandler(&vm, vm.disp.windows[INPUT], &highlight);
-        wgetch(vm.disp.windows[INPUT]);
-        refreshWindow(vm.disp.windows[DETAILS], getNameForWindow(DETAILS), 1, 1, 1);
+        inputHandler(&vm, &highlight);
+        OnPause();
+
         setReg(REG_NX, &vm, 0);
         setFlag(META_HALT, &vm.cpu, 0);
 
-    } while (ch);
+    } while (true);
     return 0;
 }
 
-void processFlag(const char* program, const char* flag, int* argc, char*** argv)
+void processFlag(const char *program, const char *flag, int *argc, char ***argv)
 {
 
-    switch (flag[1]) {
+    switch (flag[1])
+    {
     case 'l':
         limit = atoi(getNextCmdLineArg(argc, argv));
         return;
@@ -55,106 +56,113 @@ void processFlag(const char* program, const char* flag, int* argc, char*** argv)
     }
 }
 
-void inputHandler(Vm* vm, WINDOW* win, int* highlight)
+void inputHandler(Vm *vm, int *highlight)
 {
-    wclear(win);
-    refreshWindow(win, getNameForWindow(INPUT), 5, 5, 3);
-    wmove(win, 2, 4);
-    switch (*highlight) {
+    clearWindow(INPUT);
+    refreshAllWindows();
+    moveCursorWithinWindow(INPUT, 2, 4);
+    switch (*highlight)
+    {
     case EXEC_SM:
-        readFilePath(win, "Enter the name of the SM file : ", &inputFile);
-        __exec_sm(vm, win);
+        readFilePath(INPUT, "Enter the name of the SM file : ", &inputFile);
+        __exec_sm(vm);
         break;
     case CUSTOM_CMD:
-        readFilePath(win, "Enter command(no need to specify sasm/orin) : ", &outputFile);
-        wprintw(win, "\n     (S) SASM build"
-                     "\n     (O) ORIN build"
-                     "\n     (A) SASM build and exec"
-                     "\n     (C) ORIN Build and exec"
-                     "\n         Default: (A)"
-                     "\n         Your choice? : ");
-        refreshWindow(win, getNameForWindow(INPUT), 5, 5, 3);
-        char ch = wgetch(win);
-        if (ch == 'o' || ch == 'O' || ch == 'c' || ch == 'C') {
+        readFilePath(INPUT, "Enter command(no need to specify sasm/orin) : ", &outputFile);
+        printOut(INPUT, "\n     (S) SASM build"
+                        "\n     (O) ORIN build"
+                        "\n     (A) SASM build and exec"
+                        "\n     (C) ORIN Build and exec"
+                        "\n         Default: (A)"
+                        "\n         Your choice? : ");
+        refreshAllWindows();
+        char ch = getChar(INPUT);
+        if (ch == 'o' || ch == 'O' || ch == 'c' || ch == 'C')
+        {
             // snprintf(buffer, sizeof(buffer), "orin %s", outputFile);
-        } else {
+        }
+        else
+        {
             snprintf(buffer, sizeof(buffer), "sasm %s", outputFile);
         }
-        if (system(buffer) != 0) {
+        if (system(buffer) != 0)
+        {
             displayMsgWithExit("Assembly Failed");
         }
-        if (ch != 'o' && ch != 'O' && ch != 'c' && ch != 'C' && ch != 'S' && ch != 'C') {
-            wclear(win);
-            wrefresh(win);
-            wmove(win, 2, 4);
-            readFilePath(win, "Enter the name of the SM file : ", &inputFile);
-            __exec_sm(vm, win);
+        if (ch != 'o' && ch != 'O' && ch != 'c' && ch != 'C' && ch != 'S' && ch != 'C')
+        {
+            clearWindow(INPUT);
+            refreshAllWindows();
+            moveCursorWithinWindow(INPUT, 2, 4);
+            readFilePath(INPUT, "Enter the name of the SM file : ", &inputFile);
+            __exec_sm(vm);
         }
         break;
 
     case ASSEMBLE_EXEC_SASM:
-        __assemble_sasm(win);
-        wmove(win, 4, 4);
+        __assemble_sasm();
+        moveCursorWithinWindow(INPUT, 4, 4);
         inputFile = outputFile;
-        __exec_sm(vm, win);
+        __exec_sm(vm);
         break;
 
     case ASSEMBLE_SASM:
-        __assemble_sasm(win);
+        __assemble_sasm();
         break;
 
     case DISASSEMBLE_SM:
-        __disassemble_sm(win);
+        __disassemble_sm();
         break;
 
     case COMPILE_ORIN:
     case EXIT_VM:
-        exitTUIMode(&vm->disp);
+        OnExit();
     default:
         break;
     }
 }
 
-void __exec_sm(Vm* vm, WINDOW* win)
+void __exec_sm(Vm *vm)
 {
     loadProgramIntoVm(vm, inputFile);
 
-    wprintw(win,
-        "\n     Debug Mode?"
-        "\n     0. No"
-        "\n     1. Yes"
-        "\n     2. Fast Debug"
-        "\n     Your choice : ");
-    refreshWindow(win, getNameForWindow(INPUT), 5, 5, 3);
+    printOut(INPUT, "\n     Debug Mode?"
+                    "\n     0. No"
+                    "\n     1. Yes"
+                    "\n     2. Fast Debug"
+                    "\n     Your choice : ");
+    refreshAllWindows();
 
-    debug = wgetch(win) - '0';
+    debug = getChar(INPUT) - '0';
     if (debug == 0)
         debug = 2;
     executeProgram(vm, debug, -1);
 }
 
-void __assemble_sasm(WINDOW* win)
+void __assemble_sasm()
 {
-    readFilePath(win, "Enter the name of the SASM file : ", &inputFile);
-    wmove(win, 3, 4);
-    readFilePath(win, "Enter the name of the output SM file : ", &outputFile);
+    readFilePath(INPUT, "Enter the name of the SASM file : ", &inputFile);
+    moveCursorWithinWindow(INPUT, 3, 4);
+    readFilePath(INPUT, "Enter the name of the output SM file : ", &outputFile);
 
     snprintf(buffer, sizeof(buffer), "sasm -i %s -o %s", inputFile, outputFile);
 
-    if (system(buffer) != 0) {
+    if (system(buffer) != 0)
+    {
         displayMsgWithExit("Assembly Failed");
     }
 }
 
-void __disassemble_sm(WINDOW* win)
+void __disassemble_sm()
 {
-    readFilePath(win, "Enter the name of the SM file : ", &inputFile);
-    wmove(win, 3, 4);
-    readFilePath(win, "Enter the name of the output SASM file : ", &outputFile);
+    readFilePath(INPUT, "Enter the name of the SM file : ", &inputFile);
+    moveCursorWithinWindow(INPUT, 3, 4);
+    readFilePath(INPUT, "Enter the name of the output SASM file : ", &outputFile);
 
     snprintf(buffer, sizeof(buffer), "sasm -i %s -o %s -d", inputFile, outputFile);
 
-    if (system(buffer) != 0) {
+    if (system(buffer) != 0)
+    {
         displayMsgWithExit("Disassembly Failed");
     }
 }
