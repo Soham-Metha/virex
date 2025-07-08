@@ -253,29 +253,29 @@ void dumpDetails(Instruction *inst)
     }
 }
 
-void updateProgramWindow(Vm *vm, size_t instructionIndex)
+void updateProgramWindow(size_t instructionIndex, size_t instructionCount, Instruction *inst)
 {
     WINDOW *prg = disp.windows[PROGRAM];
     wmove(prg, 1, 1);
 
     size_t i = (instructionIndex > 0) ? instructionIndex : 0;
 
-    size_t count = (instructionIndex + getmaxy(prg) - 1 > (size_t)vm->prog.instruction_count)
-                       ? (size_t)vm->prog.instruction_count
+    size_t count = (instructionIndex + getmaxy(prg) - 1 > instructionCount)
+                       ? instructionCount
                        : instructionIndex + getmaxy(prg) - 1;
 
     for (; i < count; i++)
     {
 
-        OpcodeDetails details = getOpcodeDetails(vm->prog.instructions[i].type);
+        OpcodeDetails details = getOpcodeDetails(inst->type);
         if (i == instructionIndex)
             wattron(prg, A_REVERSE);
 
         wprintw(prg, "\n   %ld\t│ %s ", i, details.name);
         if (details.has_operand)
-            wprintw(prg, "\t %ld", vm->prog.instructions[i].operand.u64);
+            wprintw(prg, "\t %ld", inst->operand.u64);
         if (details.has_operand2)
-            wprintw(prg, "\t %ld", vm->prog.instructions[i].operand2.u64);
+            wprintw(prg, "\t %ld", inst->operand2.u64);
         wattroff(prg, A_REVERSE);
     }
 }
@@ -297,7 +297,7 @@ void updateMemoryAndDetailsWindow(Vm *vm, size_t instructionIndex)
 
 void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
 {
-    updateProgramWindow(vm, instructionIndex);
+    updateProgramWindow(instructionIndex, vm->prog.instruction_count, &vm->prog.instructions[instructionIndex]);
     refreshAllWindows();
 
     if (debug)
