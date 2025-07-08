@@ -165,7 +165,7 @@ void refreshAllWindows()
     refreshWindow(DETAILS, 1, 1, 3);
     refreshWindow(PROGRAM, 3, 2, 3);
     refreshWindow(OUTPUT, 4, 5, 3);
-    refreshWindow(INPUT, 6, 5, 3);
+    refreshWindow(INPUT, 5, 5, 3);
 }
 
 void enterTUIMode()
