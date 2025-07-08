@@ -3,4 +3,4 @@
 
 void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug);
 
-void pause(Vm *vm);
+void OnPause(Vm *vm);
