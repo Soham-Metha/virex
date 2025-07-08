@@ -1,6 +1,6 @@
 #include "virex_assembler.h"
 #include "virex_ui.h"
-#pragma GCC poison wprintw
+
 void processFlag(const char *program, const char *flag, int *argc, char ***argv);
 void inputHandler(Vm *vm, WINDOW *win, int *highlight);
 void __exec_sm(Vm *vm, WINDOW *win);
