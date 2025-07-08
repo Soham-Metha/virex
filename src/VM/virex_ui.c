@@ -87,6 +87,16 @@ display CreateWindows()
     return disp;
 }
 
+void refreshAllWindows()
+{
+    refreshWindow(NAME, 7, 7, 3);
+    refreshWindow(CREDITS, 7, 7, 3);
+    refreshWindow(MEMORY, 2, 2, 3);
+    refreshWindow(DETAILS, 1, 1, 3);
+    refreshWindow(PROGRAM, 3, 2, 3);
+    refreshWindow(OUTPUT, 4, 5, 3);
+}
+
 display enterTUIMode()
 {
     setlocale(LC_ALL, "");
@@ -260,16 +270,6 @@ void updateProgramWindow(Vm *vm, size_t instructionIndex)
             wprintw(prg, "\t %ld", vm->prog.instructions[i].operand2.u64);
         wattroff(prg, A_REVERSE);
     }
-}
-
-void refreshAllWindows()
-{
-    refreshWindow(NAME, 7, 7, 3);
-    refreshWindow(CREDITS, 7, 7, 3);
-    refreshWindow(MEMORY, 2, 2, 3);
-    refreshWindow(DETAILS, 1, 1, 3);
-    refreshWindow(PROGRAM, 3, 2, 3);
-    refreshWindow(OUTPUT, 4, 5, 3);
 }
 
 void clearNonIOWindows()
