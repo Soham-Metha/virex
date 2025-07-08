@@ -142,19 +142,19 @@ void setInputEnable(bool enable)
     keypad(disp.windows[INPUT], enable);
 }
 
-void wprintdash(WINDOW *win, int col)
+void wprintdash(int id, int col)
 {
-    wattron(win, COLOR_PAIR(col));
-    int tmp = getmaxx(win) - 1;
+    wattron(disp.windows[id], COLOR_PAIR(col));
+    int tmp = getmaxx(disp.windows[id]) - 1;
     int i, j;
-    getyx(win, j, i);
-    wmove(win, j, i);
+    getyx(disp.windows[id], j, i);
+    wmove(disp.windows[id], j, i);
     for (; i < tmp; i++)
     {
-        wprintw(win, "─");
+        wprintw(disp.windows[id], "─");
     }
-    wprintw(win, "\n\n");
-    wattroff(win, COLOR_PAIR(col));
+    wprintw(disp.windows[id], "\n\n");
+    wattroff(disp.windows[id], COLOR_PAIR(col));
 }
 
 void refreshAllWindows()
