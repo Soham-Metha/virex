@@ -340,13 +340,12 @@ void clearNonIOWindows()
     wclear(disp.windows[MEMORY]);
 }
 
-void updateMemoryAndDetailsWindow(Vm *vm, size_t instructionIndex)
+void updateMemoryAndDetailsWindow(Vm *vm)
 {
     dumpStack(&vm->mem);
     dumpRegs(&(vm->cpu));
     dumpFlags(&(vm->cpu));
     dumpDetails(&vm->prog.instructions[vm->cpu.registers.NX.u64]);
-    instructionIndex++; // to ignore compile warning about unused variable
 }
 
 void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
@@ -360,7 +359,7 @@ void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
     }
 
     clearNonIOWindows();
-    updateMemoryAndDetailsWindow(vm, instructionIndex);
+    updateMemoryAndDetailsWindow(vm);
 }
 
 void OnPause()
