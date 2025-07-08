@@ -32,6 +32,8 @@ void OnStart();
 
 void OnPause();
 
+void OnExit();
+
 int getUserInput();
 
 void printOut(int id, const char *str, ...);
@@ -42,14 +44,9 @@ void moveCursorWithinWindow(int id, int y, int x);
 
 char getChar(int id);
 
-void OnExit();
 
 void refreshWindow(int id, int contentCol, int borderCol, int titleCol);
 
 void readFilePath(int id, const char *msg, const char **filePath);
-
-void enterTUIMode();
-
-void exitTUIMode();
 
 void InputMenu(int *highlight, int *ch);
