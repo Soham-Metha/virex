@@ -8,7 +8,7 @@ void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
 
     size_t i = (instructionIndex > 0) ? instructionIndex : 0;
 
-    size_t count = (instructionIndex + getmaxy(prg) - 1 > (int)vm->prog.instruction_count) ? (int)vm->prog.instruction_count : instructionIndex + getmaxy(prg) - 1;
+    size_t count = (instructionIndex + getmaxy(prg) - 1 > (size_t)vm->prog.instruction_count) ? (size_t)vm->prog.instruction_count : instructionIndex + getmaxy(prg) - 1;
     for (; i < count; i++)
     {
         details = getOpcodeDetails(vm->prog.instructions[i].type);
