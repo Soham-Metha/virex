@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     int highlight = 0;
     do
     {
-        highlight = getUserInput(&vm);
+        highlight = getUserInput();
 
         inputHandler(&vm, &highlight);
         OnPause(&vm);
