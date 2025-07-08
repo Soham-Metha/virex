@@ -3,16 +3,16 @@
 
 void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug);
 
-void OnStart(Vm *vm);
+void OnStart();
 
-void OnPause(Vm *vm);
+void OnPause();
 
-int getUserInput(Vm *vm);
+int getUserInput();
 
-void printOut(Vm *vm, int id, const char *str);
+void printOut(int id, const char *str);
 
-void clearWindow(Vm *vm, int id);
+void clearWindow(int id);
 
-void moveCursorWithinWindow(Vm *vm, int id, int y, int x);
+void moveCursorWithinWindow(int id, int y, int x);
 
-char getChar(Vm* vm, int id);
+char getChar(int id);

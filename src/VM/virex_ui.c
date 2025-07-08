@@ -1,5 +1,7 @@
 #include "virex_ui.h"
 
+display disp;
+
 void wprintdash(WINDOW *win, int col)
 {
     wattron(win, COLOR_PAIR(col));
@@ -110,9 +112,9 @@ void dumpDetails(WINDOW *win, OpcodeDetails *details, Instruction *inst)
                 inst->operand2.u64, inst->operand2.i64, inst->operand2.f64);
     }
 }
-void updateProgramWindow(Vm *vm, size_t instructionIndex)
+void updateProgramWindow(Vm* vm, size_t instructionIndex)
 {
-    WINDOW *prg = vm->disp.windows[PROGRAM];
+    WINDOW *prg = disp.windows[PROGRAM];
     wmove(prg, 1, 1);
 
     size_t i = (instructionIndex > 0) ? instructionIndex : 0;
@@ -137,32 +139,32 @@ void updateProgramWindow(Vm *vm, size_t instructionIndex)
     }
 }
 
-void refreshAllWindows(Vm *vm)
+void refreshAllWindows()
 {
-    refreshWindow(vm->disp.windows[PROGRAM], getNameForWindow(PROGRAM), 3, 3, 3);
-    refreshWindow(vm->disp.windows[OUTPUT], getNameForWindow(OUTPUT), 4, 5, 3);
-    refreshWindow(vm->disp.windows[DETAILS], getNameForWindow(DETAILS), 1, 1, 1);
-    refreshWindow(vm->disp.windows[MEMORY], getNameForWindow(MEMORY), 2, 2, 3);
-    refreshWindow(vm->disp.windows[INPUT], getNameForWindow(INPUT), 5, 5, 3);
+    refreshWindow(disp.windows[PROGRAM], getNameForWindow(PROGRAM), 3, 3, 3);
+    refreshWindow(disp.windows[OUTPUT], getNameForWindow(OUTPUT), 4, 5, 3);
+    refreshWindow(disp.windows[DETAILS], getNameForWindow(DETAILS), 1, 1, 1);
+    refreshWindow(disp.windows[MEMORY], getNameForWindow(MEMORY), 2, 2, 3);
+    refreshWindow(disp.windows[INPUT], getNameForWindow(INPUT), 5, 5, 3);
 }
 
-void clearNonIOWindows(Vm *vm)
+void clearNonIOWindows()
 {
-    wclear(vm->disp.windows[PROGRAM]);
-    wclear(vm->disp.windows[DETAILS]);
-    wclear(vm->disp.windows[MEMORY]);
+    wclear(disp.windows[PROGRAM]);
+    wclear(disp.windows[DETAILS]);
+    wclear(disp.windows[MEMORY]);
 }
 
-void updateMemoryAndDetailsWindow(Vm *vm, size_t instructionIndex)
+void updateMemoryAndDetailsWindow( size_t instructionIndex)
 {
     OpcodeDetails details = getOpcodeDetails(vm->prog.instructions[instructionIndex].type);
-    dumpStack(vm->disp.windows[MEMORY], vm);
-    dumpRegs(vm->disp.windows[DETAILS], &(vm->cpu));
-    dumpFlags(vm->disp.windows[DETAILS], &(vm->cpu));
-    dumpDetails(vm->disp.windows[DETAILS], &details, &vm->prog.instructions[instructionIndex]);
+    dumpStack(disp.windows[MEMORY], vm);
+    dumpRegs(disp.windows[DETAILS], &(vm->cpu));
+    dumpFlags(disp.windows[DETAILS], &(vm->cpu));
+    dumpDetails(disp.windows[DETAILS], &details, &vm->prog.instructions[instructionIndex]);
 }
 
-void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
+void OnInstructionExecution( size_t instructionIndex, bool debug)
 {
     updateProgramWindow(vm, instructionIndex);
     refreshAllWindows(vm);
@@ -178,12 +180,12 @@ void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
 
 void OnPause(Vm *vm)
 {
-    wgetch(vm->disp.windows[INPUT]);
+    wgetch(disp.windows[INPUT]);
 }
 
 void OnStart(Vm *vm)
 {
-    vm->disp = enterTUIMode();
+    disp = enterTUIMode();
 }
 
 int getUserInput(Vm *vm)
@@ -192,28 +194,28 @@ int getUserInput(Vm *vm)
     int highlight = 0;
     do
     {
-        InputMenu(vm->disp.windows[INPUT], &highlight, &ch);
+        InputMenu(disp.windows[INPUT], &highlight, &ch);
     } while (ch != '\n');
 
     return highlight;
 }
 
-void printOut(Vm *vm, int id, const char *str)
+void printOut( int id, const char *str)
 {
-    wprintw(vm->disp.windows[id], "%s", str);
+    wprintw(disp.windows[id], "%s", str);
 }
 
-void clearWindow(Vm *vm, int id)
+void clearWindow( int id)
 {
-    wclear(vm->disp.windows[id]);
+    wclear(disp.windows[id]);
 }
 
-void moveCursorWithinWindow(Vm *vm, int id, int y, int x)
+void moveCursorWithinWindow( int id, int y, int x)
 {
-    wmove(vm->disp.windows[id], y, x);
+    wmove(disp.windows[id], y, x);
 }
 
-char getChar(Vm *vm, int id)
+char getChar( int id)
 {
-    return wgetch(vm->disp.windows[id]);
+    return wgetch(disp.windows[id]);
 }
