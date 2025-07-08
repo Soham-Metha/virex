@@ -197,3 +197,8 @@ int getUserInput(Vm *vm)
 
     return highlight;
 }
+
+void printOut(Vm *vm, int id, const char *str)
+{
+    wprintw(vm->disp.windows[id], "%s", str);
+}
