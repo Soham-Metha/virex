@@ -65,5 +65,3 @@ typedef struct
     WINDOW *windows[MAX_WINDOW_COUNT];
     int windowCount;
 } display;
-
-String getNameForWindow(int id);
