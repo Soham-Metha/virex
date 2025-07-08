@@ -76,3 +76,6 @@ void readFilePath(WINDOW* win, const char* msg, const char** filePath);
 String getNameForWindow(int id);
 
 void wprintdash(WINDOW* win, int col);
+
+void OnInstructionExecution();
+
