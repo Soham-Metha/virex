@@ -1,6 +1,6 @@
 #include "virex_ui.h"
 
-void OnInstructionExecution(Vm *vm, int instructionIndex, bool debug)
+void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
 {
     WINDOW *prg = vm->disp.windows[PROGRAM];
     OpcodeDetails details;
