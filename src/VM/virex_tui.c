@@ -1,24 +1,21 @@
 #include "virex_tui.h"
+#include "sasm_instructions.h"
+#include "virex.h"
 
 static String WindowNames[MAX_WINDOW_COUNT] = {
-    [OUTPUT] = { .data = "OUTPUT", .length = 6 },
-    [DETAILS] = { .data = "DETAILS", .length = 7 },
-    [MEMORY] = { .data = "MEMORY", .length = 6 },
-    [PROGRAM] = { .data = "PROGRAM", .length = 8 },
-    [INPUT] = { .data = "INPUT", .length = 6 },
-    [NAME] = { .data = "VIREX", .length = 5 },
-    [CREDITS] = { .data = "CREDITS", .length = 7 }
-};
+    [OUTPUT] = {.data = "OUTPUT", .length = 6},  [DETAILS] = {.data = "DETAILS", .length = 7},
+    [MEMORY] = {.data = "MEMORY", .length = 6},  [PROGRAM] = {.data = "PROGRAM", .length = 8},
+    [INPUT] = {.data = "INPUT", .length = 6},    [NAME] = {.data = "VIREX", .length = 5},
+    [CREDITS] = {.data = "CREDITS", .length = 7}};
 
 static String Inputs[] = {
-    [EXEC_SM] = { .data = "Execute the Simulated Machine Code", .length = 34 },
-    [CUSTOM_CMD] = { .data = "Execute a sasm/orin command with custom flags", .length = 45 },
-    [ASSEMBLE_EXEC_SASM] = { .data = "Assemble and Execute the Simulated Assembly Code", .length = 48 },
-    [ASSEMBLE_SASM] = { .data = "Assemble the Simulated Assembly Code into SM", .length = 44 },
-    [DISASSEMBLE_SM] = { .data = "Disassemble the Simulated Machine Code", .length = 38 },
-    [COMPILE_ORIN] = { .data = "Compile the ORIN Code into SASM", .length = 33 },
-    [EXIT_VM] = { .data = "Exit the Virtual Machine", .length = 24 }
-};
+    [EXEC_SM] = {.data = "Execute the Simulated Machine Code", .length = 34},
+    [CUSTOM_CMD] = {.data = "Execute a sasm/orin command with custom flags", .length = 45},
+    [ASSEMBLE_EXEC_SASM] = {.data = "Assemble and Execute the Simulated Assembly Code", .length = 48},
+    [ASSEMBLE_SASM] = {.data = "Assemble the Simulated Assembly Code into SM", .length = 44},
+    [DISASSEMBLE_SM] = {.data = "Disassemble the Simulated Machine Code", .length = 38},
+    [COMPILE_ORIN] = {.data = "Compile the ORIN Code into SASM", .length = 33},
+    [EXIT_VM] = {.data = "Exit the Virtual Machine", .length = 24}};
 
 void initColors()
 {
@@ -39,18 +36,20 @@ void initColors()
     init_pair(7, COLOR_RED, COLOR_BLACK);
 }
 
-bool createWindow(display* disp, int x1, int y1, int x2, int y2, String str, int colorPair)
+bool createWindow(display *disp, int x1, int y1, int x2, int y2, String str, int colorPair)
 {
     int width = x2 - x1;
     int height = y2 - y1;
 
-    if (width <= 0 || height <= 0) {
+    if (width <= 0 || height <= 0)
+    {
         fprintf(stderr, "Error: Invalid window dimensions (%d, %d, %d, %d)\n", x1, y1, x2, y2);
         return false;
     }
 
-    WINDOW* win = newwin(height, width, y1, x1);
-    if (!win) {
+    WINDOW *win = newwin(height, width, y1, x1);
+    if (!win)
+    {
         fprintf(stderr, "Error: Failed to create window\n");
         return false;
     }
@@ -105,27 +104,26 @@ display enterTUIMode()
 
     display disp = CreateWindows();
     wprintw(disp.windows[NAME],
-        "\n    ██╗   ██╗██╗██████╗ ████████╗██╗   ██╗ █████╗ ██╗     "     //      ██╗   ██╗██╗██████╗ ███████╗██╗  ██╗"
-        "\n    ██║   ██║██║██╔══██╗╚══██╔══╝██║   ██║██╔══██╗██║     "     //      ██║   ██║██║██████╔╝█████╗   ╚███╔╝ "
-        "\n    ██║   ██║██║██████╔╝   ██║   ██║   ██║███████║██║     "     //      ╚██╗ ██╔╝██║██╔══██╗██╔══╝   ██╔██╗ "
-        "\n    ╚██╗ ██╔╝██║██╔══██╗   ██║   ██║   ██║██╔══██║██║     "     //       ╚████╔╝ ██║██║  ██║███████╗██╔╝ ██╗"
-        "\n     ╚████╔╝ ██║██║  ██║   ██║   ╚██████╔╝██║  ██║███████╗"     //        ╚═══╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝"
-        "\n      ╚═══╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝"
-        "\n    ███████╗██╗  ██╗███████╗ ██████╗██╗   ██╗████████╗ ██████╗ ██████╗ "
-        "\n    ██╔════╝╚██╗██╔╝██╔════╝██╔════╝██║   ██║╚══██╔══╝██╔═══██╗██╔══██╗"
-        "\n    █████╗   ╚███╔╝ █████╗  ██║     ██║   ██║   ██║   ██║   ██║██████╔╝"
-        "\n    ██╔══╝   ██╔██╗ ██╔══╝  ██║     ██║   ██║   ██║   ██║   ██║██╔══██╗"
-        "\n    ███████╗██╔╝ ██╗███████╗╚██████╗╚██████╔╝   ██║   ╚██████╔╝██║  ██║"
-        "\n    ╚══════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝  ╚═╝"
-        "\n                                                                       ");
+            "\n    ██╗   ██╗██╗██████╗ ████████╗██╗   ██╗ █████╗ ██╗     " //      ██╗   ██╗██╗██████╗ ███████╗██╗  ██╗"
+            "\n    ██║   ██║██║██╔══██╗╚══██╔══╝██║   ██║██╔══██╗██║     " //      ██║   ██║██║██████╔╝█████╗   ╚███╔╝ "
+            "\n    ██║   ██║██║██████╔╝   ██║   ██║   ██║███████║██║     " //      ╚██╗ ██╔╝██║██╔══██╗██╔══╝   ██╔██╗ "
+            "\n    ╚██╗ ██╔╝██║██╔══██╗   ██║   ██║   ██║██╔══██║██║     " //       ╚████╔╝ ██║██║  ██║███████╗██╔╝ ██╗"
+            "\n     ╚████╔╝ ██║██║  ██║   ██║   ╚██████╔╝██║  ██║███████╗" //        ╚═══╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝"
+            "\n      ╚═══╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝"
+            "\n    ███████╗██╗  ██╗███████╗ ██████╗██╗   ██╗████████╗ ██████╗ ██████╗ "
+            "\n    ██╔════╝╚██╗██╔╝██╔════╝██╔════╝██║   ██║╚══██╔══╝██╔═══██╗██╔══██╗"
+            "\n    █████╗   ╚███╔╝ █████╗  ██║     ██║   ██║   ██║   ██║   ██║██████╔╝"
+            "\n    ██╔══╝   ██╔██╗ ██╔══╝  ██║     ██║   ██║   ██║   ██║   ██║██╔══██╗"
+            "\n    ███████╗██╔╝ ██╗███████╗╚██████╗╚██████╔╝   ██║   ╚██████╔╝██║  ██║"
+            "\n    ╚══════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝  ╚═╝"
+            "\n                                                                       ");
 
-    wprintw(disp.windows[CREDITS],
-        "\n\n    VIREX, SASM\t\t: SOHAM METHA  "
-        "\n    AST visualizer\t: SOHAM METHA  "
-        "\n    Syntax Highlighter\t: SOHAM METHA  "
-        "\n    ORIN Compiler\t: OMKAR JAGTAP "
-        "\n    Core lib(Hashtable)\t: OMKAR JAGTAP  "
-        "\n    Core libs(other)\t: SOHAM METHA  ");
+    wprintw(disp.windows[CREDITS], "\n\n    VIREX, SASM\t\t: SOHAM METHA  "
+                                   "\n    AST visualizer\t: SOHAM METHA  "
+                                   "\n    Syntax Highlighter\t: SOHAM METHA  "
+                                   "\n    ORIN Compiler\t: OMKAR JAGTAP "
+                                   "\n    Core lib(Hashtable)\t: OMKAR JAGTAP  "
+                                   "\n    Core libs(other)\t: SOHAM METHA  ");
 
     refreshWindow(disp.windows[NAME], WindowNames[NAME], 7, 7, 3);
     refreshWindow(disp.windows[CREDITS], WindowNames[CREDITS], 7, 7, 3);
@@ -138,16 +136,17 @@ display enterTUIMode()
     return disp;
 }
 
-void exitTUIMode(display* disp)
+void exitTUIMode(display *disp)
 {
-    while (disp->windowCount > 0) {
+    while (disp->windowCount > 0)
+    {
         delwin(disp->windows[disp->windowCount--]);
     }
     endwin();
     exit(0);
 }
 
-void refreshWindow(WINDOW* win, String str, int contentCol, int borderCol, int titleCol)
+void refreshWindow(WINDOW *win, String str, int contentCol, int borderCol, int titleCol)
 {
     int x, y;
     getyx(win, y, x);
@@ -157,7 +156,8 @@ void refreshWindow(WINDOW* win, String str, int contentCol, int borderCol, int t
         y = 2;
 
     int tmp = getmaxy(win) - 2;
-    while (y > tmp) {
+    while (y > tmp)
+    {
         wmove(win, 1, 0);
         wdeleteln(win);
         wmove(win, tmp, 0);
@@ -192,15 +192,17 @@ void refreshWindow(WINDOW* win, String str, int contentCol, int borderCol, int t
     wrefresh(win);
 }
 
-void InputMenu(WINDOW* win, int* highlight, int* ch)
+void InputMenu(WINDOW *win, int *highlight, int *ch)
 {
     wclear(win);
     refreshWindow(win, WindowNames[INPUT], 5, 5, 3);
 
-    for (int i = 0; i < MAX_INPUTS; i++) {
+    for (int i = 0; i < MAX_INPUTS; i++)
+    {
         wmove(win, i + 2, 4);
 
-        if (i == *highlight) {
+        if (i == *highlight)
+        {
             wattron(win, A_REVERSE);
             wprintw(win, " ❖  ");
         }
@@ -210,7 +212,8 @@ void InputMenu(WINDOW* win, int* highlight, int* ch)
 
     *ch = wgetch(win);
 
-    switch (*ch) {
+    switch (*ch)
+    {
     case KEY_UP:
         *highlight = (*highlight == 0) ? MAX_INPUTS - 1 : *highlight - 1;
         break;
@@ -222,7 +225,7 @@ void InputMenu(WINDOW* win, int* highlight, int* ch)
     }
 }
 
-void readFilePath(WINDOW* win, const char* msg, const char** filePath)
+void readFilePath(WINDOW *win, const char *msg, const char **filePath)
 {
     char buffer[100];
     wprintw(win, "%s", msg);
@@ -235,16 +238,62 @@ String getNameForWindow(int id)
     return WindowNames[id];
 }
 
-void wprintdash(WINDOW* win, int col)
+void wprintdash(WINDOW *win, int col)
 {
     wattron(win, COLOR_PAIR(col));
     int tmp = getmaxx(win) - 1;
     int i, j;
     getyx(win, j, i);
     wmove(win, j, i);
-    for (; i < tmp; i++) {
+    for (; i < tmp; i++)
+    {
         wprintw(win, "─");
     }
     wprintw(win, "\n\n");
     wattroff(win, COLOR_PAIR(col));
+}
+
+void OnInstructionExecution(Vm *vm, int instructionIndex, bool debug)
+{
+    WINDOW *prg = vm->disp.windows[PROGRAM];
+    OpcodeDetails details;
+    wmove(prg, 1, 1);
+
+    size_t i = (instructionIndex > 0) ? instructionIndex : 0;
+
+    size_t count = (instructionIndex + getmaxy(prg) - 1 > getInstCnt(vm)) ? getInstCnt(vm) : instructionIndex + getmaxy(prg) - 1;
+    for (; i < count; i++)
+    {
+        details = getOpcodeDetails(vm->prog.instructions[i].type);
+        if (i == instructionIndex)
+            wattron(prg, A_REVERSE);
+
+        wprintw(prg, "\n   %ld\t│ %s ", i, details.name);
+        if (details.has_operand)
+            wprintw(prg, "\t %ld", vm->prog.instructions[i].operand.u64);
+        if (details.has_operand2)
+            wprintw(prg, "\t %ld", vm->prog.instructions[i].operand2.u64);
+        wattroff(prg, A_REVERSE);
+    }
+
+    refreshWindow(vm->disp.windows[PROGRAM], getNameForWindow(PROGRAM), 3, 3, 3);
+    refreshWindow(vm->disp.windows[OUTPUT], getNameForWindow(OUTPUT), 4, 5, 3);
+    refreshWindow(vm->disp.windows[DETAILS], getNameForWindow(DETAILS), 1, 1, 1);
+    refreshWindow(vm->disp.windows[MEMORY], getNameForWindow(MEMORY), 2, 2, 3);
+    refreshWindow(vm->disp.windows[INPUT], getNameForWindow(INPUT), 5, 5, 3);
+
+    if (debug == 1)
+    {
+        wgetch(vm->disp.windows[INPUT]);
+    }
+
+    wclear(vm->disp.windows[DETAILS]);
+    wclear(prg);
+    wclear(vm->disp.windows[MEMORY]);
+
+    details = getOpcodeDetails(vm->prog.instructions[instructionIndex].type);
+    dumpStack(vm->disp.windows[MEMORY], vm);
+    dumpRegs(vm->disp.windows[DETAILS], &(vm->cpu));
+    dumpFlags(vm->disp.windows[DETAILS], &(vm->cpu));
+    dumpDetails(vm->disp.windows[DETAILS], &details, &vm->prog.instructions[instructionIndex]);
 }

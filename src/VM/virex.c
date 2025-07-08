@@ -129,57 +129,16 @@ void dumpDetails(WINDOW *win, OpcodeDetails *details, Instruction *inst)
 
 void executeProgram(Vm *vm, int debug, int lim)
 {
-    CPU *cpu = &(vm->cpu);
     Instruction *inst = getInstructionAt(vm, getReg(REG_NX, vm)->u64);
-    OpcodeDetails details;
+    size_t c = getReg(REG_NX, vm)->u64;
     Error error = executeInst(vm, vm->disp.windows[OUTPUT]);
-    size_t c = getReg(REG_NX, vm)->u64 - 2;
 
     if (debug > 0)
     {
-        WINDOW *prg = vm->disp.windows[PROGRAM];
-        wmove(prg, 1, 1);
-
-        size_t i = (c > 0) ? c : 0;
-
-        size_t count = (c + getmaxy(prg) - 1 > getInstCnt(vm)) ? getInstCnt(vm) : c + getmaxy(prg) - 1;
-        for (; i < count; i++)
-        {
-            details = getOpcodeDetails(getInstructionAt(vm, i)->type);
-            if (i == c)
-                wattron(prg, A_REVERSE);
-
-            wprintw(prg, "\n   %ld\t│ %s ", i, details.name);
-            if (details.has_operand)
-                wprintw(prg, "\t %ld", getInstructionAt(vm, i)->operand.u64);
-            if (details.has_operand2)
-                wprintw(prg, "\t %ld", getInstructionAt(vm, i)->operand2.u64);
-            wattroff(prg, A_REVERSE);
-        }
-
-        refreshWindow(vm->disp.windows[PROGRAM], getNameForWindow(PROGRAM), 3, 3, 3);
-        refreshWindow(vm->disp.windows[OUTPUT], getNameForWindow(OUTPUT), 4, 5, 3);
-        refreshWindow(vm->disp.windows[DETAILS], getNameForWindow(DETAILS), 1, 1, 1);
-        refreshWindow(vm->disp.windows[MEMORY], getNameForWindow(MEMORY), 2, 2, 3);
-        refreshWindow(vm->disp.windows[INPUT], getNameForWindow(INPUT), 5, 5, 3);
-
-        if (debug == 1)
-        {
-            wgetch(vm->disp.windows[INPUT]);
-        }
-
-        wclear(vm->disp.windows[DETAILS]);
-        wclear(prg);
-        wclear(vm->disp.windows[MEMORY]);
-
-        details = getOpcodeDetails(inst->type);
-        dumpStack(vm->disp.windows[MEMORY], vm);
-        dumpRegs(vm->disp.windows[DETAILS], cpu);
-        dumpFlags(vm->disp.windows[DETAILS], cpu);
-        dumpDetails(vm->disp.windows[DETAILS], &details, inst);
+        
     }
 
-    if (lim == 0 || getFlag(META_HALT, cpu))
+    if (lim == 0 || getFlag(META_HALT, &(vm->cpu)))
     {
         return;
     }
