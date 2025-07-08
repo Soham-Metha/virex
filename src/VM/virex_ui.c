@@ -345,7 +345,7 @@ void updateMemoryAndDetailsWindow(Vm *vm, size_t instructionIndex)
     dumpStack(&vm->mem);
     dumpRegs(&(vm->cpu));
     dumpFlags(&(vm->cpu));
-    dumpDetails(&vm->prog.instructions[instructionIndex]);
+    dumpDetails(&vm->prog.instructions[vm->cpu.registers.NX.u64]);
 }
 
 void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
