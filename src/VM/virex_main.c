@@ -59,7 +59,7 @@ void processFlag(const char *program, const char *flag, int *argc, char ***argv)
 void inputHandler(Vm *vm, int *highlight)
 {
     clearWindow(INPUT);
-    refreshWindow(INPUT, 5, 5, 3);
+    refreshAllWindows();
     moveCursorWithinWindow(INPUT, 2, 4);
     switch (*highlight)
     {
@@ -75,7 +75,7 @@ void inputHandler(Vm *vm, int *highlight)
                         "\n     (C) ORIN Build and exec"
                         "\n         Default: (A)"
                         "\n         Your choice? : ");
-        refreshWindow(INPUT, 5, 5, 3);
+        refreshAllWindows();
         char ch = getChar(INPUT);
         if (ch == 'o' || ch == 'O' || ch == 'c' || ch == 'C')
         {
@@ -92,7 +92,7 @@ void inputHandler(Vm *vm, int *highlight)
         if (ch != 'o' && ch != 'O' && ch != 'c' && ch != 'C' && ch != 'S' && ch != 'C')
         {
             clearWindow(INPUT);
-            refreshWindow(INPUT, 5, 5, 3);
+            refreshAllWindows();
             moveCursorWithinWindow(INPUT, 2, 4);
             readFilePath(INPUT, "Enter the name of the SM file : ", &inputFile);
             __exec_sm(vm);
@@ -131,7 +131,7 @@ void __exec_sm(Vm *vm)
                     "\n     1. Yes"
                     "\n     2. Fast Debug"
                     "\n     Your choice : ");
-    refreshWindow(INPUT, 5, 5, 3);
+    refreshAllWindows();
 
     debug = getChar(INPUT) - '0';
     if (debug == 0)
