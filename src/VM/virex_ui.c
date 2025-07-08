@@ -284,19 +284,6 @@ void updateMemoryAndDetailsWindow(Vm *vm, size_t instructionIndex)
     dumpDetails(disp.windows[DETAILS], &details, &vm->prog.instructions[instructionIndex]);
 }
 
-void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
-{
-    updateProgramWindow(vm, instructionIndex);
-
-    if (debug)
-    {
-        OnPause();
-    }
-
-    clearNonIOWindows();
-    updateMemoryAndDetailsWindow(vm, instructionIndex);
-}
-
 void OnPause()
 {
     refreshAllWindows();
