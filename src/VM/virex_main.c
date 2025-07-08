@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 {
     static Vm vm = {0};
     loadStandardCallsIntoVm(&vm);
-    OnStart(&vm);
+    OnStart();
 
     const char *program = getNextCmdLineArg(&argc, &argv);
 
