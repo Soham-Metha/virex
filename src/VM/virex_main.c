@@ -102,7 +102,7 @@ void inputHandler(Vm *vm, WINDOW *win, int *highlight)
 
     case ASSEMBLE_EXEC_SASM:
         __assemble_sasm(win);
-        wmove(win, 4, 4);
+        moveCursorWithinWindow(vm, INPUT, 4, 4);
         inputFile = outputFile;
         __exec_sm(vm, win);
         break;
@@ -144,7 +144,7 @@ void __exec_sm(Vm *vm, WINDOW *win)
 void __assemble_sasm(WINDOW *win)
 {
     readFilePath(win, "Enter the name of the SASM file : ", &inputFile);
-    wmove(win, 3, 4);
+    moveCursorWithinWindow(win, INPUT, 3, 4);
     readFilePath(win, "Enter the name of the output SM file : ", &outputFile);
 
     snprintf(buffer, sizeof(buffer), "sasm -i %s -o %s", inputFile, outputFile);
@@ -158,7 +158,7 @@ void __assemble_sasm(WINDOW *win)
 void __disassemble_sm(WINDOW *win)
 {
     readFilePath(win, "Enter the name of the SM file : ", &inputFile);
-    wmove(win, 3, 4);
+    moveCursorWithinWindow(win, INPUT, 3, 4);
     readFilePath(win, "Enter the name of the output SASM file : ", &outputFile);
 
     snprintf(buffer, sizeof(buffer), "sasm -i %s -o %s -d", inputFile, outputFile);
