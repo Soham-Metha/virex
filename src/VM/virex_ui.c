@@ -1,5 +1,20 @@
 #include "virex_ui.h"
 
+void wprintdash(WINDOW *win, int col)
+{
+    wattron(win, COLOR_PAIR(col));
+    int tmp = getmaxx(win) - 1;
+    int i, j;
+    getyx(win, j, i);
+    wmove(win, j, i);
+    for (; i < tmp; i++)
+    {
+        wprintw(win, "─");
+    }
+    wprintw(win, "\n\n");
+    wattroff(win, COLOR_PAIR(col));
+}
+
 void dumpStack(WINDOW *win, const Vm *vm)
 {
     wprintw(win, "\n\n   ");
