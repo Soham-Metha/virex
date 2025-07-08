@@ -1,5 +1,37 @@
 #pragma once
 #include <virex.h>
+#define LERP(START, END, T) (START * T + END * (1 - T))
+
+enum WindowID
+{
+    OUTPUT,
+    INPUT,
+    DETAILS,
+    MEMORY,
+    PROGRAM,
+    NAME,
+    CREDITS,
+    MAX_WINDOW_COUNT
+};
+
+enum Inputs
+{
+    EXEC_SM,
+    ASSEMBLE_EXEC_SASM,
+    CUSTOM_CMD,
+    ASSEMBLE_SASM,
+    DISASSEMBLE_SM,
+    COMPILE_ORIN,
+    EXIT_VM,
+    MAX_INPUTS
+};
+
+typedef struct
+{
+    WINDOW *windows[MAX_WINDOW_COUNT];
+    int windowCount;
+} display;
+
 
 void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug);
 
