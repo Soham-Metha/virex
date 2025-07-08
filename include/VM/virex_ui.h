@@ -7,4 +7,6 @@ void OnStart(Vm *vm);
 
 void OnPause(Vm *vm);
 
-int getUserInput(Vm* vm);
+int getUserInput(Vm *vm);
+
+void printOut(int id, const char *str);
