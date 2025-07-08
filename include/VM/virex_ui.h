@@ -1,5 +1,5 @@
 #pragma once
-#include <virex.h>
+#include <univ_defs.h>
 #define LERP(START, END, T) (START * T + END * (1 - T))
 
 enum WindowID
