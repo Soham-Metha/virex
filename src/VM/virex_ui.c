@@ -17,6 +17,12 @@ static String Inputs[] = {
     [COMPILE_ORIN] = {.data = "Compile the ORIN Code into SASM", .length = 33},
     [EXIT_VM] = {.data = "Exit the Virtual Machine", .length = 24}};
 
+static String WindowNames[MAX_WINDOW_COUNT] = {
+    [OUTPUT] = {.data = "OUTPUT", .length = 6},  [DETAILS] = {.data = "DETAILS", .length = 7},
+    [MEMORY] = {.data = "MEMORY", .length = 6},  [PROGRAM] = {.data = "PROGRAM", .length = 8},
+    [INPUT] = {.data = "INPUT", .length = 6},    [NAME] = {.data = "VIREX", .length = 5},
+    [CREDITS] = {.data = "CREDITS", .length = 7}};
+
 void initColors()
 {
     start_color();
@@ -363,12 +369,6 @@ void OnExit()
     endwin();
     exit(0);
 }
-
-static String WindowNames[MAX_WINDOW_COUNT] = {
-    [OUTPUT] = {.data = "OUTPUT", .length = 6},  [DETAILS] = {.data = "DETAILS", .length = 7},
-    [MEMORY] = {.data = "MEMORY", .length = 6},  [PROGRAM] = {.data = "PROGRAM", .length = 8},
-    [INPUT] = {.data = "INPUT", .length = 6},    [NAME] = {.data = "VIREX", .length = 5},
-    [CREDITS] = {.data = "CREDITS", .length = 7}};
 
 String getNameForWindow(int id)
 {
