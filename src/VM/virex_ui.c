@@ -139,7 +139,7 @@ void CreateWindows()
 
 void setInputEnable(bool enable)
 {
-    keypad(disp.windows[INPUT], enable);
+    
 }
 
 void wprintdash(int id, int col)
@@ -201,7 +201,7 @@ void enterTUIMode()
                       "\n    Core libs(other)\t: SOHAM METHA  ");
 
     refreshAllWindows();
-    setInputEnable(true);
+    keypad(disp.windows[INPUT], true);
 }
 
 void dumpStack(const Memory *mem)
