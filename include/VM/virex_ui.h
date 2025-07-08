@@ -38,6 +38,8 @@ int getUserInput();
 
 void printOut(int id, const char *str, ...);
 
+void printOutWithColor(int id, int colorPair, const char *str, ...);
+
 void clearWindow(int id);
 
 void moveCursorWithinWindow(int id, int y, int x);

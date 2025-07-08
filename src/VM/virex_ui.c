@@ -84,6 +84,26 @@ void CreateWindows()
     createWindow(xen2, ybot, xmax, ymax, 7);
 }
 
+void setInputEnable(bool enable)
+{
+    keypad(disp.windows[INPUT], enable);
+}
+
+void wprintdash(WINDOW *win, int col)
+{
+    wattron(win, COLOR_PAIR(col));
+    int tmp = getmaxx(win) - 1;
+    int i, j;
+    getyx(win, j, i);
+    wmove(win, j, i);
+    for (; i < tmp; i++)
+    {
+        wprintw(win, "─");
+    }
+    wprintw(win, "\n\n");
+    wattroff(win, COLOR_PAIR(col));
+}
+
 void refreshAllWindows()
 {
     refreshWindow(NAME, 7, 7, 3);
@@ -128,52 +148,45 @@ void enterTUIMode()
                       "\n    Core libs(other)\t: SOHAM METHA  ");
 
     refreshAllWindows();
-    keypad(disp.windows[INPUT], true);
+    setInputEnable(true);
 }
 
-void wprintdash(WINDOW *win, int col)
+void dumpStack(const Vm *vm)
 {
-    wattron(win, COLOR_PAIR(col));
-    int tmp = getmaxx(win) - 1;
-    int i, j;
-    getyx(win, j, i);
-    wmove(win, j, i);
-    for (; i < tmp; i++)
-    {
-        wprintw(win, "─");
-    }
-    wprintw(win, "\n\n");
-    wattroff(win, COLOR_PAIR(col));
-}
-
-void dumpStack(WINDOW *win, const Vm *vm)
-{
-    wprintw(win, "\n\n   ");
+    printOut(MEMORY, "\n\n   ");
     for (uint64_t i = 0; i < 256; i++)
     {
-        wprintw(win, "%02X ", vm->mem.memory[i]);
+        printOut(MEMORY, "%02X ", vm->mem.memory[i]);
         if (i % 32 == 31)
         {
-            wprintw(win, "\n   ");
+            printOut(MEMORY, "\n   ");
         }
     }
 }
 
-void dumpFlags(WINDOW *win, CPU *cpu)
+void printOutWithColor(int id, int colorPair, const char *str, ...)
 {
-    wprintw(win, "\n");
-    wattron(win, A_REVERSE);
-    wprintw(win, "  FLAGS ");
-    wattroff(win, A_REVERSE);
-    wprintdash(win, 1);
-    wprintw(win,
-            "  HT : %c F1 : %c\t"
-            "  F2 : %c F3 : %c\n"
-            "  F4 : %c F5 : %c\t"
-            "  F6 : %c F7 : %c\n",
-            getFlag(META_HALT, cpu) ? 'T' : 'F', getFlag(META_F1, cpu) ? 'T' : 'F', getFlag(META_F2, cpu) ? 'T' : 'F',
-            getFlag(META_F3, cpu) ? 'T' : 'F', getFlag(META_F4, cpu) ? 'T' : 'F', getFlag(META_F5, cpu) ? 'T' : 'F',
-            getFlag(META_F6, cpu) ? 'T' : 'F', getFlag(META_F7, cpu) ? 'T' : 'F');
+    va_list args;
+    va_start(args, str);
+    wattron(disp.windows[id], COLOR_PAIR(colorPair));
+    vwprintw(disp.windows[id], str, args);
+    wattroff(disp.windows[id], COLOR_PAIR(colorPair));
+    va_end(args);
+}
+
+void dumpFlags(CPU *cpu)
+{
+    printOut(DETAILS, "\n");
+    printOutWithColor(DETAILS, "  FLAGS ", 7);
+    wprintdash(DETAILS, 1);
+    printOut(DETAILS,
+             "  HT : %c F1 : %c\t"
+             "  F2 : %c F3 : %c\n"
+             "  F4 : %c F5 : %c\t"
+             "  F6 : %c F7 : %c\n",
+             getFlag(META_HALT, cpu) ? 'T' : 'F', getFlag(META_F1, cpu) ? 'T' : 'F', getFlag(META_F2, cpu) ? 'T' : 'F',
+             getFlag(META_F3, cpu) ? 'T' : 'F', getFlag(META_F4, cpu) ? 'T' : 'F', getFlag(META_F5, cpu) ? 'T' : 'F',
+             getFlag(META_F6, cpu) ? 'T' : 'F', getFlag(META_F7, cpu) ? 'T' : 'F');
 }
 
 void dumpRegs(WINDOW *win, CPU *cpu)
@@ -241,6 +254,7 @@ void dumpDetails(WINDOW *win, OpcodeDetails *details, Instruction *inst)
                 inst->operand2.u64, inst->operand2.i64, inst->operand2.f64);
     }
 }
+
 void updateProgramWindow(Vm *vm, size_t instructionIndex)
 {
     WINDOW *prg = disp.windows[PROGRAM];
@@ -278,9 +292,9 @@ void clearNonIOWindows()
 void updateMemoryAndDetailsWindow(Vm *vm, size_t instructionIndex)
 {
     OpcodeDetails details = getOpcodeDetails(vm->prog.instructions[instructionIndex].type);
-    dumpStack(disp.windows[MEMORY], vm);
+    dumpStack(vm);
     dumpRegs(disp.windows[DETAILS], &(vm->cpu));
-    dumpFlags(disp.windows[DETAILS], &(vm->cpu));
+    dumpFlags(&(vm->cpu));
     dumpDetails(disp.windows[DETAILS], &details, &vm->prog.instructions[instructionIndex]);
 }
 
