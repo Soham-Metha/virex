@@ -185,3 +185,15 @@ void OnStart(Vm *vm)
 {
     vm->disp = enterTUIMode();
 }
+
+int getUserInput(Vm *vm)
+{
+    int ch;
+    int highlight = 0;
+    do
+    {
+        InputMenu(vm->disp.windows[INPUT], &highlight, &ch);
+    } while (ch != '\n');
+
+    return highlight;
+}
