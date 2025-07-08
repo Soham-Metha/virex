@@ -10,3 +10,5 @@ void OnPause(Vm *vm);
 int getUserInput(Vm *vm);
 
 void printOut(Vm *vm, int id, const char *str);
+
+void clearScreen(Vm *vm);
