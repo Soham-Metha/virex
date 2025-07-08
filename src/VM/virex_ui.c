@@ -305,7 +305,7 @@ void updateMemoryAndDetailsWindow(Vm *vm, size_t instructionIndex)
 void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
 {
     updateProgramWindow(vm, instructionIndex);
-    refreshAllWindows(vm);
+    refreshAllWindows();
 
     if (debug)
     {
