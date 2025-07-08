@@ -69,12 +69,13 @@ void inputHandler(Vm *vm, WINDOW *win, int *highlight)
         break;
     case CUSTOM_CMD:
         readFilePath(win, "Enter command(no need to specify sasm/orin) : ", &outputFile);
-        wprintw(win, "\n     (S) SASM build"
-                     "\n     (O) ORIN build"
-                     "\n     (A) SASM build and exec"
-                     "\n     (C) ORIN Build and exec"
-                     "\n         Default: (A)"
-                     "\n         Your choice? : ");
+        printOut(vm, INPUT,
+                 "\n     (S) SASM build"
+                 "\n     (O) ORIN build"
+                 "\n     (A) SASM build and exec"
+                 "\n     (C) ORIN Build and exec"
+                 "\n         Default: (A)"
+                 "\n         Your choice? : ");
         refreshWindow(win, getNameForWindow(INPUT), 5, 5, 3);
         char ch = wgetch(win);
         if (ch == 'o' || ch == 'O' || ch == 'c' || ch == 'C')
@@ -126,11 +127,12 @@ void __exec_sm(Vm *vm, WINDOW *win)
 {
     loadProgramIntoVm(vm, inputFile);
 
-    wprintw(win, "\n     Debug Mode?"
-                 "\n     0. No"
-                 "\n     1. Yes"
-                 "\n     2. Fast Debug"
-                 "\n     Your choice : ");
+    printOut(vm, INPUT,
+             "\n     Debug Mode?"
+             "\n     0. No"
+             "\n     1. Yes"
+             "\n     2. Fast Debug"
+             "\n     Your choice : ");
     refreshWindow(win, getNameForWindow(INPUT), 5, 5, 3);
 
     debug = wgetch(win) - '0';
