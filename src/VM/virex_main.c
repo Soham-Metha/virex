@@ -92,9 +92,9 @@ void inputHandler(Vm *vm, WINDOW *win, int *highlight)
         }
         if (ch != 'o' && ch != 'O' && ch != 'c' && ch != 'C' && ch != 'S' && ch != 'C')
         {
-            wclear(win);
+            clearWindow(vm, INPUT);
             wrefresh(win);
-            wmove(win, 2, 4);
+            moveCursorWithinWindow(vm, INPUT, 2, 4);
             readFilePath(win, "Enter the name of the SM file : ", &inputFile);
             __exec_sm(vm, win);
         }
