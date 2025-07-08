@@ -26,13 +26,6 @@ enum Inputs
     MAX_INPUTS
 };
 
-typedef struct
-{
-    WINDOW *windows[MAX_WINDOW_COUNT];
-    int windowCount;
-} display;
-
-
 void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug);
 
 void OnStart();
