@@ -1,5 +1,5 @@
 #include "virex.h"
-
+#include "virex_ui.h"
 inline Register *getReg(RegID id, Vm *vm)
 {
     return &vm->cpu.registers.reg[id];
