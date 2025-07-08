@@ -2,6 +2,7 @@
 
 #include "univ_defs.h"
 #include "univ_strings.h"
+#include "virex.h"
 
 #define LERP(START, END, T) (START * T + END * (1 - T))
 
