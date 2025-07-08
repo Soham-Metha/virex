@@ -309,14 +309,14 @@ void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
 
     if (debug)
     {
-        OnPause(vm);
+        OnPause();
     }
 
     clearNonIOWindows();
     updateMemoryAndDetailsWindow(vm, instructionIndex);
 }
 
-void OnPause(Vm *vm)
+void OnPause()
 {
     wgetch(disp.windows[INPUT]);
 }
