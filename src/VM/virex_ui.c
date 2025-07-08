@@ -406,9 +406,9 @@ void refreshWindow(int id, int contentCol, int borderCol, int titleCol)
     wattroff(win, COLOR_PAIR(borderCol));
 
     wattron(win, COLOR_PAIR(titleCol));
-    wmove(win, 0, (int)((getmaxx(win) - str.length - 4) / 2));
+    moveCursorWithinWindow(id, 0, (int)((getmaxx(win) - str.length - 4) / 2));
     // wmove(win, 0, 2);
-    wprintw(win, "❮ %s ❯", str.data);
+    printOut(id, "❮ %s ❯", str.data);
     wattroff(win, COLOR_PAIR(titleCol));
 
     wmove(win, y, x);
