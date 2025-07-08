@@ -307,7 +307,7 @@ void dumpDetails(Instruction *inst)
     }
 }
 
-void updateProgramWindow(size_t instructionIndex, size_t instructionCount, Instruction *inst)
+void updateProgramWindow(size_t instructionIndex, size_t instructionCount, Program *prog)
 {
     WINDOW *prg = disp.windows[PROGRAM];
     wmove(prg, 1, 1);
@@ -320,15 +320,15 @@ void updateProgramWindow(size_t instructionIndex, size_t instructionCount, Instr
     for (; i < count; i++)
     {
 
-        OpcodeDetails details = getOpcodeDetails(inst->type);
+        OpcodeDetails details = getOpcodeDetails(prog->instructions[instructionIndex].type);
         if (i == instructionIndex)
             wattron(prg, A_REVERSE);
 
         wprintw(prg, "\n   %ld\t│ %s ", i, details.name);
         if (details.has_operand)
-            wprintw(prg, "\t %ld", inst->operand.u64);
+            wprintw(prg, "\t %ld", prog->instructions[instructionIndex].operand.u64);
         if (details.has_operand2)
-            wprintw(prg, "\t %ld", inst->operand2.u64);
+            wprintw(prg, "\t %ld", prog->instructions[instructionIndex].operand2.u64);
         wattroff(prg, A_REVERSE);
     }
 }
