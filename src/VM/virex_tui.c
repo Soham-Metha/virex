@@ -175,8 +175,7 @@ void refreshWindow(WINDOW *win, String str, int contentCol, int borderCol, int t
     setcchar(&ll, L"╰", 0, 0, NULL);
     setcchar(&lr, L"╯", 0, 0, NULL);
 
-    // wmove(win, 0, 0);
-    // wprintdash(win);
+
     wattron(win, COLOR_PAIR(borderCol));
     wborder_set(win, &vline, &vline, &hline, &hline, &ul, &ur, &ll, &lr);
     wattroff(win, COLOR_PAIR(borderCol));
@@ -235,19 +234,4 @@ void readFilePath(WINDOW *win, const char *msg, const char **filePath)
 String getNameForWindow(int id)
 {
     return WindowNames[id];
-}
-
-void wprintdash(WINDOW *win, int col)
-{
-    wattron(win, COLOR_PAIR(col));
-    int tmp = getmaxx(win) - 1;
-    int i, j;
-    getyx(win, j, i);
-    wmove(win, j, i);
-    for (; i < tmp; i++)
-    {
-        wprintw(win, "─");
-    }
-    wprintw(win, "\n\n");
-    wattroff(win, COLOR_PAIR(col));
 }
