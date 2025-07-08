@@ -221,14 +221,16 @@ void dumpRegs(CPU *cpu)
              cpu->registers.OP.u64, cpu->registers.QT.u64, cpu->registers.RF.u64);
 }
 
-void dumpDetails(OpcodeDetails *details, Instruction *inst)
+void dumpDetails(Instruction *inst)
 {
+
+    OpcodeDetails details = getOpcodeDetails(inst->type);
     printOut(DETAILS, "\n");
     printOutWithColor(DETAILS, "  INSTRUCTION ", 7);
     wprintdash(DETAILS, 1);
-    printOut(DETAILS, "  %d\t  %s", details->type, details->name);
+    printOut(DETAILS, "  %d\t  %s", details.type, details.name);
 
-    if (details->has_operand)
+    if (details.has_operand)
     {
         printOut(DETAILS,
                  "\n────────╮"
@@ -239,7 +241,7 @@ void dumpDetails(OpcodeDetails *details, Instruction *inst)
                  inst->operand.u64, inst->operand.i64, inst->operand.f64);
     }
 
-    if (details->has_operand2)
+    if (details.has_operand2)
     {
         printOut(DETAILS,
                  "────────╮"
@@ -287,11 +289,10 @@ void clearNonIOWindows()
 
 void updateMemoryAndDetailsWindow(Vm *vm, size_t instructionIndex)
 {
-    OpcodeDetails details = getOpcodeDetails(vm->prog.instructions[instructionIndex].type);
     dumpStack(vm);
     dumpRegs(&(vm->cpu));
     dumpFlags(&(vm->cpu));
-    dumpDetails(&details, &vm->prog.instructions[instructionIndex]);
+    dumpDetails(&vm->prog.instructions[instructionIndex]);
 }
 
 void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
