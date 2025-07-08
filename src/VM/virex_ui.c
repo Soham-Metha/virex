@@ -342,7 +342,7 @@ void printOut(int id, const char *str, ...)
 {
     va_list args;
     va_start(args, id);
-    vwprintw(disp.windows[id], str, args);
+    wprintw(disp.windows[id], str, args);
     va_end(args);
 }
 
