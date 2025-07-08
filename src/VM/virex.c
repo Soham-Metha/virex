@@ -106,6 +106,7 @@ void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
     clearNonIOWindows();
     updateMemoryAndDetailsWindow(vm, instructionIndex);
 }
+
 Error executeInst(Vm *vm)
 {
     if (getReg(REG_NX, vm)->u64 >= getInstCnt(vm))
