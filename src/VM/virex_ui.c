@@ -300,6 +300,7 @@ void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
 
 void OnPause()
 {
+    refreshAllWindows();
     wgetch(disp.windows[INPUT]);
 }
 
