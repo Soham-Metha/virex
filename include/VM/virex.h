@@ -26,7 +26,6 @@ typedef struct {
     Program prog; /**< The program component of the virtual machine. */
     CPU cpu;      /**< The CPU component of the virtual machine. */
     VmCalls vmCalls;
-    display disp;
     Region region;
 } Vm;
 
