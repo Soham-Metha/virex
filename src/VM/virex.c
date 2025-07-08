@@ -129,13 +129,12 @@ void dumpDetails(WINDOW *win, OpcodeDetails *details, Instruction *inst)
 
 void executeProgram(Vm *vm, int debug, int lim)
 {
-    Instruction *inst = getInstructionAt(vm, getReg(REG_NX, vm)->u64);
     size_t c = getReg(REG_NX, vm)->u64;
     Error error = executeInst(vm, vm->disp.windows[OUTPUT]);
 
     if (debug > 0)
     {
-        
+        OnInstructionExecution(vm, c, debug == 1);
     }
 
     if (lim == 0 || getFlag(META_HALT, &(vm->cpu)))
