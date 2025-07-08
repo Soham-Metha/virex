@@ -1,5 +1,18 @@
 #include "virex_ui.h"
 
+void dumpStack(WINDOW *win, const Vm *vm)
+{
+    wprintw(win, "\n\n   ");
+    for (uint64_t i = 0; i < 256; i++)
+    {
+        wprintw(win, "%02X ", vm->mem.memory[i]);
+        if (i % 32 == 31)
+        {
+            wprintw(win, "\n   ");
+        }
+    }
+}
+
 void dumpFlags(WINDOW *win, CPU *cpu)
 {
     wprintw(win, "\n");
@@ -91,7 +104,9 @@ void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
 
     size_t i = (instructionIndex > 0) ? instructionIndex : 0;
 
-    size_t count = (instructionIndex + getmaxy(prg) - 1 > (size_t)vm->prog.instruction_count) ? (size_t)vm->prog.instruction_count : instructionIndex + getmaxy(prg) - 1;
+    size_t count = (instructionIndex + getmaxy(prg) - 1 > (size_t)vm->prog.instruction_count)
+                       ? (size_t)vm->prog.instruction_count
+                       : instructionIndex + getmaxy(prg) - 1;
     for (; i < count; i++)
     {
         details = getOpcodeDetails(vm->prog.instructions[i].type);
