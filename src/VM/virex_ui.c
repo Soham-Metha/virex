@@ -333,7 +333,7 @@ void printOut(int id, const char *str, ...)
 {
     va_list args;
     va_start(args, str);
-    wprintw(disp.windows[id], "1");
+    vwprintw(disp.windows[id], str, args);
     va_end(args);
 }
 
