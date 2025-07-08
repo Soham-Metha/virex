@@ -9,4 +9,4 @@ void OnPause(Vm *vm);
 
 int getUserInput(Vm *vm);
 
-void printOut(int id, const char *str);
+void printOut(Vm *vm, int id, const char *str);
