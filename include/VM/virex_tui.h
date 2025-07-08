@@ -78,7 +78,6 @@ String getNameForWindow(int id);
 
 void wprintdash(WINDOW* win, int col);
 
-typedef struct Vm Vm;
 
 void OnInstructionExecution(Vm *vm, int instructionIndex, bool debug);
 
