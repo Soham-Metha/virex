@@ -1,5 +1,11 @@
 #include "virex_ui.h"
 
+typedef struct
+{
+    WINDOW *windows[MAX_WINDOW_COUNT];
+    int windowCount;
+} display;
+
 volatile display disp;
 
 static String Inputs[] = {
