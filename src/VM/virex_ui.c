@@ -288,7 +288,7 @@ void clearNonIOWindows()
 
 void updateMemoryAndDetailsWindow(Vm *vm, size_t instructionIndex)
 {
-    dumpStack(vm);
+    dumpStack(&vm->mem);
     dumpRegs(&(vm->cpu));
     dumpFlags(&(vm->cpu));
     dumpDetails(&vm->prog.instructions[instructionIndex]);
