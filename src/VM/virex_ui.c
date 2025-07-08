@@ -212,3 +212,8 @@ void moveCursorWithinWindow(Vm *vm, int id, int y, int x)
 {
     wmove(vm->disp.windows[id], y, x);
 }
+
+char getChar(Vm *vm, int id)
+{
+    return wgetch(vm->disp.windows[id]);
+}
