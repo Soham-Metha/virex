@@ -57,7 +57,7 @@ bool createWindow(display *disp, int x1, int y1, int x2, int y2, int colorPair)
 
 display CreateWindows()
 {
-    refresh();
+    //refresh();
     display disp;
     disp.windowCount = 0;
     int xmin = 0, ymin = 0;
