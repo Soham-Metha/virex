@@ -2,7 +2,7 @@
 #include "virex_ui.h"
 
 #pragma GCC diagnostic ignored "-Wunused-parameter"
-Error vmcall_write(CPU *cpu, Memory *mem, WINDOW *win, Region *region)
+Error vmcall_write(CPU *cpu, Memory *mem, Region *region)
 {
     MemoryAddr addr = cpu->registers.L0.u64;
     uint64_t count = cpu->registers.QT.u64;
@@ -24,7 +24,7 @@ Error vmcall_write(CPU *cpu, Memory *mem, WINDOW *win, Region *region)
     return ERR_OK;
 }
 
-Error vmcall_alloc(CPU *cpu, Memory *mem, WINDOW *win, Region *region)
+Error vmcall_alloc(CPU *cpu, Memory *mem, Region *region)
 {
 
     cpu->registers.RF.ptr = allocateRegion(region, cpu->registers.QT.u64);
@@ -32,38 +32,38 @@ Error vmcall_alloc(CPU *cpu, Memory *mem, WINDOW *win, Region *region)
     return ERR_OK;
 }
 
-Error vmcall_free(CPU *cpu, Memory *mem, WINDOW *win, Region *region)
+Error vmcall_free(CPU *cpu, Memory *mem, Region *region)
 {
     clearGarbage(region);
 
     return ERR_OK;
 }
 
-Error vmcall_print_f64(CPU *cpu, Memory *mem, WINDOW *win, Region *region)
+Error vmcall_print_f64(CPU *cpu, Memory *mem, Region *region)
 {
     printOut(OUTPUT, " %lf\n", cpu->registers.L1.f64);
     return ERR_OK;
 }
 
-Error vmcall_print_i64(CPU *cpu, Memory *mem, WINDOW *win, Region *region)
+Error vmcall_print_i64(CPU *cpu, Memory *mem, Region *region)
 {
     printOut(OUTPUT, " %" PRId64 "\n", cpu->registers.L2.i64);
     return ERR_OK;
 }
 
-Error vmcall_print_u64(CPU *cpu, Memory *mem, WINDOW *win, Region *region)
+Error vmcall_print_u64(CPU *cpu, Memory *mem, Region *region)
 {
     printOut(OUTPUT, " %" PRIu64 "\n", cpu->registers.L3.u64);
     return ERR_OK;
 }
 
-Error vmcall_print_ptr(CPU *cpu, Memory *mem, WINDOW *win, Region *region)
+Error vmcall_print_ptr(CPU *cpu, Memory *mem, Region *region)
 {
     printOut(OUTPUT, " %p\n", cpu->registers.RF.ptr);
     return ERR_OK;
 }
 
-Error vmcall_dump_memory(CPU *cpu, Memory *mem, WINDOW *win, Region *region)
+Error vmcall_dump_memory(CPU *cpu, Memory *mem, Region *region)
 {
     MemoryAddr addr = cpu->registers.L0.u64;
     uint64_t count = cpu->registers.QT.u64;
@@ -93,7 +93,7 @@ Error vmcall_dump_memory(CPU *cpu, Memory *mem, WINDOW *win, Region *region)
     return ERR_OK;
 }
 
-Error vmcall_writeROM(CPU *cpu, Memory *mem, WINDOW *win, Region *region)
+Error vmcall_writeROM(CPU *cpu, Memory *mem, Region *region)
 {
     MemoryAddr addr = cpu->registers.L0.u64;
     uint64_t count = cpu->registers.QT.u64;
