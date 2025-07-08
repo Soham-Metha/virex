@@ -312,7 +312,7 @@ void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
         OnPause(vm);
     }
 
-    clearNonIOWindows(vm);
+    clearNonIOWindows();
     updateMemoryAndDetailsWindow(vm, instructionIndex);
 }
 
