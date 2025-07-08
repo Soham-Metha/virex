@@ -264,11 +264,12 @@ void updateProgramWindow(Vm *vm, size_t instructionIndex)
 
 void refreshAllWindows()
 {
-    refreshWindow(PROGRAM, 3, 3, 3);
-    refreshWindow(OUTPUT, 4, 5, 3);
-    refreshWindow(DETAILS, 1, 1, 1);
+    refreshWindow(NAME, 7, 7, 3);
+    refreshWindow(CREDITS, 7, 7, 3);
     refreshWindow(MEMORY, 2, 2, 3);
-    refreshWindow(INPUT, 5, 5, 3);
+    refreshWindow(DETAILS, 1, 1, 3);
+    refreshWindow(PROGRAM, 3, 2, 3);
+    refreshWindow(OUTPUT, 4, 5, 3);
 }
 
 void clearNonIOWindows()
