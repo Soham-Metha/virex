@@ -130,16 +130,6 @@ display enterTUIMode()
     return disp;
 }
 
-void exitTUIMode(display *disp)
-{
-    while (disp->windowCount > 0)
-    {
-        delwin(disp->windows[disp->windowCount--]);
-    }
-    endwin();
-    exit(0);
-}
-
 void wprintdash(WINDOW *win, int col)
 {
     wattron(win, COLOR_PAIR(col));
@@ -363,7 +353,12 @@ char getChar(int id)
 
 void OnExit()
 {
-    exitTUIMode(&disp);
+    while (disp.windowCount > 0)
+    {
+        delwin(disp.windows[disp.windowCount--]);
+    }
+    endwin();
+    exit(0);
 }
 
 void refreshWindow(int id, int contentCol, int borderCol, int titleCol)
