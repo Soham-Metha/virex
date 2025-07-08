@@ -202,3 +202,8 @@ void printOut(Vm *vm, int id, const char *str)
 {
     wprintw(vm->disp.windows[id], "%s", str);
 }
+
+void clearWindow(Vm *vm, int id)
+{
+    wclear(vm->disp.windows[id]);
+}
