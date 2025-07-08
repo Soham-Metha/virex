@@ -19,7 +19,7 @@ Error vmcall_write(CPU *cpu, Memory *mem, Region *region)
 
     printOut(OUTPUT, "%.*s", (int)count, &mem->memory[addr]);
 
-    refreshWindow(OUTPUT, 1, 5, 3);
+    refreshAllWindows();
 
     return ERR_OK;
 }
@@ -85,10 +85,10 @@ Error vmcall_dump_memory(CPU *cpu, Memory *mem, Region *region)
         {
             printOut(OUTPUT, "\n ");
         }
-        refreshWindow(OUTPUT, 1, 5, 3);
+        refreshAllWindows();
     }
     printOut(OUTPUT, "\n");
-    refreshWindow(OUTPUT, 1, 5, 3);
+    refreshAllWindows();
 
     return ERR_OK;
 }
