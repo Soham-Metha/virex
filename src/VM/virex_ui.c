@@ -21,6 +21,116 @@ void initColors()
     init_pair(7, COLOR_RED, COLOR_BLACK);
 }
 
+bool createWindow(display *disp, int x1, int y1, int x2, int y2, String str, int colorPair)
+{
+    int width = x2 - x1;
+    int height = y2 - y1;
+
+    if (width <= 0 || height <= 0)
+    {
+        fprintf(stderr, "Error: Invalid window dimensions (%d, %d, %d, %d)\n", x1, y1, x2, y2);
+        return false;
+    }
+
+    WINDOW *win = newwin(height, width, y1, x1);
+    if (!win)
+    {
+        fprintf(stderr, "Error: Failed to create window\n");
+        return false;
+    }
+
+    wbkgd(win, COLOR_PAIR(colorPair));
+    disp->windows[disp->windowCount++] = win;
+    refreshWindow(disp->windowCount - 1, colorPair, 5, 3);
+
+    return true;
+}
+
+display CreateWindows()
+{
+    refresh();
+    display disp;
+    disp.windowCount = 0;
+    int xmin = 0, ymin = 0;
+    int xmax = getmaxx(stdscr), ymax = getmaxy(stdscr);
+    /*if (xmax < 238 ){
+        fprintf(stderr,"PLEASE DECREASE YOUR TERMINAL FONT SIZE");
+        getch();
+        exitTUIMode(&disp);
+        exit(1);
+    }*/
+
+    int xsta = LERP(xmin, xmax, 0.85);
+    int xmid = LERP(xsta, xmax, 0.50);
+    int xmi2 = LERP(xmin, xmax, 0.68);
+    int xen2 = LERP(xmin, xmax, 0.18);
+    int ybot = LERP(ymin, ymax, 0.28);
+    int ymid = LERP(ymin, ybot, 0.68);
+
+    createWindow(&disp, xsta, ymin, xmid, ybot, getNameForWindow(OUTPUT), 1);
+    createWindow(&disp, xmi2, ybot, xen2, ymax, getNameForWindow(INPUT), 5);
+    createWindow(&disp, xmin, ymin, xsta, ybot, getNameForWindow(DETAILS), 4);
+    createWindow(&disp, xmid, ymin, xmax, ymid, getNameForWindow(MEMORY), 2);
+    createWindow(&disp, xmid, ymid, xmax, ybot, getNameForWindow(PROGRAM), 3);
+    createWindow(&disp, xmin, ybot, xmi2, ymax, getNameForWindow(NAME), 7);
+    createWindow(&disp, xen2, ybot, xmax, ymax, getNameForWindow(CREDITS), 7);
+
+    return disp;
+}
+
+display enterTUIMode()
+{
+    setlocale(LC_ALL, "");
+    initscr();
+    clear();
+    cbreak();
+    // noecho();
+    initColors();
+
+    display disp = CreateWindows();
+    wprintw(disp.windows[NAME],
+            "\n    ██╗   ██╗██╗██████╗ ████████╗██╗   ██╗ █████╗ ██╗     " //      ██╗   ██╗██╗██████╗ ███████╗██╗  ██╗"
+            "\n    ██║   ██║██║██╔══██╗╚══██╔══╝██║   ██║██╔══██╗██║     " //      ██║   ██║██║██████╔╝█████╗   ╚███╔╝ "
+            "\n    ██║   ██║██║██████╔╝   ██║   ██║   ██║███████║██║     " //      ╚██╗ ██╔╝██║██╔══██╗██╔══╝   ██╔██╗ "
+            "\n    ╚██╗ ██╔╝██║██╔══██╗   ██║   ██║   ██║██╔══██║██║     " //       ╚████╔╝ ██║██║  ██║███████╗██╔╝ ██╗"
+            "\n     ╚████╔╝ ██║██║  ██║   ██║   ╚██████╔╝██║  ██║███████╗" //        ╚═══╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝"
+            "\n      ╚═══╝  ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝"
+            "\n    ███████╗██╗  ██╗███████╗ ██████╗██╗   ██╗████████╗ ██████╗ ██████╗ "
+            "\n    ██╔════╝╚██╗██╔╝██╔════╝██╔════╝██║   ██║╚══██╔══╝██╔═══██╗██╔══██╗"
+            "\n    █████╗   ╚███╔╝ █████╗  ██║     ██║   ██║   ██║   ██║   ██║██████╔╝"
+            "\n    ██╔══╝   ██╔██╗ ██╔══╝  ██║     ██║   ██║   ██║   ██║   ██║██╔══██╗"
+            "\n    ███████╗██╔╝ ██╗███████╗╚██████╗╚██████╔╝   ██║   ╚██████╔╝██║  ██║"
+            "\n    ╚══════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝  ╚═╝"
+            "\n                                                                       ");
+
+    wprintw(disp.windows[CREDITS], "\n\n    VIREX, SASM\t\t: SOHAM METHA  "
+                                   "\n    AST visualizer\t: SOHAM METHA  "
+                                   "\n    Syntax Highlighter\t: SOHAM METHA  "
+                                   "\n    ORIN Compiler\t: OMKAR JAGTAP "
+                                   "\n    Core lib(Hashtable)\t: OMKAR JAGTAP  "
+                                   "\n    Core libs(other)\t: SOHAM METHA  ");
+
+    refreshWindow(NAME, 7, 7, 3);
+    refreshWindow(CREDITS, 7, 7, 3);
+    refreshWindow(MEMORY, 2, 2, 3);
+    refreshWindow(DETAILS, 1, 1, 3);
+    refreshWindow(PROGRAM, 3, 2, 3);
+    refreshWindow(OUTPUT, 4, 5, 3);
+    keypad(disp.windows[INPUT], true);
+
+    return disp;
+}
+
+void exitTUIMode(display *disp)
+{
+    while (disp->windowCount > 0)
+    {
+        delwin(disp->windows[disp->windowCount--]);
+    }
+    endwin();
+    exit(0);
+}
+
 void wprintdash(WINDOW *win, int col)
 {
     wattron(win, COLOR_PAIR(col));
