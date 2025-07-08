@@ -94,19 +94,6 @@ void executeProgram(Vm *vm, int debug, int lim)
         getReg(REG_NX, vm)->u64++;                                                                                     \
     }
 
-void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
-{
-    updateProgramWindow(vm, instructionIndex);
-
-    if (debug)
-    {
-        OnPause();
-    }
-
-    clearNonIOWindows();
-    updateMemoryAndDetailsWindow(vm, instructionIndex);
-}
-
 Error executeInst(Vm *vm)
 {
     if (getReg(REG_NX, vm)->u64 >= getInstCnt(vm))

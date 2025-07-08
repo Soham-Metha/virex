@@ -1,5 +1,5 @@
 #pragma once
-#include <univ_defs.h>
+#include <virex.h>
 #define LERP(START, END, T) (START * T + END * (1 - T))
 
 enum WindowID
@@ -31,6 +31,9 @@ typedef struct
     WINDOW *windows[MAX_WINDOW_COUNT];
     int windowCount;
 } display;
+
+
+void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug);
 
 void OnStart();
 
