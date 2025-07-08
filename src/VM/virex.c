@@ -35,7 +35,7 @@ inline Byte *getMemory(Vm *vm)
 void executeProgram(Vm *vm, int debug, int lim)
 {
     size_t c = getReg(REG_NX, vm)->u64;
-    Error error = executeInst(vm, vm->disp.windows[OUTPUT]);
+    Error error = executeInst(vm);
 
     if (debug > 0)
     {
@@ -94,7 +94,7 @@ void executeProgram(Vm *vm, int debug, int lim)
         getReg(REG_NX, vm)->u64++;                                                                                     \
     }
 
-Error executeInst(Vm *vm, WINDOW *win)
+Error executeInst(Vm *vm)
 {
     if (getReg(REG_NX, vm)->u64 >= getInstCnt(vm))
     {
@@ -130,7 +130,7 @@ Error executeInst(Vm *vm, WINDOW *win)
         if (!vm->vmCalls.VmCallI[inst.operand.u64])
             return ERR_NULL_CALL;
 
-        const Error err = vm->vmCalls.VmCallI[inst.operand.u64](&vm->cpu, &vm->mem, win, &vm->region);
+        const Error err = vm->vmCalls.VmCallI[inst.operand.u64](&vm->cpu, &vm->mem, &vm->region);
         if (err != ERR_OK)
             return err;
 
