@@ -420,7 +420,7 @@ void readFilePath(int id, const char *msg, const char **filePath)
 
 void InputMenu(int *highlight, int *ch)
 {
-    // clearWindow(INPUT);
+    clearWindow(INPUT);
     refreshWindow(INPUT, 5, 5, 3);
 
     for (int i = 0; i < MAX_INPUTS; i++)
