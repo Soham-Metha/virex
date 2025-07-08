@@ -1,4 +1,5 @@
 #include "virex_assembler.h"
+#include "virex_ui.h"
 
 void processFlag(const char* program, const char* flag, int* argc, char*** argv);
 void inputHandler(Vm* vm, WINDOW* win, int* highlight);
@@ -33,8 +34,7 @@ int main(int argc, char** argv)
         } while (ch != '\n');
 
         inputHandler(&vm, vm.disp.windows[INPUT], &highlight);
-        wgetch(vm.disp.windows[INPUT]);
-        refreshWindow(vm.disp.windows[DETAILS], getNameForWindow(DETAILS), 1, 1, 1);
+        pause(&vm);
         setReg(REG_NX, &vm, 0);
         setFlag(META_HALT, &vm.cpu, 0);
 
