@@ -2,6 +2,25 @@
 
 volatile display disp;
 
+void initColors()
+{
+    start_color();
+    init_color(COLOR_BLACK, 102, 106, 149);
+    init_color(COLOR_RED, 999, 0, 333);
+    init_color(COLOR_GREEN, 278, 921, 705);
+    init_color(COLOR_YELLOW, 999, 795, 419);
+    // init_color(COLOR_BLUE,);
+    init_color(COLOR_MAGENTA, 615, 431, 995);
+    init_color(COLOR_CYAN, 537, 866, 999);
+    init_color(COLOR_WHITE, 815, 815, 815);
+    init_pair(1, COLOR_WHITE, COLOR_BLACK);
+    init_pair(2, COLOR_MAGENTA, COLOR_BLACK);
+    init_pair(3, COLOR_CYAN, COLOR_BLACK);
+    init_pair(4, COLOR_GREEN, COLOR_BLACK);
+    init_pair(5, COLOR_YELLOW, COLOR_BLACK);
+    init_pair(7, COLOR_RED, COLOR_BLACK);
+}
+
 void wprintdash(WINDOW *win, int col)
 {
     wattron(win, COLOR_PAIR(col));
