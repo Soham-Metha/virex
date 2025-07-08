@@ -23,3 +23,5 @@ Usage : sasm -i <input file> -o <output file> [-a | -d]
  	Assembly Sample Command    : ./sasm -i ./test.sasm -o ./test.sm 
 	Disassembly Sample Command : ./sasm -i ./test.sm -o ./test.sasm -d
 
+Error: calls.smh.dot: syntax error in line 1 near '.'
+Error: helloWorld.sasm.dot: syntax error in line 1 near '.'
