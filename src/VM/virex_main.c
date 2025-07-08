@@ -33,7 +33,7 @@ int main(int argc, char **argv)
         highlight = getUserInput();
 
         inputHandler(&vm, &highlight);
-        OnPause(&vm);
+        OnPause();
 
         setReg(REG_NX, &vm, 0);
         setFlag(META_HALT, &vm.cpu, 0);
