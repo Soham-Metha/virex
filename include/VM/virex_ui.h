@@ -14,3 +14,5 @@ void printOut(Vm *vm, int id, const char *str);
 void clearWindow(Vm *vm, int id);
 
 void moveCursorWithinWindow(Vm *vm, int id, int y, int x);
+
+char getChar(Vm* vm, int id);
