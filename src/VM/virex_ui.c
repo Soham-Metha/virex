@@ -95,11 +95,9 @@ void dumpDetails(WINDOW *win, OpcodeDetails *details, Instruction *inst)
                 inst->operand2.u64, inst->operand2.i64, inst->operand2.f64);
     }
 }
-
-void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
+void updateProgramWindow(Vm *vm, size_t instructionIndex)
 {
     WINDOW *prg = vm->disp.windows[PROGRAM];
-    OpcodeDetails details;
     wmove(prg, 1, 1);
 
     size_t i = (instructionIndex > 0) ? instructionIndex : 0;
@@ -107,9 +105,11 @@ void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
     size_t count = (instructionIndex + getmaxy(prg) - 1 > (size_t)vm->prog.instruction_count)
                        ? (size_t)vm->prog.instruction_count
                        : instructionIndex + getmaxy(prg) - 1;
+
     for (; i < count; i++)
     {
-        details = getOpcodeDetails(vm->prog.instructions[i].type);
+
+        OpcodeDetails details = getOpcodeDetails(vm->prog.instructions[i].type);
         if (i == instructionIndex)
             wattron(prg, A_REVERSE);
 
@@ -120,25 +120,44 @@ void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
             wprintw(prg, "\t %ld", vm->prog.instructions[i].operand2.u64);
         wattroff(prg, A_REVERSE);
     }
+}
 
+void refreshAllWindows(Vm *vm)
+{
     refreshWindow(vm->disp.windows[PROGRAM], getNameForWindow(PROGRAM), 3, 3, 3);
     refreshWindow(vm->disp.windows[OUTPUT], getNameForWindow(OUTPUT), 4, 5, 3);
     refreshWindow(vm->disp.windows[DETAILS], getNameForWindow(DETAILS), 1, 1, 1);
     refreshWindow(vm->disp.windows[MEMORY], getNameForWindow(MEMORY), 2, 2, 3);
     refreshWindow(vm->disp.windows[INPUT], getNameForWindow(INPUT), 5, 5, 3);
+}
+
+void clearNonIOWindows(Vm *vm)
+{
+    wclear(vm->disp.windows[PROGRAM]);
+    wclear(vm->disp.windows[DETAILS]);
+    wclear(vm->disp.windows[MEMORY]);
+}
+
+void updateMemoryAndDetailsWindow(Vm *vm, size_t instructionIndex)
+{
+    OpcodeDetails details = getOpcodeDetails(vm->prog.instructions[instructionIndex].type);
+    dumpStack(vm->disp.windows[MEMORY], vm);
+    dumpRegs(vm->disp.windows[DETAILS], &(vm->cpu));
+    dumpFlags(vm->disp.windows[DETAILS], &(vm->cpu));
+    dumpDetails(vm->disp.windows[DETAILS], &details, &vm->prog.instructions[instructionIndex]);
+}
+
+void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug)
+{
+    updateProgramWindow(vm, instructionIndex);
+
+    refreshAllWindows(vm);
 
     if (debug)
     {
         wgetch(vm->disp.windows[INPUT]);
     }
 
-    wclear(vm->disp.windows[DETAILS]);
-    wclear(prg);
-    wclear(vm->disp.windows[MEMORY]);
-
-    details = getOpcodeDetails(vm->prog.instructions[instructionIndex].type);
-    dumpStack(vm->disp.windows[MEMORY], vm);
-    dumpRegs(vm->disp.windows[DETAILS], &(vm->cpu));
-    dumpFlags(vm->disp.windows[DETAILS], &(vm->cpu));
-    dumpDetails(vm->disp.windows[DETAILS], &details, &vm->prog.instructions[instructionIndex]);
+    clearNonIOWindows(vm);
+    updateMemoryAndDetailsWindow(vm, instructionIndex);
 }
