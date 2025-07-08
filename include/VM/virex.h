@@ -10,10 +10,10 @@
 
 #pragma once
 
-#include "virex_tui.h"
 #include "univ_defs.h"
 #include "univ_errors.h"
 #include "univ_malloc.h"
+#include "virex_tui.h"
 #include "virex_vmcalls.h"
 
 /**
