@@ -48,6 +48,8 @@ void executeProgram(Vm* vm, int debug, int i);
  */
 Error executeInst(Vm* vm);
 
+void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug);
+
 Register* getReg(RegID id, Vm* vm);
 
 void setReg(RegID id, Vm* vm, DataEntry val);
