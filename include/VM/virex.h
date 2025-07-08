@@ -31,24 +31,6 @@ typedef struct {
 } Vm;
 
 /**
- * Dumps the contents of the stack to the specified stream.
- *
- * @param stream The stream to dump the stack contents to.
- * @param vm The virtual machine instance.
- */
-void dumpStack(WINDOW* win, const Vm* vm);
-
-/**
- * Dumps the flags of the virtual machine to the specified stream.
- *
- * @param stream The stream to dump the flags to.
- * @param cpu The cpu of virtual machine instance.
- */
-void dumpFlags(WINDOW* win, CPU* cpu);
-
-void dumpDetails(WINDOW* win, OpcodeDetails* details, Instruction* inst);
-
-/**
  * Executes the program loaded in the virtual machine.
  *
  * @param vm The virtual machine instance.
