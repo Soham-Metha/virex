@@ -1,6 +1,6 @@
 #include "virex_ui.h"
 
-display disp;
+volatile display disp;
 
 void wprintdash(WINDOW *win, int col)
 {
