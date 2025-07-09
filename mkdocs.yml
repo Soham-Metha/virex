@@ -7,61 +7,63 @@ repo_name: Soham-Metha/virex
 repo_url: https://github.com/Soham-Metha/virex
 
 nav:
-  - Home: 
-    - Overview: 
-      - "index.md"
-    - Features:
-      - TOOLS: "Features.md"
-    - Getting Started: 
-      - LINUX: "Getting-Started.md"
-    - Contributing: 
-      - Architecture: "Architecture.md"
-      - Contributing: "Contributing.md"
-    - About the Contributors: 
-      - "Credits.md"
-      # - Platform Independence: Features/Platform_Independence.md
-      # - Open and Readable: Features/Open_and_Readable.md
-      # - Flexible Architecture: Features/Flexible_Architecture.md
-      # - Easy to Use: Features/Easy_to_Use.md
-      # - Extensible: Features/Extensible.md
-      # - Cross-Platform: Features/Cross_Platform.md
-      # - Lightweight: Features/Lightweight.md
-      # - Fast Execution: Features/Fast_Execution.md
-      # - Community Driven: Features/Community_Driven.md
-      # - Open Source: Features/Open_Source.md
-      # - Documentation: Features/Documentation.md
-      # - Use Cases: Features/Use_Cases.md
-      # - Getting Started: Features/Getting_Started.md
-      # - Contributing: Features/Contributing.md
-      # - License: Features/License.md
-      # - FAQ: Features/FAQ.md
-      # - Contact: Features/Contact.md
-  - Instruction Set:
-      - "Instructions/index.md"
-      - Arithmetic: 
-        - Arithmetic Instructions : Instructions/Arithmetic/index.md
-        - Addition: Instructions/Arithmetic/Addition.md
-        - Subtraction: Instructions/Arithmetic/Subtraction.md
-        - Multiplication: Instructions/Arithmetic/Multiplication.md
-        - Division: Instructions/Arithmetic/Division.md
-        - Modulus: Instructions/Arithmetic/Modulus.md
-  # - Libs:
-  #    - cmd: LIBS/univ_cmdutils.md
-  #    - defs: LIBS/univ_defs.md
-  #    - errors: LIBS/univ_errors.md
-  #    - fileops: LIBS/univ_fileops.md
-  #    - strings: LIBS/univ_strings.md
-  # - OCC:
-  #     - CodeGen: OCC/O_codegenerator .md
-  #     - Lexer: OCC/O_lexer .md
-  #     - Parser: OCC/O_parser .md
-  # - SASM:
-  #     - Assembler: SASM/sasm_assembler .md
-  #     - Flags: SASM/sasm_flags .md
-  #     - Instructions: SASM/sasm_instructions .md
-  #     - Memory: SASM/sasm_memory .md
-  # - VM:
-  #     - gbvm: VM/gbvm .md
+  - Home:
+      - Overview: "index.md"
+      - Features:
+          - Features: "Features/index.md"
+          - TOOLS: "Features/Tools.md"
+          - Plugins: "Features/Plugins.md"
+      - Getting Started:
+          - LINUX: "Getting-Started.md"
+
+  - Documentation:
+    - Instruction Set:
+        - "Instructions/index.md"
+        - Arithmetic:
+            - Arithmetic Instructions: Instructions/Arithmetic/index.md
+            - Addition: Instructions/Arithmetic/Addition.md
+            - Subtraction: Instructions/Arithmetic/Subtraction.md
+            - Multiplication: Instructions/Arithmetic/Multiplication.md
+            - Division: Instructions/Arithmetic/Division.md
+            - Modulus: Instructions/Arithmetic/Modulus.md
+        - Compile-Time Functions (CTF): Instructions/CTF.md
+
+    - Machine Architecture:
+        - Flags: MachineArch/flags.md
+        - Registers: MachineArch/registers.md
+        - VM Calls: MachineArch/vmcalls.md
+
+  - Prototype Documentation:
+      - SASM (Assembler):
+          - Assembler: "Prototype_Documentation/SASM/sasm_assembler .md"
+          - Flags: "Prototype_Documentation/SASM/sasm_flags .md"
+          - Instructions: "Prototype_Documentation/SASM/sasm_instructions .md"
+          - Memory: "Prototype_Documentation/SASM/sasm_memory .md"
+
+      - OCC (Compiler):
+          - Code Generator: "Prototype_Documentation/OCC/O_codegenerator .md"
+          - Lexer: "Prototype_Documentation/OCC/O_lexer .md"
+          - Parser: "Prototype_Documentation/OCC/O_parser .md"
+
+      - LIBS (Core Libraries):
+          - CmdUtils: "Prototype_Documentation/LIBS/univ_cmdutils.md"
+          - Defs: "Prototype_Documentation/LIBS/univ_defs.md"
+          - Errors: "Prototype_Documentation/LIBS/univ_errors.md"
+          - FileOps: "Prototype_Documentation/LIBS/univ_fileops.md"
+          - Strings: "Prototype_Documentation/LIBS/univ_strings.md"
+
+      - Virtual Machine:
+          - GBVM: "Prototype_Documentation/VM/gbvm .md"
+
+  - Community:
+      - Contributing:
+          - Architecture: "Architecture.md"
+          - Contributing Guide: "Contributing.md"
+      - About Contributors:
+          - "Credits.md"
+
+  - Blog:
+      - "blog/index.md"
 
 theme:
   name: material
@@ -97,7 +99,7 @@ theme:
     - search.suggest
     - search.suggest.autocomplete.enable
     - toc.follow
-  
+
   palette:
     - scheme: nbl-dark
       toggle:
@@ -105,7 +107,7 @@ theme:
         name: Switch to light mode
     - scheme: nbl-light
       toggle:
-        icon: material/lightbulb 
+        icon: material/lightbulb
         name: Switch to dark mode
   font:
     text: EnvyCodeR Nerd Font

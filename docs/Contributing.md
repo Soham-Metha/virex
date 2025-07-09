@@ -13,4 +13,31 @@ hide:
 
 !!! info ""
 
-    📌 For contribution guidelines and a roadmap, see [CONTRIBUTING.md]() (coming soon).
+    📌 For contribution guidelines and a roadmap, see (coming soon).
+
+
+## INSTRUCTION DOCUMENTATION TEMPLATE:
+
+### [OPCODE] — _[OPERATION]_ {#[OPCODE]}
+
+```title="Algorithm"
+
+```
+
+<div class="result" markdown>
+
+=== "[OPCODE] Example"
+
+    ```linenums="1" hl_lines="1 3 5"
+
+    ```
+
+=== "[OPCODE] Properties"
+
+    | Opcode | Operand Type       | Destination   |
+    |--------|--------------------|---------------|
+    | 00     | 64-bit       Value | L_ (implicit) |
+
+    Identified as memonic [#[OPCODE]](#[OPCODE]), [OPCODE] is used to
+
+</div>
