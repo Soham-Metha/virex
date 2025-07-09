@@ -177,29 +177,3 @@ val(L1)  ; value stored in register L1
         | **12** | [SWAP](../reference/missing.md#TO_BE_IMPLEMENTED) |
         | **31** | [COPY](../reference/missing.md#TO_BE_IMPLEMENTED) |
         | **32** | [DUPS](../reference/missing.md#TO_BE_IMPLEMENTED) |
-
-## INSTRUCTION DOCUMENTATION TEMPLATE:
-
-### [OPCODE] — _[OPERATION]_ {#[OPCODE]}
-
-```title="Algorithm"
-
-```
-
-<div class="result" markdown>
-
-=== "[OPCODE] Example"
-
-    ```linenums="1" hl_lines="1 3 5"
-
-    ```
-
-=== "[OPCODE] Properties"
-
-    | Opcode | Operand Type       | Destination   |
-    |--------|--------------------|---------------|
-    | 00     | 64-bit       Value | L_ (implicit) |
-
-    Identified as memonic [#[OPCODE]](#[OPCODE]), [OPCODE] is used to
-
-</div>
