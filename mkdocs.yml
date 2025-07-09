@@ -65,6 +65,7 @@ nav:
   - Blog:
       - "blog/index.md"
 
+
 theme:
   name: material
   custom_dir: extras/overrides
