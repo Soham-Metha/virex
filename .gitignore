@@ -3,3 +3,5 @@
 html/
 
 *.pdf
+logs.txt
+*.dot

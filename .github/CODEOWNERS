@@ -1,0 +1,10 @@
+# Orin compiler specific files and folders owned by Omkar
+/src/occ/                @omkarjagtap1011
+/src/libs/univ_hashmap.c @omkarjagtap1011
+/include/occ/            @omkarjagtap1011
+/include/libs/univ_hashmap.h @omkarjagtap1011
+/examples/OCC/           @omkarjagtap1011
+/extas/orin_grammar.txt  @omkarjagtap1011
+
+# Everything else owned by Soham
+*                       @Soham-Metha
