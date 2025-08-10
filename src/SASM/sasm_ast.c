@@ -1,9 +1,10 @@
 #include "sasm_assembler.h"
 #include "univ_fileops.h"
 
-const char* getRegName(RegID type)
+const char *getRegName(RegID type)
 {
-    switch (type) {
+    switch (type)
+    {
     case REG_H0:
         return "H0";
     case REG_H1:
@@ -51,53 +52,60 @@ const char* getRegName(RegID type)
     }
 }
 
-int dumpExprAsAST(FILE* stream, Expr expr, int* counter)
+int dumpExprAsAST(FILE *stream, Expr expr, int *counter)
 {
     int id = (*counter)++;
 
-    switch (expr.type) {
+    switch (expr.type)
+    {
     case EXPR_BINDING:
-        fprintf(stream, "Expr_%d [shape=ellipse style=filled fillcolor=lightgoldenrod1 fontname=\"Courier\" label=\"" strFmt "\"]\n",
-            id, strArg(expr.value.binding));
+        fprintf(stream,
+                "Expr_%d [shape=ellipse style=filled fillcolor=lightgoldenrod1 fontname=\"Courier\" label=\"" strFmt
+                "\"]\n",
+                id, strArg(expr.value.binding));
         break;
     case EXPR_LIT_INT:
-        fprintf(stream, "Expr_%d [shape=note style=filled fillcolor=lightblue fontname=\"Courier\" label=\"%" PRIu64 "\"]\n",
-            id, expr.value.lit_int);
+        fprintf(stream,
+                "Expr_%d [shape=note style=filled fillcolor=lightblue fontname=\"Courier\" label=\"%" PRIu64 "\"]\n",
+                id, expr.value.lit_int);
         break;
     case EXPR_LIT_FLOAT:
         fprintf(stream, "Expr_%d [shape=note style=filled fillcolor=lightblue fontname=\"Courier\" label=\"%lf\"]\n",
-            id, expr.value.lit_float);
+                id, expr.value.lit_float);
         break;
     case EXPR_LIT_CHAR:
         fprintf(stream, "Expr_%d [shape=note style=filled fillcolor=lightblue fontname=\"Courier\" label=\"'%c'\"]\n",
-            id, expr.value.lit_char);
+                id, expr.value.lit_char);
         break;
     case EXPR_LIT_STR:
-        fprintf(stream, "Expr_%d [shape=note style=filled fillcolor=lightblue fontname=\"Courier\" label=\"\\\"" strFmt "\\\"\"]\n",
-            id, strArg(expr.value.lit_str));
+        fprintf(stream,
+                "Expr_%d [shape=note style=filled fillcolor=lightblue fontname=\"Courier\" label=\"\\\"" strFmt
+                "\\\"\"]\n",
+                id, strArg(expr.value.lit_str));
         break;
     case EXPR_FUNCALL:
-        fprintf(stream, "Expr_%d [shape=hexagon style=filled fillcolor=lightpink fontname=\"Courier\" label=\"" strFmt "\"]\n",
-            id, strArg(expr.value.funcall->name));
+        fprintf(stream,
+                "Expr_%d [shape=hexagon style=filled fillcolor=lightpink fontname=\"Courier\" label=\"" strFmt "\"]\n",
+                id, strArg(expr.value.funcall->name));
 
-        for (FuncallArg* arg = expr.value.funcall->args;
-            arg != NULL;
-            arg = arg->next) {
+        for (FuncallArg *arg = expr.value.funcall->args; arg != NULL; arg = arg->next)
+        {
             int childId = dumpExprAsAST(stream, arg->value, counter);
             fprintf(stream, "Expr_%d -> Expr_%d\n", id, childId);
         }
         break;
 
     case EXPR_REG:
-        fprintf(stream, "Expr_%d [shape=cylinder style=filled fillcolor=lightyellow fontname=\"Courier\" label=\"%s\"]\n",
-            id, getRegName(expr.value.reg_id));
+        fprintf(stream,
+                "Expr_%d [shape=cylinder style=filled fillcolor=lightyellow fontname=\"Courier\" label=\"%s\"]\n", id,
+                getRegName(expr.value.reg_id));
         break;
     }
 
     return id;
 }
 
-int dumpStmtNodeAsAST(FILE* stream, StmtNode* stmtNode, int* counter, int* blockNo)
+int dumpStmtNodeAsAST(FILE *stream, StmtNode *stmtNode, int *counter, int *blockNo)
 {
     int id = (*counter)++;
     int blockid = (*blockNo)++;
@@ -110,10 +118,12 @@ int dumpStmtNodeAsAST(FILE* stream, StmtNode* stmtNode, int* counter, int* block
     fprintf(stream, "fontname=\"Courier\";\n");
 
     int block_id = -1;
-    for (; stmtNode; stmtNode = stmtNode->next) {
+    for (; stmtNode; stmtNode = stmtNode->next)
+    {
         int next_id = dumpStatementAsAST(stream, stmtNode->statement, counter, blockNo);
 
-        if (block_id >= 0) {
+        if (block_id >= 0)
+        {
             fprintf(stream, "Expr_%d -> Expr_%d;\n", block_id, next_id);
         }
 
@@ -124,117 +134,134 @@ int dumpStmtNodeAsAST(FILE* stream, StmtNode* stmtNode, int* counter, int* block
     return id;
 }
 
-int dumpStatementAsAST(FILE* stream, Stmt statement, int* counter, int* blockNo)
+int dumpStatementAsAST(FILE *stream, Stmt statement, int *counter, int *blockNo)
 {
-    switch (statement.kind) {
-    case STMT_INST:
+    switch (statement.kind)
+    {
+    case STMT_INST: {
+        int id = (*counter)++;
+        Opcode type = statement.value.inst.type;
+        OpcodeDetails details = getOpcodeDetails(type);
+
+        fprintf(stream,
+                "Expr_%d [shape=component style=filled fillcolor=palegreen fontname=\"Courier\" label=\"%s\"]\n", id,
+                details.name);
+
+        if (details.has_operand)
         {
-            int id = (*counter)++;
-            Opcode type = statement.value.inst.type;
-            OpcodeDetails details = getOpcodeDetails(type);
-
-            fprintf(stream, "Expr_%d [shape=component style=filled fillcolor=palegreen fontname=\"Courier\" label=\"%s\"]\n", id, details.name);
-
-            if (details.has_operand) {
-                int childId = dumpExprAsAST(stream, statement.value.inst.operand, counter);
-                fprintf(stream, "Expr_%d -> Expr_%d [style=dotted]\n", id, childId);
-            }
-
-            if (details.has_operand2) {
-                int childId = dumpExprAsAST(stream, statement.value.inst.operand2, counter);
-                fprintf(stream, "Expr_%d -> Expr_%d [style=dotted]\n", id, childId);
-            }
-            return id;
+            int childId = dumpExprAsAST(stream, statement.value.inst.operand, counter);
+            fprintf(stream, "Expr_%d -> Expr_%d [style=dotted]\n", id, childId);
         }
-        break;
 
-    case STMT_LABEL:
+        if (details.has_operand2)
         {
-            int id = (*counter)++;
-            String name = statement.value.label.name;
-            fprintf(stream, "Expr_%d [shape=tab style=filled fillcolor=lightpink fontname=\"Courier\" label=\"" strFmt "\"]\n",
+            int childId = dumpExprAsAST(stream, statement.value.inst.operand2, counter);
+            fprintf(stream, "Expr_%d -> Expr_%d [style=dotted]\n", id, childId);
+        }
+        return id;
+    }
+    break;
+
+    case STMT_LABEL: {
+        int id = (*counter)++;
+        String name = statement.value.label.name;
+        fprintf(stream,
+                "Expr_%d [shape=tab style=filled fillcolor=lightpink fontname=\"Courier\" label=\"" strFmt "\"]\n", id,
+                strArg(name));
+        return id;
+    }
+    break;
+
+    case STMT_CONST: {
+        int id = (*counter)++;
+        String name = statement.value.constant.name;
+        Expr value = statement.value.constant.value;
+
+        fprintf(stream,
+                "Expr_%d [shape=note style=filled fillcolor=thistle fontname=\"Courier\" label=\"CONST " strFmt "\"]\n",
                 id, strArg(name));
-            return id;
-        }
-        break;
+        int childId = dumpExprAsAST(stream, value, counter);
+        fprintf(stream, "Expr_%d -> Expr_%d [style=dotted]\n", id, childId);
+        return id;
+    }
+    break;
 
-    case STMT_CONST:
-        {
-            int id = (*counter)++;
-            String name = statement.value.constant.name;
-            Expr value = statement.value.constant.value;
+    case STMT_INCLUDE: {
+        int childId = (*counter)++;
+        int id = (*counter)++;
 
-            fprintf(stream, "Expr_%d [shape=note style=filled fillcolor=thistle fontname=\"Courier\" label=\"CONST " strFmt "\"]\n",
-                id, strArg(name));
-            int childId = dumpExprAsAST(stream, value, counter);
-            fprintf(stream, "Expr_%d -> Expr_%d [style=dotted]\n", id, childId);
-            return id;
-        }
-        break;
+        String path = statement.value.include.path;
+        fprintf(stream,
+                "Expr_%d [shape=folder style=filled fillcolor=wheat fontname=\"Courier\" label=\"%%INCLUDE\"]\n", id);
+        fprintf(stream, "Expr_%d [shape=box style=filled fillcolor=wheat fontname=\"Courier\" label=\"" strFmt "\"]\n",
+                childId, strArg(path));
+        fprintf(stream, "Expr_%d -> Expr_%d [style=dotted]\n", id, childId);
+        return id;
+    }
+    break;
 
-    case STMT_INCLUDE:
-        {
-            int childId = (*counter)++;
-            int id = (*counter)++;
-
-            String path = statement.value.include.path;
-            fprintf(stream, "Expr_%d [shape=folder style=filled fillcolor=wheat fontname=\"Courier\" label=\"%%INCLUDE\"]\n", id);
-            fprintf(stream, "Expr_%d [shape=box style=filled fillcolor=wheat fontname=\"Courier\" label=\"" strFmt "\"]\n", childId, strArg(path));
-            fprintf(stream, "Expr_%d -> Expr_%d [style=dotted]\n", id, childId);
-            return id;
-        }
-        break;
-
-    case STMT_ENTRY:
-        {
-            int id = (*counter)++;
-            fprintf(stream, "Expr_%d [shape=pentagon style=filled fillcolor=plum1 fontname=\"Courier\" label=\"ENTRY\"]\n", id);
-            int childId = dumpExprAsAST(stream, statement.value.entry.value, counter);
-            fprintf(stream, "Expr_%d -> Expr_%d [style=dotted]\n", id, childId);
-            return id;
-        }
-        break;
+    case STMT_ENTRY: {
+        int id = (*counter)++;
+        fprintf(stream, "Expr_%d [shape=pentagon style=filled fillcolor=plum1 fontname=\"Courier\" label=\"ENTRY\"]\n",
+                id);
+        int childId = dumpExprAsAST(stream, statement.value.entry.value, counter);
+        fprintf(stream, "Expr_%d -> Expr_%d [style=dotted]\n", id, childId);
+        return id;
+    }
+    break;
 
     case STMT_BLOCK:
-    case STMT_SCOPE:
-        {
-            int oldCnt = dumpStmtNodeAsAST(stream, statement.value.block, counter, blockNo);
-            fprintf(stream, "Expr_%d [shape=box3d style=filled fillcolor=aquamarine fontname=\"Courier\" label=\" Code Block %d  \"]\n", oldCnt, (*blockNo) - 1);
-            return oldCnt;
-        }
-        break;
+    case STMT_SCOPE: {
+        int oldCnt = dumpStmtNodeAsAST(stream, statement.value.block, counter, blockNo);
+        fprintf(
+            stream,
+            "Expr_%d [shape=box3d style=filled fillcolor=aquamarine fontname=\"Courier\" label=\" Code Block %d  \"]\n",
+            oldCnt, (*blockNo) - 1);
+        return oldCnt;
+    }
+    break;
 
-    default:
-        {
-            assert(false && "dumpStatementAsAST: unreachable");
-            exit(1);
-        }
+    default: {
+        assert(false && "dumpStatementAsAST: unreachable");
+        exit(1);
+    }
     }
 }
 
-void generateASTPng(String inputFilePath, StmtNode* start)
+void generateASTPng(String inputFilePath, StmtNode *start)
 {
     String tmp = inputFilePath;
+    while (tmp.data[tmp.length - 1] != '.')
+    {
+        tmp.length -= 1;
+    }
+    tmp.length -= 1;
+    if (tmp.length == 0)
+    {
+        tmp.data = "a";
+        tmp.length = 1;
+    }
 
     char buffer[100];
     snprintf(buffer, sizeof(buffer), strFmt ".dot", strArg(tmp));
-    FILE* out = openFile(buffer, "w");
-
+    FILE *out = openFile(buffer, "w");
     int ID = 0;
     int BlockNo = 0;
-    fprintf(out, "digraph " strFmt " {\n"
-                 "splines=ortho;\n"
-                 "nodesep=0.8;\n"
-                 "ranksep=0.5;\n",
-        strArg(tmp));
+    fprintf(out,
+            "digraph " strFmt " {\n"
+            "splines=ortho;\n"
+            "nodesep=0.8;\n"
+            "ranksep=0.5;\n",
+            strArg(tmp));
     dumpStmtNodeAsAST(out, start, &ID, &BlockNo);
     fprintf(out, "}\n");
 
     closeFile(out, buffer);
 
     snprintf(buffer, sizeof(buffer), "dot  -Tpng -o " strFmt ".png " strFmt ".dot", strArg(tmp), strArg(tmp));
-    if (system(buffer) != 0) {
+    if (system(buffer) != 0)
+    {
         // displayMsgWithExit("Disassembly Failed");
-        printf("Failed to generate AST image, try using 'dot' command or check online\n");
+        // printf("Failed to generate AST image, try using 'dot' command or check online\n");
     }
 }
