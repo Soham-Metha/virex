@@ -36,7 +36,7 @@ Project maintainers are responsible for:
 If you witness or experience any behavior that violates this Code of Conduct, please:
 
 1. Document the incident with details and context where possible. 📝  
-2. Report it confidentially to the maintainers at: [PLEASE PUT YOUR EMAIL HERE SOHAM MEHTA] 📧  
+2. Report it confidentially to the maintainers at: <virex.project@gmail.com> 📧  
 3. Feel safe that your concerns will be handled seriously and discreetly. 🔒  
 
 If you prefer, you may also reach out to a trusted community member or moderator for support.
