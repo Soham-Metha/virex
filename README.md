@@ -1,29 +1,10 @@
 # VIREX : Virtual Execution Console
 
-![GSSoC Logo](/virex/docs/assets/gssoc%20logo.png)
+<!--![GSSoC Logo](/virex/docs/assets/gssoc%20logo.png) -->
 
-[![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/Soham-Metha)
+[![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/Soham-Metha) <img alt="Issues" src="https://img.shields.io/github/issues/Soham-Metha/virex?style=flat&logo=github"/> <img alt="Open Pull Requests" src="https://img.shields.io/github/issues-pr/Soham-Metha/virex?style=flat&logo=github"/> <img alt="Closed Pull Requests" src="https://img.shields.io/github/issues-pr-closed/Soham-Metha/virex?style=flat&color=critical&logo=github"/>
+<!--img alt="Stars" src="https://img.shields.io/github/stars/Soham-Metha/virex?style=flat&logo=github"/> <img alt="Forks" src="https://img.shields.io/github/forks/Soham-Metha/virex?style=flat&logo=github"/-->
 
-<table align="center">
-    <thead align="center">
-        <tr border: 1px;>
-            <td><b><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/tarikul-islam-anik/main/assets/images/Star.png" width="20" height="20"> Stars</b></td>
-            <td><b>🍴 Forks</b></td>
-            <td><b><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/tarikul-islam-anik/main/assets/images/Lady%20Beetle.png" width="20" height="20"> Issues</b></td>
-            <td><b><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/tarikul-islam-anik/main/assets/images/Check%20Mark%20Button.png" width="20" height="20"> Open PRs</b></td>
-            <td><b><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/tarikul-islam-anik/main/assets/images/Cross%20Mark.png" width="20" height="20"> Closed PRs</b></td>
-        </tr>
-     </thead>
-    <tbody>
-         <tr>
-            <td><img alt="Stars" src="https://img.shields.io/github/stars/Soham-Metha/virex?style=flat&logo=github"/></td>
-             <td><img alt="Forks" src="https://img.shields.io/github/forks/Soham-Metha/virex?style=flat&logo=github"/></td>
-            <td><img alt="Issues" src="https://img.shields.io/github/issues/Soham-Metha/virex?style=flat&logo=github"/></td>
-            <td><img alt="Open Pull Requests" src="https://img.shields.io/github/issues-pr/Soham-Metha/virex?style=flat&logo=github"/></td>
-           <td><img alt="Closed Pull Requests" src="https://img.shields.io/github/issues-pr-closed/Soham-Metha/virex?style=flat&color=critical&logo=github"/></td>
-        </tr>
-    </tbody>
-</table>
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE) [![Build](https://img.shields.io/github/actions/workflow/status/Soham-Metha/virex/ci.yml)](https://github.com/Soham-Metha/virex/actions) [![Docs](https://img.shields.io/badge/docs-online-blue)](https://virex.readthedocs.io/en/latest/) [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
@@ -62,6 +43,7 @@ This makes SASM ideal for systems programmers, compiler devs, and those learning
 > If you're interested in compilers, interpreters, language design, VMs, or systems programming, **we’d love your contributions**!
 
 ---
+<!--
 ## 📦 Project Layout
 
 ```
@@ -145,32 +127,24 @@ Want to get involved? See our [CONTRIBUTING.md](CONTRIBUTING.md) (coming soon).
 - **Version Control**: Git
 
 ---
-
 ## 📚 More Info
 
 <!-- ![Repo Beats](https://repobeats.axiom.co/api/embed/f97cd2b4327090163e02c14473729db0cc3051c6.svg "Repo activity insights") -->
-
+<!--
 Full documentation (including internal architecture and instruction sets) is available at:  
 📖 [https://virex.readthedocs.io](https://virex.readthedocs.io/en/latest/)
 
 ---
-
+<!--
 ## 📬 License
 
 This project is licensed under the **GNU General Public License v3.0**.  
 You may copy, distribute, and modify the software as long as changes remain open-source and licensed under GPL-3.0.
 
 📄 See the full [LICENSE](LICENSE) file for details.
-
----
+-->
 ## 💡 Suggestions & Feedback
 Feel free to open issues or discussions if you have any feedback, feature suggestions, or want to collaborate!
-
----
-## 📬 Contact
-
-Have ideas, feedback, or just want to say hi?
-- 🛠️ Open an issue in the repository
 
 ---
 ## 📜 Code of Conduct
@@ -178,7 +152,7 @@ Have ideas, feedback, or just want to say hi?
 To ensure a welcoming and inclusive environment, we have a Code of Conduct that all contributors are expected to follow. In short: **Be respectful, be kind, and be collaborative.** Please read the full [Code of Conduct](https://github.com/Soham-Metha/virex/blob/main/CODE_OF_CONDUCT.md) before participating.
 
 ---
-<h2>Project Admin:</h2>
+<h2>Our Team</h2>
 <table>
 <tr>
 <td align="center">
@@ -186,7 +160,7 @@ To ensure a welcoming and inclusive environment, we have a Code of Conduct that 
 </td>
 </tr>
 </table>
-
+<!--
 ---
 <div align="center">
   <h2 style="font-size:3rem;">Our Contributors <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png" alt="Red Heart" width="40" height="40" /></h2>
@@ -194,15 +168,12 @@ To ensure a welcoming and inclusive environment, we have a Code of Conduct that 
   <h3>Thanks to these amazing people who have contributed to the **virex** project:</h3>
 <p align="center">
     <img src="https://api.vaunt.dev/v1/github/entities/Soham-Metha/repositories/virex/contributors?format=svg&limit=54" width="1000" />
-</p>
+</p> -->
 <p style="font-family:var(--ff-philosopher);font-size:3rem;"><b> Show some <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png" alt="Red Heart" width="40" height="40" /> by starring this awesome repository!
 </p>
-
+<!--
 ---
 ***🚀 Virex: Enabling Clean-Room Virtual Machines—One SASM Instruction at a Time! 🧬✨***
-
----
  **👨‍💻 Developed By**  **❤️Soham-Metha❤️**
 [GitHub](https://github.com/Soham-Metha/) | [LinkedIn](https://www.linkedin.com/in/soham-metha-6692752b3/)
-
-[🔝 Back to Top](#top)
+[🔝 Back to Top](#top)-->
