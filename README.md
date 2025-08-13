@@ -169,6 +169,11 @@ To ensure a welcoming and inclusive environment, we have a Code of Conduct that 
 <p align="center">
     <img src="https://api.vaunt.dev/v1/github/entities/Soham-Metha/repositories/virex/contributors?format=svg&limit=54" width="1000" />
 </p> -->
+
+[![Stargazers repo roster for @Soham-Metha/virex](https://reporoster.com/stars/dark/Soham-Metha/virex)](https://github.com/Soham-Metha/virex/stargazers)
+
+[![Forkers repo roster for @Soham-Metha/virex](https://reporoster.com/forks/dark/Soham-Metha/virex)](https://github.com/Soham-Metha/virex/network/members)
+
 <p style="font-family:var(--ff-philosopher);font-size:3rem;"><b> Show some <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png" alt="Red Heart" width="40" height="40" /> by starring this awesome repository!
 </p>
 <!--
