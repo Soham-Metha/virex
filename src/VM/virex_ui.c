@@ -458,3 +458,41 @@ void InputMenu(int *highlight, int *ch)
         break;
     }
 }
+
+// CLI implementation wrappers for UI_Interface
+void CLI_OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug) { OnInstructionExecution(vm, instructionIndex, debug); }
+void CLI_OnStart() { OnStart(); }
+void CLI_OnPause() { OnPause(); }
+void CLI_OnExit() { OnExit(); }
+int  CLI_getUserInput() { return getUserInput(); }
+void CLI_printOut(int id, const char *str, ...) { va_list args; va_start(args, str); printOut(id, str, args); va_end(args); }
+void CLI_printOutWithColor(int id, int colorPair, const char *str, ...) { va_list args; va_start(args, str); printOutWithColor(id, colorPair, str, args); va_end(args); }
+void CLI_clearWindow(int id) { clearWindow(id); }
+void CLI_moveCursorWithinWindow(int id, int y, int x) { moveCursorWithinWindow(id, y, x); }
+char CLI_getChar(int id) { return getChar(id); }
+void CLI_refreshAllWindows() { refreshAllWindows(); }
+void CLI_readFilePath(int id, const char *msg, const char **filePath) { readFilePath(id, msg, filePath); }
+void CLI_InputMenu(int *highlight, int *ch) { InputMenu(highlight, ch); }
+void CLI_SetInputEnable(bool enable) { SetInputEnable(enable); }
+
+// UI_Interface instance for CLI
+struct UI_Interface CLI_UI = {
+    .OnInstructionExecution = CLI_OnInstructionExecution,
+    .OnStart = CLI_OnStart,
+    .OnPause = CLI_OnPause,
+    .OnExit = CLI_OnExit,
+    .getUserInput = CLI_getUserInput,
+    .printOut = CLI_printOut,
+    .printOutWithColor = CLI_printOutWithColor,
+    .clearWindow = CLI_clearWindow,
+    .moveCursorWithinWindow = CLI_moveCursorWithinWindow,
+    .getChar = CLI_getChar,
+    .refreshAllWindows = CLI_refreshAllWindows,
+    .readFilePath = CLI_readFilePath,
+    .InputMenu = CLI_InputMenu,
+    .SetInputEnable = CLI_SetInputEnable
+};
+
+// Global pointer to active UI
+struct UI_Interface *UI = &CLI_UI;
+}

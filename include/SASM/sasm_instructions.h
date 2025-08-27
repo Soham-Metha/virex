@@ -1,15 +1,32 @@
 #include "univ_defs.h"
 
+/**
+ * Meta flags for CPU state. F1-F7 are reserved for user-defined conditions.
+ * Users can assign custom meanings to these flags at runtime or via configuration.
+ * Example usage:
+ *   setFlag(META_F1, cpu, true); // Set user-defined flag 1
+ *   getFlag(META_F1, cpu);       // Check user-defined flag 1
+ */
 typedef enum {
-    META_HALT = 1 << 0,
-    META_F1 = 1 << 1,
-    META_F2 = 1 << 2,
-    META_F3 = 1 << 3,
-    META_F4 = 1 << 4,
-    META_F5 = 1 << 5,
-    META_F6 = 1 << 6,
-    META_F7 = 1 << 7
+    META_HALT = 1 << 0, // System Halt
+    META_F1   = 1 << 1, // User-defined Flag 1
+    META_F2   = 1 << 2, // User-defined Flag 2
+    META_F3   = 1 << 3, // User-defined Flag 3
+    META_F4   = 1 << 4, // User-defined Flag 4
+    META_F5   = 1 << 5, // User-defined Flag 5
+    META_F6   = 1 << 6, // User-defined Flag 6
+    META_F7   = 1 << 7  // User-defined Flag 7
 } Meta;
+
+/**
+ * To assign a meaning to a user-defined flag, set up a mapping in your configuration or code:
+ * Example:
+ *   // In your config or code
+ *   #define USER_FLAG_CONDITION_1 "Interrupt Enabled"
+ *   #define USER_FLAG_CONDITION_2 "Debug Mode"
+ *   // ...
+ * Then use setFlag/getFlag to manipulate these flags as needed.
+ */
 
 typedef enum {
 
@@ -189,3 +206,55 @@ OpcodeDetails getOpcodeDetails(Opcode type);
 void setFlag(Meta f, CPU* cpu, bool state);
 
 bool getFlag(Meta f, const CPU* cpu);
+
+#include <stddef.h>
+
+#define USER_FLAG_COUNT 7
+
+// Structure for user-defined flag metadata
+typedef struct {
+    const char* name; // Human-readable name or meaning
+    int (*condition_cb)(const struct CPU* cpu); // Optional callback for dynamic condition
+} UserFlagDef;
+
+// Registry for user-defined flags (F1-F7)
+extern UserFlagDef user_flag_registry[USER_FLAG_COUNT];
+
+// Register a user-defined flag (index 0-6 for F1-F7)
+void register_user_flag(int flag_index, const char* name, int (*condition_cb)(const struct CPU*));
+
+// Get user-defined flag name
+const char* get_user_flag_name(int flag_index);
+
+// Evaluate user-defined flag condition (returns 0 if no callback)
+int eval_user_flag_condition(int flag_index, const struct CPU* cpu);
+
+/**
+ * === User-Defined Flag System ===
+ *
+ * This system allows you to assign semantic meaning and dynamic logic to each user flag (F1-F7).
+ *
+ * Example: Registering a flag for "Interrupt Enabled" with a dynamic condition.
+ *
+ *     int interrupt_enabled_cb(const struct CPU* cpu) {
+ *         // Custom logic: e.g., check a register or memory-mapped IO
+ *         return (cpu->registers.I0 & 0x1) != 0;
+ *     }
+ *     register_user_flag(0, "Interrupt Enabled", interrupt_enabled_cb);
+ *
+ *     // Query the flag's state (dynamic or static)
+ *     if (getFlag(META_F1, cpu) || eval_user_flag_condition(0, cpu)) {
+ *         // ... handle interrupt logic ...
+ *     }
+ *
+ * You can use the provided macros for clarity:
+ *     #define META_USER(n) (1 << ((n)+1)) // n in 0..6 for F1..F7
+ *     #define USER_FLAG_INDEX(meta_flag) (__builtin_ctz(meta_flag) - 1)
+ *
+ *     // Example usage:
+ *     setFlag(META_USER(2), cpu, true); // Set F3
+ *     int idx = USER_FLAG_INDEX(META_F3); // idx == 2
+ *     const char* name = get_user_flag_name(idx);
+ *
+ * This pattern enables scalable, readable, and powerful user-driven flag logic.
+ */
