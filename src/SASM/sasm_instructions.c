@@ -130,3 +130,40 @@ inline bool getFlag(Meta f, const CPU* cpu)
 {
     return cpu->flags & f;
 }
+
+UserFlagDef user_flag_registry[USER_FLAG_COUNT] = {0};
+
+void register_user_flag(int flag_index, const char* name, int (*condition_cb)(const CPU*)) {
+    if (flag_index < 0 || flag_index >= USER_FLAG_COUNT) return;
+    user_flag_registry[flag_index].name = name;
+    user_flag_registry[flag_index].condition_cb = condition_cb;
+}
+
+const char* get_user_flag_name(int flag_index) {
+    if (flag_index < 0 || flag_index >= USER_FLAG_COUNT) return NULL;
+    return user_flag_registry[flag_index].name;
+}
+
+int eval_user_flag_condition(int flag_index, const CPU* cpu) {
+    if (flag_index < 0 || flag_index >= USER_FLAG_COUNT) return 0;
+    if (user_flag_registry[flag_index].condition_cb)
+        return user_flag_registry[flag_index].condition_cb(cpu);
+    return 0;
+}
+
+// Example: Register a user-defined flag for "Interrupt Enabled" and use it in logic
+static int interrupt_enabled_cb(const CPU* cpu) {
+    return (cpu->registers.I0 & 0x1) != 0;
+}
+
+void setup_user_flags(CPU* cpu) {
+    register_user_flag(0, "Interrupt Enabled", interrupt_enabled_cb);
+    setFlag(META_F1, cpu, false); // Start with interrupt disabled
+}
+
+void handle_interrupt(CPU* cpu) {
+    if (getFlag(META_F1, cpu) || eval_user_flag_condition(0, cpu)) {
+        // Interrupt logic here
+        setFlag(META_F1, cpu, false); // Clear after handling
+    }
+}
