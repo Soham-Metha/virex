@@ -36,6 +36,7 @@ bool getStrLenByAddr(Sasm* sasm, InstAddr addr, QuadWord* length)
 
 FuncallArg* parseFuncallArgs(Region* region, Tokenizer* tokenizer, FileLocation location)
 {
+    // split arguments from single comma seperated string to linked list of strings.
     Token token = { 0 };
 
     if (!moveSasmTokenizerToNextToken(tokenizer, &token, location) || token.type != TOKEN_TYPE_OPEN_PAREN) {
@@ -96,6 +97,7 @@ size_t getFunCallArgCnt(FuncallArg* args)
 
 void checkFuncArgs(Funcall* funcall, size_t expected_arity, FileLocation location)
 {
+    // ensure arg count matches the expected count!
     const size_t actual_arity = getFunCallArgCnt(funcall->args);
     if (actual_arity != expected_arity) {
         fprintf(stderr, FLFmt ": ERROR: " strFmt "() expects %zu but got %zu",
@@ -109,6 +111,7 @@ void checkFuncArgs(Funcall* funcall, size_t expected_arity, FileLocation locatio
 
 EvalResult resolveFuncall(Sasm* sasm, Expr expr, FileLocation location)
 {
+    // Individual Compile-Time-Functions implementation!
     if (compareStr(expr.value.funcall->name, convertCstrToStr("len"))) {
         checkFuncArgs(expr.value.funcall, 1, location);
 
@@ -204,29 +207,32 @@ EvalResult resultUnresolved(Binding* unresolvedBinding)
 
 EvalResult evaluateExpression(Sasm* sasm, Expr expr, FileLocation location)
 {
+    // Resolve Operands!
+    BeforeExpressionParse();
+    EvalResult res;
     switch (expr.type) {
     case EXPR_LIT_INT:
-        return resultOK(
+        res = resultOK(
             quadwordFromU64(expr.value.lit_int),
             BIND_TYPE_UINT);
 
     case EXPR_LIT_FLOAT:
-        return resultOK(
+        res = resultOK(
             quadwordFromF64(expr.value.lit_float),
             BIND_TYPE_FLOAT);
 
     case EXPR_LIT_CHAR:
-        return resultOK(
+        res = resultOK(
             quadwordFromU64(expr.value.lit_char),
             BIND_TYPE_UINT);
 
     case EXPR_LIT_STR:
-        return resultOK(
+        res = resultOK(
             pushStringToMemory(sasm, expr.value.lit_str),
             BIND_TYPE_MEM_ADDR);
 
     case EXPR_FUNCALL:
-        return resolveFuncall(sasm, expr, location);
+        res = resolveFuncall(sasm, expr, location);
 
     case EXPR_BINDING:
 
@@ -238,10 +244,10 @@ EvalResult evaluateExpression(Sasm* sasm, Expr expr, FileLocation location)
             exit(1);
         }
 
-        return evaluateBinding(sasm, binding);
+        res = evaluateBinding(sasm, binding);
 
     case EXPR_REG:
-        return resultOK(
+        res = resultOK(
             quadwordFromU64(expr.value.reg_id),
             BIND_TYPE_UINT);
 
@@ -249,5 +255,6 @@ EvalResult evaluateExpression(Sasm* sasm, Expr expr, FileLocation location)
         assert(false && "evaluateExpression: unreachable");
         exit(1);
     }
-    exit(1);
+    AfterExpressionParse();
+    return res;
 }

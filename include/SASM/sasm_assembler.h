@@ -354,3 +354,23 @@ int dumpExprAsAST(FILE* stream, Expr expr, int* counter);
 int dumpStmtNodeAsAST(FILE* stream, StmtNode* stmtNode, int* counter, int* blockNo);
 int dumpStatementAsAST(FILE* stream, Stmt statement, int* counter, int* blockNo);
 void generateASTPng(String inputFilePath, StmtNode* start);
+
+void BeforeLineRead();
+
+void AfterLineRead();
+
+void BeforeFileProcessing(String inputFilePath);
+
+void AfterFileProcessing(String inputFilePath, StmtNode *codeBlockBegin);
+
+void BeforeAssembly();
+
+void AfterAssembly();
+
+void BeforeStatementParse();
+
+void AfterStatementParse();
+
+void BeforeExpressionParse();
+
+void AfterExpressionParse();

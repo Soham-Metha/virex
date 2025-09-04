@@ -368,11 +368,6 @@ void OnPause()
     wgetch(disp.windows[INPUT]);
 }
 
-void OnStart()
-{
-    enterTUIMode();
-}
-
 int getUserInput()
 {
     int ch;
@@ -406,16 +401,6 @@ void moveCursorWithinWindow(int id, int y, int x)
 char getChar(int id)
 {
     return wgetch(disp.windows[id]);
-}
-
-void OnExit()
-{
-    while (disp.windowCount > 0)
-    {
-        delwin(disp.windows[disp.windowCount--]);
-    }
-    endwin();
-    exit(0);
 }
 
 void readFilePath(int id, const char *msg, const char **filePath)
@@ -457,4 +442,19 @@ void InputMenu(int *highlight, int *ch)
     default:
         break;
     }
+}
+
+void beforeVirexStart()
+{
+    enterTUIMode();
+}
+
+void afterVirexStop()
+{
+    while (disp.windowCount > 0)
+    {
+        delwin(disp.windows[disp.windowCount--]);
+    }
+    endwin();
+    exit(0);
 }

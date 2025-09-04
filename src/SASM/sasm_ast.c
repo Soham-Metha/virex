@@ -54,6 +54,7 @@ const char *getRegName(RegID type)
 
 int dumpExprAsAST(FILE *stream, Expr expr, int *counter)
 {
+    // Operands!
     int id = (*counter)++;
 
     switch (expr.type)
@@ -107,6 +108,8 @@ int dumpExprAsAST(FILE *stream, Expr expr, int *counter)
 
 int dumpStmtNodeAsAST(FILE *stream, StmtNode *stmtNode, int *counter, int *blockNo)
 {
+    // Encapsulated blocks!
+    // Represent as a subgraph!
     int id = (*counter)++;
     int blockid = (*blockNo)++;
 
@@ -136,6 +139,7 @@ int dumpStmtNodeAsAST(FILE *stream, StmtNode *stmtNode, int *counter, int *block
 
 int dumpStatementAsAST(FILE *stream, Stmt statement, int *counter, int *blockNo)
 {
+    // statement formats in dot notation!
     switch (statement.kind)
     {
     case STMT_INST: {
@@ -231,11 +235,15 @@ int dumpStatementAsAST(FILE *stream, Stmt statement, int *counter, int *blockNo)
 void generateASTPng(String inputFilePath, StmtNode *start)
 {
     String tmp = inputFilePath;
+    // trim untill last occurance of a '.' in the file name
+    // i.e. file extension
     while (tmp.data[tmp.length - 1] != '.')
     {
         tmp.length -= 1;
     }
+    // discard the '.' as well.
     tmp.length -= 1;
+    // if empty, use default name 'a'
     if (tmp.length == 0)
     {
         tmp.data = "a";
@@ -247,6 +255,7 @@ void generateASTPng(String inputFilePath, StmtNode *start)
     FILE *out = openFile(buffer, "w");
     int ID = 0;
     int BlockNo = 0;
+    // start dumping to the dot file, uses graphviz dot notation!
     fprintf(out,
             "digraph " strFmt " {\n"
             "splines=ortho;\n"
@@ -258,6 +267,7 @@ void generateASTPng(String inputFilePath, StmtNode *start)
 
     closeFile(out, buffer);
 
+    // try running the 'dot' command to generate the png, do nothing on failure.
     snprintf(buffer, sizeof(buffer), "dot  -Tpng -o " strFmt ".png " strFmt ".dot", strArg(tmp), strArg(tmp));
     if (system(buffer) != 0)
     {

@@ -17,7 +17,7 @@ int main(int argc, char **argv)
 {
     static Vm vm = {0};
     loadStandardCallsIntoVm(&vm);
-    OnStart();
+    beforeVirexStart();
 
     const char *program = getNextCmdLineArg(&argc, &argv);
 
@@ -116,7 +116,7 @@ void inputHandler(Vm *vm, int *highlight)
 
     case COMPILE_ORIN:
     case EXIT_VM:
-        OnExit();
+        afterVirexStop();
     default:
         break;
     }
