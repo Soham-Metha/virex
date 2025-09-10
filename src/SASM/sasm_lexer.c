@@ -34,7 +34,7 @@ bool fetchCachedLineFromSasmLexer(SasmLexer* lineInterpreter, Line* output)
         return false;
     }
 
-    BeforeLineRead();
+    // BeforeLineRead();
     Line result = { 0 };
     result.location = lineInterpreter->location;
     if (startsWith(line, convertCstrToStr("%"))) {
@@ -56,7 +56,7 @@ bool fetchCachedLineFromSasmLexer(SasmLexer* lineInterpreter, Line* output)
         *output = result;
     }
 
-    AfterLineRead();
+    // AfterLineRead();
 
     lineInterpreter->hasCachedToken = true;
     lineInterpreter->cachedToken = result;

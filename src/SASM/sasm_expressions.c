@@ -208,31 +208,36 @@ EvalResult resultUnresolved(Binding* unresolvedBinding)
 EvalResult evaluateExpression(Sasm* sasm, Expr expr, FileLocation location)
 {
     // Resolve Operands!
-    BeforeExpressionParse();
+    // BeforeExpressionParse();
     EvalResult res;
     switch (expr.type) {
     case EXPR_LIT_INT:
         res = resultOK(
             quadwordFromU64(expr.value.lit_int),
             BIND_TYPE_UINT);
+        break;
 
     case EXPR_LIT_FLOAT:
         res = resultOK(
             quadwordFromF64(expr.value.lit_float),
             BIND_TYPE_FLOAT);
+            break;
 
     case EXPR_LIT_CHAR:
         res = resultOK(
             quadwordFromU64(expr.value.lit_char),
             BIND_TYPE_UINT);
+            break;
 
     case EXPR_LIT_STR:
         res = resultOK(
             pushStringToMemory(sasm, expr.value.lit_str),
             BIND_TYPE_MEM_ADDR);
+            break;
 
     case EXPR_FUNCALL:
         res = resolveFuncall(sasm, expr, location);
+        break;
 
     case EXPR_BINDING:
 
@@ -245,16 +250,18 @@ EvalResult evaluateExpression(Sasm* sasm, Expr expr, FileLocation location)
         }
 
         res = evaluateBinding(sasm, binding);
+        break;
 
     case EXPR_REG:
         res = resultOK(
             quadwordFromU64(expr.value.reg_id),
             BIND_TYPE_UINT);
+            break;
 
     default:
         assert(false && "evaluateExpression: unreachable");
         exit(1);
     }
-    AfterExpressionParse();
+    // AfterExpressionParse();
     return res;
 }

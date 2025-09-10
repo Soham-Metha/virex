@@ -281,7 +281,7 @@ void generateSmExecutable(Sasm* sasm, const char* filePath)
         .memorySize = sasm->memorySize,
         .memoryCapacity = sasm->memoryCapacity,
     };
-    BeforeAssembly();
+    // BeforeAssembly();
     /*
      * Try to write metadata
      */
@@ -305,7 +305,7 @@ void generateSmExecutable(Sasm* sasm, const char* filePath)
     if (ferror(f)) {
         fileErrorDispWithExit("Could not write to file", filePath);
     }
-    AfterAssembly();
+    // AfterAssembly();
     closeFile(f, filePath);
 }
 

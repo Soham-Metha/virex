@@ -348,7 +348,7 @@ CodeBlock getCodeBlockFromLines(Region* region, SasmLexer* lineInterpreter)
         const FileLocation location = line.location;
         Stmt statement = { 0 };
         statement.location = location;
-        BeforeStatementParse();
+        // BeforeStatementParse();
         switch (line.kind) {
         case LINE_INSTRUCTION:
             String name = line.value.instruction.name;
@@ -377,7 +377,7 @@ CodeBlock getCodeBlockFromLines(Region* region, SasmLexer* lineInterpreter)
             }
             pushStatementIntoBlock(region, &result, statement);
             moveSasmLexerToNextLine(lineInterpreter, NULL);
-            AfterStatementParse();
+            // AfterStatementParse();
             break;
 
         case LINE_LABEL:
@@ -391,17 +391,17 @@ CodeBlock getCodeBlockFromLines(Region* region, SasmLexer* lineInterpreter)
             statement.value.label.name = label.value.binding;
             pushStatementIntoBlock(region, &result, statement);
             moveSasmLexerToNextLine(lineInterpreter, NULL);
-            AfterStatementParse();
+            // AfterStatementParse();
             break;
 
         case LINE_DIRECTIVE:
             if (compareStr(line.value.directive.name, convertCstrToStr("end"))) {
-                AfterStatementParse();
+                // AfterStatementParse();
                 return result;
             }
 
             parseSasmDirectiveFromLine(region, lineInterpreter, &result);
-            AfterStatementParse();
+            // AfterStatementParse();
             continue;
         }
     }
