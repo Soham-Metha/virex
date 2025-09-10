@@ -208,7 +208,7 @@ void enterTUIMode()
 void dumpStack(const Memory *mem)
 {
     printOut(MEMORY, "\n\n   ");
-    for (uint64_t i = 0; i < 256; i++)
+    for (InstAddr i = 0; i < 256; i++)
     {
         printOut(MEMORY, "%02X ", mem->memory[i]);
         if (i % 32 == 31)
@@ -326,9 +326,9 @@ void updateProgramWindow(size_t instructionIndex, size_t instructionCount, Progr
 
         wprintw(prg, "\n   %ld\t│ %s ", i, details.name);
         if (details.has_operand)
-            wprintw(prg, "\t %ld", prog->instructions[i].operand.u64);
+            wprintw(prg, "\t %" PRIu64, prog->instructions[i].operand.u64);
         if (details.has_operand2)
-            wprintw(prg, "\t %ld", prog->instructions[i].operand2.u64);
+            wprintw(prg, "\t %" PRIu64, prog->instructions[i].operand2.u64);
         wattroff(prg, A_REVERSE);
     }
 }

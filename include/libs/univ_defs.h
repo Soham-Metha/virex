@@ -30,19 +30,15 @@
 #include <assert.h>
 #include <ctype.h>
 #include <errno.h>
-#include <inttypes.h>
 #include <locale.h>
 #include <ncurses.h>
-#include <stdarg.h>
-#include <stdbool.h>
-#include <stddef.h>
-#include <stdint.h>
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
-#include <sys/types.h>
-#include <unistd.h>
+
+#define PRIu64 "lu"
+#define PRIi64 "li"
+#define PRId64 "ld"
 
 typedef uint8_t Byte;
 typedef uint16_t Word;
@@ -52,6 +48,8 @@ typedef uint64_t DataEntry;
 typedef uint64_t InstAddr;
 typedef uint64_t MemoryAddr;
 typedef uint64_t StackAddr;
+typedef uint64_t u64;
+typedef int64_t  i64;
 
 typedef union {
     uint64_t u64;

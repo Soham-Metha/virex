@@ -368,14 +368,14 @@ void loadSmExecutableIntoSasm(Sasm* sasm, const char* filePath)
     if (meta.programSize > PROGRAM_CAPACITY) {
         fprintf(stderr,
             "The file contains %" PRIu64 " program instruction. But the capacity is %" PRIu64 "\n",
-            meta.programSize, (uint64_t)PROGRAM_CAPACITY);
+            meta.programSize, (u64)PROGRAM_CAPACITY);
         fileErrorDispWithExit("program section is too big ", filePath);
     }
 
     if (meta.memoryCapacity > MEMORY_CAPACITY) {
         fprintf(stderr,
             "The file wants %" PRIu64 " bytes. But the capacity is %" PRIu64 " bytes\n",
-            meta.memoryCapacity, (uint64_t)MEMORY_CAPACITY);
+            meta.memoryCapacity, (u64)MEMORY_CAPACITY);
         fileErrorDispWithExit(" memory section is too big ", filePath);
     }
 
@@ -389,7 +389,7 @@ void loadSmExecutableIntoSasm(Sasm* sasm, const char* filePath)
     if (meta.externalsSize > EXTERNAL_VMCALLS_CAPACITY) {
         fprintf(stderr,
             "ERROR: %s: external names section is too big. The file contains %" PRIu64 " external names. But the capacity is %" PRIu64 " external names\n",
-            filePath, meta.externalsSize, (uint64_t)EXTERNAL_VMCALLS_CAPACITY);
+            filePath, meta.externalsSize, (u64)EXTERNAL_VMCALLS_CAPACITY);
         exit(1);
     }
     /*

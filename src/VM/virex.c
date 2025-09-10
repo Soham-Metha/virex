@@ -12,12 +12,12 @@ inline void setReg(RegID id, Vm *vm, DataEntry val)
     tmp->u64 = val;
 }
 
-inline uint64_t getInstCnt(Vm *vm)
+inline u64 getInstCnt(Vm *vm)
 {
     return vm->prog.instruction_count;
 }
 
-inline Instruction *getInstructionAt(Vm *vm, uint64_t index)
+inline Instruction *getInstructionAt(Vm *vm, u64 index)
 {
     return &vm->prog.instructions[index];
 }
@@ -98,7 +98,7 @@ Error executeInst(Vm *vm)
 {
     if (getReg(REG_NX, vm)->u64 >= getInstCnt(vm))
     {
-        printf("error %ld %ld", getReg(REG_NX, vm)->u64, getInstCnt(vm));
+        printf("error %" PRIu64 " %" PRIu64, getReg(REG_NX, vm)->u64, getInstCnt(vm));
         return ERR_ILLEGAL_INST_ACCESS;
     }
     Instruction inst = *getInstructionAt(vm, getReg(REG_NX, vm)->u64);
@@ -211,8 +211,8 @@ Error executeInst(Vm *vm)
             return ERR_STACK_UNDERFLOW;
         }
 
-        const uint64_t a = getReg(REG_SP, vm)->u64 - 1;
-        const uint64_t b = getReg(REG_SP, vm)->u64 - 1 - inst.operand.u64;
+        const u64 a = getReg(REG_SP, vm)->u64 - 1;
+        const u64 b = getReg(REG_SP, vm)->u64 - 1 - inst.operand.u64;
 
         QuadWord t = getStack(vm)[a];
         getStack(vm)[a] = getStack(vm)[b];
@@ -456,7 +456,7 @@ Error executeInst(Vm *vm)
         break;
 
     case INST_F2U:
-        CAST_OP(getReg(REG_L3, vm), getReg(REG_L1, vm), f64, u64, (uint64_t)(int64_t));
+        CAST_OP(getReg(REG_L3, vm), getReg(REG_L1, vm), f64, u64, (u64)(int64_t));
         break;
 
     case INST_READ1U:
@@ -472,7 +472,7 @@ Error executeInst(Vm *vm)
         break;
 
     case INST_READ8U:
-        READ_OP(uint64_t, u64);
+        READ_OP(u64, u64);
         break;
 
     case INST_READ1I:
