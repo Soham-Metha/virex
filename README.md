@@ -1,5 +1,6 @@
 # VIREX : Virtual Execution Console
 
+
 <!--![GSSoC Logo](/virex/docs/assets/gssoc%20logo.png) -->
 
 [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/Soham-Metha) <img alt="Issues" src="https://img.shields.io/github/issues/Soham-Metha/virex?style=flat&logo=github"/> <img alt="Open Pull Requests" src="https://img.shields.io/github/issues-pr/Soham-Metha/virex?style=flat&logo=github"/> <img alt="Closed Pull Requests" src="https://img.shields.io/github/issues-pr-closed/Soham-Metha/virex?style=flat&color=critical&logo=github"/>
@@ -26,6 +27,8 @@ You can even create your own programming language that compiles into SASM and ru
 This makes SASM ideal for systems programmers, compiler devs, and those learning how VMs work.
 
 ---
+
+
 ## 🧠 Why SASM?
 
 - Understand **low-level systems** through a safe, abstracted virtual environment.
@@ -34,6 +37,8 @@ This makes SASM ideal for systems programmers, compiler devs, and those learning
 - Make your own language **platform-independent** by targeting SASM.
 
 ---
+
+
 ## 🛠 Current Features
 
 - ✅ **VS Code syntax highlighter** for SASM
@@ -44,6 +49,7 @@ This makes SASM ideal for systems programmers, compiler devs, and those learning
 
 ---
 <!--
+
 ## 📦 Project Layout
 
 ```
@@ -161,6 +167,7 @@ To ensure a welcoming and inclusive environment, we have a Code of Conduct that 
 </tr>
 </table>
 <!--
+
 ---
 <div align="center">
   <h2 style="font-size:3rem;">Our Contributors <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png" alt="Red Heart" width="40" height="40" /></h2>
@@ -173,6 +180,7 @@ To ensure a welcoming and inclusive environment, we have a Code of Conduct that 
 [![Stargazers repo roster for @Soham-Metha/virex](https://reporoster.com/stars/dark/Soham-Metha/virex)](https://github.com/Soham-Metha/virex/stargazers)
 
 [![Forkers repo roster for @Soham-Metha/virex](https://reporoster.com/forks/dark/Soham-Metha/virex)](https://github.com/Soham-Metha/virex/network/members)
+
 
 <p style="font-family:var(--ff-philosopher);font-size:3rem;"><b> Show some <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Red%20Heart.png" alt="Red Heart" width="40" height="40" /> by starring this awesome repository!
 </p>
