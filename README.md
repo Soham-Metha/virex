@@ -7,6 +7,7 @@
 <!--img alt="Stars" src="https://img.shields.io/github/stars/Soham-Metha/virex?style=flat&logo=github"/> <img alt="Forks" src="https://img.shields.io/github/forks/Soham-Metha/virex?style=flat&logo=github"/-->
 
 
+
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE) [![Build](https://img.shields.io/github/actions/workflow/status/Soham-Metha/virex/ci.yml)](https://github.com/Soham-Metha/virex/actions) [![Docs](https://img.shields.io/badge/docs-online-blue)](https://virex.readthedocs.io/en/latest/) [![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 ---
@@ -64,6 +65,7 @@ This makes SASM ideal for systems programmers, compiler devs, and those learning
 
 ---
 ## 🧪 Getting Started (Linux)
+
 
 > 📝 For more detailed setup and usage guides, visit [our docs »](https://virex.readthedocs.io/en/latest/)
 
