@@ -1,49 +1,26 @@
 #include "virex.h"
 #include "virex_ui.h"
 
-inline Register *getReg(RegID id, Vm *vm)
+static inline QuadWord stack_pop(Vm* vm)
 {
-    return &vm->cpu.registers.reg[id];
+    return vm $stack[--vm $stack_top];
 }
 
-inline void setReg(RegID id, Vm *vm, DataEntry val)
+static inline void stack_push(Vm* vm, QuadWord val)
 {
-    Register *tmp = getReg(id, vm);
-    tmp->u64 = val;
+    vm $stack[vm $stack_top++] = val;
 }
 
-inline u64 getInstCnt(Vm *vm)
+void executeProgram(Vm* vm, int debug, int lim)
 {
-    return vm->prog.instruction_count;
-}
-
-inline Instruction *getInstructionAt(Vm *vm, u64 index)
-{
-    return &vm->prog.instructions[index];
-}
-
-inline QuadWord *getStack(Vm *vm)
-{
-    return vm->mem.stack;
-}
-
-inline Byte *getMemory(Vm *vm)
-{
-    return vm->mem.memory;
-}
-
-void executeProgram(Vm *vm, int debug, int lim)
-{
-    size_t c = getReg(REG_NX, vm)->u64;
+    size_t c    = vm $reg[REG_NX].u64;
     Error error = executeInst(vm);
 
-    if (debug > 0)
-    {
+    if (debug > 0) {
         OnInstructionExecution(vm, c, debug == 1);
     }
 
-    if (lim == 0 || getFlag(META_HALT, &(vm->cpu)))
-    {
+    if (lim == 0 || getFlag(META_HALT, &(vm->cpu))) {
         return;
     }
 
@@ -53,510 +30,462 @@ void executeProgram(Vm *vm, int debug, int lim)
     executeProgram(vm, debug, lim - 1);
 }
 
-#define READ_OP(type, out)                                                                                             \
-    {                                                                                                                  \
-        if (getReg(REG_SP, vm)->u64 < 1)                                                                               \
-        {                                                                                                              \
-            return ERR_STACK_UNDERFLOW;                                                                                \
-        }                                                                                                              \
-        const MemoryAddr addr = getStack(vm)[getReg(REG_SP, vm)->u64 - 1].u64;                                         \
-        if (addr >= MEMORY_CAPACITY)                                                                                   \
-        {                                                                                                              \
-            return ERR_ILLEGAL_MEMORY_ACCESS;                                                                          \
-        }                                                                                                              \
-        type tmp;                                                                                                      \
-        memcpy(&tmp, &getMemory(vm)[addr], sizeof(type));                                                              \
-        getStack(vm)[getReg(REG_SP, vm)->u64 - 1].out = tmp;                                                           \
-        getReg(REG_NX, vm)->u64++;                                                                                     \
+#define READ_OP(type, out)                             \
+    {                                                  \
+        if (vm $stack_top < 1) {                       \
+            return ERR_STACK_UNDERFLOW;                \
+        }                                              \
+        const MemoryAddr addr = stack_pop(vm).u64;     \
+        if (addr >= MEMORY_CAPACITY) {                 \
+            return ERR_ILLEGAL_MEMORY_ACCESS;          \
+        }                                              \
+        type tmp;                                      \
+        memcpy(&tmp, &vm $memory[addr], sizeof(type)); \
+        stack_push(vm, quadwordFrom##out(tmp));        \
+        vm $reg[REG_NX].u64++;                         \
     }
 
-#define ARITH_OP(reg, in, op)                                                                                          \
-    {                                                                                                                  \
-        reg = reg op in;                                                                                               \
-        getReg(REG_NX, vm)->u64++;                                                                                     \
+#define WRITE_OP(type, size)                              \
+    {                                                     \
+        if (vm $stack_top < 2) {                          \
+            return ERR_STACK_UNDERFLOW;                   \
+        }                                                 \
+        const type value      = stack_pop(vm).u64;        \
+        const MemoryAddr addr = stack_pop(vm).u64;        \
+        if (addr >= MEMORY_CAPACITY - size) {             \
+            return ERR_ILLEGAL_MEMORY_ACCESS;             \
+        }                                                 \
+        memcpy(&vm $memory[addr], &value, sizeof(value)); \
+        vm $reg[REG_NX].u64++;                            \
     }
 
-#define BINARY_OP(in, out, op)                                                                                         \
-    {                                                                                                                  \
-        if (getReg(REG_SP, vm)->u64 < 2)                                                                               \
-        {                                                                                                              \
-            return ERR_STACK_UNDERFLOW;                                                                                \
-        }                                                                                                              \
-        getStack(vm)[getReg(REG_SP, vm)->u64 - 2].out =                                                                \
-            getStack(vm)[getReg(REG_SP, vm)->u64 - 2].in op getStack(vm)[getReg(REG_SP, vm)->u64 - 1].in;              \
-        getReg(REG_SP, vm)->u64 -= 1;                                                                                  \
-        getReg(REG_NX, vm)->u64++;                                                                                     \
+#define ARITH_OP(reg, in, op)  \
+    {                          \
+        reg = reg op in;       \
+        vm $reg[REG_NX].u64++; \
     }
 
-#define CAST_OP(r1, r2, src, dst, cast)                                                                                \
-    {                                                                                                                  \
-        r1->dst = cast r2->src;                                                                                        \
-        getReg(REG_NX, vm)->u64++;                                                                                     \
+#define BINARY_OP(in, out, op)                          \
+    {                                                   \
+        if (vm $stack_top < 2) {                        \
+            return ERR_STACK_UNDERFLOW;                 \
+        }                                               \
+        in opr2      = stack_pop(vm).in;                \
+        in opr1      = stack_pop(vm).in;                \
+        QuadWord res = quadwordFrom##out(opr1 op opr2); \
+        stack_push(vm, res);                            \
+        vm $reg[REG_NX].u64++;                          \
     }
 
-Error executeInst(Vm *vm)
+#define CAST_OP(r1, r2, src, dst, cast) \
+    {                                   \
+        r1.dst = cast r2.src;           \
+        vm $reg[REG_NX].u64++;          \
+    }
+
+Error executeInst(Vm* vm)
 {
-    if (getReg(REG_NX, vm)->u64 >= getInstCnt(vm))
-    {
-        printf("error %" PRIu64 " %" PRIu64, getReg(REG_NX, vm)->u64, getInstCnt(vm));
+    if (vm $reg[REG_NX].u64 >= vm $inst_cnt) {
+        printf("error tring to access instruction at '%" PRIu64 "', but there are only '%" PRIu64 "' instructions", vm $reg[REG_NX].u64, vm $inst_cnt);
         return ERR_ILLEGAL_INST_ACCESS;
     }
-    Instruction inst = *getInstructionAt(vm, getReg(REG_NX, vm)->u64);
-    if (inst.opr1IsReg && inst.operand.u64 > REG_COUNT)
-    {
-        inst.operand.u64 = getReg(inst.operand.u64 % REG_COUNT, vm)->u64;
+
+    Instruction inst = vm $inst[vm $reg[REG_NX].u64];
+    if (inst.opr1IsReg && inst.operand.u64 > REG_COUNT) {
+        inst.operand.u64 = vm $reg[inst.operand.u64 % REG_COUNT].u64;
     }
-    if (inst.opr2IsReg && inst.operand2.u64 > REG_COUNT)
-    {
-        inst.operand2.u64 = getReg(inst.operand2.u64 % REG_COUNT, vm)->u64;
+    if (inst.opr2IsReg && inst.operand2.u64 > REG_COUNT) {
+        inst.operand2.u64 = vm $reg[inst.operand2.u64 % REG_COUNT].u64;
     }
 
     // printf("\nenter : %d %s", inst.type, OpcodeDetailsLUT[inst.type].name);
-    switch (inst.type)
-    {
+    switch (inst.type) {
 
     case INST_DONOP:
-        getReg(REG_NX, vm)->u64++;
+        vm $reg[REG_NX].u64++;
         break;
 
     case INST_RETVL:
-
-        break;
-
-    case INST_INVOK:
-        if (inst.operand.u64 > vm->vmCalls.internalVmCallsDefined)
-            return ERR_ILLEGAL_OPERAND;
-
-        if (!vm->vmCalls.VmCallI[inst.operand.u64])
-            return ERR_NULL_CALL;
-
-        const Error err = vm->vmCalls.VmCallI[inst.operand.u64](&vm->cpu, &vm->mem, &vm->region);
-        if (err != ERR_OK)
-            return err;
-
-        getReg(REG_NX, vm)->u64++;
-        break;
-    case INST_PUSHR:
-        if (getReg(REG_SP, vm)->u64 >= STACK_CAPACITY)
-            return ERR_STACK_OVERFLOW;
-
-        getStack(vm)[getReg(REG_SP, vm)->u64++] = *getReg(inst.operand.u64, vm);
-        getReg(REG_NX, vm)->u64++;
-        break;
-    case INST_SPOPR:
-        if (getReg(REG_SP, vm)->u64 < 1)
-            return ERR_STACK_UNDERFLOW;
-
-        *getReg(inst.operand.u64, vm) = getStack(vm)[getReg(REG_SP, vm)->u64 - 1];
-        getReg(REG_SP, vm)->u64 -= 1;
-        getReg(REG_NX, vm)->u64++;
+        // no implementation yet!!
         break;
 
     case INST_SHUTS:
         setFlag(META_HALT, &vm->cpu, 1);
         break;
 
-    case INST_SETR:
-        vm->cpu.registers.reg[inst.operand2.u64].u64 = inst.operand.u64;
-        getReg(REG_NX, vm)->u64++;
+    case INST_INVOK:
+        if (inst.operand.u64 > vm->vmCalls.internalVmCallsDefined)
+            return ERR_ILLEGAL_OPERAND;
+
+        if (!vm $vm_call[inst.operand.u64])
+            return ERR_NULL_CALL;
+
+        const Error err = vm $vm_call[inst.operand.u64](&vm->cpu, &vm->mem, &vm->region);
+        if (err != ERR_OK)
+            return err;
+
+        vm $reg[REG_NX].u64++;
         break;
 
-    case INST_GETR:
-        getStack(vm)[getReg(REG_SP, vm)->u64++] = *getReg(inst.operand.u64, vm);
-        getReg(REG_NX, vm)->u64++;
-        break;
-
-    case INST_CALL:
-        if (getReg(REG_SP, vm)->u64 >= STACK_CAPACITY)
+    case INST_GETR: /* fallthrough */
+    case INST_PUSHR:
+        if (vm $stack_top >= STACK_CAPACITY)
             return ERR_STACK_OVERFLOW;
 
-        getStack(vm)[getReg(REG_SP, vm)->u64++].u64 = getReg(REG_NX, vm)->u64 + 1;
-        setReg(REG_NX, vm, inst.operand.u64);
+        stack_push(vm, vm $reg[inst.operand.u64]);
+        vm $reg[REG_NX].u64++;
         break;
 
-    case INST_LOOP:
-        if (getReg(inst.operand2.u64, vm)->u64 > 0)
-        {
-            setReg(REG_NX, vm, inst.operand.u64);
-        }
-        else
-        {
-            getReg(REG_NX, vm)->u64++;
-        }
-        getReg(inst.operand2.u64, vm)->u64 -= 1;
+    case INST_SPOPR:
+        if (vm $stack_top < 1)
+            return ERR_STACK_UNDERFLOW;
+
+        vm $reg[inst.operand.u64] = stack_pop(vm);
+        vm $reg[REG_NX].u64++;
+        break;
+
+    case INST_SETR:
+        vm $reg[inst.operand2.u64].u64 = inst.operand.u64;
+        vm $reg[REG_NX].u64++;
         break;
 
     case INST_PUSH:
-        if (getReg(REG_SP, vm)->u64 >= STACK_CAPACITY)
-        {
+        if (vm $stack_top >= STACK_CAPACITY) {
             return ERR_STACK_OVERFLOW;
         }
-        getStack(vm)[getReg(REG_SP, vm)->u64++] = inst.operand;
-        getReg(REG_NX, vm)->u64++;
+        stack_push(vm, inst.operand);
+        vm $reg[REG_NX].u64++;
         break;
 
     case INST_SPOP:
-        if (getReg(REG_SP, vm)->u64 < 1)
-        {
+        if (vm $stack_top < 1) {
             return ERR_STACK_UNDERFLOW;
         }
-        setReg(REG_QT, vm, getStack(vm)[getReg(REG_SP, vm)->u64 - 1].u64);
-        getReg(REG_SP, vm)->u64 -= 1;
-        getReg(REG_NX, vm)->u64++;
+        vm $reg[REG_QT].u64 = stack_pop(vm).u64;
+        vm $reg[REG_NX].u64++;
+        break;
+
+    case INST_COPY:
+        vm $reg[inst.operand.u64].u64 = vm $reg[inst.operand2.u64].u64;
+        vm $reg[REG_NX].u64++;
+        break;
+
+    case INST_DUPS:
+        if (vm $stack_top >= STACK_CAPACITY) {
+            return ERR_STACK_OVERFLOW;
+        }
+
+        if (vm $stack_top >= inst.operand.u64) {
+            return ERR_STACK_UNDERFLOW;
+        }
+
+        stack_push(vm, vm $stack[vm $stack_top - 1 - inst.operand.u64]);
+        vm $reg[REG_NX].u64++;
         break;
 
     case INST_SWAP:
-        if (inst.operand.u64 >= getReg(REG_SP, vm)->u64)
-        {
+        if (inst.operand.u64 >= vm $stack_top) {
             return ERR_STACK_UNDERFLOW;
         }
 
-        const u64 a = getReg(REG_SP, vm)->u64 - 1;
-        const u64 b = getReg(REG_SP, vm)->u64 - 1 - inst.operand.u64;
+        const u64 a  = vm $stack_top - 1;
+        const u64 b  = vm $stack_top - 1 - inst.operand.u64;
 
-        QuadWord t = getStack(vm)[a];
-        getStack(vm)[a] = getStack(vm)[b];
-        getStack(vm)[b] = t;
-        getReg(REG_NX, vm)->u64++;
+        QuadWord tmp = vm $stack[a];
+        vm $stack[a] = vm $stack[b];
+        vm $stack[b] = tmp;
+        vm $reg[REG_NX].u64++;
+        break;
+
+    case INST_JMPU:
+        if (vm $stack_top < 1)
+            return ERR_STACK_UNDERFLOW;
+
+        vm $reg[REG_NX].u64 = inst.operand.u64;
+        break;
+
+    case INST_JMPC:
+        if (vm $stack_top < 1)
+            return ERR_STACK_UNDERFLOW;
+
+        if (stack_pop(vm).u64 > 0)
+            vm $reg[REG_NX].u64 = inst.operand.u64;
+        else
+            vm $reg[REG_NX].u64++;
+
+        break;
+
+    case INST_LOOP:
+        if (vm $reg[inst.operand2.u64].u64 > 0) {
+            vm $reg[REG_NX].u64 = inst.operand.u64;
+        } else {
+            vm $reg[REG_NX].u64++;
+        }
+        vm $reg[inst.operand2.u64].u64 -= 1;
+        break;
+
+    case INST_CALL:
+        if (vm $stack_top >= STACK_CAPACITY)
+            return ERR_STACK_OVERFLOW;
+
+        stack_push(vm, quadwordFromU64(vm $reg[REG_NX].u64 + 1));
+        vm $reg[REG_NX].u64 = inst.operand.u64;
+        break;
+
+    case INST_RET:
+        if (vm $stack_top < 1) {
+            return ERR_STACK_UNDERFLOW;
+        }
+
+        vm $reg[REG_NX].u64 = stack_pop(vm).u64;
+        break;
+
+    case INST_NOT:
+        if (vm $stack_top < 1) {
+            return ERR_STACK_UNDERFLOW;
+        }
+        {
+            u64 val = stack_pop(vm).u64;
+            val     = !val;
+            stack_push(vm, quadwordFromU64(val));
+        }
+        vm $reg[REG_NX].u64++;
+        break;
+
+    case INST_NOTB:
+        if (vm $stack_top < 1) {
+            return ERR_STACK_UNDERFLOW;
+        }
+
+        {
+            u64 val = stack_pop(vm).u64;
+            val     = ~val;
+            stack_push(vm, quadwordFromU64(val));
+        }
+        vm $reg[REG_NX].u64++;
         break;
 
     case INST_ADDI:
-        ARITH_OP(getReg(REG_L2, vm)->i64, inst.operand.i64, +);
+        ARITH_OP(vm $reg[REG_L2].i64, inst.operand.i64, +);
         break;
 
     case INST_SUBI:
-        ARITH_OP(getReg(REG_L2, vm)->i64, inst.operand.i64, -);
+        ARITH_OP(vm $reg[REG_L2].i64, inst.operand.i64, -);
         break;
 
     case INST_MULI:
-        ARITH_OP(getReg(REG_L2, vm)->i64, inst.operand.i64, *);
+        ARITH_OP(vm $reg[REG_L2].i64, inst.operand.i64, *);
         break;
 
     case INST_DIVI:
         if (inst.operand.i64 == 0)
             return ERR_DIV_BY_ZERO;
-        ARITH_OP(getReg(REG_L2, vm)->i64, inst.operand.i64, /);
+        ARITH_OP(vm $reg[REG_L2].i64, inst.operand.i64, /);
         break;
 
     case INST_MODI:
         if (inst.operand.i64 == 0)
             return ERR_DIV_BY_ZERO;
-        ARITH_OP(getReg(REG_L2, vm)->i64, inst.operand.i64, %);
+        ARITH_OP(vm $reg[REG_L2].i64, inst.operand.i64, %);
         break;
 
     case INST_ADDU:
-        ARITH_OP(getReg(REG_L3, vm)->u64, inst.operand.u64, +);
+        ARITH_OP(vm $reg[REG_L3].u64, inst.operand.u64, +);
         break;
 
     case INST_SUBU:
-        ARITH_OP(getReg(REG_L3, vm)->u64, inst.operand.u64, -);
+        ARITH_OP(vm $reg[REG_L3].u64, inst.operand.u64, -);
         break;
 
     case INST_MULU:
-        ARITH_OP(getReg(REG_L3, vm)->u64, inst.operand.u64, +);
+        ARITH_OP(vm $reg[REG_L3].u64, inst.operand.u64, +);
         break;
 
     case INST_DIVU:
         if (inst.operand.u64 == 0)
             return ERR_DIV_BY_ZERO;
-        ARITH_OP(getReg(REG_L3, vm)->u64, inst.operand.u64, /);
+        ARITH_OP(vm $reg[REG_L3].u64, inst.operand.u64, /);
         break;
 
     case INST_MODU:
         if (inst.operand.u64 == 0)
             return ERR_DIV_BY_ZERO;
-        ARITH_OP(getReg(REG_L3, vm)->u64, inst.operand.u64, %);
+        ARITH_OP(vm $reg[REG_L3].u64, inst.operand.u64, %);
         break;
 
     case INST_ADDF:
-        ARITH_OP(getReg(REG_L1, vm)->f64, inst.operand.f64, +);
+        ARITH_OP(vm $reg[REG_L1].f64, inst.operand.f64, +);
         break;
 
     case INST_SUBF:
-        ARITH_OP(getReg(REG_L1, vm)->f64, inst.operand.f64, -);
+        ARITH_OP(vm $reg[REG_L1].f64, inst.operand.f64, -);
         break;
 
     case INST_MULF:
-        ARITH_OP(getReg(REG_L1, vm)->f64, inst.operand.f64, *);
+        ARITH_OP(vm $reg[REG_L1].f64, inst.operand.f64, *);
         break;
 
     case INST_DIVF:
         if (inst.operand.f64 == 0.0)
             return ERR_DIV_BY_ZERO;
-        ARITH_OP(getReg(REG_L1, vm)->f64, inst.operand.f64, /);
-        break;
-
-    case INST_JMPU:
-        setReg(REG_NX, vm, inst.operand.u64);
-        break;
-
-    case INST_JMPC:
-        if (getReg(REG_SP, vm)->u64 < 1)
-            return ERR_STACK_UNDERFLOW;
-
-        if (getStack(vm)[getReg(REG_SP, vm)->u64 - 1].u64)
-            setReg(REG_NX, vm, inst.operand.u64);
-        else
-            getReg(REG_NX, vm)->u64++;
-
-        getReg(REG_SP, vm)->u64 -= 1;
+        ARITH_OP(vm $reg[REG_L1].f64, inst.operand.f64, /);
         break;
 
     case INST_ANDB:
-        BINARY_OP(u64, u64, &);
-        break;
-
-    case INST_NOTB:
-        if (getReg(REG_SP, vm)->u64 < 1)
-            return ERR_STACK_UNDERFLOW;
-
-        getStack(vm)[getReg(REG_SP, vm)->u64 - 1].u64 = ~getStack(vm)[getReg(REG_SP, vm)->u64 - 1].u64;
-        getReg(REG_NX, vm)->u64++;
-        break;
-
-    case INST_COPY:
-        setReg(inst.operand.u64, vm, getReg(inst.operand2.u64, vm)->u64);
-        getReg(REG_NX, vm)->u64++;
-        break;
-
-    case INST_DUPS:
-        if (getReg(REG_SP, vm)->u64 >= STACK_CAPACITY)
-        {
-            return ERR_STACK_OVERFLOW;
-        }
-
-        if (getReg(REG_SP, vm)->u64 - inst.operand.u64 <= 0)
-        {
-            return ERR_STACK_UNDERFLOW;
-        }
-
-        getStack(vm)[getReg(REG_SP, vm)->u64] = getStack(vm)[getReg(REG_SP, vm)->u64 - 1 - inst.operand.u64];
-        getReg(REG_SP, vm)->u64 += 1;
-        getReg(REG_NX, vm)->u64++;
-        break;
-
-    case INST_RET:
-        if (getReg(REG_SP, vm)->u64 < 1)
-        {
-            return ERR_STACK_UNDERFLOW;
-        }
-
-        setReg(REG_NX, vm, getStack(vm)[getReg(REG_SP, vm)->u64 - 1].u64);
-        setReg(REG_SP, vm, getReg(REG_SP, vm)->u64 - 1);
-        break;
-
-    case INST_NOT:
-        if (getReg(REG_SP, vm)->u64 < 1)
-        {
-            return ERR_STACK_UNDERFLOW;
-        }
-
-        getStack(vm)[getReg(REG_SP, vm)->u64 - 1].u64 = !getStack(vm)[getReg(REG_SP, vm)->u64 - 1].u64;
-        getReg(REG_NX, vm)->u64++;
+        BINARY_OP(u64, U64, &);
         break;
 
     case INST_EQI:
-        BINARY_OP(i64, u64, ==);
+        BINARY_OP(i64, U64, ==);
         break;
 
     case INST_GEI:
-        BINARY_OP(i64, u64, >=);
+        BINARY_OP(i64, U64, >=);
         break;
 
     case INST_GTI:
-        BINARY_OP(i64, u64, >);
+        BINARY_OP(i64, U64, >);
         break;
 
     case INST_LEI:
-        BINARY_OP(i64, u64, <=);
+        BINARY_OP(i64, U64, <=);
         break;
 
     case INST_LTI:
-        BINARY_OP(i64, u64, <);
+        BINARY_OP(i64, U64, <);
         break;
 
     case INST_NEI:
-        BINARY_OP(i64, u64, !=);
+        BINARY_OP(i64, U64, !=);
         break;
 
     case INST_EQU:
-        BINARY_OP(u64, u64, ==);
+        BINARY_OP(u64, U64, ==);
         break;
 
     case INST_GEU:
-        BINARY_OP(u64, u64, >=);
+        BINARY_OP(u64, U64, >=);
         break;
 
     case INST_GTU:
-        BINARY_OP(u64, u64, >);
+        BINARY_OP(u64, U64, >);
         break;
 
     case INST_LEU:
-        BINARY_OP(u64, u64, <=);
+        BINARY_OP(u64, U64, <=);
         break;
 
     case INST_LTU:
-        BINARY_OP(u64, u64, <);
+        BINARY_OP(u64, U64, <);
         break;
 
     case INST_NEU:
-        BINARY_OP(u64, u64, !=);
+        BINARY_OP(u64, U64, !=);
         break;
 
     case INST_EQF:
-        BINARY_OP(f64, u64, ==);
+        BINARY_OP(f64, U64, ==);
         break;
 
     case INST_GEF:
-        BINARY_OP(f64, u64, >=);
+        BINARY_OP(f64, U64, >=);
         break;
 
     case INST_GTF:
-        BINARY_OP(f64, u64, >);
+        BINARY_OP(f64, U64, >);
         break;
 
     case INST_LEF:
-        BINARY_OP(f64, u64, <=);
+        BINARY_OP(f64, U64, <=);
         break;
 
     case INST_LTF:
-        BINARY_OP(f64, u64, <);
+        BINARY_OP(f64, U64, <);
         break;
 
     case INST_NEF:
-        BINARY_OP(f64, u64, !=);
+        BINARY_OP(f64, U64, !=);
         break;
 
     case INST_ORB:
-        BINARY_OP(u64, u64, |);
+        BINARY_OP(u64, U64, |);
         break;
 
     case INST_XOR:
-        BINARY_OP(u64, u64, ^);
+        BINARY_OP(u64, U64, ^);
         break;
 
     case INST_SHR:
-        BINARY_OP(u64, u64, >>);
+        BINARY_OP(u64, U64, >>);
         break;
 
     case INST_SHL:
-        BINARY_OP(u64, u64, <<);
+        BINARY_OP(u64, U64, <<);
         break;
 
     case INST_I2F:
-        CAST_OP(getReg(REG_L1, vm), getReg(REG_L2, vm), i64, f64, (double));
+        CAST_OP(vm $reg[REG_L1], vm $reg[REG_L2], i64, f64, (f64));
         break;
 
     case INST_U2F:
-        CAST_OP(getReg(REG_L1, vm), getReg(REG_L3, vm), u64, f64, (double));
+        CAST_OP(vm $reg[REG_L1], vm $reg[REG_L3], u64, f64, (f64));
         break;
 
     case INST_F2I:
-        CAST_OP(getReg(REG_L2, vm), getReg(REG_L1, vm), f64, i64, (int64_t));
+        CAST_OP(vm $reg[REG_L2], vm $reg[REG_L1], f64, i64, (i64));
         break;
 
     case INST_F2U:
-        CAST_OP(getReg(REG_L3, vm), getReg(REG_L1, vm), f64, u64, (u64)(int64_t));
+        CAST_OP(vm $reg[REG_L3], vm $reg[REG_L1], f64, u64, (u64)(i64));
         break;
 
     case INST_READ1U:
-        READ_OP(uint8_t, u64);
+        READ_OP(Byte, U64);
         break;
 
     case INST_READ2U:
-        READ_OP(uint16_t, u64);
+        READ_OP(Word, U64);
         break;
 
     case INST_READ4U:
-        READ_OP(uint32_t, u64);
+        READ_OP(DoubleWord, U64);
         break;
 
     case INST_READ8U:
-        READ_OP(u64, u64);
+        READ_OP(u64, U64);
         break;
 
     case INST_READ1I:
-        READ_OP(int8_t, i64);
+        READ_OP(int8_t, I64);
         break;
 
     case INST_READ2I:
-        READ_OP(int16_t, i64);
+        READ_OP(int16_t, I64);
         break;
 
     case INST_READ4I:
-        READ_OP(int32_t, i64);
+        READ_OP(int32_t, I64);
         break;
 
     case INST_READ8I:
-        READ_OP(int64_t, i64);
+        READ_OP(int64_t, I64);
         break;
 
-    case INST_WRITE1: {
-        if (getReg(REG_SP, vm)->u64 < 2)
-        {
-            return ERR_STACK_UNDERFLOW;
-        }
-        const MemoryAddr addr = getStack(vm)[getReg(REG_SP, vm)->u64 - 2].u64;
-        if (addr >= MEMORY_CAPACITY)
-        {
-            return ERR_ILLEGAL_MEMORY_ACCESS;
-        }
-        getMemory(vm)[addr] = (MemoryAddr)getStack(vm)[getReg(REG_SP, vm)->u64 - 1].u64;
-        getReg(REG_SP, vm)->u64 -= 2;
-        getReg(REG_NX, vm)->u64++;
-    }
-    break;
+    case INST_WRITE1:
+        WRITE_OP(Byte, 0);
+        break;
 
-    case INST_WRITE2: {
-        if (getReg(REG_SP, vm)->u64 < 2)
-        {
-            return ERR_STACK_UNDERFLOW;
-        }
-        const MemoryAddr addr = getStack(vm)[getReg(REG_SP, vm)->u64 - 2].u64;
-        if (addr >= MEMORY_CAPACITY - 1)
-        {
-            return ERR_ILLEGAL_MEMORY_ACCESS;
-        }
-        Word value = (Word)getStack(vm)[getReg(REG_SP, vm)->u64 - 1].u64;
-        memcpy(&getMemory(vm)[addr], &value, sizeof(value));
-        getReg(REG_SP, vm)->u64 -= 2;
-        getReg(REG_NX, vm)->u64++;
-    }
-    break;
+    case INST_WRITE2:
+        WRITE_OP(Word, 1);
+        break;
 
-    case INST_WRITE4: {
-        if (getReg(REG_SP, vm)->u64 < 2)
-        {
-            return ERR_STACK_UNDERFLOW;
-        }
-        const MemoryAddr addr = getStack(vm)[getReg(REG_SP, vm)->u64 - 2].u64;
-        if (addr >= MEMORY_CAPACITY - 3)
-        {
-            return ERR_ILLEGAL_MEMORY_ACCESS;
-        }
-        DoubleWord value = (DoubleWord)getStack(vm)[getReg(REG_SP, vm)->u64 - 1].u64;
-        memcpy(&getMemory(vm)[addr], &value, sizeof(value));
-        getReg(REG_SP, vm)->u64 -= 2;
-        getReg(REG_NX, vm)->u64++;
-    }
-    break;
+    case INST_WRITE4:
+        WRITE_OP(DoubleWord, 3);
+        break;
 
-    case INST_WRITE8: {
-        if (getReg(REG_SP, vm)->u64 < 2)
-        {
-            return ERR_STACK_UNDERFLOW;
-        }
-        const MemoryAddr addr = getStack(vm)[getReg(REG_SP, vm)->u64 - 2].u64;
-        if (addr >= MEMORY_CAPACITY - 7)
-        {
-            return ERR_ILLEGAL_MEMORY_ACCESS;
-        }
-        QuadWord value = getStack(vm)[getReg(REG_SP, vm)->u64 - 1];
-        memcpy(&getMemory(vm)[addr], &value, sizeof(value));
-        getReg(REG_SP, vm)->u64 -= 2;
-        getReg(REG_NX, vm)->u64++;
-    }
-    break;
+    case INST_WRITE8:
+        WRITE_OP(u64, 7);
+        break;
 
     case NUMBER_OF_INSTS:
     default:

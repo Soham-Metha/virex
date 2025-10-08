@@ -35,7 +35,7 @@ int main(int argc, char **argv)
         inputHandler(&vm, &highlight);
         OnPause();
 
-        setReg(REG_NX, &vm, 0);
+        (&vm) $reg[REG_NX].u64 = 0;
         setFlag(META_HALT, &vm.cpu, 0);
 
     } while (true);
