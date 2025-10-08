@@ -1,5 +1,6 @@
 #include "sasm_assembler.h"
 #include "univ_fileops.h"
+#include "virex_ui.h"
 
 void pushScope(Sasm* sasm, Scope* scope)
 {
@@ -63,6 +64,7 @@ void translateSasmEntryDirective(Sasm* sasm, EntryStmt entry, FileLocation locat
 
 void translateSasmIncludeDirective(Sasm* sasm, IncludeStmt include, FileLocation location)
 {
+    // Load file as it is, recursively!
     String resolved_path = (String) { 0 };
     if (resolveIncludeFilePath(sasm, include.path, &resolved_path)) {
         include.path = resolved_path;
@@ -78,6 +80,7 @@ void translateSasmIncludeDirective(Sasm* sasm, IncludeStmt include, FileLocation
 
 void translateSasmBindDirective(Sasm* sasm, ConstStmt konst, FileLocation location)
 {
+    // ENCPSULATED SYMBOL SHOULD BELONG TO LOCAL SCOPE!
     assert(sasm->scope != NULL);
     bindExprLocalScope(sasm->scope, konst.name, konst.value, location);
 }
@@ -85,8 +88,12 @@ void translateSasmBindDirective(Sasm* sasm, ConstStmt konst, FileLocation locati
 void translateSasmInstruction(Sasm* sasm, InstStmt inst, FileLocation location)
 {
     assert(sasm $instructionCount < PROGRAM_CAPACITY);
+    // push instruction into array
     sasm $instructions[sasm $instructionCount].type = inst.type;
     sasm $instructions[sasm $instructionCount].operand.u64 = 0;
+    sasm $instructions[sasm $instructionCount].operand2.u64 = 0;
+
+    // if instruction has operand, defer it for backpatching!
     OpcodeDetails details = getOpcodeDetails(inst.type);
     if (details.has_operand) {
         pushUnresolvedOperand(sasm, sasm $instructionCount, inst.operand, location);
@@ -101,6 +108,7 @@ void translateSasmInstruction(Sasm* sasm, InstStmt inst, FileLocation location)
 
 void translateSasmStatementChain(Sasm* sasm, StmtNode* block)
 {
+    // Resolve all preprocessor directives!
     for (StmtNode* iter = block; iter != NULL; iter = iter->next) {
         Stmt statement = iter->statement;
         switch (statement.kind) {
@@ -116,7 +124,7 @@ void translateSasmStatementChain(Sasm* sasm, StmtNode* block)
         case STMT_ENTRY:
             translateSasmEntryDirective(sasm, statement.value.entry, statement.location);
             break;
-        case STMT_BLOCK:
+        case STMT_BLOCK: // Currently unused!
             translateSasmStatementChain(sasm, statement.value.block);
             break;
 
@@ -129,6 +137,8 @@ void translateSasmStatementChain(Sasm* sasm, StmtNode* block)
             exit(1);
         }
     }
+    
+    // Actual processing of labels, instructions and scope blocks!
     for (StmtNode* iter = block; iter != NULL; iter = iter->next) {
         Stmt statement = iter->statement;
         switch (statement.kind) {
@@ -166,6 +176,7 @@ void translateSasmStatementChain(Sasm* sasm, StmtNode* block)
 
 void resolveAllUnresolvedOperands(Sasm* sasm)
 {
+    // Check the concept of Backpatching in single pass assemblers to understand!
     Scope* savedScope = sasm->scope;
 
     for (size_t i = 0; i < sasm->symbolsCount; ++i) {
@@ -248,10 +259,12 @@ void resolveProgramEntryPoint(Sasm* sasm)
 
 void translateSasmRootFile(Sasm* sasm, String inputFilePath)
 {
+    // Create the 'global scope' and start processing file.
     createAndPushScope(sasm);
     translateSasmFile(sasm, inputFilePath);
     popScope(sasm);
 
+    // backpatching of the operands!
     resolveAllUnresolvedOperands(sasm);
     resolveProgramEntryPoint(sasm);
 }
@@ -268,39 +281,60 @@ void generateSmExecutable(Sasm* sasm, const char* filePath)
         .memorySize = sasm->memorySize,
         .memoryCapacity = sasm->memoryCapacity,
     };
-
+    // BeforeAssembly();
+    /*
+     * Try to write metadata
+     */
     fwrite(&meta, sizeof(meta), 1, f);
     if (ferror(f)) {
         fileErrorDispWithExit("Could not write to file", filePath);
     }
 
+    /*
+     * Try to write instructions
+     */
     fwrite(sasm $instructions, sizeof(sasm $instructions[0]), sasm $instructionCount, f);
     if (ferror(f)) {
         fileErrorDispWithExit("Could not write to file", filePath);
     }
 
+    /*
+     * Try to write program data
+     */
     fwrite(sasm->memory, sizeof(sasm->memory[0]), sasm->memorySize, f);
     if (ferror(f)) {
         fileErrorDispWithExit("Could not write to file", filePath);
     }
-
+    // AfterAssembly();
     closeFile(f, filePath);
 }
 
 void translateSasmFile(Sasm* sasm, String inputFilePath)
 {
+    BeforeFileProcessing(inputFilePath);
+
     SasmLexer SasmLexer = { 0 };
 
     if (!loadSasmFileIntoSasmLexer(&SasmLexer, &sasm->region, inputFilePath)) {
 
-        if (sasm->includeLevel > 0)
+        if (sasm->includeLevel > 0) {
             fprintf(stderr, FLFmt, FLArg(sasm->includeLocation));
-
+        }
         fileErrorDispWithExit("Could not read file", inputFilePath.data);
     }
+    /*
+     * Convert the code written in the "string" format, to the format
+     * expected by our assembler (i.e. in the form of struct 'CodeBlock')
+     */
     CodeBlock inputFileBlock = getCodeBlockFromLines(&sasm->region, &SasmLexer);
+    /*
+     * Perform actual processing of the directives, labels and scopes
+     * and add instructions to the instructions array (which is the 
+     * actual contents written to the sm executable file)
+     */
     translateSasmStatementChain(sasm, inputFileBlock.begin);
-    generateASTPng(inputFilePath, inputFileBlock.begin);
+
+    AfterFileProcessing(inputFilePath, inputFileBlock.begin);
 }
 
 void loadSmExecutableIntoSasm(Sasm* sasm, const char* filePath)
@@ -312,6 +346,11 @@ void loadSmExecutableIntoSasm(Sasm* sasm, const char* filePath)
     Metadata meta = { 0 };
 
     size_t n = fread(&meta, sizeof(meta), 1, f);
+
+    /*
+     * ensure that the sm file is readable, of the correct format,
+     * using correct version of sasm, within the program size limits
+     */
     if (n < 1) {
         fileErrorDispWithExit("Could not read meta data from file", filePath);
     }
@@ -329,14 +368,14 @@ void loadSmExecutableIntoSasm(Sasm* sasm, const char* filePath)
     if (meta.programSize > PROGRAM_CAPACITY) {
         fprintf(stderr,
             "The file contains %" PRIu64 " program instruction. But the capacity is %" PRIu64 "\n",
-            meta.programSize, (uint64_t)PROGRAM_CAPACITY);
+            meta.programSize, (u64)PROGRAM_CAPACITY);
         fileErrorDispWithExit("program section is too big ", filePath);
     }
 
     if (meta.memoryCapacity > MEMORY_CAPACITY) {
         fprintf(stderr,
             "The file wants %" PRIu64 " bytes. But the capacity is %" PRIu64 " bytes\n",
-            meta.memoryCapacity, (uint64_t)MEMORY_CAPACITY);
+            meta.memoryCapacity, (u64)MEMORY_CAPACITY);
         fileErrorDispWithExit(" memory section is too big ", filePath);
     }
 
@@ -350,10 +389,13 @@ void loadSmExecutableIntoSasm(Sasm* sasm, const char* filePath)
     if (meta.externalsSize > EXTERNAL_VMCALLS_CAPACITY) {
         fprintf(stderr,
             "ERROR: %s: external names section is too big. The file contains %" PRIu64 " external names. But the capacity is %" PRIu64 " external names\n",
-            filePath, meta.externalsSize, (uint64_t)EXTERNAL_VMCALLS_CAPACITY);
+            filePath, meta.externalsSize, (u64)EXTERNAL_VMCALLS_CAPACITY);
         exit(1);
     }
-
+    /*
+     * If all the checks pass, load all instructions and data(memory contents)
+     * and ensure the amount of data read matches the expected amount.
+     */
     sasm $instructionCount = fread(sasm $instructions, sizeof(sasm $instructions[0]), meta.programSize, f);
 
     if (sasm $instructionCount != meta.programSize) {

@@ -17,7 +17,31 @@ Error vmcall_write(CPU *cpu, Memory *mem, Region *region)
         return ERR_ILLEGAL_MEMORY_ACCESS;
     }
 
-    printOut(OUTPUT, "%.*s", (int)count, &mem->memory[addr]);
+    uint64_t i = 0;
+    while( i < count)
+    {
+        if(mem->memory[addr+i]!='\\'){
+            printOut(OUTPUT, "%c", mem->memory[addr+i]);
+            i+=1;
+            continue;
+        }
+        if (i+1>=count)
+        {
+            return ERR_ILLEGAL_OPERAND;
+        }
+
+        switch (mem->memory[addr+i+1])
+        {
+        case 'n':
+            printOut(OUTPUT, "\n");
+            break;
+
+        default:
+            return ERR_ILLEGAL_OPERAND;
+            break;
+        }
+        i+=2;
+    }
 
     refreshAllWindows();
 

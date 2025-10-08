@@ -118,12 +118,12 @@ typedef struct __attribute__((__packed__)) Metadata Metadata;
 
 union ExprValue {
     String binding;
-    uint64_t lit_int;
+    u64 lit_int;
     double lit_float;
     char lit_char;
     String lit_str;
     Funcall* funcall;
-    uint64_t reg_id;
+    u64 reg_id;
 };
 
 struct Expr {
@@ -246,7 +246,7 @@ struct Binding {
 
 struct StringLength {
     InstAddr addr;
-    uint64_t length;
+    u64 length;
 };
 
 struct EvalResult {
@@ -354,3 +354,23 @@ int dumpExprAsAST(FILE* stream, Expr expr, int* counter);
 int dumpStmtNodeAsAST(FILE* stream, StmtNode* stmtNode, int* counter, int* blockNo);
 int dumpStatementAsAST(FILE* stream, Stmt statement, int* counter, int* blockNo);
 void generateASTPng(String inputFilePath, StmtNode* start);
+
+void BeforeLineRead();
+
+void AfterLineRead();
+
+void BeforeFileProcessing(String inputFilePath);
+
+void AfterFileProcessing(String inputFilePath, StmtNode *codeBlockBegin);
+
+void BeforeAssembly();
+
+void AfterAssembly();
+
+void BeforeStatementParse();
+
+void AfterStatementParse();
+
+void BeforeExpressionParse();
+
+void AfterExpressionParse();

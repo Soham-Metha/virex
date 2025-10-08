@@ -28,6 +28,17 @@ typedef struct {
     Region region;
 } Vm;
 
+#define $memory ->mem.memory
+#define $stack ->mem.stack
+
+#define $inst ->prog.instructions
+#define $inst_cnt ->prog.instruction_count
+
+#define $stack_top ->cpu.registers.reg[REG_SP].u64
+#define $reg ->cpu.registers.reg
+
+#define $vm_call ->vmCalls.VmCallI
+
 /**
  * Executes the program loaded in the virtual machine.
  *
@@ -47,8 +58,4 @@ void executeProgram(Vm* vm, int debug, int i);
  */
 Error executeInst(Vm* vm);
 
-void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug);
-
-Register* getReg(RegID id, Vm* vm);
-
-void setReg(RegID id, Vm* vm, DataEntry val);
+void OnInstructionExecution(Vm* vm, size_t instructionIndex, bool debug);
