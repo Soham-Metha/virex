@@ -39,6 +39,7 @@
 #define PRIu64 "lu"
 #define PRIi64 "li"
 #define PRId64 "ld"
+#define PRIX64 "lX"
 
 typedef uint8_t Byte;
 typedef uint16_t Word;
@@ -50,6 +51,7 @@ typedef uint64_t MemoryAddr;
 typedef uint64_t StackAddr;
 typedef uint64_t u64;
 typedef int64_t  i64;
+typedef double   f64;
 
 typedef union {
     uint64_t u64;
