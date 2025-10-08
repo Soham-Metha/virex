@@ -1,8 +1,0 @@
-
-%entry main:
-%scope
-    %bind hello "Hello"
-    SETR  hello     [L0]
-    SETR len(hello) [QT]
-    INVOK    7
-%end
