@@ -175,7 +175,7 @@ Error executeInst(Vm* vm)
             return ERR_STACK_OVERFLOW;
         }
 
-        if (vm $stack_top >= inst.operand.u64) {
+        if (vm $stack_top <= inst.operand.u64) {
             return ERR_STACK_UNDERFLOW;
         }
 
@@ -198,8 +198,6 @@ Error executeInst(Vm* vm)
         break;
 
     case INST_JMPU:
-        if (vm $stack_top < 1)
-            return ERR_STACK_UNDERFLOW;
 
         vm $reg[REG_NX].u64 = inst.operand.u64;
         break;
