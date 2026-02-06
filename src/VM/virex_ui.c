@@ -19,9 +19,9 @@ static String Inputs[] = {
 
 static String WindowNames[MAX_WINDOW_COUNT] = {
     [OUTPUT] = {.data = "OUTPUT", .length = 6},  [DETAILS] = {.data = "DETAILS", .length = 7},
-    [MEMORY] = {.data = "MEMORY", .length = 6},  [PROGRAM] = {.data = "PROGRAM", .length = 8},
-    [INPUT] = {.data = "INPUT", .length = 6},    [NAME] = {.data = "VIREX", .length = 5},
-    [CREDITS] = {.data = "CREDITS", .length = 7}};
+    [MEMORY] = {.data = "MEMORY", .length = 6},  [PROGRAM] = {.data = "PROGRAM", .length = 7},
+    [INPUT] = {.data = "INPUT", .length = 5},    [NAME] = {.data = "VIREX", .length = 5},
+    [STACK] = {.data = "STACK", .length = 5}};
 
 void initColors()
 {
@@ -160,7 +160,7 @@ void wprintdash(int id, int col)
 void refreshAllWindows()
 {
     refreshWindow(NAME, 7, 7, 3);
-    refreshWindow(CREDITS, 7, 7, 3);
+    refreshWindow(STACK, 7, 7, 3);
     refreshWindow(MEMORY, 2, 2, 3);
     refreshWindow(DETAILS, 1, 1, 3);
     refreshWindow(PROGRAM, 3, 2, 3);
@@ -194,18 +194,18 @@ void enterTUIMode()
         "\n    ╚══════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝    ╚═╝    ╚═════╝ ╚═╝  ╚═╝"
         "\n                                                                       ");
 
-    printOut(CREDITS, "\n\n    VIREX, SASM\t\t: SOHAM METHA  "
-                      "\n    AST visualizer\t: SOHAM METHA  "
-                      "\n    Syntax Highlighter\t: SOHAM METHA  "
-                      "\n    ORIN Compiler\t: OMKAR JAGTAP "
-                      "\n    Core lib(Hashtable)\t: OMKAR JAGTAP  "
-                      "\n    Core libs(other)\t: SOHAM METHA  ");
+    // printOut(CREDITS, "\n\n    VIREX, SASM\t\t: SOHAM METHA  "
+    //                   "\n    AST visualizer\t: SOHAM METHA  "
+    //                   "\n    Syntax Highlighter\t: SOHAM METHA  "
+    //                   "\n    ORIN Compiler\t: OMKAR JAGTAP "
+    //                   "\n    Core lib(Hashtable)\t: OMKAR JAGTAP  "
+    //                   "\n    Core libs(other)\t: SOHAM METHA  ");
 
     refreshAllWindows();
     setInputEnable(true);
 }
 
-void dumpStack(const Memory *mem)
+void dumpMem(const Memory *mem)
 {
     printOut(MEMORY, "\n\n   ");
     for (InstAddr i = 0; i < 256; i++)
@@ -226,6 +226,30 @@ void printOutWithColor(int id, int colorPair, const char *str, ...)
     vw_printw(disp.windows[id], str, args);
     wattroff(disp.windows[id], COLOR_PAIR(colorPair));
     va_end(args);
+}
+
+void dumpStack(Vm* vm)
+{
+    printOut(STACK, "\n\n");
+
+    printOut(STACK, "  │────────────────────────│\n");
+    printOut(STACK, "  │ >>>>>> STACK TOP <<<<< │\n", "");
+    printOut(STACK, "  │────────────────────────│\n");
+
+    if (vm $stack_top == 0) {
+        printOut(STACK, "  │ %22s │\n", "STACK EMPTY     ");
+        printOut(STACK, "  │────────────────────────│\n");
+    } else if (vm $stack_top >= 5) {
+        for (size_t i = 1; i <= 5; i++) {
+            printOut(STACK, "  │ %4lu │ %4li │ %4lf │ 0x%-4lu\n", vm $stack[vm $stack_top - i].u64, vm $stack[vm $stack_top - i].i64, vm $stack[vm $stack_top - i].f64, vm $stack_top - i);
+            printOut(STACK, "  │────────────────────────│\n");
+        }
+    } else if (vm $stack_top < 5) {
+        for (size_t i = 1; i <= vm $stack_top; i++) {
+            printOut(STACK, "  │ %4lu │ %4li │ %4lf │ 0x%-4lu\n", vm $stack[vm $stack_top - i].u64, vm $stack[vm $stack_top - i].i64, vm $stack[vm $stack_top - i].f64, vm $stack_top - i);
+            printOut(STACK, "  │────────────────────────│\n");
+        }
+    }
 }
 
 void dumpFlags(CPU *cpu)
@@ -338,11 +362,13 @@ void clearNonIOWindows()
     wclear(disp.windows[PROGRAM]);
     wclear(disp.windows[DETAILS]);
     wclear(disp.windows[MEMORY]);
+    wclear(disp.windows[STACK]);
 }
 
 void updateMemoryAndDetailsWindow(Vm *vm)
 {
-    dumpStack(&vm->mem);
+    dumpStack(vm);
+    dumpMem(&(vm->mem));
     dumpRegs(&(vm->cpu));
     dumpFlags(&(vm->cpu));
     dumpDetails(&vm->prog.instructions[vm->cpu.registers.NX.u64]);

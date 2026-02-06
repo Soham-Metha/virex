@@ -10,7 +10,7 @@ enum WindowID
     MEMORY,
     PROGRAM,
     NAME,
-    CREDITS,
+    STACK,
     MAX_WINDOW_COUNT
 };
 
