@@ -1,7 +1,7 @@
 %include    "calls.smh"
 
-%bind       hello       "Hello, World" ; Compile-time Escape characters not yet supported, specify at runtime instead
-%bind       newLine     res(1)         ; reserves 1 byte in memory for the newline character
+%bind       hello       "Hello, World"
+%bind       newLine     "\n"
 
 println: 
 %scope                                 ; "write" is a integer const defined in 'calls.smh'
@@ -19,9 +19,6 @@ say_hello:                     ; global 'say_hello'
 %entry      main:                      ; inline define label 'main' as the entry point of the program
 %scope                                 ; start local scope for main, optional, if not done, main runs in global scope
     SETR    2           [L2]           ; SET Register 'L2' to 2
-    PUSH    newLine                    ; ptr to location
-    PUSH    10                         ; ASCII for newline
-    WRITE1                             ; Override 1 byte in memory, can use WRITE{1,2,4,8} depending on byte count
 say_hello:                     ; local 'say_hello'
     SETR    hello       [L0]           ; register L0 -> pointer to hello msg
     SETR    len(hello)  [QT]           ; register QT -> length of hello msg
