@@ -282,7 +282,6 @@ void generateASTPng(String inputFilePath, StmtNode* start)
     // start dumping to the dot file, uses graphviz dot notation!
     fprintf(out,
         "digraph " strFmt " {\n"
-        "splines=ortho;\n"
         "nodesep=0.8;\n"
         "ranksep=0.5;\n",
         strArg(tmp));
