@@ -83,6 +83,14 @@ void executeProgram(Vm* vm, int debug, int lim)
         vm $reg[REG_NX].u64++;          \
     }
 
+#define STACK_CAST(src, dst, cast)                  \
+    {                                               \
+        src opr      = stack_pop(vm).src;           \
+        QuadWord res = quadwordFrom##dst(cast opr); \
+        stack_push(vm, res);                        \
+        vm $reg[REG_NX].u64++;                      \
+    }
+
 Error executeInst(Vm* vm)
 {
     if (vm $reg[REG_NX].u64 >= vm $inst_cnt) {
@@ -91,6 +99,7 @@ Error executeInst(Vm* vm)
     }
 
     Instruction inst = vm $inst[vm $reg[REG_NX].u64];
+    // register value dereferencing
     if (inst.opr1IsReg && inst.operand.u64 > REG_COUNT) {
         inst.operand.u64 = vm $reg[inst.operand.u64 % REG_COUNT].u64;
     }
@@ -136,16 +145,16 @@ Error executeInst(Vm* vm)
         vm $reg[REG_NX].u64++;
         break;
 
+    case INST_SETR:
+        vm $reg[inst.operand2.u64].u64 = inst.operand.u64;
+        vm $reg[REG_NX].u64++;
+        break;
+
     case INST_SPOPR:
         if (vm $stack_top < 1)
             return ERR_STACK_UNDERFLOW;
 
         vm $reg[inst.operand.u64] = stack_pop(vm);
-        vm $reg[REG_NX].u64++;
-        break;
-
-    case INST_SETR:
-        vm $reg[inst.operand2.u64].u64 = inst.operand.u64;
         vm $reg[REG_NX].u64++;
         break;
 
@@ -175,7 +184,7 @@ Error executeInst(Vm* vm)
             return ERR_STACK_OVERFLOW;
         }
 
-        if (vm $stack_top >= inst.operand.u64) {
+        if (vm $stack_top <= inst.operand.u64) {
             return ERR_STACK_UNDERFLOW;
         }
 
@@ -198,9 +207,6 @@ Error executeInst(Vm* vm)
         break;
 
     case INST_JMPU:
-        if (vm $stack_top < 1)
-            return ERR_STACK_UNDERFLOW;
-
         vm $reg[REG_NX].u64 = inst.operand.u64;
         break;
 
@@ -266,69 +272,83 @@ Error executeInst(Vm* vm)
         break;
 
     case INST_ADDI:
-        ARITH_OP(vm $reg[REG_L2].i64, inst.operand.i64, +);
+        // ARITH_OP(vm $reg[REG_L2].i64, inst.operand.i64, +);
+        BINARY_OP(i64, I64, +);
         break;
 
     case INST_SUBI:
-        ARITH_OP(vm $reg[REG_L2].i64, inst.operand.i64, -);
+        // ARITH_OP(vm $reg[REG_L2].i64, inst.operand.i64, -);
+        BINARY_OP(i64, I64, -);
         break;
 
     case INST_MULI:
-        ARITH_OP(vm $reg[REG_L2].i64, inst.operand.i64, *);
+        // ARITH_OP(vm $reg[REG_L2].i64, inst.operand.i64, *);
+        BINARY_OP(i64, I64, *);
         break;
 
     case INST_DIVI:
-        if (inst.operand.i64 == 0)
+        if (vm $stack[vm $stack_top - 1].i64 == 0)
             return ERR_DIV_BY_ZERO;
-        ARITH_OP(vm $reg[REG_L2].i64, inst.operand.i64, /);
+        // ARITH_OP(vm $reg[REG_L2].i64, inst.operand.i64, /);
+        BINARY_OP(i64, I64, /);
         break;
 
     case INST_MODI:
         if (inst.operand.i64 == 0)
             return ERR_DIV_BY_ZERO;
-        ARITH_OP(vm $reg[REG_L2].i64, inst.operand.i64, %);
+        // ARITH_OP(vm $reg[REG_L2].i64, inst.operand.i64, %);
+        BINARY_OP(i64, I64, %);
         break;
 
     case INST_ADDU:
-        ARITH_OP(vm $reg[REG_L3].u64, inst.operand.u64, +);
+        // ARITH_OP(vm $reg[REG_L3].u64, inst.operand.u64, +);
+        BINARY_OP(u64, U64, +);
         break;
 
     case INST_SUBU:
-        ARITH_OP(vm $reg[REG_L3].u64, inst.operand.u64, -);
+        // ARITH_OP(vm $reg[REG_L3].u64, inst.operand.u64, -);
+        BINARY_OP(u64, U64, -);
         break;
 
     case INST_MULU:
-        ARITH_OP(vm $reg[REG_L3].u64, inst.operand.u64, +);
+        // ARITH_OP(vm $reg[REG_L3].u64, inst.operand.u64, +);
+        BINARY_OP(u64, U64, *);
         break;
 
     case INST_DIVU:
         if (inst.operand.u64 == 0)
             return ERR_DIV_BY_ZERO;
-        ARITH_OP(vm $reg[REG_L3].u64, inst.operand.u64, /);
+        // ARITH_OP(vm $reg[REG_L3].u64, inst.operand.u64, /);
+        BINARY_OP(u64, U64, /);
         break;
 
     case INST_MODU:
         if (inst.operand.u64 == 0)
             return ERR_DIV_BY_ZERO;
-        ARITH_OP(vm $reg[REG_L3].u64, inst.operand.u64, %);
+        // ARITH_OP(vm $reg[REG_L3].u64, inst.operand.u64, %);
+        BINARY_OP(u64, U64, %);
         break;
 
     case INST_ADDF:
-        ARITH_OP(vm $reg[REG_L1].f64, inst.operand.f64, +);
+        // ARITH_OP(vm $reg[REG_L1].f64, inst.operand.f64, +);
+        BINARY_OP(f64, F64, +);
         break;
 
     case INST_SUBF:
-        ARITH_OP(vm $reg[REG_L1].f64, inst.operand.f64, -);
+        // ARITH_OP(vm $reg[REG_L1].f64, inst.operand.f64, -);
+        BINARY_OP(f64, F64, -);
         break;
 
     case INST_MULF:
-        ARITH_OP(vm $reg[REG_L1].f64, inst.operand.f64, *);
+        // ARITH_OP(vm $reg[REG_L1].f64, inst.operand.f64, *);
+        BINARY_OP(f64, F64, *);
         break;
 
     case INST_DIVF:
         if (inst.operand.f64 == 0.0)
             return ERR_DIV_BY_ZERO;
-        ARITH_OP(vm $reg[REG_L1].f64, inst.operand.f64, /);
+        // ARITH_OP(vm $reg[REG_L1].f64, inst.operand.f64, /);
+        BINARY_OP(f64, F64, /);
         break;
 
     case INST_ANDB:
@@ -424,19 +444,23 @@ Error executeInst(Vm* vm)
         break;
 
     case INST_I2F:
-        CAST_OP(vm $reg[REG_L1], vm $reg[REG_L2], i64, f64, (f64));
+        // CAST_OP(vm $reg[REG_L1], vm $reg[REG_L2], i64, f64, (f64));
+        STACK_CAST(i64, F64, (f64));
         break;
 
     case INST_U2F:
-        CAST_OP(vm $reg[REG_L1], vm $reg[REG_L3], u64, f64, (f64));
+        // CAST_OP(vm $reg[REG_L1], vm $reg[REG_L3], u64, f64, (f64));
+        STACK_CAST(u64, F64, (f64));
         break;
 
     case INST_F2I:
-        CAST_OP(vm $reg[REG_L2], vm $reg[REG_L1], f64, i64, (i64));
+        // CAST_OP(vm $reg[REG_L2], vm $reg[REG_L1], f64, i64, (i64));
+        STACK_CAST(f64, I64, (f64));
         break;
 
     case INST_F2U:
-        CAST_OP(vm $reg[REG_L3], vm $reg[REG_L1], f64, u64, (u64)(i64));
+        // CAST_OP(vm $reg[REG_L3], vm $reg[REG_L1], f64, u64, (u64)(i64));
+        STACK_CAST(f64, U64, (u64)(i64));
         break;
 
     case INST_READ1U:
