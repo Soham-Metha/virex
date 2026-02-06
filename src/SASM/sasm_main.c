@@ -40,13 +40,26 @@ int main(int argc, char** argv)
     loadSmExecutableIntoSasm(&sasm, inputFile);
     for (InstAddr i = 0; i < sasm.prog.instruction_count; ++i) {
         OpcodeDetails details = getOpcodeDetails(sasm.prog.instructions[i].type);
-        fprintf(f, "%s", details.name);
+        if (details.type!=INST_RET) {
+            fprintf(f, "\t");
+        }
+        fprintf(f, "%s\t", details.name);
         if (details.has_operand) {
-            fprintf(f, " %" PRIu64, sasm.prog.instructions[i].operand.u64);
+            fprintf(f, "\t%"    PRIu64, sasm.prog.instructions[i].operand.u64);
         }
         if (details.has_operand2) {
-            fprintf(f, " %" PRIu64, sasm.prog.instructions[i].operand2.u64);
+            fprintf(f, "\t%"    PRIu64, sasm.prog.instructions[i].operand2.u64);
         }
+        if(sasm.prog.instructions[i].operand.i64!=0)
+        fprintf(f, "\t;; 1 i64 %" PRIi64, sasm.prog.instructions[i].operand.i64);
+        if(sasm.prog.instructions[i].operand.f64!=0)
+        fprintf(f, "\t;; 1 f64 %lf"     , sasm.prog.instructions[i].operand.f64);
+    
+        if(sasm.prog.instructions[i].operand2.i64!=0)
+        fprintf(f, "\t;; 2 i64 %" PRIi64, sasm.prog.instructions[i].operand2.i64);
+        if(sasm.prog.instructions[i].operand2.f64!=0)
+        fprintf(f, "\t;; 2 f64 %lf"     , sasm.prog.instructions[i].operand2.f64);
+    
         fprintf(f, "\n");
     }
 

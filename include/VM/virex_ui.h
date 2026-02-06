@@ -10,7 +10,7 @@ enum WindowID
     MEMORY,
     PROGRAM,
     NAME,
-    CREDITS,
+    STACK,
     MAX_WINDOW_COUNT
 };
 
@@ -28,11 +28,11 @@ enum Inputs
 
 void OnInstructionExecution(Vm *vm, size_t instructionIndex, bool debug);
 
-void OnStart();
+void beforeVirexStart();
 
 void OnPause();
 
-void OnExit();
+void afterVirexStop();
 
 int getUserInput();
 

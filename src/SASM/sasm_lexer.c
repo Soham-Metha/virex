@@ -14,6 +14,8 @@ bool loadSasmFileIntoSasmLexer(SasmLexer* lineInterpreter, Region* region, Strin
 
 bool fetchCachedLineFromSasmLexer(SasmLexer* lineInterpreter, Line* output)
 {
+    // if there is cached line, return as is, else read next line
+    // and return that
     if (lineInterpreter->hasCachedToken) {
         if (output) {
             *output = lineInterpreter->cachedToken;
@@ -32,6 +34,7 @@ bool fetchCachedLineFromSasmLexer(SasmLexer* lineInterpreter, Line* output)
         return false;
     }
 
+    // BeforeLineRead();
     Line result = { 0 };
     result.location = lineInterpreter->location;
     if (startsWith(line, convertCstrToStr("%"))) {
@@ -53,6 +56,8 @@ bool fetchCachedLineFromSasmLexer(SasmLexer* lineInterpreter, Line* output)
         *output = result;
     }
 
+    // AfterLineRead();
+
     lineInterpreter->hasCachedToken = true;
     lineInterpreter->cachedToken = result;
 
@@ -61,6 +66,7 @@ bool fetchCachedLineFromSasmLexer(SasmLexer* lineInterpreter, Line* output)
 
 bool moveSasmLexerToNextLine(SasmLexer* lineInterpreter, Line* output)
 {
+    // if this line is not the last, remove it from the cache
     if (fetchCachedLineFromSasmLexer(lineInterpreter, output)) {
         lineInterpreter->hasCachedToken = false;
         return true;

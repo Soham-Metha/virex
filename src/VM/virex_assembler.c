@@ -39,14 +39,14 @@ void loadProgramIntoVm(Vm* vm, const char* filePath)
     if (meta.programSize > PROGRAM_CAPACITY) {
         fprintf(stderr,
             "ERROR: %s: program section is too big. The file contains %" PRIu64 " program instruction. But the capacity is %" PRIu64 "\n",
-            filePath, meta.programSize, (uint64_t)PROGRAM_CAPACITY);
+            filePath, meta.programSize, (u64)PROGRAM_CAPACITY);
         exit(1);
     }
 
     if (meta.memoryCapacity > MEMORY_CAPACITY) {
         fprintf(stderr,
             "ERROR: %s: memory section is too big. The file wants %" PRIu64 " bytes. But the capacity is %" PRIu64 " bytes\n",
-            filePath, meta.memoryCapacity, (uint64_t)MEMORY_CAPACITY);
+            filePath, meta.memoryCapacity, (u64)MEMORY_CAPACITY);
         exit(1);
     }
 
@@ -60,12 +60,11 @@ void loadProgramIntoVm(Vm* vm, const char* filePath)
     if (meta.externalsSize > EXTERNAL_VMCALLS_CAPACITY) {
         fprintf(stderr,
             "ERROR: %s: external names section is too big. The file contains %" PRIu64 " external names. But the capacity is %" PRIu64 " external names\n",
-            filePath, meta.externalsSize, (uint64_t)EXTERNAL_VMCALLS_CAPACITY);
+            filePath, meta.externalsSize, (u64)EXTERNAL_VMCALLS_CAPACITY);
         exit(1);
     }
 
-    setReg(REG_NX, vm, meta.entry);
-
+    vm $reg[REG_NX].u64 = meta.entry;
     vm->prog.instruction_count = fread(vm->prog.instructions, sizeof(vm->prog.instructions[0]), meta.programSize, f);
 
     if (vm->prog.instruction_count != meta.programSize) {
